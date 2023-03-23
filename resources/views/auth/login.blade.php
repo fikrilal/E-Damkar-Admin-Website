@@ -45,26 +45,25 @@
                     </div>
 
                     <div class="col-12">
-                     
+                    <p class="small mb-0 text-right">
+                      
+                    @if (Route::has('password.request'))
+                    
+                    <a href="{{ route('password.request') }}"> {{ __('Forgot Your Password?') }}</a>
+                    @endif
+                  </p>
+
                     </div>
 
-                    <div class="row mb-0">
-                      <div class="col-md-8 offset-md-4">
-                          <button type="submit" class="btn btn-primary">
-                              {{ __('Login') }}
-                          </button>
-
-                          @if (Route::has('password.request'))
-                              <a class="btn btn-link" href="{{ route('password.request') }}">
-                                  {{ __('Forgot Your Password?') }}
-                              </a>
-                          @endif
-                      </div>
-                  </div>
                     <div class="col-12">
-                      <p class="small mb-0">Don't have account? <a href="#">Create an account</a></p>
+                      <button class="btn btn-danger w-100" type="submit">{{ __('Login') }}</button>
+                    </div>
+                    <div class="col-12">
+                      <p class="small mb-0">Don't have account? <a href="/register">Create an account</a></p>
                     </div>
                   </form>
+
+
 
                 </div>
               </div>

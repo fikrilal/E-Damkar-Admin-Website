@@ -74,10 +74,6 @@
                     </div>
 
                     <div class="col-12">
-                     
-                    </div>
-
-                    <div class="col-12">
                       <button class="btn btn-danger w-100" type="submit">Register</button>
                     </div>
                     <div class="col-12">
@@ -91,7 +87,7 @@
 
             <div class="col-md-6 col-lg-6">
               <img src="assets/img/damkar.jpg"
-                class="img-fluid h-100" alt="Sample image">
+                class="img-fluid h-100 w-100" alt="Sample image">
             </div>
 
           </div>

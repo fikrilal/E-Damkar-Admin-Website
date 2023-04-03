@@ -27,6 +27,14 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
     Route::resource('dashboard', 'DashboardController');
 });
 
+Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
+    Route::resource('laporan', 'LaporanController');
+});
+
+Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
+    Route::resource('laporanmasuk', 'LaporanMasukController');
+});
+
 // Route::get('/user', [ManagementUserController::class, 'index']);
 // Route::get('/user/create', [ManagementUserController::class, 'create']);
 // Route::get('/user/store', [ManagementUserController::class, 'store']);

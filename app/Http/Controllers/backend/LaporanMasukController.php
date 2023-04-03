@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class DashboardController extends Controller
+class LaporanMasukController extends Controller
 {
     public function index() {
-        return view('backend.dashboard');
+        return view('backend.laporanmasuk');
     }
 
 }

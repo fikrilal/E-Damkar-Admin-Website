@@ -36,7 +36,7 @@
 
   <li class="nav-item">
   <a class="nav-link collapsed" href="/edukasi">
-      <i class="bi bi-bar-chart"></i><span>Edukasi</span>
+      <i class="bi bi-book"></i><span>Edukasi</span>
     </a>
   </li><!-- End Charts Nav -->
 

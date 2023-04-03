@@ -11,10 +11,10 @@
   </li><!-- End Dashboard Nav -->
 
   <li class="nav-item">
-  <a class="nav-link " data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-  <i class="bi bi-journal-text"></i><span>Laporan</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-journal-text"></i><span>Laporan</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+        <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="/laporanmasuk">
               <i class="bi bi-circle"></i><span>Laporan Masuk</span>
@@ -26,7 +26,7 @@
             </a>
           </li>
         </ul>
-      </li><!-- End Forms Nav -->
+      </li><!-- End Icons Nav -->
 
   <li class="nav-item">
   <a class="nav-link collapsed" href="#">

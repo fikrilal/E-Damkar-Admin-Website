@@ -29,13 +29,13 @@
       </li><!-- End Icons Nav -->
 
   <li class="nav-item">
-  <a class="nav-link collapsed" href="#">
+  <a class="nav-link collapsed" href="/berita">
       <i class="bi bi-layout-text-window-reverse"></i><span>Berita</span>
     </a>
   </li><!-- End Tables Nav -->
 
   <li class="nav-item">
-  <a class="nav-link collapsed" href="#">
+  <a class="nav-link collapsed" href="/edukasi">
       <i class="bi bi-bar-chart"></i><span>Edukasi</span>
     </a>
   </li><!-- End Charts Nav -->

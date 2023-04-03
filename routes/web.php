@@ -39,6 +39,13 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
     Route::resource('pengaturan', 'PengaturanController');
 });
 
+Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
+    Route::resource('berita', 'BeritaController');
+});
+
+Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
+    Route::resource('edukasi', 'EdukasiController');
+});
 
 // Route::get('/user', [ManagementUserController::class, 'index']);
 // Route::get('/user/create', [ManagementUserController::class, 'create']);

@@ -69,11 +69,6 @@
               </div>
             </div>
 
-            <div class="col-md-6 col-lg-6">
-              <img src="assets/img/damkar.jpg"
-                class="img-fluid" alt="Sample image">
-            </div>
-
           </div>
         </div>
 

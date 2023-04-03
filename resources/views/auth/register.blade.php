@@ -77,7 +77,7 @@
                       <button class="btn btn-danger w-100" type="submit">Register</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Already have an account? <a href="#">Log In</a></p>
+                      <p class="small mb-0">Already have an account? <a href="/login">Log In</a></p>
                     </div>
                   </form>
 

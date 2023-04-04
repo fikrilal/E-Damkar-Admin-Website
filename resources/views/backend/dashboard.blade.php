@@ -37,7 +37,7 @@
                     </div>
                     <div class="ps-3">
                       <h6>20</h6>
-                      <span class="text-muted small pt-2 ps-1"><a href="">Cek Selengkapnya</span> <i class="bi bi-arrow-right-circle"></i></a>
+                      <span class="text-muted small pt-2 ps-1"><a href="/laporanmasuk">Cek Selengkapnya</span> <i class="bi bi-arrow-right-circle"></i></a>
                     </div>
                   </div>
                 </div>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="ps-3">
                       <h6>20</h6>
-                      <span class="text-muted small pt-2 ps-1"><a href="">Cek Selengkapnya</span> <i class="bi bi-arrow-right-circle"></i></a>
+                      <span class="text-muted small pt-2 ps-1"><a href="/laporan">Cek Selengkapnya</span> <i class="bi bi-arrow-right-circle"></i></a>
 
                     </div>
                   </div>
@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Berita</span></h5>
+                  <h5 class="card-title">Total Berita</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -89,7 +89,7 @@
                     </div>
                     <div class="ps-3">
                       <h6>20</h6>
-                      <span class="text-muted small pt-2 ps-1"><a href="">Cek Selengkapnya</span> <i class="bi bi-arrow-right-circle"></i></a>
+                      <span class="text-muted small pt-2 ps-1"><a href="/berita">Cek Selengkapnya</span> <i class="bi bi-arrow-right-circle"></i></a>
 
                     </div>
                   </div>

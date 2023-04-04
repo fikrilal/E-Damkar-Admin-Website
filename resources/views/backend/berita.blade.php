@@ -14,35 +14,82 @@
     </div><!-- End Page Title -->
 
     <section class="section">
-    <div class="col-lg-8">
+      <div class="row">
+        <div class="col-lg-12">
 
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Pengaturan Data</h5>
+          <div class="card">
+            <div class="card-body">
 
-    <!-- Vertical Form -->
-    <form class="row g-3">
-      <div class="col-12">
-        <label for="inputNanme4" class="form-label">Jumlah Unit Mobil</label>
-        <input type="text" class="form-control" placeholder="5" id="inputNanme4">
-      </div>
-      <div class="col-12">
-        <label for="inputEmail4" class="form-label">Jumlah Personil</label>
-        <input type="text" class="form-control" placeholder="20" id="inputEmail4">
-      </div>
-      <div class="col-12">
-        <label for="inputPassword4" class="form-label">Jumlah Kantor</label>
-        <input type="text" class="form-control" placeholder="4" id="inputPassword4">
-      </div>
-     
-      <div class="text-center">
-        <button type="submit" class="btn btn-primary">Simpan</button>
-      </div>
-    </form><!-- Vertical Form -->
+            <h5 class="card-title">Artikel Berita</h5>
+            <p>Berikut adalah daftar berita yang sudah dipublikasikan.</p> 
+            <button type="button" class="btn btn-primary ">Tambahkan Berita</button>
+              
+             
+              
 
-  </div>
-</div>
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+             
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Judul</th>
+                    <th scope="col">Tanggal Terbit</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Kebakaran Terkini di Ruko Nganjuk No.19</td>
+                    <td>04-04-2023</td>
+                    <td><button type="button" class="btn btn-primary">Edit</button>
+                    <button type="button" class="btn btn-danger">Hapus</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Kebakaran Terkini di Rumah Milik Pak Zam</td>
+                    <td>04-04-2023</td>
+                    <td><button type="button" class="btn btn-primary">Edit</button>
+                    <button type="button" class="btn btn-danger">Hapus</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Kebakaran Terkini di Ladang Pak Slamet</td>
+                    <td>04-04-2023</td>
+                    <td><button type="button" class="btn btn-primary">Edit</button>
+                    <button type="button" class="btn btn-danger">Hapus</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td>Kebakaran Terkini Gudang Milik Pak Sam</td>
+                    <td>04-04-2023</td>
+                    <td><button type="button" class="btn btn-primary">Edit</button>
+                    <button type="button" class="btn btn-danger">Hapus</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>Kebakaran Terkini Sawah Milik Pak Paijo</td>
+                    <td>04-04-2023</td>
+                    <td><button type="button" class="btn btn-primary">Edit</button>
+                    <button type="button" class="btn btn-danger">Hapus</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
     </section>
+
 
   </main><!-- End #main -->
 

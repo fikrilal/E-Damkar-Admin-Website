@@ -22,7 +22,7 @@
 
             <h5 class="card-title">Artikel Berita</h5>
             <p>Berikut adalah daftar berita yang sudah dipublikasikan.</p> 
-            <button type="button" class="btn btn-primary ">Tambahkan Berita</button>
+            <button type="button" class="btn btn-primary"><i class="bi bi-pen"></i> Tambahkan Berita</button>
               
              
               
@@ -43,40 +43,40 @@
                     <th scope="row">1</th>
                     <td>Kebakaran Terkini di Ruko Nganjuk No.19</td>
                     <td>04-04-2023</td>
-                    <td><button type="button" class="btn btn-primary">Edit</button>
-                    <button type="button" class="btn btn-danger">Hapus</button>
+                    <td><button type="button" class="btn btn-primary"><i class="bi bi-pen"></i> Edit</button>
+                    <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i> Hapus</button>
                     </td>
                   </tr>
                   <tr>
                     <th scope="row">2</th>
                     <td>Kebakaran Terkini di Rumah Milik Pak Zam</td>
                     <td>04-04-2023</td>
-                    <td><button type="button" class="btn btn-primary">Edit</button>
-                    <button type="button" class="btn btn-danger">Hapus</button>
+                    <td><button type="button" class="btn btn-primary"><i class="bi bi-pen"></i> Edit</button>
+                    <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i> Hapus</button>
                     </td>
                   </tr>
                   <tr>
                     <th scope="row">3</th>
                     <td>Kebakaran Terkini di Ladang Pak Slamet</td>
                     <td>04-04-2023</td>
-                    <td><button type="button" class="btn btn-primary">Edit</button>
-                    <button type="button" class="btn btn-danger">Hapus</button>
+                    <td><button type="button" class="btn btn-primary"><i class="bi bi-pen"></i> Edit</button>
+                    <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i> Hapus</button>
                     </td>
                   </tr>
                   <tr>
                     <th scope="row">4</th>
                     <td>Kebakaran Terkini Gudang Milik Pak Sam</td>
                     <td>04-04-2023</td>
-                    <td><button type="button" class="btn btn-primary">Edit</button>
-                    <button type="button" class="btn btn-danger">Hapus</button>
+                    <td><button type="button" class="btn btn-primary"><i class="bi bi-pen"></i> Edit</button>
+                    <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i> Hapus</button>
                     </td>
                   </tr>
                   <tr>
                     <th scope="row">5</th>
                     <td>Kebakaran Terkini Sawah Milik Pak Paijo</td>
                     <td>04-04-2023</td>
-                    <td><button type="button" class="btn btn-primary">Edit</button>
-                    <button type="button" class="btn btn-danger">Hapus</button>
+                    <td><button type="button" class="btn btn-primary"><i class="bi bi-pen"></i> Edit</button>
+                    <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i> Hapus</button>
                     </td>
                   </tr>
                 </tbody>

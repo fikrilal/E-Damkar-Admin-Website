@@ -23,7 +23,7 @@
                     @csrf
 
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">{{ __('Username/Email') }}</label>
+                      <label for="yourUsername" class="form-label">{{ __('Nama User') }}</label>
                       <div class="input-group has-validation">
                         <input id="username" type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="yourUsername" value="{{ old('username') }}" required autocomplete="username" autofocus>
                         @error('username')
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="col-12">
-                      <label for="password" class="form-label">{{ __('Password') }}</label>
+                      <label for="password" class="form-label">{{ __('Kata Sandi') }}</label>
                       <input id="password" type="password" name="password" class="form-control @error('password') is-invalid @enderror" required autocomplete="current-password">
                       @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -45,21 +45,10 @@
                     </div>
 
                     <div class="col-12">
-                    <p class="small mb-0 text-right">
-                      
-                    @if (Route::has('password.request'))
-                    
-                    <a href="{{ route('password.request') }}"> {{ __('Forgot Your Password?') }}</a>
-                    @endif
-                  </p>
-
-                    </div>
-
-                    <div class="col-12">
                       <button class="btn btn-danger w-100" type="submit">{{ __('Login') }}</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Don't have account? <a href="/register">Create an account</a></p>
+                      <p class="small mb-0">Belum punya akun? Hubungi Administrastor</p>
                     </div>
                   </form>
 

@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('detail_profile', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('address');
-            $table->string('nomor_tlp');
-            $table->date('ttl');
-            $table->string('foto');
-            $table->timestamps();
+        Schema::create('kategori_penyelamatan', function (Blueprint $table) {
+            $table->integer('id_penyelamatan');
+            $table->string('nama_penyelamatan');
         });
     }
 
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('detail_profile');
+        Schema::dropIfExists('kategori_penyelamatan');
     }
 };

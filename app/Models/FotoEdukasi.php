@@ -10,4 +10,8 @@ class FotoEdukasi extends Model
     use HasFactory;
 
     public $timestamp = false;
+
+    public function artikel_edukasi(){
+        return $this->belongsTo(artikel_edukasi::class);
+    }
 }

@@ -10,4 +10,8 @@ class Kedudukan extends Model
     use HasFactory;
 
     public $timestamp = false;
+
+    public function admin_damkar(){
+        return $this->hasMany(admin_damkar::class);
+    }
 }

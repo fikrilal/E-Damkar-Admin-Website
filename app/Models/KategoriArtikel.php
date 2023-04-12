@@ -9,7 +9,7 @@ class KategoriArtikel extends Model
 {
     use HasFactory;
 
-    public $timestamp = false;
+    public $timestamps = false;
 
     public function artikel_berita(){
         return $this->hasMany(artikel_berita::class);

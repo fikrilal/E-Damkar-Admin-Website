@@ -9,7 +9,7 @@ class FotoBerita extends Model
 {
     use HasFactory;
 
-    public $timestamp = false;
+    public $timestamps = false;
 
     public function artikel_berita(){
         return $this->belongsTo(artikel_berita::class);

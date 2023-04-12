@@ -9,7 +9,7 @@ class StatusRiwayat extends Model
 {
     use HasFactory;
 
-    public $timestamp = false;
+    public $timestamps = false;
 
     public function laporan(){
         return $this->hasMany(laporan::class);

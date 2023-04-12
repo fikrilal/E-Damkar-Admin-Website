@@ -9,7 +9,7 @@ class laporan extends Model
 {
     use HasFactory;
 
-    public $timestamp = false;
+    public $timestamps = false;
 
     protected $guarded = ['idLaporan'];
 

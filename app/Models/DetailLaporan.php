@@ -9,7 +9,7 @@ class DetailLaporan extends Model
 {
     use HasFactory;
 
-    public $timestamp = false; 
+    public $timestamps = false; 
 
     public function laporan(){
         return $this->belongsTo(laporan::class);

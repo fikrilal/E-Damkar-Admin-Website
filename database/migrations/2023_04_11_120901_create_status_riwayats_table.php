@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('detail_laporan', function (Blueprint $table) {
-            $table->integer('id_detailLap');
-            $table->string('detail_idRiwayat');
-            $table->integer('detail_idbencana');
-            $table->integer('detail_idhewan');
-            $table->integer('detail_namapenyelamatan');
+        Schema::create('status_riwayats', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_status');
         });
     }
 
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('detail_laporan');
+        Schema::dropIfExists('status_riwayats');
     }
 };

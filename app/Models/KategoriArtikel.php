@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DetailProfile extends Model
+class KategoriArtikel extends Model
 {
     use HasFactory;
+
+    public $timestamp = false;
 }

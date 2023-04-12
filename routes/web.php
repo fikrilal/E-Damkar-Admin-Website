@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ManagementUserController;
 use App\Http\Controllers\Controller;
 
@@ -19,31 +20,31 @@ use App\Http\Controllers\Controller;
 
 // Route::get('/home', [HomeController::class, 'home']);
 
-Route::group(['namespace' => 'App\Http\Controllers\Frontend'], function() {
+Route::group(['namespace' => 'App\Http\Controllers\Frontend'], function () {
     Route::resource('home', 'HomeController');
 });
 
-Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
+Route::group(['namespace' => 'App\Http\Controllers\Backend'], function () {
     Route::resource('dashboard', 'DashboardController');
 });
 
-Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
+Route::group(['namespace' => 'App\Http\Controllers\Backend'], function () {
     Route::resource('laporan', 'LaporanController');
 });
 
-Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
+Route::group(['namespace' => 'App\Http\Controllers\Backend'], function () {
     Route::resource('laporanmasuk', 'LaporanMasukController');
 });
 
-Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
+Route::group(['namespace' => 'App\Http\Controllers\Backend'], function () {
     Route::resource('pengaturan', 'PengaturanController');
 });
 
-Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
+Route::group(['namespace' => 'App\Http\Controllers\Backend'], function () {
     Route::resource('berita', 'BeritaController');
 });
 
-Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
+Route::group(['namespace' => 'App\Http\Controllers\Backend'], function () {
     Route::resource('edukasi', 'EdukasiController');
 });
 

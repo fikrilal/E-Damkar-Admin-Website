@@ -11,15 +11,15 @@ Use \Carbon\Carbon;
 class BeritaController extends Controller
 {
 
-    //   /**
-    //  * Create a new controller instance.
-    //  *
-    //  * @return void
-    //  */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+      /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     
     public function index() {
         $berita = DB::table('artikel_beritas')->get();
@@ -128,8 +128,8 @@ class BeritaController extends Controller
             }
         
             $artikelBeritaId = DB::table('artikel_beritas')->insertGetId([
-                'admin_damkar_id' => '1',
-                'kategori_artikel_id' => '2',
+                'admin_damkar_id' => $request->id,
+                'kategori_artikel_id' => '1',
                 'judul_berita' => $request->judul,
                 'foto_berita_id' => '1',
                 'dekspripsi_berita' => $request->isi_artikel,

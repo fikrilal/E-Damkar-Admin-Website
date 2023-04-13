@@ -28,21 +28,22 @@
     <h5 class="card-title">Pengaturan Data</h5>
     @foreach($pengaturan as $p)
     <!-- Vertical Form -->
-    <form class="row g-3" id="pengaturan_form" method="POST" action="" enctype="multipart/form-data">
+    <form class="row g-3" id="pengaturan_form" method="POST" action="{{ isset($pengaturan) ? route('pengaturan.update',$pengaturan->id) :
+              route('pengaturan.store') }}" enctype="multipart/form-data">
 
     {!! csrf_field() !!}
     {!! isset($pengaturan) ? method_field('PUT') : '' !!}
       <div class="col-12">
         <label for="inputNanme4" class="form-label">Jumlah Unit Mobil</label>
-        <input type="text" class="form-control" placeholder="{{$p->jumlah_mobil}}" name="jumlah_mobil" id="jumlah_mobil">
+        <input type="text" class="form-control" value="{{$p->jumlah_mobil}}" name="jumlah_mobil" id="jumlah_mobil">
       </div>
       <div class="col-12">
         <label for="inputEmail4" class="form-label">Jumlah Personil</label>
-        <input type="text" class="form-control" placeholder="{{$p->jumlah_personil}}" name="jumlah_personil" id="jumlah_personil">
+        <input type="text" class="form-control" value="{{$p->jumlah_personil}}" name="jumlah_personil" id="jumlah_personil">
       </div>
       <div class="col-12">
         <label for="inputPassword4" class="form-label">Jumlah Kantor</label>
-        <input type="text" class="form-control" placeholder="{{$p->jumlah_kantor}}" name="jumlah_kantor" id="jumlah_kantor">
+        <input type="text" class="form-control" value="{{$p->jumlah_kantor}}" name="jumlah_kantor" id="jumlah_kantor">
       </div>
      
       <div class="text-center">

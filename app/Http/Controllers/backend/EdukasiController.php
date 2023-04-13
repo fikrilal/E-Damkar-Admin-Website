@@ -11,15 +11,15 @@ Use \Carbon\Carbon;
 class EdukasiController extends Controller
 {
 
-    //   /**
-    //  * Create a new controller instance.
-    //  *
-    //  * @return void
-    //  */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+      /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     
     public function index() {
         $edukasi = DB::table('artikel_edukasis')->get();
@@ -128,7 +128,7 @@ class EdukasiController extends Controller
             }
         
             $artikelBeritaId = DB::table('artikel_edukasis')->insertGetId([
-                'admin_damkar_id' => '1',
+                'admin_damkar_id' => $request->id,
                 'kategori_artikel_id' => '2',
                 'judul_edukasi' => $request->judul,
                 'foto_edukasi_id' => '1',

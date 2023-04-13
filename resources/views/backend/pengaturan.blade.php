@@ -28,8 +28,7 @@
     <h5 class="card-title">Pengaturan Data</h5>
     @foreach($pengaturan as $p)
     <!-- Vertical Form -->
-    <form class="row g-3" id="pengaturan_form" method="POST" action="{{ isset($pengaturan) ? route('pengaturan.update',$pengaturan->id) :
-              route('pengaturan.store') }}" enctype="multipart/form-data">
+    <form class="row g-3" id="pengaturan_form" method="POST" action="/" enctype="multipart/form-data">
 
     {!! csrf_field() !!}
     {!! isset($pengaturan) ? method_field('PUT') : '' !!}

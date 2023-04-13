@@ -44,6 +44,11 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend'], function () {
     Route::resource('edukasi', 'EdukasiController');
 });
 
+Route::get('/logout', function(){
+    Auth::logout();
+    return Redirect::to('login');
+ });
+
 Route::get('/', function () {
     return view('welcome');
 });

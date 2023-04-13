@@ -19,6 +19,12 @@
                     <p class="text-left small">Login untuk mengakses halaman admin</p>
                   </div>
 
+                  
+                  @if (session('error'))
+                  <div class="alert alert-danger">{{ session('error') }}</div>
+                  @endif
+
+
                   <form class="row g-3 needs-validation" method="POST" action="{{ route('login') }}" novalidate>
                     @csrf
 

@@ -13,32 +13,44 @@
       </nav>
     </div><!-- End Page Title -->
 
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+    @endif
+
     <section class="section">
     <div class="col-lg-8">
 
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">Pengaturan Data</h5>
-
+    @foreach($pengaturan as $p)
     <!-- Vertical Form -->
-    <form class="row g-3">
+    <form class="row g-3" id="pengaturan_form" method="POST" action="" enctype="multipart/form-data">
+
+    {!! csrf_field() !!}
+    {!! isset($pengaturan) ? method_field('PUT') : '' !!}
       <div class="col-12">
         <label for="inputNanme4" class="form-label">Jumlah Unit Mobil</label>
-        <input type="text" class="form-control" placeholder="5" id="inputNanme4">
+        <input type="text" class="form-control" placeholder="{{$p->jumlah_mobil}}" name="jumlah_mobil" id="jumlah_mobil">
       </div>
       <div class="col-12">
         <label for="inputEmail4" class="form-label">Jumlah Personil</label>
-        <input type="text" class="form-control" placeholder="20" id="inputEmail4">
+        <input type="text" class="form-control" placeholder="{{$p->jumlah_personil}}" name="jumlah_personil" id="jumlah_personil">
       </div>
       <div class="col-12">
         <label for="inputPassword4" class="form-label">Jumlah Kantor</label>
-        <input type="text" class="form-control" placeholder="4" id="inputPassword4">
+        <input type="text" class="form-control" placeholder="{{$p->jumlah_kantor}}" name="jumlah_kantor" id="jumlah_kantor">
       </div>
      
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Simpan</button>
       </div>
     </form><!-- Vertical Form -->
+
+    @endforeach
 
   </div>
 </div>

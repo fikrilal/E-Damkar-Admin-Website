@@ -9,7 +9,6 @@ class artikel_edukasi extends Model
 {
     use HasFactory;
 
-
     public $timestamps = false;
 
 

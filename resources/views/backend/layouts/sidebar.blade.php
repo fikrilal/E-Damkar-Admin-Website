@@ -4,7 +4,7 @@
 <ul class="sidebar-nav" id="sidebar-nav">
 
   <li class="nav-item">
-    <a class="nav-link " href="/dashboard">
+    <a class="nav-link" href="{{ url('dashboard')}}">
       <i class="bi bi-grid"></i>
       <span>Dashboard</span>
     </a>
@@ -16,12 +16,12 @@
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/laporanmasuk">
+            <a href="{{ url('laporanmasuk')}}">
               <i class="bi bi-circle"></i><span>Laporan Masuk</span>
             </a>
           </li>
           <li>
-            <a href="/laporan">
+            <a href="{{ url('laporan')}}">
               <i class="bi bi-circle"></i><span>Laporan Selesai</span>
             </a>
           </li>
@@ -29,19 +29,19 @@
       </li><!-- End Icons Nav -->
 
   <li class="nav-item">
-  <a class="nav-link collapsed" href="/berita">
+  <a class="nav-link collapsed" href="{{ url('berita')}}">
       <i class="bi bi-layout-text-window-reverse"></i><span>Berita</span>
     </a>
   </li><!-- End Tables Nav -->
 
   <li class="nav-item">
-  <a class="nav-link collapsed" href="/edukasi">
+  <a class="nav-link collapsed" href="{{ url('edukasi')}}">
       <i class="bi bi-book"></i><span>Edukasi</span>
     </a>
   </li><!-- End Charts Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="/pengaturan">
+    <a class="nav-link collapsed" href="{{ url('pengaturan')}}">
       <i class="bi bi-gear"></i>
       <span>Pengaturan</span>
     </a>

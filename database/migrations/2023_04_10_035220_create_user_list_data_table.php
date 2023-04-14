@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_list_data', function (Blueprint $table) {
             $table->id();
             $table->String('email', 30)->unique();
-            $table->String('password', 30);
+            $table->String('password');
             $table->String('namaLengkap',50);
             $table->String('noHp', 13);
         });

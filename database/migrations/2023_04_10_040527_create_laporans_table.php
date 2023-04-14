@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id("idLaporan");
             $table->foreignId('user_listdata_id');
             $table->foreignId('status_riwayat_id');
-            $table->foreignId('kategori_id');
+            $table->foreignId('kategori_laporan_id');
             $table->date("tgl_lap");
             $table->String('deskripsi_laporan');
             $table->String('gambar_bukti_pelaporan');

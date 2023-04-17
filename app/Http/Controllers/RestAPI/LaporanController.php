@@ -25,11 +25,16 @@ class LaporanController extends Controller
             $validateData['gambar_bukti_pelaporan'] = $requeest->file('gambar_bukti_pelaporan')->store('gambar_pelaporans');
         }
 
-        laporan::create($validateData);
+        if (laporan::create($validateData)) {
+            return json_encode(['message' => "berhasil melakukan pelaporan"]);
+        } else {
+            return json_encode(['message' => "gagal melakukan pelaporan"]);
+        }
+    }
 
-        return $requeest->user_listdata_id;
+    public function getDataPelaporan()
+    {
+        $data = laporan::where('user_listdata_id', 1)->get();
+        return $data;
     }
 }
-
-
-

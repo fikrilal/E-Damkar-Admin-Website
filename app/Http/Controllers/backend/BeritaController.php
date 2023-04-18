@@ -20,6 +20,16 @@ class BeritaController extends Controller
     {
         $this->middleware('auth');
     }
+
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Unauthenticated.'], 401);
+        }
+
+        return redirect()->guest('/login')->with('error', 'Anda harus login terlebih dahulu');
+    }
+    
     
     public function index() {
         $berita = DB::table('artikel_beritas')->get();
@@ -85,32 +95,22 @@ class BeritaController extends Controller
 
     }
 
-    // public function store(Request $request)
-    // {
-        
-    //     $destinationPath    = public_path().'\img-berita';
-
-    //     $fotoFile='';
-
-    //     if ($request->hasFile('foto'))
-    //     {
-    //         $fotoFile = $this->uploadFile($request->foto,$destinationPath);
-    //     }
-        
-    //     DB::table('artikel_beritas')->insert([
-    //         'admin_damkar_id' => '1',
-    //         'kategori_artikel_id' => '2',
-    //         'foto_berita_id' => $request->foto,
-    //         'judul_berita' => $request->judul,
-    //         'dekspripsi_berita' => $request->isi_artikel,
-    //         'tgl_berita' => Carbon::now()
-    //     ]);
-
-    //     return redirect()->route('berita.index')
-    //                     ->with('success','Artikel Berhasil Ditambahkan!');
-
         public function store(Request $request)
         {
+
+            
+        $request->validate([    
+            'judul' => 'required|max:255',    
+            'isi_artikel' => 'required',    
+            'foto' => 'image|mimes:jpeg,png,jpg|max:2048'
+        ], [    
+            'judul.required' => 'Judul harus diisi.',   
+             'judul.max' => 'Judul tidak boleh lebih dari 255 karakter.',    
+             'isi_artikel.required' => 'Isi artikel harus diisi.',    
+             'foto.image' => 'File yang diunggah harus berupa gambar.',    
+             'foto.mimes' => 'File yang diunggah harus berformat JPEG, PNG, atau JPG.',    
+             'foto.max' => 'Ukuran file tidak boleh lebih dari 2 MB.']);
+
             $destinationPath = public_path().'/img-berita/';
             $fotoBeritaIds = array();
         

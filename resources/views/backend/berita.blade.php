@@ -20,6 +20,18 @@
               </div>
     @endif
 
+    {{-- menampilkan error validasi --}}
+    @if ($errors->any())
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
@@ -42,6 +54,8 @@
                       <h5 class="modal-title">Tambahkan Berita</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+
+                    
                     <div class="modal-body">
 
                       <!-- General Form Elements -->
@@ -49,24 +63,24 @@
                {!! csrf_field() !!}
                <input type="hidden" name="id" value="{{ Auth::user()->id_damkar }}"></br>
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
+                  <label for="inputText" class="col-sm-2 col-form-label">Judul*</label>
                   <div class="col-sm-10">
-                    <input type="text" name="judul" id="judul" class="form-control" required>
+                    <input type="text" name="judul" id="judul" class="form-control" value="{{ old('judul') }}">
                   </div>
                 </div>
 
                 <div class="row mb-3">
-                  <label for="inputNumber" class="col-sm-2 col-form-label">Foto</label>
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Foto*</label>
                   <div class="col-sm-10">
-                    <input class="form-control" name="foto" id="foto" type="file" id="formFile" required>
+                    <input class="form-control" name="foto" id="foto" type="file" id="formFile" value="{{ old('foto') }}">
                   </div>
                 </div>
            
                 
                 <div class="row mb-3">
-                  <label for="inputEmail" class="col-sm-2 col-form-label">Isi Artikel</label>
+                  <label for="inputEmail" class="col-sm-2 col-form-label">Isi Artikel*</label>
                   <div class="col-sm-10">
-                    <textarea type="text" name="isi_artikel" id="isi_artikel" class="form-control quill-editor-full" required></textarea>
+                    <textarea type="text" name="isi_artikel" id="isi_artikel" class="form-control quill-editor-full" value="{{ old('isi_artikel') }}"></textarea>
                   </div>
                 </div>
                 
@@ -102,14 +116,14 @@
                     <th scope="row">{{ $no++ }}</th>
                     <td>{{$berita->judul_berita}}</td>
                     <td>{{$berita->tgl_berita}}</td>
-                    <td><a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModal{{ $berita->id_berita }}"><i class="bi bi-pen"></i> Edit</a>
-                    <a href="#" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#largeModal1{{ $berita->id_berita }}"><i class="bi bi-trash"></i> Hapus</a>
+                    <td><a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModalEdit{{ $berita->id_berita }}"><i class="bi bi-pen"></i> Edit</a>
+                    <a href="#" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#largeModalHapus{{ $berita->id_berita }}"><i class="bi bi-trash"></i> Hapus</a>
 
                     </td>
 
 
            <!-- Tampilan Modal -->
-            <div class="modal fade" id="largeModal1{{ $berita->id_berita }}" tabindex="-1">
+            <div class="modal fade" id="largeModalHapus{{ $berita->id_berita }}" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -133,7 +147,7 @@
 
 <!-- End Basic Modal-->
                     
-              <div class="modal fade" id="largeModal{{ $berita->id_berita }}" tabindex="-1">
+              <div class="modal fade" id="largeModalEdit{{ $berita->id_berita }}" tabindex="-1">
                 <div class="modal-dialog modal-xl">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -149,24 +163,24 @@
 
                 <input type="hidden" name="id" value="{{ $berita->id_berita }}"></br>
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
+                  <label for="inputText" class="col-sm-2 col-form-label">Judul*</label>
                   <div class="col-sm-10">
                     <input type="text" name="judul" id="judul" value="{{ isset($berita) ? $berita->judul_berita : '' }}" class="form-control" required>
                   </div>
                 </div>
 
                 <div class="row mb-3">
-                  <label for="inputNumber" class="col-sm-2 col-form-label">Foto</label>
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Foto*</label>
                   <div class="col-sm-10">
                   <img src="{{ asset('img-berita/'.$berita->foto_berita_id) }}" width="20%">
                   <p></p>
-                    <input class="form-control" name="foto" id="foto" type="file">
+                    <input class="form-control" name="foto" id="foto" type="file" required>
                   </div>
                 </div>
            
                 
                 <div class="row mb-3">
-                  <label for="inputEmail" class="col-sm-2 col-form-label">Isi Artikel</label>
+                  <label for="inputEmail" class="col-sm-2 col-form-label">Isi Artikel*</label>
                   <div class="col-sm-10">
                   <textarea name="isi_artikel" id="isi_artikel" class="form-control quill-editor-full" required>{{ isset($berita) ? $berita->dekspripsi_berita : '' }}</textarea>
                   </div>

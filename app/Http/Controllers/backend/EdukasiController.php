@@ -111,6 +111,20 @@ class EdukasiController extends Controller
 
         public function store(Request $request)
         {
+
+            $request->validate([    
+                'judul' => 'required|max:255',    
+                'isi_artikel' => 'required',    
+                'foto' => 'image|mimes:jpeg,png,jpg|max:2048'
+            ], [    
+                'judul.required' => 'Judul harus diisi.',   
+                 'judul.max' => 'Judul tidak boleh lebih dari 255 karakter.',    
+                 'isi_artikel.required' => 'Isi artikel harus diisi.',    
+                 'foto.image' => 'File yang diunggah harus berupa gambar.',    
+                 'foto.mimes' => 'File yang diunggah harus berformat JPEG, PNG, atau JPG.',    
+                 'foto.max' => 'Ukuran file tidak boleh lebih dari 2 MB.']);
+
+                 
             $destinationPath = public_path().'/img-edukasi/';
             $fotoBeritaIds = array();
         

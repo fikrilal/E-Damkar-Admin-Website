@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\RestAPI;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\pelaporanResources;
 use App\Models\laporan;
 use Illuminate\Http\Request;
 
@@ -25,9 +26,17 @@ class LaporanController extends Controller
             $validateData['gambar_bukti_pelaporan'] = $requeest->file('gambar_bukti_pelaporan')->store('gambar_pelaporans');
         }
 
-        laporan::create($validateData);
+        if (laporan::create($validateData)) {
+            return json_encode(['message' => "berhasil melakukan pelaporan"]);
+        } else {
+            return json_encode(['message' => "gagal melakukan pelaporan"]);
+        }
+    }
 
-        return $requeest->user_listdata_id;
+    public function getDataPelaporan(Request $request)
+    {
+        $data = laporan::where('user_listdata_id', $request->userId)->get();
+        return pelaporanResources::collection($data);
     }
 
     public function ShowPelaporan(){
@@ -40,6 +49,3 @@ class LaporanController extends Controller
         }
     }
 }
-
-
-

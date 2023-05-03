@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('foto_beritas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_berita');
             $table->String('foto_berita');
         });
     }

@@ -14,4 +14,5 @@ class FotoBerita extends Model
     public function artikel_berita(){
         return $this->belongsTo(artikel_berita::class);
     }
+
 }

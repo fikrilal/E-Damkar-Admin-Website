@@ -13,7 +13,7 @@ class AuthenticationController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email:dns',
+            'email' => 'required|email',
             'password' => 'required',
         ]);
 
@@ -36,7 +36,7 @@ class AuthenticationController extends Controller
     {
         $request->validate([
             'id' => 'required',
-            'email' => 'required|email:dns',
+            'email' => 'required|email',
             'password' => 'required',
         ]);
 
@@ -53,4 +53,7 @@ class AuthenticationController extends Controller
         }
         return json_encode(['message' => 'gagal']);
     }
+
+
+  
 }

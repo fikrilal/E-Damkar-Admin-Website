@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\RestAPI;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\pelaporanResources;
 use App\Models\laporan;
 use Illuminate\Http\Request;
 
@@ -32,9 +33,9 @@ class LaporanController extends Controller
         }
     }
 
-    public function getDataPelaporan()
+    public function getDataPelaporan(Request $request)
     {
-        $data = laporan::where('user_listdata_id', 1)->get();
-        return $data;
+        $data = laporan::where('user_listdata_id', $request->userId)->get();
+        return pelaporanResources::collection($data);
     }
 }

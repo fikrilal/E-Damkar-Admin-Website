@@ -48,12 +48,13 @@
   </li><!-- End Profile Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="{{ url('logout') }}">
+    <a class="nav-link collapsed" href="#" data-bs-toggle="modal" data-bs-target="#largeModalLog">
     <i class="bi bi-box-arrow-right"></i>
       <span>Keluar</span>
     </a>
   </li><!-- End Profile Page Nav -->
 
 </ul>
+
 
 </aside><!-- End Sidebar-->

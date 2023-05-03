@@ -89,7 +89,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{ url('logout') }}">
+              <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#largeModalLog">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Keluar</span>
               </a>
@@ -128,6 +128,30 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('backend/assets/js/main.js') }}"></script>
+
+   <!-- Tampilan Modal -->
+   <div class="modal fade" id="largeModalLog" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Konfirmasi Keluar</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form id="logout-form" action="{{ url('logout') }}" method="POST">
+                          @csrf
+                          <div class="modal-body">
+                              <p>Apakah Anda yakin ingin keluar halaman admin?</p>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                              <button type="submit" class="btn btn-primary">Keluar</button>
+                          </div>
+                      </form>
+
+                    </div>
+                </div>
+            </div>
+
 
 </body>
 

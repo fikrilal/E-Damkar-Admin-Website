@@ -20,6 +20,18 @@
               </div>
     @endif
 
+    {{-- menampilkan error validasi --}}
+    @if ($errors->any())
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
@@ -49,7 +61,7 @@
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
                   <div class="col-sm-10">
-                    <input type="text" name="judul" id="judul" class="form-control" required>
+                    <input type="text" name="judul" id="judul" class="form-control">
                   </div>
                 </div>
 
@@ -64,7 +76,7 @@
                 <div class="row mb-3">
                   <label for="inputEmail" class="col-sm-2 col-form-label">Isi Artikel</label>
                   <div class="col-sm-10">
-                    <textarea type="text" name="isi_artikel" id="isi_artikel" class="form-control quill-editor-full" required></textarea>
+                    <textarea type="text" name="isi_artikel" id="isi_artikel" class="form-control quill-editor-full"></textarea>
                   </div>
                 </div>
                 
@@ -100,14 +112,14 @@
                     <th scope="row">{{ $no++ }}</th>
                     <td>{{$berita->judul_edukasi}}</td>
                     <td>{{$berita->tgl_edukasi}}</td>
-                    <td><a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModal{{ $berita->id_edukasi }}"><i class="bi bi-pen"></i> Edit</a>
-                    <a href="#" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#largeModal1{{ $berita->id_edukasi }}"><i class="bi bi-trash"></i> Hapus</a>
+                    <td><a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModalEdit{{ $berita->id_edukasi }}"><i class="bi bi-pen"></i> Edit</a>
+                    <a href="#" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#largeModalHapus{{ $berita->id_edukasi }}"><i class="bi bi-trash"></i> Hapus</a>
 
                     </td>
 
 
            <!-- Tampilan Modal -->
-            <div class="modal fade" id="largeModal1{{ $berita->id_edukasi }}" tabindex="-1">
+            <div class="modal fade" id="largeModalHapus{{ $berita->id_edukasi }}" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -131,7 +143,7 @@
 
 <!-- End Basic Modal-->
                     
-              <div class="modal fade" id="largeModal{{ $berita->id_edukasi }}" tabindex="-1">
+              <div class="modal fade" id="largeModalEdit{{ $berita->id_edukasi }}" tabindex="-1">
                 <div class="modal-dialog modal-xl">
                   <div class="modal-content">
                     <div class="modal-header">

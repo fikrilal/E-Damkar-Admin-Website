@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('detail_laporans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('laporan_id'); 
-            $table->String('hari');
-            $table->string('bulan');
             $table->String('nama_penyelamatan');
             $table->String('nama_hewan');
             

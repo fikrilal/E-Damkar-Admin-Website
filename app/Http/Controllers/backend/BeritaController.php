@@ -97,8 +97,6 @@ class BeritaController extends Controller
 
         public function store(Request $request)
         {
-
-            
         $request->validate([    
             'judul' => 'required|max:255',    
             'isi_artikel' => 'required',    
@@ -110,10 +108,8 @@ class BeritaController extends Controller
              'foto.image' => 'File yang diunggah harus berupa gambar.',    
              'foto.mimes' => 'File yang diunggah harus berformat JPEG, PNG, atau JPG.',    
              'foto.max' => 'Ukuran file tidak boleh lebih dari 2 MB.']);
-
             $destinationPath = public_path().'/img-berita/';
             $fotoBeritaIds = array();
-        
             if ($request->hasFile('foto')) {
                 foreach ($request->file('foto') as $foto) {
                     $fotoName = uniqid().'.'.$foto->getClientOriginalExtension();
@@ -126,7 +122,6 @@ class BeritaController extends Controller
                     array_push($fotoBeritaIds, $fotoBeritaId);
                 }
             }
-        
             $artikelBeritaId = DB::table('artikel_beritas')->insertGetId([
                 'admin_damkar_id' => $request->id,
                 'kategori_artikel_id' => '1',

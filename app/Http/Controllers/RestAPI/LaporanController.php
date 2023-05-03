@@ -29,6 +29,10 @@ class LaporanController extends Controller
 
         return $requeest->user_listdata_id;
     }
+
+    public function ShowPelaporan(){
+        
+    }
 }
 
 

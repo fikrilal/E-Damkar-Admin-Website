@@ -54,10 +54,7 @@
                       <h5 class="modal-title">Tambahkan Berita</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-
-                    
                     <div class="modal-body">
-
                       <!-- General Form Elements -->
               <form class="form-validate" id="artikelberita_form" method="POST" action="{{ route('berita.store') }}" enctype="multipart/form-data">
                {!! csrf_field() !!}
@@ -86,7 +83,7 @@
                 
            
                 <div class="row mb-3">
-</div>
+                </div>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keluar</button>
@@ -174,7 +171,7 @@
                   <div class="col-sm-10">
                   <img src="{{ asset('img-berita/'.$berita->foto_berita_id) }}" width="20%">
                   <p></p>
-                    <input class="form-control" name="foto" id="foto" type="file" required>
+                    <input class="form-control" name="foto" id="foto" type="file">
                   </div>
                 </div>
            

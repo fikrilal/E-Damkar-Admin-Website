@@ -34,15 +34,15 @@
     {!! isset($pengaturan) ? method_field('PUT') : '' !!}
       <div class="col-12">
         <label for="inputNanme4" class="form-label">Jumlah Unit Mobil</label>
-        <input type="text" class="form-control" value="{{$p->jumlah_mobil}}" name="jumlah_mobil" id="jumlah_mobil">
+        <input type="number" class="form-control" value="{{$p->jumlah_mobil}}" name="jumlah_mobil" id="jumlah_mobil">
       </div>
       <div class="col-12">
         <label for="inputEmail4" class="form-label">Jumlah Personil</label>
-        <input type="text" class="form-control" value="{{$p->jumlah_personil}}" name="jumlah_personil" id="jumlah_personil">
+        <input type="number" class="form-control" value="{{$p->jumlah_personil}}" name="jumlah_personil" id="jumlah_personil">
       </div>
       <div class="col-12">
         <label for="inputPassword4" class="form-label">Jumlah Kantor</label>
-        <input type="text" class="form-control" value="{{$p->jumlah_kantor}}" name="jumlah_kantor" id="jumlah_kantor">
+        <input type="number" class="form-control" value="{{$p->jumlah_kantor}}" name="jumlah_kantor" id="jumlah_kantor">
       </div>
      
       <div class="text-center">

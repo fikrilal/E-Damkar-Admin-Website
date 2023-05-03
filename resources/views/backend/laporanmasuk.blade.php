@@ -130,7 +130,7 @@
                     @if($laporan->status_riwayat_id == 2)
                         <button type="submit" class="btn btn-success">Selesai</button>
                     @else
-                        <button type="submit" class="btn btn-warning">Proses</button>
+                        <button type="submit" class="btn btn-dark">Proses</button>
                         <button type="submit" class="btn btn-danger">Tolak</button>
                     @endif
 

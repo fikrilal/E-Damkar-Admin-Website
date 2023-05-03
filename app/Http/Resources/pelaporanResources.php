@@ -16,8 +16,12 @@ class pelaporanResources extends JsonResource
     {
         return [
             "idLaporan" => $this->idLaporan,
-            "Status_riwayat" => $this->statusRiwayat()->nama_status, 
-
+            "Status_riwayat" => $this->statusRiwayat->nama_status, 
+            "kategori_laporan" => $this->kategoriLaporan->nama_kategori, 
+            "tanggal" => $this->tgl_lap, 
+            "deskripsi" => $this->deskripsi_laporan, 
+            "image_url" => $this->gambar_bukti_pelaporan, 
+            "alamat" => $this->alamat_kejadian
         ];
     }
 }

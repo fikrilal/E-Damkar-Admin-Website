@@ -31,7 +31,13 @@ class LaporanController extends Controller
     }
 
     public function ShowPelaporan(){
-        
+        $list = new laporan();
+        foreach ($list as $item){
+            $item['articel_content']=strip_tags($item['articel_content']);
+            $item['articel_content']=$Content = preg_replace(""," ",$item['articel_content']);
+
+            return response()->json($list); 
+        }
     }
 }
 

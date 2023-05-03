@@ -16,7 +16,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::post('/logout', [AuthenticationController::class, 'logout']);
     Route::post('/addPelaporan', [LaporanController::class, 'AddPelaporan']);
-    Route::post('/showLaporan', [LaporanController::class, 'ShowPelaporan']);
 
 });
 

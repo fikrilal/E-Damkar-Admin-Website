@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('kategori_artikel_id');
             $table->foreignId('foto_edukasi_id');
             $table->String('judul_edukasi');
-            $table->String('deskripsi');
+            $table->Text('deskripsi');
             $table->date('tgl_edukasi');
         });
     }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('kategori_artikel_id');
             $table->foreignId('foto_berita_id');
             $table->String('judul_berita');
-            $table->String('dekspripsi_berita');
+            $table->Text('dekspripsi_berita');
             $table->date('tgl_berita');
         });
     }

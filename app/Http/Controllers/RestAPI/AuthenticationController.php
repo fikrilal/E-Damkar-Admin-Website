@@ -10,6 +10,23 @@ use Illuminate\Validation\ValidationException;
 
 class AuthenticationController extends Controller
 {
+    public function register(Request $request)
+    {
+        $validateData = $request->validate([
+            'email' => 'required|email|unique:user_list_data',
+            'password' => 'required',
+            'namaLengkap' => 'required',
+            'noHp' => 'required'
+        ]);
+
+        $validateData['password'] = Hash::make($validateData['password']);
+
+        user_listData::create($validateData);
+        return json_encode([
+            "kondisi" => true,
+        ]);
+    }
+
     public function login(Request $request)
     {
         $request->validate([
@@ -53,7 +70,4 @@ class AuthenticationController extends Controller
         }
         return json_encode(['message' => 'gagal']);
     }
-
-
-  
 }

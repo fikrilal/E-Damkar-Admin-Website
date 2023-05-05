@@ -22,25 +22,10 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend'], function() {
 
 Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
     Route::resource('dashboard', 'DashboardController');
-});
-
-Route::group(['namespace' => 'App\Http\Controllers\Backend'], function () {
     Route::resource('laporan', 'LaporanController');
-});
-
-Route::group(['namespace' => 'App\Http\Controllers\Backend'], function () {
     Route::resource('laporanmasuk', 'LaporanMasukController');
-});
-
-Route::group(['namespace' => 'App\Http\Controllers\Backend'], function () {
     Route::resource('pengaturan', 'PengaturanController');
-});
-
-Route::group(['namespace' => 'App\Http\Controllers\Backend'], function () {
     Route::resource('berita', 'BeritaController');
-});
-
-Route::group(['namespace' => 'App\Http\Controllers\Backend'], function () {
     Route::resource('edukasi', 'EdukasiController');
 });
 

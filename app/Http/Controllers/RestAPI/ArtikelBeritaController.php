@@ -15,7 +15,6 @@ class ArtikelBeritaController extends Controller
         return ArtikelBeritaResource::collection($data);
     }
 
-    // public function 
     public function newArtikelBerita(){
         $data = artikel_berita::all()->take(5);
         return json_encode($data);

@@ -18,26 +18,10 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+
 
         user_listData::factory(10)->create();
 
-        // user_listData::create([
-        //     'email' => 'Oukenzeumasio@gmail.com',
-        //     'password' => '$2y$10$47IncP46RiPwz/VEF2KAKur7DUT9IupH2.Y5CwcIKfdpDmhcqpWXC',
-        //     'namaLengkap' => 'Oukenzeumasio',
-        //     'noHp' => '0857676434356'
-        // ]);
-
-        // user_listData::create([
-        //     'email' => 'Akeon@gmail.com',
-        //     'password' => '$2y$10$47IncP46RiPwz/VEF2KAKur7DUT9IupH2.Y5CwcIKfdpDmhcqpWXC',
-        //     'namaLengkap' => 'Akeon',
-        //     'noHp' => '0857676434356'
-        // ]);
 
         StatusRiwayat::create([
             'nama_status' => 'Mengunggu'

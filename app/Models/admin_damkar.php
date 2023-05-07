@@ -11,15 +11,25 @@ class admin_damkar extends Model
 
     public $timestamps = false;
 
-    public function artikel_berita(){
+    protected $guarded = ['id_damkar'];
+    protected $fillable = ['nama_lengkap', "email", "password", "noHp"];
+
+    public function artikel_berita()
+    {
         return $this->hasMany(artikel_berita::class);
     }
 
-    public function artikel_edukasi(){
+    public function artikel_edukasi()
+    {
         return $this->hasMany(artikel_edukasi::class);
     }
+    public function artikel_agenda()
+    {
+        return $this->hasMany(artikel_agenda::class);
+    }
 
-    public function kedudukan(){
+    public function kedudukan()
+    {
         return $this->belongsTo(kedudukan::class);
     }
 }

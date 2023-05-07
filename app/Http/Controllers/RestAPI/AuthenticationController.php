@@ -45,6 +45,7 @@ class AuthenticationController extends Controller
             'token' => $user->createToken($request->email)->plainTextToken,
             'data' => $user
         ];
+
         return json_encode($data);
     }
 

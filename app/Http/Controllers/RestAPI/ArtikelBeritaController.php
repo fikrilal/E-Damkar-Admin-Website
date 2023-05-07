@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ArtikelBeritaResource;
 use App\Models\artikel_berita;
 use Illuminate\Http\Request;
+use Psr\Http\Message\RequestInterface;
 
 class ArtikelBeritaController extends Controller
 {
@@ -15,9 +16,9 @@ class ArtikelBeritaController extends Controller
         return ArtikelBeritaResource::collection($data);
     }
 
-    public function newArtikelBerita(){
-        $data = artikel_berita::all()->take(5);
-        return json_encode($data);
+    public function newArtikelBerita(Request $request)
+    {
+        $data = artikel_berita::orderBy('id', 'DESC')->take($request->value);
+        return json_encode($request->value);
     }
-
 }

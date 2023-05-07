@@ -21,3 +21,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 
 Route::get('/beritaTerbaru', [ArtikelBeritaController::class, 'newArtikelBerita']);
+Route::get('/userData', [UserController::class, 'index']);
+Route::get('/getBerita/{value}', [ArtikelBeritaController::class, 'newArtikelBerita']);

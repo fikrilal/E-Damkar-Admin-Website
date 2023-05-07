@@ -8,6 +8,8 @@ use App\Models\user_listData;
 use App\Models\StatusRiwayat;
 use App\Models\KategoriLaporan;
 use App\Models\laporan;
+use Database\Factories\adminDamkarFactory;
+use Database\Factories\artikelBeritaFactory;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,6 +24,9 @@ class DatabaseSeeder extends Seeder
 
         user_listData::factory(10)->create();
 
+        laporan::factory(10)->create();
+        // // adminDamkarFactory::factory(10)->create();
+        // artikelBeritaFactory::factory(15)->create();
 
         StatusRiwayat::create([
             'nama_status' => 'Mengunggu'

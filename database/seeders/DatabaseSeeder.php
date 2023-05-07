@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\admin_damkar;
+use App\Models\artikel_berita;
 use Illuminate\Database\Seeder;
 use App\Models\user_listData;
 use App\Models\StatusRiwayat;
@@ -23,10 +26,10 @@ class DatabaseSeeder extends Seeder
 
 
         user_listData::factory(10)->create();
-
         laporan::factory(10)->create();
-        // // adminDamkarFactory::factory(10)->create();
-        // artikelBeritaFactory::factory(15)->create();
+        admin_damkar::factory(10)->create();
+        artikel_berita::factory(10)->create();
+
 
         StatusRiwayat::create([
             'nama_status' => 'Mengunggu'

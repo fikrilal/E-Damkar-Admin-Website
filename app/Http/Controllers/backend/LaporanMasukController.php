@@ -27,28 +27,34 @@ class LaporanMasukController extends Controller
     }
 
     public function updateStatus(Request $request)
-    {
-        $laporan = laporan::where('idLaporan', $request->id)->first();
-        $status = $request->input('status');
-        switch ($status) {
-            case 'proses':
-                $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 2]);
-                return redirect()->back()->with('success', 'Status laporan berhasil diproses');
-                break;
-            case 'tolak':
-                $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 4]);
-                return redirect()->back()->with('success', 'Status laporan berhasil ditolak');
-                break;
-            case 'selesai':
+{
+    $laporan = laporan::where('idLaporan', $request->id)->first();
+    $status = $request->input('status');
+    switch ($status) {
+        case 'proses':
+            $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 2]);
+            return redirect()->back()->with('success', 'Status laporan berhasil diproses');
+            break;
+        case 'tolak':
+            $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 4]);
+            return redirect()->back()->with('success', 'Status laporan berhasil ditolak');
+            break;
+        case 'selesai':
+            if ($request->hasFile('bukti_penanganan')) {
                 $fileName = $request->file('bukti_penanganan')->getClientOriginalName();
+                $request->file('bukti_penanganan')->storeAs('bukti_penanganan', $fileName);
                 $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 3, 'bukti_penanganan' => $fileName]);                
-                return redirect()->back()->with('success', 'Status laporan berhasil diselesaikan');
-                break;
-            default:
-                return redirect()->back()->with('error', 'Aksi tidak valid');
-        }
-        $laporan->save();
+            } else {
+                $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 3]);
+            }
+            return redirect()->back()->with('success', 'Status laporan berhasil diselesaikan');
+            break;
+        default:
+            return redirect()->back()->with('error', 'Aksi tidak valid');
     }
+    $laporan->save();
+}
+
     
 
    

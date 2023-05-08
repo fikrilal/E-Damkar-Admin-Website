@@ -20,6 +20,18 @@
               </div>
     @endif
 
+    {{-- menampilkan error validasi --}}
+    @if ($errors->any())
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
@@ -127,7 +139,7 @@
               <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Upload Bukti Penangganan</label>
                   <div class="col-sm-10">
-                      <input type="file" name="bukti_penanganan" id="bukti_penanganan" class="form-control" required  accept="image/png, image/jpeg">
+                      <input type="file" name="bukti_penanganan" id="bukti_penanganan" class="form-control"  accept="image/png, image/jpeg">
                   </div>
               </div>
                 @else

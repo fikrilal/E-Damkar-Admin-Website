@@ -21,7 +21,8 @@ class laporanFactory extends Factory
             "tgl_lap" => "2023-05-16",
             "deskripsi_laporan" => fake()->paragraph(),
             "gambar_bukti_pelaporan" => "gambar",
-            "alamat_kejadian" => "nganjuk"
+            "alamat_kejadian" => "nganjuk", 
+            "bukti_penanganan" => "gambar.jpg"
         ];
     }
 }

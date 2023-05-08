@@ -13,6 +13,13 @@
       </nav>
     </div><!-- End Page Title -->
 
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+    @endif
+
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
@@ -70,23 +77,30 @@
                     </div>
                     <div class="modal-body">
                       <!-- General Form Elements -->
-              <form class="form-validate" id="artikeledukasi_form" method="POST" action="#" enctype="multipart/form-data">
+              <form class="form-validate" id="artikeledukasi_form" method="POST" action="{{ route('laporan.update-status', $laporan->idLaporan) }}" enctype="multipart/form-data">
                {!! csrf_field() !!}
                {!! isset($berita) ? method_field('PUT') : '' !!}
 
                 <input type="hidden" name="id" value="{{ $laporan->idLaporan}}"/></br>
 
                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Nama Pelapor</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="deskripsi_laporan" value="{{ isset($laporan) ? $laporan->user_listdata->namaLengkap : '' }}" class="form-control" disabled>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Masalah</label>
                   <div class="col-sm-10">
-                    <input type="text" name="deskripsi_laporan" id="ndeskripsi_laporanama_lengkap" value="{{ isset($laporan) ? $laporan->deskripsi_laporan : '' }}" class="form-control" disabled>
+                    <input type="text" name="deskripsi_laporan" value="{{ isset($laporan) ? $laporan->deskripsi_laporan : '' }}" class="form-control" disabled>
                   </div>
                 </div>
               
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Alamat Kejadian</label>
                   <div class="col-sm-10">
-                    <input type="text" name="alamat_kejadian" id="alamat_kejadian" value="{{ isset($laporan) ? $laporan->alamat_kejadian : '' }}" class="form-control" disabled>
+                    <input type="text" name="alamat_kejadian" value="{{ isset($laporan) ? $laporan->alamat_kejadian : '' }}" class="form-control" disabled>
                   </div>
                 </div>
 
@@ -94,7 +108,7 @@
               <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Nama Hewan</label>
                   <div class="col-sm-10">
-                      <input type="text" name="nama_lengkap" id="nama_lengkap" value="Sapi" class="form-control" disabled>
+                      <input type="text" name="nama_lengkap" value="Sapi" class="form-control" disabled>
                   </div>
               </div>
                 @else
@@ -120,18 +134,17 @@
                     <!-- Tidak menampilkan input field jika kategori_laporan_id tidak sama dengan 4 -->
                 @endif
 
-            
-        
-           
                 <div class="row mb-3">
 </div>
                     </div>
                     <div class="modal-footer">
+                    @csrf
+                    @method('GET')
                     @if($laporan->status_riwayat_id == 2)
-                        <button type="submit" class="btn btn-success">Selesai</button>
+                        <button type="submit" class="btn btn-success" name="status" value="selesai">Selesai</button>
                     @else
-                        <button type="submit" class="btn btn-dark">Proses</button>
-                        <button type="submit" class="btn btn-danger">Tolak</button>
+                        <button type="submit" class="btn btn-dark" name="status" value="proses">Proses</button>
+                        <button type="submit" class="btn btn-danger" name="status" value="tolak">Tolak</button>
                     @endif
 
                     </div>

@@ -14,7 +14,7 @@ class LoginController extends Controller
     public function login(Request $request){
         $this->validate($request, [
             'email' => 'required|email',
-            'password' => 'required|string|min:6',
+            'password' => 'required|string|min:8',
         ], [
             'email.required' => 'Kolom email wajib diisi',
             'email.email' => 'Email yang dimasukkan tidak valid',

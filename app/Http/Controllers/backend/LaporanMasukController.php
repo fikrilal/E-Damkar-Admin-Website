@@ -40,7 +40,8 @@ class LaporanMasukController extends Controller
                 return redirect()->back()->with('success', 'Status laporan berhasil ditolak');
                 break;
             case 'selesai':
-                $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 3]);
+                $fileName = $request->file('bukti_penanganan')->getClientOriginalName();
+                $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 3, 'bukti_penanganan' => $fileName]);                
                 return redirect()->back()->with('success', 'Status laporan berhasil diselesaikan');
                 break;
             default:

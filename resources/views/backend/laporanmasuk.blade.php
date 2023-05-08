@@ -119,7 +119,7 @@
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Bukti Kejadian</label>
                   <div class="col-sm-10">
-                    <img src="ass.jpg">
+                    <img src="storage/gambar_pelaporan/kebakaran.jpeg">
                   </div>
                 </div>
 
@@ -127,7 +127,7 @@
               <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Upload Bukti Penangganan</label>
                   <div class="col-sm-10">
-                      <input type="file" name="bukti_penangganan" id="bukti_penangganan" value="Sapi" class="form-control" required>
+                      <input type="file" name="bukti_penanganan" id="bukti_penanganan" class="form-control" required  accept="image/png, image/jpeg">
                   </div>
               </div>
                 @else

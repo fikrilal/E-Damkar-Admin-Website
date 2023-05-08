@@ -61,14 +61,14 @@
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
                   <div class="col-sm-10">
-                    <input type="text" name="judul" id="judul" class="form-control">
+                    <input type="text" name="judul" id="judul" class="form-control" value="{{ old('judul') }}">
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <label for="inputNumber" class="col-sm-2 col-form-label">Foto</label>
                   <div class="col-sm-10">
-                    <input class="form-control" name="foto" id="foto" type="file" id="formFile" required>
+                    <input class="form-control" name="foto" id="foto" type="file" id="formFile" required  accept="image/png, image/jpeg">
                   </div>
                 </div>
            
@@ -76,7 +76,7 @@
                 <div class="row mb-3">
                   <label for="inputEmail" class="col-sm-2 col-form-label">Isi Artikel</label>
                   <div class="col-sm-10">
-                    <textarea type="text" name="isi_artikel" id="isi_artikel" class="form-control quill-editor-full"></textarea>
+                    <textarea type="text" name="isi_artikel" id="isi_artikel" class="form-control quill-editor-full" value="{{ old('isi_artikel') }}"></textarea>
                   </div>
                 </div>
                 

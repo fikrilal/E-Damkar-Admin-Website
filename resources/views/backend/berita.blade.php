@@ -69,7 +69,7 @@
                 <div class="row mb-3">
                   <label for="inputNumber" class="col-sm-2 col-form-label">Foto*</label>
                   <div class="col-sm-10">
-                    <input class="form-control" name="foto" id="foto" type="file" id="formFile" value="{{ old('foto') }}">
+                    <input class="form-control" name="foto" id="foto" type="file" id="formFile"  accept="image/png, image/jpeg">
                   </div>
                 </div>
            
@@ -77,7 +77,7 @@
                 <div class="row mb-3">
                   <label for="inputEmail" class="col-sm-2 col-form-label">Isi Artikel*</label>
                   <div class="col-sm-10">
-                    <textarea type="text" name="isi_artikel" id="isi_artikel" class="form-control quill-editor-full" value="{{ old('isi_artikel') }}"></textarea>
+                    <textarea type="text" name="isi_artikel" id="isi_artikel" class="form-control quill-editor-full"  value="{{ old('isi_artikel') }}"></textarea>
                   </div>
                 </div>
                 
@@ -179,7 +179,7 @@
                 <div class="row mb-3">
                   <label for="inputEmail" class="col-sm-2 col-form-label">Isi Artikel*</label>
                   <div class="col-sm-10">
-                  <textarea name="isi_artikel" id="isi_artikel" class="form-control quill-editor-full" required>{{ isset($berita) ? $berita->dekspripsi_berita : '' }}</textarea>
+                  <textarea name="isi_artikel" id="isi_artikel" class="form-control quill-editor-full" required>{{ isset($berita) ? $berita->deskripsi_berita : '' }}</textarea>
                   </div>
                 </div>
                 

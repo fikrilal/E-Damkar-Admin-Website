@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('admin_damkar_id');
             $table->foreignId('foto_berita_id');
             $table->String('judul_berita');
-            $table->String('deskripsi_berita');
+            $table->text('deskripsi_berita');
             $table->date('tgl_berita');
         });
     }

@@ -143,7 +143,6 @@ class EdukasiController extends Controller
         
             $artikelBeritaId = DB::table('artikel_edukasis')->insertGetId([
                 'admin_damkar_id' => $request->id,
-                'kategori_artikel_id' => '2',
                 'judul_edukasi' => $request->judul,
                 'foto_edukasi_id' => '1',
                 'deskripsi' => $request->isi_artikel,

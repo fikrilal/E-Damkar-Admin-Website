@@ -43,7 +43,7 @@
 
   <li class="nav-item">
   <a class="nav-link collapsed" href="/">
-      <i class="bi bi-book"></i><span>Agenda</span>
+      <i class="bi bi-calendar-event"></i><span>Agenda</span>
     </a>
   </li><!-- End Charts Nav -->
 

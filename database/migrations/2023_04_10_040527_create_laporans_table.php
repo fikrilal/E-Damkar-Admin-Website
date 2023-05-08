@@ -20,8 +20,14 @@ return new class extends Migration
             $table->text('deskripsi_laporan');
             $table->String('gambar_bukti_pelaporan');
             $table->String('alamat_kejadian');
+<<<<<<< HEAD
             $table->String('bukti_penanganan');
            
+=======
+            $table->string("latitude");
+            $table->string("longitude");
+            $table->timestamps();
+>>>>>>> 26648d8124115584cc5db0fed7bfb8f54fc5fec6
         });
     }
 

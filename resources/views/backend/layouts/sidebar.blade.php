@@ -40,6 +40,13 @@
     </a>
   </li><!-- End Charts Nav -->
 
+
+  <li class="nav-item">
+  <a class="nav-link collapsed" href="/">
+      <i class="bi bi-book"></i><span>Agenda</span>
+    </a>
+  </li><!-- End Charts Nav -->
+
   <li class="nav-item">
     <a class="nav-link collapsed" href="{{ url('pengaturan')}}">
       <i class="bi bi-gear"></i>

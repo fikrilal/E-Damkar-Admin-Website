@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 
 class LaporanController extends Controller
 {
-    public function AddPelaporan(Request $requeest)
+    public function AddPelaporan(Request $request)
     {
 
-        $validateData = $requeest->validate([
+        $validateData = $request->validate([
             'user_listdata_id' => 'required',
             'status_riwayat_id' => 'required',
             'kategori_laporan_id' => 'required',
@@ -22,8 +22,8 @@ class LaporanController extends Controller
             'alamat_kejadian' => 'required'
         ]);
 
-        if ($requeest->file('gambar_bukti_pelaporan')) {
-            $validateData['gambar_bukti_pelaporan'] = $requeest->file('gambar_bukti_pelaporan')->store('gambar_pelaporans');
+        if ($request->file('gambar_bukti_pelaporan')) {
+            $validateData['gambar_bukti_pelaporan'] = $request->file('gambar_bukti_pelaporan')->store('gambar_pelaporans');
         }
 
         if (laporan::create($validateData)) {
@@ -38,4 +38,5 @@ class LaporanController extends Controller
         $data = laporan::where('user_listdata_id', $request->userId)->get();
         return pelaporanResources::collection($data);
     }
+    
 }

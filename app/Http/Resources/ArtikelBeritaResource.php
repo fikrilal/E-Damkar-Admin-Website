@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserListResource extends JsonResource
+class ArtikelBeritaResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,10 +14,6 @@ class UserListResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        
-        return [
-            'email' => $this->email,
-            'nama_lengkap' => $this->namaLengkap
-        ];
+        return parent::toArray($request);
     }
 }

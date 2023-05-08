@@ -19,6 +19,6 @@ class ArtikelBeritaController extends Controller
     public function newArtikelBerita(Request $request)
     {
         $data = artikel_berita::orderBy('id_berita', 'DESC')->skip($request->value)->take(5)->get();
-        return json_encode($data);
+        return ArtikelBeritaResource::collection($data);
     }
 }

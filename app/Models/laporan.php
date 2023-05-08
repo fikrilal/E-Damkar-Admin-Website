@@ -13,7 +13,7 @@ class laporan extends Model
 
     protected $guarded = ['idLaporan'];
 
-    protected $fillable = ['user_listdata_id', 'status_riwayat_id', 'kategori_laporan_id', 'tgl_lap', 'deskripsi_laporan', 'gambar_bukti_pelaporan', 'alamat_kejadian'];
+    protected $fillable = ['user_listdata_id', 'status_riwayat_id', 'kategori_laporan_id', 'tgl_lap', 'deskripsi_laporan', 'gambar_bukti_pelaporan', 'alamat_kejadian', 'longitude', 'latitude'];
 
     public function user_listdata()
     {

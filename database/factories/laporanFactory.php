@@ -21,7 +21,10 @@ class laporanFactory extends Factory
             "tgl_lap" => "2023-05-16",
             "deskripsi_laporan" => fake()->paragraph(),
             "gambar_bukti_pelaporan" => "gambar",
-            "alamat_kejadian" => "nganjuk"
+            "alamat_kejadian" => "nganjuk",
+            "latitude" => "-7.2232139",
+            "longitude" => "112.6226935"
         ];
     }
 }
+// -7.2232139, 112.6226935

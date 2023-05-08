@@ -19,7 +19,9 @@ class LaporanController extends Controller
             'tgl_lap' => 'required',
             'deskripsi_laporan' => 'required',
             'gambar_bukti_pelaporan' => 'image',
-            'alamat_kejadian' => 'required'
+            'alamat_kejadian' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required'
         ]);
 
         if ($request->file('gambar_bukti_pelaporan')) {
@@ -38,5 +40,4 @@ class LaporanController extends Controller
         $data = laporan::where('user_listdata_id', $request->userId)->get();
         return pelaporanResources::collection($data);
     }
-    
 }

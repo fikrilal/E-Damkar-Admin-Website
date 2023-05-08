@@ -17,9 +17,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/getPelaporan/{userId}', [LaporanController::class, 'getDataPelaporan']);
     Route::post('/logout', [AuthenticationController::class, 'logout']);
-    Route::post('/addPelaporan', [LaporanController::class, 'AddPelaporan']);
 });
-
+Route::post('/addPelaporan', [LaporanController::class, 'AddPelaporan']);
 Route::get('/beritaTerbaru', [ArtikelBeritaController::class, 'newArtikelBerita']);
 Route::get('/userData', [UserController::class, 'index']);
 Route::get('/getBerita/{value}', [ArtikelBeritaController::class, 'newArtikelBerita']);

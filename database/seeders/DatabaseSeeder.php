@@ -13,6 +13,7 @@ use App\Models\KategoriLaporan;
 use App\Models\laporan;
 use Database\Factories\adminDamkarFactory;
 use Database\Factories\artikelBeritaFactory;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,6 +24,14 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
+        user_listData::create([
+            'email' => "danakhdan12@gmail",
+            'password' => Hash::make('superone'),
+            'namaLengkap' => "Akhdan",
+            'noHp' => "085756436576", 
+            'kodeOtp' => '87657554', 
+            'status' => 'aktif'
+        ]);
 
 
         user_listData::factory(10)->create();

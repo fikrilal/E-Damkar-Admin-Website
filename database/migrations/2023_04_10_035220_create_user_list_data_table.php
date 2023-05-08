@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->String('email', 50)->unique();
             $table->String('password');
-            $table->String('namaLengkap',50);
+            $table->String('namaLengkap', 50);
             $table->String('noHp', 13);
+            $table->String('kodeOtp');
+            $table->String('status');
         });
     }
 

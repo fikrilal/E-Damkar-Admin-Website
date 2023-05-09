@@ -42,7 +42,7 @@
 
 
   <li class="nav-item">
-  <a class="nav-link collapsed" href="/">
+  <a class="nav-link collapsed" href="{{ url('agenda')}}">
       <i class="bi bi-calendar-event"></i><span>Agenda</span>
     </a>
   </li><!-- End Charts Nav -->

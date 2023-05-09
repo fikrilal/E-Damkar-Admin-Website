@@ -69,7 +69,7 @@ class BeritaController extends Controller
             
         $dataToUpdate = [
             'judul_berita' => $request->input('judul'),
-            'dekspripsi_berita' => $request->input('isi_artikel'),
+            'deskripsi_berita' => $request->input('isi_artikel'),
             'tgl_berita' => Carbon::now()
         ];
             
@@ -124,10 +124,9 @@ class BeritaController extends Controller
             }
             $artikelBeritaId = DB::table('artikel_beritas')->insertGetId([
                 'admin_damkar_id' => $request->id,
-                'kategori_artikel_id' => '1',
                 'judul_berita' => $request->judul,
                 'foto_berita_id' => '1',
-                'dekspripsi_berita' => $request->isi_artikel,
+                'deskripsi_berita' => $request->isi_artikel,
                 'tgl_berita' => Carbon::now()
             ]);
         

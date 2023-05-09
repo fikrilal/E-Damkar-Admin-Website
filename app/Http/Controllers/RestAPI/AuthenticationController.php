@@ -16,7 +16,9 @@ class AuthenticationController extends Controller
             'email' => 'required|email|unique:user_list_data',
             'password' => 'required',
             'namaLengkap' => 'required',
-            'noHp' => 'required'
+            'noHp' => 'required',
+            'kodeOtp' => 'required',
+            'status' => 'required',
         ]);
 
         $validateData['password'] = Hash::make($validateData['password']);
@@ -25,6 +27,27 @@ class AuthenticationController extends Controller
         return json_encode([
             "kondisi" => true,
         ]);
+    }
+
+    public function postVerification(Request $request)
+    {
+        $validateData = $request->validate([
+            'id' => 'required',
+            'kodeOtp' => 'required',
+            'status' => 'required',
+        ]);
+        $verifdata = user_listData::where('id',$validateData['id']) -> first();
+        $verifdata -> kodeOtp = $validateData ['kodeOtp'];
+        $verifdata -> status = $validateData ['status'];
+        $verifdata -> save();
+        return json_encode([
+            "kondisi" => true,
+        ]);
+    }
+
+    public function verfikasiRegister (Request $request) {
+        $dataverif = user_listData::where('id', $request -> id) -> where('noHp', $request -> noHp) -> get();
+        return json_encode($dataverif);
     }
 
     public function login(Request $request)

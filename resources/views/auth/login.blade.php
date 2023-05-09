@@ -35,17 +35,17 @@
 
                   <script>
                     $.ajax({
-    url: "/api/some-endpoint",
-    type: "GET",
-    dataType: "json",
-    success: function(response) {
-        // Handle success response
-    },
-    error: function(xhr, status, error) {
-        var response = xhr.responseJSON;
-        alert(response.error);
-    }
-});
+                    url: "/api/some-endpoint",
+                    type: "GET",
+                    dataType: "json",
+                    success: function(response) {
+                        // Handle success response
+                    },
+                    error: function(xhr, status, error) {
+                        var response = xhr.responseJSON;
+                        alert(response.error);
+                    }
+                });
 
                     </script>
 
@@ -81,8 +81,6 @@
                       <p class="small mb-0">Belum punya akun? Hubungi Administrastor</p>
                     </div>
                   </form>
-
-
 
                 </div>
               </div>

@@ -24,7 +24,9 @@ class user_listDataFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'password' => Hash::make('superone'),
             'namaLengkap' => fake()->name(),
-            'noHp' => fake()->randomNumber(5, true)
+            'noHp' => fake()->randomNumber(5, true),
+            'kodeOtp' => '', 
+            'status' => ''
         ];
     }
 }

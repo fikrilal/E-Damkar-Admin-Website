@@ -66,7 +66,8 @@
                     <td>{{$laporan->user_listdata->namaLengkap}}</td> 
                     <td>{{$laporan->deskripsi_laporan}}</td>
                 
-                    <td><a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModalTampil{{ $laporan->idLaporan}}">Cek Detail</td>
+                    <td><a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" 
+                    data-bs-target="#largeModalTampil{{ $laporan->idLaporan}}">Cek Detail</td>
                     <td>
                       @if($laporan->status_riwayat_id == 1)
                           <button type="button" class="btn btn-warning">{{$laporan->statusRiwayat->nama_status}}</button>
@@ -89,7 +90,8 @@
                     </div>
                     <div class="modal-body">
                       <!-- General Form Elements -->
-              <form class="form-validate" id="artikeledukasi_form" method="POST" action="{{ route('laporan.update-status', $laporan->idLaporan) }}" enctype="multipart/form-data">
+              <form class="form-validate" id="artikeledukasi_form" method="POST" action="{{ route('laporan.update-status', $laporan->idLaporan) }}" 
+              enctype="multipart/form-data">
                {!! csrf_field() !!}
                {!! isset($berita) ? method_field('PUT') : '' !!}
 
@@ -98,21 +100,24 @@
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Nama Pelapor</label>
                   <div class="col-sm-10">
-                    <input type="text" name="deskripsi_laporan" value="{{ isset($laporan) ? $laporan->user_listdata->namaLengkap : '' }}" class="form-control" disabled>
+                    <input type="text" name="deskripsi_laporan" value="{{ isset($laporan) ? $laporan->user_listdata->namaLengkap : '' }}"
+                     class="form-control" disabled>
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Masalah</label>
                   <div class="col-sm-10">
-                    <input type="text" name="deskripsi_laporan" value="{{ isset($laporan) ? $laporan->deskripsi_laporan : '' }}" class="form-control" disabled>
+                    <input type="text" name="deskripsi_laporan" value="{{ isset($laporan) ? $laporan->deskripsi_laporan : '' }}" class="form-control"
+                     disabled>
                   </div>
                 </div>
               
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Alamat Kejadian</label>
                   <div class="col-sm-10">
-                    <input type="text" name="alamat_kejadian" value="{{ isset($laporan) ? $laporan->alamat_kejadian : '' }}" class="form-control" disabled>
+                    <input type="text" name="alamat_kejadian" value="{{ isset($laporan) ? $laporan->alamat_kejadian : '' }}" class="form-control" 
+                    disabled>
                   </div>
                 </div>
 
@@ -145,7 +150,6 @@
                 @else
                     <!-- Tidak menampilkan input field jika kategori_laporan_id tidak sama dengan 4 -->
                 @endif
-
                 <div class="row mb-3">
 </div>
                     </div>
@@ -158,27 +162,20 @@
                         <button type="submit" class="btn btn-dark" name="status" value="proses">Proses</button>
                         <button type="submit" class="btn btn-danger" name="status" value="tolak">Tolak</button>
                     @endif
-
                     </div>
                       </form><!-- End General Form Elements -->
                   </div>
                 </div>
               </div><!-- End Large Modal-->
-
                   </tr>
                   @endforeach
                 </tbody>
-
               </table>
               <!-- End Table with stripped rows -->
-
             </div>
           </div>
-
         </div>
       </div>
     </section>
-
   </main><!-- End #main -->
-
   @endsection

@@ -11,7 +11,7 @@ class admin_damkar extends Model
 
     public $timestamps = false;
 
-    protected $guarded = ['id_damkar'];
+    protected $guarded = ['id'];
     protected $fillable = ['nama_lengkap', "email", "password", "noHp"];
 
     public function artikel_berita()

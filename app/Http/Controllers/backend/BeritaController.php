@@ -116,7 +116,7 @@ class BeritaController extends Controller
                     $foto->move($destinationPath, $fotoName);
         
                     $fotoBeritaId = DB::table('foto_beritas')->insertGetId([
-                        'foto_berita' => $fotoName
+                        'foto_artikel_berita' => $fotoName
                     ]);
         
                     array_push($fotoBeritaIds, $fotoBeritaId);
@@ -125,13 +125,14 @@ class BeritaController extends Controller
             $artikelBeritaId = DB::table('artikel_beritas')->insertGetId([
                 'admin_damkar_id' => $request->id,
                 'judul_berita' => $request->judul,
-                'foto_berita_id' => '1',
+                'foto_artikel_berita' => 'gambar.jpg',
                 'deskripsi_berita' => $request->isi_artikel,
                 'tgl_berita' => Carbon::now()
+
             ]);
         
             foreach ($fotoBeritaIds as $fotoBeritaId) {
-                DB::table('foto_beritas')->insert([
+                DB::table('foto_artikel_berita')->insert([
                     'id' => $fotoBeritaId,
                     'foto_berita' => $fotoName
                 ]);

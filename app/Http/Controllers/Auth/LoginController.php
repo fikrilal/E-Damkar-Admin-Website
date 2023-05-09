@@ -20,7 +20,7 @@ class LoginController extends Controller
             'email.email' => 'Email yang dimasukkan tidak valid',
             'password.required' => 'Kolom password wajib diisi',
             'password.string' => 'Kolom password harus berupa teks dan angka',
-            'password.min' => 'Panjang password minimal harus 6 karakter',
+            'password.min' => 'Panjang password minimal harus 8 karakter',
         ]);
     
         $login = [

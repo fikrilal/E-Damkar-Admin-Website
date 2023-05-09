@@ -20,7 +20,6 @@ class LaporanMasukController extends Controller
         $this->middleware('auth');
     }
     
-    
     public function index() {
         $data = laporan::whereIn('status_riwayat_id', [1, 2])->get();
         return view('backend.laporanmasuk', compact('data'));
@@ -63,10 +62,5 @@ class LaporanMasukController extends Controller
         }
         $laporan->save();
     }
-    
-
-    
-
-   
 
 }

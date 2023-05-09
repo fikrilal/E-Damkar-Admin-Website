@@ -20,6 +20,8 @@ return new class extends Migration
             $table->text('deskripsi_laporan');
             $table->String('gambar_bukti_pelaporan');
             $table->String('alamat_kejadian');
+            $table->string("latitude");
+            $table->string("longitude");
             $table->timestamps();
         });
     }
@@ -27,8 +29,8 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-    {
-        Schema::dropIfExists('laporans');
-    }
+    // public function down(): void
+    // {
+    //     Schema::dropIfExists('laporans');
+    // }
 };

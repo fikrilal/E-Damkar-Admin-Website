@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('artikel_agendas', function (Blueprint $table) {
             $table->id('id_agenda');
             $table->foreignId('admin_damkar_id');
-            $table->foreignId('foto_agenda_id');
             $table->String('judul_agenda');
-            $table->String('deskripsi');
+            $table->text('deskripsi');
             $table->date('tgl_agenda');
+            $table->String('foto_artikel_agenda');
         });
     }
 

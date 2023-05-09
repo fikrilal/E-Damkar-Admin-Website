@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         user_listData::factory(10)->create();
         laporan::factory(10)->create();
         admin_damkar::factory(10)->create();
-        artikel_berita::factory(10)->create();
+        artikel_berita::factory(30)->create();
 
 
         StatusRiwayat::create([

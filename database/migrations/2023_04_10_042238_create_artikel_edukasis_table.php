@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('artikel_edukasis', function (Blueprint $table) {
             $table->id('id_edukasi');
             $table->foreignId('admin_damkar_id');
-            $table->foreignId('foto_edukasi_id');
             $table->String('judul_edukasi');
-            $table->String('deskripsi');
+            $table->text('deskripsi');
             $table->date('tgl_edukasi');
+            $table->String('foto_artikel_edukasi');
         });
     }
 

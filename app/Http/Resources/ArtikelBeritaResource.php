@@ -16,12 +16,12 @@ class ArtikelBeritaResource extends JsonResource
     {
         return [
             "id_berita" => $this->id_berita,
-            "admin_damkar_id" => $this->adminDamkar->nama_lengkap, 
-            "foto_berita_id" => $this->fotoBerita->foto_berita, 
-            "tanggal" => $this->judul_berita, 
-            "deskripsi" => $this->deskripsi_berita, 
-            "image_url" => $this->tgl_berita, 
-           
-        ];
+            "admin_damkar" => $this->adminDamkar->nama_lengkap, 
+            "foto_berita" => "foto/gambar", 
+            "judul_berita" => $this->judul_berita, 
+            "deskripsi_berita" => $this->deskripsi_berita, 
+            "tanggal_berita" => $this->tgl_berita
+
+        ]; 
     }
 }

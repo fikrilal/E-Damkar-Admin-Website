@@ -31,3 +31,4 @@ Route::post('/verification/{id}/{noHp}', [AuthenticationController::class, 'post
 Route::get('/getBerita', [ArtikelBeritaController::class, 'newArtikelBerita']);
 
 Route::get('/getBeritaHigh', [ArtikelBeritaController::class, 'getArtikelHighlight']);
+Route::post('/user/password', [UserController::class, 'AddPelaporan']);

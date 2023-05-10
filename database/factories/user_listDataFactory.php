@@ -26,7 +26,8 @@ class user_listDataFactory extends Factory
             'namaLengkap' => fake()->name(),
             'noHp' => fake()->randomNumber(5, true),
             'kodeOtp' => '', 
-            'status' => ''
+            'status' => '',
+            'foto_user'=> ''
         ];
     }
 }

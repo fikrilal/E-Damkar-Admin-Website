@@ -19,6 +19,7 @@ return new class extends Migration
             $table->String('noHp', 13);
             $table->String('kodeOtp');
             $table->String('status');
+            $table->String('foto_user');
         });
     }
 

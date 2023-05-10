@@ -31,7 +31,8 @@ class DatabaseSeeder extends Seeder
             'namaLengkap' => "Akhdan",
             'noHp' => "085756436576", 
             'kodeOtp' => '87657554', 
-            'status' => 'aktif'
+            'status' => 'aktif',
+            'foto_user' => ''
         ]);
 
 

@@ -23,7 +23,8 @@ class AgendaController extends Controller
     
     public function index() {
         $agenda = DB::table('artikel_agendas')->get();
-        return view('backend.agenda', compact('agenda'));
+        $title = 'Agenda | E-Damkar Nganjuk';
+        return view('backend.agenda', compact('agenda','title'));
 
     }
 

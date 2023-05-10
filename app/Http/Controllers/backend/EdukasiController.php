@@ -22,8 +22,9 @@ class EdukasiController extends Controller
     }
     
     public function index() {
+        $title = 'Edukasi | E-Damkar Nganjuk';
         $edukasi = DB::table('artikel_edukasis')->get();
-        return view('backend.edukasi', compact('edukasi'));
+        return view('backend.edukasi', compact('edukasi','title'));
 
     }
 

@@ -236,7 +236,7 @@
 
                 <div class="col-lg-4">
                     <div class="post-box">
-                        <div class="post-img"><img src="{{ asset('frontend2/assets/img/blog/kobong.jpeg')}}"
+                        <div class="post-img"><img src="{{ asset('frontend/assets/img/beritaPict.png')}}"
                                 class="img-fluid" alt=""></div>
                         <span class="post-date">Senin, 05 Februari 2023 </span>
                         <h3 class="post-title">Kebakaran Pabrik dan Gudang di Kawasan Loceret</h3>
@@ -250,7 +250,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="post-box">
-                        <div class="post-img"><img src="{{ asset('frontend2/assets/img/blog/kobong.jpeg')}}"
+                        <div class="post-img"><img src="{{ asset('frontend/assets/img/beritaPict.png')}}"
                                 class="img-fluid" alt=""></div>
                         <span class="post-date">Senin, 05 Februari 2023 </span>
                         <h3 class="post-title">Kebakaran Pabrik dan Gudang di Kawasan Loceret</h3>
@@ -264,7 +264,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="post-box">
-                        <div class="post-img"><img src="{{ asset('frontend2/assets/img/blog/kobong.jpeg')}}"
+                        <div class="post-img"><img src="{{ asset('frontend/assets/img/beritaPict.png')}}"
                                 class="img-fluid" alt=""></div>
                         <span class="post-date">Senin, 05 Februari 2023 </span>
                         <h3 class="post-title">Kebakaran Pabrik dan Gudang di Kawasan Loceret</h3>
@@ -283,7 +283,7 @@
 
                 <div class="col-lg-4">
                     <div class="post-box">
-                        <div class="post-img"><img src="{{ asset('frontend2/assets/img/blog/kobong.jpeg')}}"
+                        <div class="post-img"><img src="{{ asset('frontend/assets/img/beritaPict.png')}}"
                                 class="img-fluid" alt=""></div>
                         <span class="post-date">Senin, 05 Februari 2023 </span>
                         <h3 class="post-title">Kebakaran Pabrik dan Gudang di Kawasan Loceret</h3>
@@ -297,7 +297,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="post-box">
-                        <div class="post-img"><img src="{{ asset('frontend2/assets/img/blog/kobong.jpeg')}}"
+                        <div class="post-img"><img src="{{ asset('frontend/assets/img/beritaPict.png')}}"
                                 class="img-fluid" alt=""></div>
                         <span class="post-date">Senin, 05 Februari 2023 </span>
                         <h3 class="post-title">Kebakaran Pabrik dan Gudang di Kawasan Loceret</h3>
@@ -311,7 +311,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="post-box">
-                        <div class="post-img"><img src="{{ asset('frontend2/assets/img/blog/kobong.jpeg')}}"
+                        <div class="post-img"><img src="{{ asset('frontend/assets/img/beritaPict.png')}}"
                                 class="img-fluid" alt=""></div>
                         <span class="post-date">Senin, 05 Februari 2023 </span>
                         <h3 class="post-title">Kebakaran Pabrik dan Gudang di Kawasan Loceret</h3>

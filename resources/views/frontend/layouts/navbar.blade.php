@@ -3,7 +3,7 @@
     <header id="header" class="header fixed-top">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="/" class="logo d-flex align-items-center">
                 <img src="{{ asset('frontend/assets/img/logobolo.png')}}" alt="">
                 <span>E-Damkar Nganjuk</span>
             </a>

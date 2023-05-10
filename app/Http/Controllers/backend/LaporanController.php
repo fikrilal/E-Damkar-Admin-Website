@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\laporan;
 
 class LaporanController extends Controller
 {
@@ -20,7 +21,8 @@ class LaporanController extends Controller
     
     
     public function index() {
-        return view('backend.laporan');
+        $data = laporan::whereIn('status_riwayat_id', [3, 4])->get();
+        return view('backend.laporan', compact('data'));
     }
 
 }

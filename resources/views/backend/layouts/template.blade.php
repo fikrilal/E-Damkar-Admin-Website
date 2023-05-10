@@ -44,7 +44,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="/dashboard" class="logo d-flex align-items-center">
-        <img src="{{ asset('backend/assets/img/logo-damkar.png') }}" alt="">
+        <img src="/" alt="">
         <span class="d-none d-lg-block">E-DAMKAR Nganjuk</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>

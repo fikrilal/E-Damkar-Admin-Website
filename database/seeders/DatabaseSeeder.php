@@ -68,6 +68,14 @@ class DatabaseSeeder extends Seeder
             'nama_kategori' => 'Banjir'
         ]);
 
+        Kedudukan::create([
+            'nama_kedudukan' => 'superone'
+        ]);
+
+        Kedudukan::create([
+            'nama_kedudukan' => 'admin'
+        ]);
+
         // laporan::create([
         //     'user_listdata_id' => 1,
         //     'status_riwayat_id' => 1,

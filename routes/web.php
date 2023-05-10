@@ -28,18 +28,51 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
     Route::resource('pengaturan', 'PengaturanController');
     Route::resource('berita', 'BeritaController');
     Route::resource('edukasi', 'EdukasiController');
+    Route::resource('agenda', 'AgendaController');
 });
 
 Route::get('/laporan/update-status/{id}/', 'App\Http\Controllers\Backend\LaporanMasukController@updateStatus')->name('laporan.update-status');
 
 Route::get('/logout', function(){
     Auth::logout();
-    return Redirect::to('login');
+    // return Redirect::to('login');
  });
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
+{
+    Route::resource('/landingberita','landingberitaController');
+});
+Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
+{
+    Route::resource('/landingedukasi','landingedukasiController');
+});
+Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
+{
+    Route::resource('/landingagenda','landingagendaController');
+});
+
+Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
+{
+    Route::resource('/detailberita','detailberitaController');
+});
+Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
+{
+    Route::resource('/detailagenda','detailagendaController');
+});
+Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
+{
+    Route::resource('/detailedukasi','detailedukasiController');
+});
+
+Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
+{
+    Route::resource('/landingtentang','landingtentangController');
+});
+
 
 Auth::routes();
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');

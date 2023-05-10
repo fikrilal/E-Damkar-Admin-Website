@@ -18,7 +18,19 @@ class ArtikelBeritaController extends Controller
 
     public function newArtikelBerita(Request $request)
     {
-        $data = artikel_berita::orderBy('id_berita', 'DESC')->skip($request->value)->take(5)->get();
+        $count = artikel_berita::count();
+        $skip = 5;
+        $limit = $count - $skip;
+        $data = artikel_berita::orderBy('id_berita','DESC')->skip($skip)->take($limit)->get();
+        return ArtikelBeritaResource::collection($data);
+    }
+
+    public function getArtikelHighlight(){
+        $data = artikel_berita::orderBy('id_berita','DESC')->take(5)->get();
+        return ArtikelBeritaResource::collection($data);
+    }
+    public function detailBerita(Request $request){
+        $data = artikel_berita::where('id_berita', $request->idBerita)->get();
         return ArtikelBeritaResource::collection($data);
     }
 }

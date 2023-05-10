@@ -21,10 +21,10 @@ class artikel_beritaFactory extends Factory
     {
         return [
             "admin_damkar_id" => rand(1, 10),
-            "foto_berita_id" => 1,
             "judul_berita" => fake()->sentence(3),
             "deskripsi_berita" => fake()->sentence(5),
-            "tgl_berita" => date('Y-m-d')
+            "tgl_berita" => date('Y-m-d'),
+            "foto_artikel_berita" => "gambar",
         ];
     }
 }

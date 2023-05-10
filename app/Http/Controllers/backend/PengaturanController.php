@@ -21,8 +21,9 @@ class PengaturanController extends Controller
     
     
     public function index() {
+        $title = 'Pengaturan | E-Damkar Nganjuk';
         $pengaturan = DB::table('pengaturan')->get();
-        return view('backend.pengaturan', compact('pengaturan'));
+        return view('backend.pengaturan', compact('pengaturan','title'));
     }
 
     public function update(Request $request)

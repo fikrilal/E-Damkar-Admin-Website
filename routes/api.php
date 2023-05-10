@@ -24,8 +24,10 @@ Route::get('/getPelaporan/{userId}', [LaporanController::class, 'getDataPelapora
 Route::post('/addPelaporan', [LaporanController::class, 'AddPelaporan']);
 Route::get('/beritaTerbaru', [ArtikelBeritaController::class, 'newArtikelBerita']);
 Route::get('/userData', [UserController::class, 'index']);
+
+Route::get('/getBerita/{value}', [ArtikelBeritaController::class, 'newArtikelBerita']);
+Route::get('/verification/{noHp}', [AuthenticationController::class, 'verfikasiRegister']);
+Route::post('/verification/{id}/{noHp}', [AuthenticationController::class, 'postVerification']);
 Route::get('/getBerita', [ArtikelBeritaController::class, 'newArtikelBerita']);
 
 Route::get('/getBeritaHigh', [ArtikelBeritaController::class, 'getArtikelHighlight']);
-
-

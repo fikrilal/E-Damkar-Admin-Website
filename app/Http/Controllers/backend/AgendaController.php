@@ -91,11 +91,10 @@ class AgendaController extends Controller
     $request->validate([
         'deskripsi_agenda' => 'required',
         'judul_agenda' => 'required|max:255',
-        'foto' => 'required|image|max:2048|mimes:jpeg,png,jpg',
+        'foto' => 'image|max:2048|mimes:jpeg,png,jpg',
     ], [
         'judul_agenda.required' => 'Judul agenda wajib diisi',
         'judul_agenda.max' => 'Judul agenda maksimal :max karakter',
-        'foto.required' => 'Gambar tidak boleh kosong / harus diisi.',
         'foto.image' => 'File yang diunggah harus berupa gambar.',
         'foto.mimes' => 'Gambar yang diunggah harus berformat JPEG, PNG, atau JPG.',
         'foto.max' => 'Ukuran file tidak boleh lebih dari 2 MB.',

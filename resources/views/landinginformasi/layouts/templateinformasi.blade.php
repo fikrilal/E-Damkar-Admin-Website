@@ -39,7 +39,7 @@
 </head>
 
 <body>
-@include('frontend/layouts.navbar')
+@include('landinginformasi/layouts.navbarinformasi')
 @yield('content')
 
     <!-- ======= Footer ======= -->

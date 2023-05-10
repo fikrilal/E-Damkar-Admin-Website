@@ -42,6 +42,38 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
+{
+    Route::resource('/landingberita','landingberitaController');
+});
+Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
+{
+    Route::resource('/landingedukasi','landingedukasiController');
+});
+Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
+{
+    Route::resource('/landingagenda','landingagendaController');
+});
+
+Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
+{
+    Route::resource('/detailberita','detailberitaController');
+});
+Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
+{
+    Route::resource('/detailagenda','detailagendaController');
+});
+Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
+{
+    Route::resource('/detailedukasi','detailedukasiController');
+});
+
+Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
+{
+    Route::resource('/landingtentang','landingtentangController');
+});
+
+
 Auth::routes();
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 

@@ -22,5 +22,5 @@ Route::post('/addPelaporan', [LaporanController::class, 'AddPelaporan']);
 Route::get('/beritaTerbaru', [ArtikelBeritaController::class, 'newArtikelBerita']);
 Route::get('/userData', [UserController::class, 'index']);
 Route::get('/getBerita/{value}', [ArtikelBeritaController::class, 'newArtikelBerita']);
-Route::get('/verification/{id}/{noHp}', [AuthenticationController::class, 'verfikasiRegister']);
+Route::get('/verification/{noHp}', [AuthenticationController::class, 'verfikasiRegister']);
 Route::post('/verification/{id}/{noHp}', [AuthenticationController::class, 'postVerification']);

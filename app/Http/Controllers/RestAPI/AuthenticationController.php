@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\RestAPI;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\verifikasiResource;
 use App\Models\user_listData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -20,23 +21,26 @@ class AuthenticationController extends Controller
             'kodeOtp' => 'required',
             'status' => 'required',
         ]);
-
+echo json_encode($validateData);
         $validateData['password'] = Hash::make($validateData['password']);
 
         user_listData::create($validateData);
         return json_encode([
             "kondisi" => true,
         ]);
+        
     }
 
     public function postVerification(Request $request)
     {
         $validateData = $request->validate([
             'id' => 'required',
+            'noHp' => 'required',
             'kodeOtp' => 'required',
             'status' => 'required',
         ]);
         $verifdata = user_listData::where('id',$validateData['id']) -> first();
+        $verifdata -> noHp = $validateData ['noHp'];
         $verifdata -> kodeOtp = $validateData ['kodeOtp'];
         $verifdata -> status = $validateData ['status'];
         $verifdata -> save();
@@ -46,8 +50,8 @@ class AuthenticationController extends Controller
     }
 
     public function verfikasiRegister (Request $request) {
-        $dataverif = user_listData::where('id', $request -> id) -> where('noHp', $request -> noHp) -> get();
-        return json_encode($dataverif);
+        $dataverif = user_listData::where('noHp', $request -> noHp) -> first();
+        return $dataverif->kodeOtp;
     }
 
     public function login(Request $request)

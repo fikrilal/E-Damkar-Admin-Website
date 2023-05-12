@@ -44,35 +44,14 @@ Route::get('/', function () {
 
 Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
 {
-    Route::resource('/landingberita','landingberitaController');
+    Route::resource('landingberita','landingberitaController');
+    Route::resource('landingedukasi','landingedukasiController');
+    Route::resource('landingagenda','landingagendaController');
+    Route::resource('detailberita','detailberitaController');
+    Route::resource('detailagenda','detailagendaController');
+    Route::resource('detailedukasi','detailedukasiController');
+    Route::resource('landingtentang','landingtentangController');
 });
-Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
-{
-    Route::resource('/landingedukasi','landingedukasiController');
-});
-Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
-{
-    Route::resource('/landingagenda','landingagendaController');
-});
-
-Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
-{
-    Route::resource('/detailberita','detailberitaController');
-});
-Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
-{
-    Route::resource('/detailagenda','detailagendaController');
-});
-Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
-{
-    Route::resource('/detailedukasi','detailedukasiController');
-});
-
-Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
-{
-    Route::resource('/landingtentang','landingtentangController');
-});
-
 
 Auth::routes();
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');

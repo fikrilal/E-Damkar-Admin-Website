@@ -17,7 +17,7 @@ return new class extends Migration
             $table->String('email');
             $table->String('password');
             $table->String('noHp');
-            
+            $table->foreignId('kedudukans_id');
         });
     }
 

@@ -25,6 +25,10 @@ Route::get('/getDetailLap/{idLaporan}', [LaporanController::class, 'getDetailPel
 Route::post('/addPelaporan', [LaporanController::class, 'AddPelaporan']);
 Route::get('/beritaTerbaru', [ArtikelBeritaController::class, 'newArtikelBerita']);
 Route::get('/userData', [UserController::class, 'index']);
+
+Route::get('/getBerita/{value}', [ArtikelBeritaController::class, 'newArtikelBerita']);
+Route::get('/verification/{noHp}', [AuthenticationController::class, 'verfikasiRegister']);
+Route::post('/verification/{id}/{noHp}', [AuthenticationController::class, 'postVerification']);
 Route::get('/getBerita', [ArtikelBeritaController::class, 'newArtikelBerita']);
 
 Route::get('/getBeritaHigh', [ArtikelBeritaController::class, 'getArtikelHighlight']);
@@ -40,4 +44,4 @@ Route::get('/filterLapDitolak/{userId}', [LaporanController::class, 'filterLapDi
 
 
 
-
+Route::post('/user/password', [UserController::class, 'updatePassword']);

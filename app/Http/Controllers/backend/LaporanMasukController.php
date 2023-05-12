@@ -20,10 +20,10 @@ class LaporanMasukController extends Controller
         $this->middleware('auth');
     }
     
-    
     public function index() {
+        $title = 'Laporan Masuk | E-Damkar Nganjuk';
         $data = laporan::whereIn('status_riwayat_id', [1, 2])->get();
-        return view('backend.laporanmasuk', compact('data'));
+        return view('backend.laporanmasuk', compact('data','title'));
     }
 
     public function updateStatus(Request $request)
@@ -63,10 +63,5 @@ class LaporanMasukController extends Controller
         }
         $laporan->save();
     }
-    
-
-    
-
-   
 
 }

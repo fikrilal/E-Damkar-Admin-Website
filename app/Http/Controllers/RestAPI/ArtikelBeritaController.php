@@ -33,4 +33,5 @@ class ArtikelBeritaController extends Controller
         $data = artikel_berita::where('id_berita', $request->idBerita)->get();
         return ArtikelBeritaResource::collection($data);
     }
+   
 }

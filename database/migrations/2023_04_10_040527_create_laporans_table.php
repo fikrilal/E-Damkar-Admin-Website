@@ -23,6 +23,7 @@ return new class extends Migration
             $table->String('bukti_penanganan');
             $table->string("latitude");
             $table->string("longitude");
+            $table->timestamps();
         });
     }
 

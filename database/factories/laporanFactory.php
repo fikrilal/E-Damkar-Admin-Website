@@ -28,4 +28,3 @@ class laporanFactory extends Factory
         ];
     }
 }
-// -7.2232139, 112.6226935

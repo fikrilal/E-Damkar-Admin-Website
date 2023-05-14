@@ -4,7 +4,6 @@ use App\Http\Controllers\RestAPI\ArtikelBeritaController;
 use App\Http\Controllers\RestAPI\AuthenticationController;
 use App\Http\Controllers\RestAPI\LaporanController;
 use App\Http\Controllers\RestAPI\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 

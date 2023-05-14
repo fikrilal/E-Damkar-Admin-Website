@@ -11,6 +11,7 @@ use App\Models\user_listData;
 use App\Models\StatusRiwayat;
 use App\Models\KategoriLaporan;
 use App\Models\laporan;
+use App\Models\Kedudukan;
 use Database\Factories\adminDamkarFactory;
 use Database\Factories\artikelBeritaFactory;
 use Illuminate\Support\Facades\Hash;
@@ -30,7 +31,8 @@ class DatabaseSeeder extends Seeder
             'namaLengkap' => "Akhdan",
             'noHp' => "085756436576", 
             'kodeOtp' => '87657554', 
-            'status' => 'aktif'
+            'status' => 'aktif',
+            'foto_user' => ''
         ]);
 
 
@@ -66,6 +68,14 @@ class DatabaseSeeder extends Seeder
 
         KategoriLaporan::create([
             'nama_kategori' => 'Banjir'
+        ]);
+
+        Kedudukan::create([
+            'nama_kedudukan' => 'superone'
+        ]);
+
+        Kedudukan::create([
+            'nama_kedudukan' => 'admin'
         ]);
 
         // laporan::create([

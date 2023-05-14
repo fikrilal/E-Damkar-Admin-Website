@@ -23,7 +23,8 @@ class admin_damkarFactory extends Factory
             "nama_lengkap" => fake()->name(),
             "email" => fake()->unique()->email(),
             "password" => Hash::make("superone"),
-            "noHp" => "085709868758"
+            "noHp" => "085709868758",
+            "kedudukans_id" => "2"
 
         ];
     }

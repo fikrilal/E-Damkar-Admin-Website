@@ -23,14 +23,15 @@ return new class extends Migration
             $table->String('bukti_penanganan');
             $table->string("latitude");
             $table->string("longitude");
+            $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-    {
-        Schema::dropIfExists('laporans');
-    }
+    // public function down(): void
+    // {
+    //     Schema::dropIfExists('laporans');
+    // }
 };

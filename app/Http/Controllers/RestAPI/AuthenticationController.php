@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\RestAPI;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserListResource;
 use App\Http\Resources\verifikasiResource;
 use App\Models\user_listData;
 use Illuminate\Http\Request;
@@ -50,6 +51,11 @@ echo json_encode($validateData);
     public function verfikasiRegister (Request $request) {
         $dataverif = user_listData::where('noHp', $request -> noHp) -> first();
         return $dataverif->kodeOtp;
+    }
+
+    public function getNoHp (Request $request) {
+        $data = user_listData::where('noHp',$request->text)->get();
+        return UserListResource::collection($data);
     }
 
     public function login(Request $request)

@@ -17,7 +17,8 @@ class UserListResource extends JsonResource
         
         return [
             'email' => $this->email,
-            'nama_lengkap' => $this->namaLengkap
+            'nama_lengkap' => $this->namaLengkap,
+            'noHP' => $this->noHp
         ];
     }
 }

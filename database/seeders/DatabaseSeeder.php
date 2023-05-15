@@ -12,6 +12,7 @@ use App\Models\StatusRiwayat;
 use App\Models\KategoriLaporan;
 use App\Models\laporan;
 use App\Models\Kedudukan;
+use App\Models\Pengaturan;
 use Database\Factories\adminDamkarFactory;
 use Database\Factories\artikelBeritaFactory;
 use Illuminate\Support\Facades\Hash;
@@ -77,6 +78,13 @@ class DatabaseSeeder extends Seeder
         Kedudukan::create([
             'nama_kedudukan' => 'admin'
         ]);
+
+        Pengaturan::create([
+            'jumlah_mobil' => '0',
+            'jumlah_personil' => '0',
+            'jumlah_kantor' => '0'
+        ]);
+
 
         // laporan::create([
         //     'user_listdata_id' => 1,

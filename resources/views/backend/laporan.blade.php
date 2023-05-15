@@ -96,11 +96,13 @@
               
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Alamat Kejadian</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="alamat_kejadian" value="{{ isset($laporan) ? $laporan->alamat_kejadian : '' }}" class="form-control" 
-                    disabled>
+                  <div class="col-sm-8">
+                    <input type="text" name="alamat_kejadian" value="{{ isset($laporan) ? $laporan->alamat_kejadian : '' }}" class="form-control" disabled>
                   </div>
-                </div>
+                  <div class="col-sm-2">
+                    <a href="https://www.google.com/maps/search/?api=1&query={{ $laporan->latitude}},{{ $laporan->longitude}}" target="blank" class="btn btn-primary btn-block">Cek Lokasi</a>
+                  </div>
+                </div>
 
                 @if($laporan->kategori_laporan_id == 4)
               <div class="row mb-3">

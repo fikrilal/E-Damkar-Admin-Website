@@ -25,7 +25,7 @@
 
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title">Pengaturan Data</h5>
+    <h5 class="card-title">Kelola Data</h5>
     @foreach($pengaturan as $p)
     <!-- Vertical Form -->
     <form class="row g-3" id="pengaturan_form" method="POST" action="/" enctype="multipart/form-data">

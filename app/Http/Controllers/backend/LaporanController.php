@@ -22,7 +22,9 @@ class LaporanController extends Controller
     
     public function index() {
         $title = 'Laporan Selesai | E-Damkar Nganjuk';
-        $data = laporan::whereIn('status_riwayat_id', [3, 4])->get();
+        $data = laporan::whereIn('status_riwayat_id', [3, 4])
+                    ->orderBy('tgl_lap', 'desc') // Mengurutkan berdasarkan tanggal terbaru
+                    ->get();
         return view('backend.laporan', compact('data','title'));
     }
 

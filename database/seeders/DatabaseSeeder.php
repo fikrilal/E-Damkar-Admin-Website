@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\admin_damkar;
 use App\Models\artikel_berita;
+use App\Models\artikel_edukasi;
 use Illuminate\Database\Seeder;
 use App\Models\user_listData;
 use App\Models\StatusRiwayat;
@@ -29,8 +30,8 @@ class DatabaseSeeder extends Seeder
             'email' => "danakhdan12@gmail",
             'password' => Hash::make('superone'),
             'namaLengkap' => "Akhdan",
-            'noHp' => "085756436576", 
-            'kodeOtp' => '87657554', 
+            'noHp' => "085756436576",
+            'kodeOtp' => '87657554',
             'status' => 'aktif',
             'foto_user' => ''
         ]);
@@ -40,7 +41,7 @@ class DatabaseSeeder extends Seeder
         laporan::factory(10)->create();
         admin_damkar::factory(10)->create();
         artikel_berita::factory(30)->create();
-
+        artikel_edukasi::factory(30)->create();
 
         StatusRiwayat::create([
             'nama_status' => 'Mengunggu'

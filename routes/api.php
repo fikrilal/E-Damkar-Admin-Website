@@ -11,11 +11,7 @@ Route::post('/register', [AuthenticationController::class, 'register']);
 Route::post('/login', [AuthenticationController::class, 'login']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
-
     Route::get('/user', [UserController::class, 'checkLogin']);
-
-    
-    
     Route::post('/logout', [AuthenticationController::class, 'logout']);
 });
 
@@ -44,3 +40,5 @@ Route::get('/filterLapDitolak/{userId}', [LaporanController::class, 'filterLapDi
 
 
 Route::post('/user/password', [UserController::class, 'updatePassword']);
+
+Route::get('/semuaArtikel', [ArtikelBeritaController::class, 'semuaArtikel']);

@@ -50,7 +50,6 @@ class UserController extends Controller
 
 
     }else{ 
-        
         $data = [
         'status' => 'gagal',
         'kode' => '400'

@@ -4,11 +4,11 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Kelola Admin</h1>
+      <h1>Pengaturan</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="">Home</a></li>
-          <li class="breadcrumb-item active">Kelola Admin</li>
+          <li class="breadcrumb-item active">Pengaturan</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -38,7 +38,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Admin</h5>
+              <h5 class="card-title">Kelola Admin</h5>
               <p>Berikut adalah daftar admin yang sudah ditambahkan.</p>
           
               <!-- Table with stripped rows -->

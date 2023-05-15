@@ -123,12 +123,17 @@
                   </div>
                 </div>
 
-                <div class="row mb-3">
+                @if($laporan->status_riwayat_id == 4)
+                  <!-- Tidak menampilkan input field jika kategori_laporan_id tidak sama dengan 4 -->
+
+                @else
+                    <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Bukti Penanganan</label>
                   <div class="col-sm-10">
                     <img src="{{ ('storage/bukti_penanganan/'.$laporan->bukti_penanganan) }}">
                   </div>
                 </div>
+                @endif
 
                 @if($laporan->status_riwayat_id == 2)
               <div class="row mb-3">

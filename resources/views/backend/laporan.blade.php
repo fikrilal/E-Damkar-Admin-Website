@@ -58,9 +58,6 @@
                       @endif
                   </td>
                      
-                  
-                  
-                
               
                   <div class="modal fade" id="largeModalTampil{{  $laporan->idLaporan }}" tabindex="-1">
                 <div class="modal-dialog modal-xl">

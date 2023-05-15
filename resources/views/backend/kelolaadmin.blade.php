@@ -54,16 +54,19 @@
                 </thead>
                 <tbody>
                 @php $no = 1; @endphp
+                @foreach($data as $admin)
                   <tr>
                     <th scope="row">{{ $no++ }}</th>
-                    <td>Nama</td>
-                    <td>Email</td>
+                    <td>{{$admin->nama_lengkap}}</td>
+                    <td>{{$admin->email}}</td>
                     <td><a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=""><i class="bi bi-pen"></i> Edit</a>
                     <a href="#" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target=""><i class="bi bi-trash"></i> Hapus</a>
 
                     </td>
 
                   </tr>
+
+                  @endforeach
     
                 </tbody>
               </table>

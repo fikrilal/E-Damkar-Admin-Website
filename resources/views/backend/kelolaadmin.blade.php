@@ -40,6 +40,9 @@
             <div class="card-body">
               <h5 class="card-title">Kelola Admin</h5>
               <p>Berikut adalah daftar admin yang sudah ditambahkan.</p>
+
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModal">
+             <i class="bi bi-plus"></i> Tambahkan Admin</button>
           
               <!-- Table with stripped rows -->
               <table class="table datatable">
@@ -60,7 +63,7 @@
                     <td>{{$admin->nama_lengkap}}</td>
                     <td>{{$admin->email}}</td>
                     <td><a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=""><i class="bi bi-pen"></i> Edit</a>
-                    <a href="#" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target=""><i class="bi bi-trash"></i> Hapus</a>
+                   
 
                     </td>
 

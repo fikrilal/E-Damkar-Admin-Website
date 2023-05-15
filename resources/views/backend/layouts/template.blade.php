@@ -71,7 +71,20 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
               <h6>{{ Auth::user()->nama_lengkap }}</h6>
-              <span>Administrastor</span>
+              <span>
+                @php
+                $kedudukans_id = Auth::user()->kedudukans_id;
+
+                if ($kedudukans_id == 1) {
+                    echo "SuperAdmin";
+                } elseif ($kedudukans_id == 2) {
+                    echo "Admin";
+                } else {
+                    echo "Peran tidak ditemukan";
+                }
+                @endphp
+            </span>
+
             </li>
             <li>
               <hr class="dropdown-divider">

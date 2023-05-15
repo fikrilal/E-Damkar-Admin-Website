@@ -26,6 +26,14 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
+        admin_damkar::create([
+            'email' => "superadmin@gmail.com",
+            'password' => Hash::make('superone'),
+            'nama_lengkap' => "SuperAdmin",
+            'noHp' => "085756436576", 
+            'kedudukans_id' => "1"
+        ]);
+
         user_listData::create([
             'email' => "danakhdan12@gmail",
             'password' => Hash::make('superone'),

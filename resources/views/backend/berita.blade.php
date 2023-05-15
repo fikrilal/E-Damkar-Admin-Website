@@ -58,7 +58,7 @@
                       <!-- General Form Elements -->
               <form class="form-validate" id="artikelberita_form" method="POST" action="{{ route('berita.store') }}" enctype="multipart/form-data">
                {!! csrf_field() !!}
-               <input type="hidden" name="id" value="{{ Auth::user()->id_damkar }}"></br>
+               <input type="hidden" name="id" value="{{ Auth::user()->id }}"></br>
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Judul*</label>
                   <div class="col-sm-10">

@@ -67,8 +67,12 @@ public function UpdateProfil(Request $request)
         //$verifdata -> foto_user = $validateData ['foto_user'];
         $verifdata -> noHp = $validateData ['noHp'];
         $verifdata -> save();
-        return json_encode([
-            "kondisi" => true,
-        ]);
+
+        $data = [
+            'status' => 'berhasil',
+            'kode' => '200'
+        ];
+        return json_encode($data);
+        
     }
 }

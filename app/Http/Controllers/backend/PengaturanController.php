@@ -26,19 +26,18 @@ class PengaturanController extends Controller
         return view('backend.pengaturan', compact('pengaturan','title'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $pengaturan)
     {
-
-       DB::table('pengaturan')->update([
-        'jumlah_mobil' => $request->jumlah_mobil,
-        'jumlah_personil' => $request->jumlah_personil,
-        'jumlah_kantor' => $request->jumlah_kantor
-       ]);
-
+        DB::table('pengaturan')
+            ->where('id', $pengaturan)
+            ->update([
+                'jumlah_mobil' => $request->input('jumlah_mobil'),
+                'jumlah_personil' => $request->input('jumlah_personil'),
+                'jumlah_kantor' => $request->input('jumlah_kantor')
+            ]);
     
         return redirect()->route('pengaturan.index')
-                         ->with('success', 'Artikel Berhasil diperbarui!');
-            
-    }
+                         ->with('success', 'Data berhasil diperbarui!');
+                        }
 
 }

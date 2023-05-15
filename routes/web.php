@@ -30,7 +30,11 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
     Route::resource('edukasi', 'EdukasiController');
     Route::resource('agenda', 'AgendaController');
     Route::resource('kelolaadmin', 'AdminController');
+  
+
 });
+
+Route::put('/pengaturan/update', 'App\Http\Controllers\Backend\PengaturanController@update')->name('pengaturan.update');
 
 Route::get('/laporan/update-status/{id}/', 'App\Http\Controllers\Backend\LaporanMasukController@updateStatus')->name('laporan.update-status');
 

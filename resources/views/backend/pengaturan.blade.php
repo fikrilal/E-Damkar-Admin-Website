@@ -25,30 +25,29 @@
 
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title">Kelola Data</h5>
+    <h5 class="card-title">Pengaturan Data</h5>
     @foreach($pengaturan as $p)
     <!-- Vertical Form -->
-    <form class="row g-3" id="pengaturan_form" method="POST" action="/" enctype="multipart/form-data">
+    <form class="row g-3" id="pengaturan_form" method="POST" action="{{ route('pengaturan.update', ['pengaturan' => $p->id]) }}" enctype="multipart/form-data">
+  @csrf
+  <input type="hidden" name="_method" value="PUT">
+  <div class="col-12">
+    <label for="inputNanme4" class="form-label">Jumlah Unit Mobil</label>
+    <input type="number" class="form-control" value="{{ $p->jumlah_mobil }}" name="jumlah_mobil" id="jumlah_mobil">
+  </div>
+  <div class="col-12">
+    <label for="inputEmail4" class="form-label">Jumlah Personil</label>
+    <input type="number" class="form-control" value="{{ $p->jumlah_personil }}" name="jumlah_personil" id="jumlah_personil">
+  </div>
+  <div class="col-12">
+    <label for="inputPassword4" class="form-label">Jumlah Kantor</label>
+    <input type="number" class="form-control" value="{{ $p->jumlah_kantor }}" name="jumlah_kantor" id="jumlah_kantor">
+  </div>
 
-    {!! csrf_field() !!}
-    {!! isset($pengaturan) ? method_field('PUT') : '' !!}
-      <div class="col-12">
-        <label for="inputNanme4" class="form-label">Jumlah Unit Mobil</label>
-        <input type="number" class="form-control" value="{{$p->jumlah_mobil}}" name="jumlah_mobil" id="jumlah_mobil">
-      </div>
-      <div class="col-12">
-        <label for="inputEmail4" class="form-label">Jumlah Personil</label>
-        <input type="number" class="form-control" value="{{$p->jumlah_personil}}" name="jumlah_personil" id="jumlah_personil">
-      </div>
-      <div class="col-12">
-        <label for="inputPassword4" class="form-label">Jumlah Kantor</label>
-        <input type="number" class="form-control" value="{{$p->jumlah_kantor}}" name="jumlah_kantor" id="jumlah_kantor">
-      </div>
-     
-      <div class="text-center">
-        <button type="submit" class="btn btn-primary">Simpan</button>
-      </div>
-    </form><!-- Vertical Form -->
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary">Simpan</button>
+  </div>
+</form><!-- Vertical Form -->
 
     @endforeach
 

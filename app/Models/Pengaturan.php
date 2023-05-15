@@ -9,6 +9,7 @@ class Pengaturan extends Model
 {
     protected $table = 'pengaturan';
     protected $primaryKey = 'id';
+    public $timestamps = false;
     protected $fillable = [
         'jumlah_mobil', 'jumlah_personil', 'jumlah_kantor',
     ];

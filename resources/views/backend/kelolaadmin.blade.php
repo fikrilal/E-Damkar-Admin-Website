@@ -1,0 +1,87 @@
+@extends('backend/layouts.template')
+@section('content')
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Pengaturan</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Home</a></li>
+          <li class="breadcrumb-item active">Pengaturan</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+    @endif
+
+    {{-- menampilkan error validasi --}}
+    @if ($errors->any())
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Kelola Admin</h5>
+              <p>Berikut adalah daftar admin yang sudah ditambahkan.</p>
+
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModal">
+             <i class="bi bi-plus"></i> Tambahkan Admin</button>
+          
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+             
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama Lengkap</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                @php $no = 1; @endphp
+                @foreach($data as $admin)
+                  <tr>
+                    <th scope="row">{{ $no++ }}</th>
+                    <td>{{$admin->nama_lengkap}}</td>
+                    <td>{{$admin->email}}</td>
+                    <td><a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=""><i class="bi bi-pen"></i> Edit</a>
+                   
+
+                    </td>
+
+                  </tr>
+
+                  @endforeach
+    
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  @endsection

@@ -42,3 +42,4 @@ Route::get('/filterLapDitolak/{userId}', [LaporanController::class, 'filterLapDi
 Route::post('/user/password', [UserController::class, 'updatePassword']);
 
 Route::get('/semuaArtikel', [ArtikelBeritaController::class, 'semuaArtikel']);
+Route::post('/user', [UserController::class, 'updateProfil']);

@@ -13,6 +13,7 @@ use App\Models\StatusRiwayat;
 use App\Models\KategoriLaporan;
 use App\Models\laporan;
 use App\Models\Kedudukan;
+use App\Models\Pengaturan;
 use Database\Factories\adminDamkarFactory;
 use Database\Factories\artikelBeritaFactory;
 use Illuminate\Support\Facades\Hash;
@@ -25,6 +26,14 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
+
+        admin_damkar::create([
+            'email' => "superadmin@gmail.com",
+            'password' => Hash::make('superone'),
+            'nama_lengkap' => "SuperAdmin",
+            'noHp' => "085756436576", 
+            'kedudukans_id' => "1"
+        ]);
 
         user_listData::create([
             'email' => "danakhdan12@gmail",
@@ -78,6 +87,13 @@ class DatabaseSeeder extends Seeder
         Kedudukan::create([
             'nama_kedudukan' => 'admin'
         ]);
+
+        Pengaturan::create([
+            'jumlah_mobil' => '0',
+            'jumlah_personil' => '0',
+            'jumlah_kantor' => '0'
+        ]);
+
 
         // laporan::create([
         //     'user_listdata_id' => 1,

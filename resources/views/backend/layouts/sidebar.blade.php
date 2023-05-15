@@ -47,12 +47,33 @@
     </a>
   </li><!-- End Charts Nav -->
 
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="{{ url('pengaturan')}}">
-      <i class="bi bi-gear"></i>
-      <span>Pengaturan</span>
-    </a>
-  </li><!-- End Profile Page Nav -->
+      @if($kedudukans_id == 1)
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#icons-setting" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-gear"></i><span>Pengaturan</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="icons-setting" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ url('pengaturan')}}">
+                        <i class="bi bi-circle"></i><span>Data</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('kelolaadmin')}}">
+                        <i class="bi bi-circle"></i><span>Admin</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Icons Nav -->
+    @elseif($kedudukans_id == 2)
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ url('pengaturan')}}">
+                <i class="bi bi-gear"></i>
+                <span>Pengaturan</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+    @endif
+
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-bs-toggle="modal" data-bs-target="#largeModalLog">

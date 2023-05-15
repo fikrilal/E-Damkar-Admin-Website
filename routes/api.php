@@ -45,3 +45,4 @@ Route::get('/filterLapDitolak/{userId}', [LaporanController::class, 'filterLapDi
 
 
 Route::post('/user/password', [UserController::class, 'updatePassword']);
+Route::post('/user', [UserController::class, 'updateProfil']);

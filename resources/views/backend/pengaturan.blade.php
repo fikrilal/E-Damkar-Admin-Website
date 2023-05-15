@@ -25,7 +25,7 @@
 
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title">Pengaturan Data</h5>
+    <h5 class="card-title">Kelola Data</h5>
     @foreach($pengaturan as $p)
     <!-- Vertical Form -->
     <form class="row g-3" id="pengaturan_form" method="POST" action="{{ route('pengaturan.update', ['pengaturan' => $p->id]) }}" enctype="multipart/form-data">
@@ -47,7 +47,9 @@
   <div class="text-center">
     <button type="submit" class="btn btn-primary">Simpan</button>
   </div>
-</form><!-- Vertical Form -->
+</form>
+
+<!-- Vertical Form -->
 
     @endforeach
 

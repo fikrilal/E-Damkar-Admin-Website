@@ -38,6 +38,7 @@ class PengaturanController extends Controller
     
         return redirect()->route('pengaturan.index')
                          ->with('success', 'Data berhasil diperbarui!');
-                        }
-
+    }
+    
+    
 }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ManagementUserController;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\CheckKedudukanMiddleware;
+use App\Http\Controllers\WelcomeController;
 
 
 /*
@@ -30,7 +31,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
     Route::resource('berita', 'BeritaController');
     Route::resource('edukasi', 'EdukasiController');
     Route::resource('agenda', 'AgendaController');
-    Route::resource('kelolaadmin', 'AdminController');
+    Route::middleware([CheckKedudukanMiddleware::class])->group(function () {
+        Route::resource('kelolaadmin', 'AdminController');
+    });
 });
 
 Route::get('/laporan/update-status/{id}/', 'App\Http\Controllers\Backend\LaporanMasukController@updateStatus')->name('laporan.update-status');
@@ -40,9 +43,7 @@ Route::get('/logout', function(){
     // return Redirect::to('login');
  });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index']);
 
 Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
 {

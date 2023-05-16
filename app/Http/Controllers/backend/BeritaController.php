@@ -109,36 +109,24 @@ class BeritaController extends Controller
              'foto.image' => 'File yang diunggah harus berupa gambar.',    
              'foto.mimes' => 'File yang diunggah harus berformat JPEG, PNG, atau JPG.',    
              'foto.max' => 'Ukuran file tidak boleh lebih dari 2 MB.']);
-            $destinationPath = public_path().'/img-berita/';
-            $fotoBeritaIds = array();
-            if ($request->hasFile('foto')) {
-                foreach ($request->file('foto') as $foto) {
-                    $fotoName = uniqid().'.'.$foto->getClientOriginalExtension();
-                    $foto->move($destinationPath, $fotoName);
+             $destinationPath = public_path('img-berita');
+             $fotoFile = '';
+         
+             if ($request->hasFile('foto')) {
+                 $foto = $request->file('foto');
+                 $filename = time() . '.' . $foto->getClientOriginalExtension();
+                 $fotoFile = $foto->move($destinationPath, $filename);
+             }
+         
+             DB::table('artikel_beritas')->insert([
+                 'admin_damkar_id' => $request->id,
+                 'judul_berita' => $request->input('judul'),
+                 'foto_artikel_berita' => $filename,
+                 'deskripsi_berita' => $request->input('isi_artikel'),
+                 'tgl_berita' => Carbon::now()
+             ]);
         
-                    $fotoBeritaId = DB::table('foto_beritas')->insertGetId([
-                        'foto_artikel_berita' => $fotoName
-                    ]);
-        
-                    array_push($fotoBeritaIds, $fotoBeritaId);
-                }
-            }
-            $artikelBeritaId = DB::table('artikel_beritas')->insertGetId([
-                'admin_damkar_id' => $request->id,
-                'judul_berita' => $request->judul,
-                'foto_artikel_berita' => 'gambar.jpg',
-                'deskripsi_berita' => $request->isi_artikel,
-                'tgl_berita' => Carbon::now()
-
-            ]);
-        
-            foreach ($fotoBeritaIds as $fotoBeritaId) {
-                DB::table('foto_artikel_berita')->insert([
-                    'id' => $fotoBeritaId,
-                    'foto_berita' => $fotoName
-                ]);
-            }
-        
+      
             return redirect()->route('berita.index')
                              ->with('success','Artikel Berhasil Ditambahkan!');
         }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ManagementUserController;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\CheckKedudukanMiddleware;
+use App\Http\Controllers\WelcomeController;
 
 
 /*
@@ -40,9 +41,7 @@ Route::get('/logout', function(){
     // return Redirect::to('login');
  });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+ Route::get('/', [WelcomeController::class, 'index']);
 
 Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
 {

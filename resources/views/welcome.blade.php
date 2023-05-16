@@ -32,13 +32,15 @@
 <section id="hero" class="counts">
     <div class="container" data-aos="fade-up">
 
+    @foreach ($data as $item)
+
         <div class="row gy-4">
 
             <div class="col-lg-3 col-md-6">
                 <div class="count-box">
                     <i class="bi bi-car-front-fill"></i>
                     <div>
-                        <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1"
+                        <span data-purecounter-start="0" data-purecounter-end="{{ $item->jumlah_mobil }}" data-purecounter-duration="1"
                             class="purecounter"></span>
                         <p>Unit Mobil</p>
                     </div>
@@ -48,7 +50,7 @@
                 <div class="count-box">
                     <i class="bi bi-people" i></i>
                     <div>
-                        <span data-purecounter-start="30" data-purecounter-end="15" data-purecounter-duration="1"
+                        <span data-purecounter-start="30" data-purecounter-end="{{ $item->jumlah_personil }}" data-purecounter-duration="1"
                             class="purecounter"></span>
                         <p>Personil</p>
                     </div>
@@ -70,7 +72,7 @@
                 <div class="count-box">
                     <i class="bi bi-buildings"></i>
                     <div>
-                        <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1"
+                        <span data-purecounter-start="0" data-purecounter-end="{{ $item->jumlah_kantor }}" data-purecounter-duration="1"
                             class="purecounter"></span>
                         <p>Kantor Damkar</p>
                     </div>
@@ -78,7 +80,7 @@
             </div>
 
 
-
+            @endforeach
         </div>
 
     </div>
@@ -233,100 +235,24 @@
             </header>
 
             <div class="row">
-
-                <div class="col-lg-4">
-                    <div class="post-box">
-                        <div class="post-img"><img src="{{ asset('frontend/assets/img/beritaPict.png')}}"
-                                class="img-fluid" alt=""></div>
-                        <span class="post-date">Senin, 05 Februari 2023 </span>
-                        <h3 class="post-title">Kebakaran Pabrik dan Gudang di Kawasan Loceret</h3>
-                        <p>
-                            Berdasarkan informasi dan laporan dari Taman Nasional Bromo
-                            Tengger Semeru bahwa telah terjadi kebakaran lahan di...
-                        </p>
-                        <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Baca
-                                selengkapnya</span><i class="bi bi-arrow-right"></i></a>
-                    </div>
+    @foreach($artikel as $item)
+        <div class="col-lg-4">
+            <div class="post-box">
+                <div class="post-img">
+                    <img src="{{ asset('img-berita/' . $item->foto_artikel_berita) }}" class="img-fluid" alt="{{ $item->judul_berita }}" style="width: 1000px; height: 400px;">
                 </div>
-                <div class="col-lg-4">
-                    <div class="post-box">
-                        <div class="post-img"><img src="{{ asset('frontend/assets/img/beritaPict.png')}}"
-                                class="img-fluid" alt=""></div>
-                        <span class="post-date">Senin, 05 Februari 2023 </span>
-                        <h3 class="post-title">Kebakaran Pabrik dan Gudang di Kawasan Loceret</h3>
-                        <p>
-                            Berdasarkan informasi dan laporan dari Taman Nasional Bromo
-                            Tengger Semeru bahwa telah terjadi kebakaran lahan di...
-                        </p>
-                        <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Baca
-                                selengkapnya</span><i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="post-box">
-                        <div class="post-img"><img src="{{ asset('frontend/assets/img/beritaPict.png')}}"
-                                class="img-fluid" alt=""></div>
-                        <span class="post-date">Senin, 05 Februari 2023 </span>
-                        <h3 class="post-title">Kebakaran Pabrik dan Gudang di Kawasan Loceret</h3>
-                        <p>
-                            Berdasarkan informasi dan laporan dari Taman Nasional Bromo
-                            Tengger Semeru bahwa telah terjadi kebakaran lahan di...
-                        </p>
-                        <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Baca
-                                selengkapnya</span><i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-
+                <span class="post-date">{{ \Carbon\Carbon::parse($item->tgl_berita)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</span>
+                <h3 class="post-title">{{ $item->judul_berita }}</h3>
+                <p>{{ $item->deskripsi_berita }}</p>
+                <a href="blog-single.html" class="readmore stretched-link mt-auto">
+                    <span>Baca selengkapnya</span><i class="bi bi-arrow-right"></i>
+                </a>
             </div>
-
+        </div>
+    @endforeach
+</div>
             <div class="row">
-
-                <div class="col-lg-4">
-                    <div class="post-box">
-                        <div class="post-img"><img src="{{ asset('frontend/assets/img/beritaPict.png')}}"
-                                class="img-fluid" alt=""></div>
-                        <span class="post-date">Senin, 05 Februari 2023 </span>
-                        <h3 class="post-title">Kebakaran Pabrik dan Gudang di Kawasan Loceret</h3>
-                        <p>
-                            Berdasarkan informasi dan laporan dari Taman Nasional Bromo
-                            Tengger Semeru bahwa telah terjadi kebakaran lahan di...
-                        </p>
-                        <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Baca
-                                selengkapnya</span><i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="post-box">
-                        <div class="post-img"><img src="{{ asset('frontend/assets/img/beritaPict.png')}}"
-                                class="img-fluid" alt=""></div>
-                        <span class="post-date">Senin, 05 Februari 2023 </span>
-                        <h3 class="post-title">Kebakaran Pabrik dan Gudang di Kawasan Loceret</h3>
-                        <p>
-                            Berdasarkan informasi dan laporan dari Taman Nasional Bromo
-                            Tengger Semeru bahwa telah terjadi kebakaran lahan di...
-                        </p>
-                        <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Baca
-                                selengkapnya</span><i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="post-box">
-                        <div class="post-img"><img src="{{ asset('frontend/assets/img/beritaPict.png')}}"
-                                class="img-fluid" alt=""></div>
-                        <span class="post-date">Senin, 05 Februari 2023 </span>
-                        <h3 class="post-title">Kebakaran Pabrik dan Gudang di Kawasan Loceret</h3>
-                        <p>
-                            Berdasarkan informasi dan laporan dari Taman Nasional Bromo
-                            Tengger Semeru bahwa telah terjadi kebakaran lahan di...
-                        </p>
-                        <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Baca
-                                selengkapnya</span><i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-
-            </div>
-            <div class="row">
-                <button class="center" href="/landingberita">   Lihat Selengkapnya  <i class="bi bi-arrow-right"></i></button>
+                <button class="center">   Lihat Selengkapnya  <i class="bi bi-arrow-right"></i></button>
             </div>
 
         </div>

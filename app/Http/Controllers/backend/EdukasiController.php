@@ -51,24 +51,42 @@ class EdukasiController extends Controller
     
     public function update(Request $request, $id)
     {
-        $destinationPath = public_path().'/img-edukasi';
-        $fotoFile = '';
-            
-        if ($request->hasFile('foto')) {
-            $fotoFile = $this->uploadFile($request->file('foto'), $destinationPath);
+
+        $request->validate([    
+            'judul' => 'required|max:255',    
+            'isi_artikel' => 'required',    
+            'foto' => 'image|mimes:jpeg,png,jpg|max:2048'
+        ], [    
+            'judul.required' => 'Judul harus diisi.',   
+             'judul.max' => 'Judul tidak boleh lebih dari 255 karakter.',    
+             'isi_artikel.required' => 'Isi artikel harus diisi.',    
+             'foto.image' => 'File yang diunggah harus berupa gambar.',    
+             'foto.mimes' => 'File yang diunggah harus berformat JPEG, PNG, atau JPG.',    
+             'foto.max' => 'Ukuran file tidak boleh lebih dari 2 MB.']);
+
+        $destinationPath = public_path('img-edukasi');
+             $fotoFile = '';
+             $edukasi= DB::table('artikel_edukasis')->where('id_edukasi', $id)->first();
+
+    $filename = $edukasi->foto_artikel_edukasi;
+
+    if ($request->hasFile('foto')) {
+        $destinationPath = public_path('img-edukasi');
+        $foto = $request->file('foto');
+        $filename = time() . '.' . $foto->getClientOriginalExtension();
+        $foto->move($destinationPath, $filename);
+
+        if (file_exists(public_path('img-edukasi/' . $edukasi->foto_artikel_edukasi))) {
+            unlink(public_path('img-edukasi/' . $edukasi->foto_artikel_edukasi));
         }
-            
-        $dataToUpdate = [
-            'judul_edukasi' => $request->input('judul'),
-            'deskripsi' => $request->input('isi_artikel'),
-            'tgl_edukasi' => Carbon::now()
-        ];
-            
-        if ($fotoFile !== '') {
-            $dataToUpdate['foto'] = $fotoFile;
-        }
-            
-        DB::table('artikel_edukasis')->where('id_edukasi', $id)->update($dataToUpdate);
+    }
+
+    DB::table('artikel_edukasis')->where('id_edukasi', $id)->update([
+        'judul_edukasi' => $request->input('judul'),
+        'foto_artikel_edukasi' => $filename,
+        'deskripsi' => $request->input('isi_artikel'),
+        'tgl_edukasi' => Carbon::now()
+    ]);
         
         return redirect()->route('edukasi.index')->with('success', 'Artikel berhasil diperbarui!');
     }
@@ -76,39 +94,23 @@ class EdukasiController extends Controller
     
     public function destroy($id)
     {
-        
-
-        DB::table('artikel_edukasis')->where('id_edukasi',$id)->delete();
-        return redirect()->route('edukasi.index')
-                         ->with('success', 'Artikel Berhasil dihapus!');
-
-
+        $edukasi = DB::table('artikel_edukasis')->where('id_edukasi', $id)->first();
+    
+        if (!$edukasi) {
+            return redirect()->route('edukasi.index')->with('error', 'Artikel tidak ditemukan!');
+        }
+    
+        $fotoPath = public_path('img-edukasi') . '/' . $edukasi->foto_artikel_edukasi ;
+    
+        if (file_exists($fotoPath)) {
+            unlink($fotoPath);
+        }
+    
+        DB::table('artikel_edukasis')->where('id_edukasi', $id)->delete();
+    
+        return redirect()->route('edukasi.index')->with('Berhasil', 'Artikel berhasil dihapus!');
 
     }
-
-    // public function store(Request $request)
-    // {
-        
-    //     $destinationPath    = public_path().'\img-berita';
-
-    //     $fotoFile='';
-
-    //     if ($request->hasFile('foto'))
-    //     {
-    //         $fotoFile = $this->uploadFile($request->foto,$destinationPath);
-    //     }
-        
-    //     DB::table('artikel_beritas')->insert([
-    //         'admin_damkar_id' => '1',
-    //         'kategori_artikel_id' => '2',
-    //         'foto_berita_id' => $request->foto,
-    //         'judul_berita' => $request->judul,
-    //         'dekspripsi_berita' => $request->isi_artikel,
-    //         'tgl_berita' => Carbon::now()
-    //     ]);
-
-    //     return redirect()->route('berita.index')
-    //                     ->with('success','Artikel Berhasil Ditambahkan!');
 
         public function store(Request $request)
         {
@@ -125,40 +127,24 @@ class EdukasiController extends Controller
                  'foto.mimes' => 'File yang diunggah harus berformat JPEG, PNG, atau JPG.',    
                  'foto.max' => 'Ukuran file tidak boleh lebih dari 2 MB.']);
 
-                 
-            $destinationPath = public_path().'/img-edukasi/';
-            $fotoBeritaIds = array();
-        
-            if ($request->hasFile('foto')) {
-                foreach ($request->file('foto') as $foto) {
-                    $fotoName = uniqid().'.'.$foto->getClientOriginalExtension();
-                    $foto->move($destinationPath, $fotoName);
-        
-                    $fotoBeritaId = DB::table('foto_edukasis')->insertGetId([
-                        'foto_edukasi' => $fotoName
-                    ]);
-        
-                    array_push($fotoBeritaIds, $fotoBeritaId);
-                }
+                 $destinationPath = public_path('img-edukasi');
+                 $fotoFile = '';
+             
+                 if ($request->hasFile('foto')) {
+                     $foto = $request->file('foto');
+                     $filename = time() . '.' . $foto->getClientOriginalExtension();
+                     $fotoFile = $foto->move($destinationPath, $filename);
+                 }
+             
+                 DB::table('artikel_edukasis')->insert([
+                     'admin_damkar_id' => $request->id,
+                     'judul_edukasi' => $request->input('judul'),
+                     'foto_artikel_edukasi' => $filename,
+                     'deskripsi' => $request->input('isi_artikel'),
+                     'tgl_edukasi' => Carbon::now()
+                 ]);
+            
+                return redirect()->route('edukasi.index')
+                                 ->with('success','Artikel Berhasil Ditambahkan!');
             }
-        
-            $artikelBeritaId = DB::table('artikel_edukasis')->insertGetId([
-                'admin_damkar_id' => $request->id,
-                'judul_edukasi' => $request->judul,
-                'foto_edukasi_id' => '1',
-                'deskripsi' => $request->isi_artikel,
-                'tgl_edukasi' => Carbon::now()
-            ]);
-        
-            foreach ($fotoBeritaIds as $fotoBeritaId) {
-                DB::table('foto_edukasis')->insert([
-                    'id' => $fotoBeritaId,
-                    'foto_edukasi' => $fotoName
-                ]);
-            }
-        
-            return redirect()->route('edukasi.index')
-                             ->with('success','Artikel Berhasil Ditambahkan!');
-        }
-
 }

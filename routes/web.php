@@ -31,7 +31,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
     Route::resource('berita', 'BeritaController');
     Route::resource('edukasi', 'EdukasiController');
     Route::resource('agenda', 'AgendaController');
-    Route::resource('kelolaadmin', 'AdminController');
+    Route::middleware([CheckKedudukanMiddleware::class])->group(function () {
+        Route::resource('kelolaadmin', 'AdminController');
+    });
 });
 
 Route::get('/laporan/update-status/{id}/', 'App\Http\Controllers\Backend\LaporanMasukController@updateStatus')->name('laporan.update-status');
@@ -41,7 +43,7 @@ Route::get('/logout', function(){
     // return Redirect::to('login');
  });
 
- Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/', [WelcomeController::class, 'index']);
 
 Route::group(['namespace'=>'App\Http\Controllers\LandingInformasi'], function()
 {

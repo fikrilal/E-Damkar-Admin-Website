@@ -281,7 +281,7 @@
 
             </div>
 
-            <div class="row">
+            <!-- <div class="row">
 
                 <div class="col-lg-4">
                     <div class="post-box">
@@ -326,7 +326,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
             <div class="row">
                 <button class="center" href="/landingberita">   Lihat Selengkapnya  <i class="bi bi-arrow-right"></i></button>
             </div>

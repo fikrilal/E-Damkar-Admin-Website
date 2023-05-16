@@ -13,7 +13,11 @@ class WelcomeController extends Controller
     public function index()
     {
         $data = DB::table('pengaturan')->get();
-        $artikel = DB::table('artikel_beritas')->take(6)->get();
+        $artikel = DB::table('artikel_beritas')
+        ->orderByDesc('id_berita')
+        ->take(6)
+        ->get();
+
         return view('welcome', compact('data','artikel'));
     }
 }

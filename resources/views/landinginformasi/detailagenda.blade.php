@@ -19,12 +19,18 @@
                     <img class="rounded-4"
                     style="object-fit: cover; width: 100%; height: 400px"
                     class="rounded-4" src="{{ asset('img-agenda/' . $agenda->foto_artikel_agenda) }}" alt="">
-                <h6 class="mt-3">
-                {{ $agenda->deskripsi }}
-                </h6>
+                    <style>
+                        .justify {
+                            text-align: justify;
+                            text-justify: inter-word;
+                        }
+                    </style>
+                    <p class="mt-3 justify">
+                    {!! nl2br(e($agenda->deskripsi)) !!}
+                    </p>
             </div>
         
-                    <!-- this is list news section -->
+            <!-- this is list news section -->
             <div class="container mt-5">
               <h3>Artikel Lainnya</h3>
               <div class="row">
@@ -39,7 +45,7 @@
                     />
                     <p class="mt-3">
                       <b>{{ $artikel->judul_agenda }}</b> <br />
-                      {{ $artikel->deskripsi }}
+                      {{ Str::limit($artikel->deskripsi, 100, '...') }}
                     </p>
                   </a>
                 </div>

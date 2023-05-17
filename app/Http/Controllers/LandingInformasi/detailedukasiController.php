@@ -11,9 +11,11 @@ use App\Http\Controllers\Controller;
 
 class detailedukasiController extends Controller
 {
-    public function index(){
-        return view('landinginformasi.detailedukasi');
-        
+    public function index()
+    {
+        $data = DB::table('artikel_edukasis')->get();
+
+        return view('landinginformasi.detailedukasi', compact('data'));
     }
 
     public function show($id_edukasi)

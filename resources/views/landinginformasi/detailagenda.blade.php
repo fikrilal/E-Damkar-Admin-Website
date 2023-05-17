@@ -6,12 +6,6 @@
         <!-- ======= Recent Blog Posts Section ======= -->
         <section id="recent-blog-posts" class="recent-blog-posts">
 
-        <div class="row">
-          <div class="col-3 mt-3">
-            <ul class="dropdown"><a href="#"><span>Artikel</span> <i class="bi bi-chevron-down"></ul>
-          </div>
-        </div>
-
             <div class="container" data-aos="fade-up">
             <header class="section-header">
                 <h3>

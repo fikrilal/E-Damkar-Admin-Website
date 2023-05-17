@@ -16,6 +16,5 @@ class landingberitaController extends Controller
         ->get();
 
         return view('landinginformasi.landingberita', compact('artikel'));
-        
-    }
-}
+
+}}

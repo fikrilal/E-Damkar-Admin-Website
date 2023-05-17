@@ -12,7 +12,13 @@ use App\Http\Controllers\Controller;
 class detailagendaController extends Controller
 {
     public function index(){
-        return view('landinginformasi.detailagenda' );
+
+        $artikel = DB::table('artikel_agenda')
+            ->orderByDesc('id_agenda')
+            ->take(4)
+            ->get();
+            
+        return view('landinginformasi.detailagenda', compact('artikel'));
     }
 
     public function show($id_agenda)

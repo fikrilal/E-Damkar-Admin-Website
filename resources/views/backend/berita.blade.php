@@ -169,7 +169,7 @@
                 <div class="row mb-3">
                   <label for="inputNumber" class="col-sm-2 col-form-label">Foto*</label>
                   <div class="col-sm-10">
-                  <img src="{{ asset('img-berita/'.$berita->foto_artikel_berita	) }}" width="20%">
+                  <img src="{{ asset('img-berita/'.$berita->foto_artikel_berita	) }}" width="30%">
                   <p></p>
                     <input class="form-control" name="foto" id="foto" type="file" accept="image/png, image/jpeg">
                   </div>

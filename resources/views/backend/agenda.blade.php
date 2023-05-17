@@ -166,14 +166,6 @@
                 </div>
 
                 <div class="row mb-3">
-                  <label for="inputEmail" class="col-sm-2 col-form-label">Deskripsi Agenda</label>
-                  <div class="col-sm-10">
-                  <textarea name="deskripsi_agenda" id="deskripsi_agenda" class="form-control quill-editor-full">{{ isset($a) ? $a->deskripsi : '' }}
-                  </textarea>
-                  </div>
-                </div>
-
-                <div class="row mb-3">
                   <label for="inputNumber" class="col-sm-2 col-form-label">Foto Agenda</label>
                   <div class="col-sm-10">
                   <img src="{{ asset('img-agenda/'.$a->foto_artikel_agenda) }}" width="30%">
@@ -181,6 +173,16 @@
                     <input class="form-control" name="foto" id="foto" type="file" accept="image/png, image/jpeg">
                   </div>
                 </div>
+
+                <div class="row mb-3">
+                  <label for="inputEmail" class="col-sm-2 col-form-label">Deskripsi Agenda</label>
+                  <div class="col-sm-10">
+                  <textarea name="deskripsi_agenda" id="deskripsi_agenda" class="form-control quill-editor-full">{{ isset($a) ? $a->deskripsi : '' }}
+                  </textarea>
+                  </div>
+                </div>
+
+              
                 <div class="row mb-3">
 </div>
                     </div>

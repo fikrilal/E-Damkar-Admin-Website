@@ -10,9 +10,10 @@ use Illuminate\Http\Request;
 
 class LaporanController extends Controller
 {
+
+    //tamabah pelaporan
     public function AddPelaporan(Request $request)
     {
-
         $validateData = $request->validate([
             'user_listdata_id' => 'required',
             'status_riwayat_id' => 'required',
@@ -28,7 +29,7 @@ class LaporanController extends Controller
         if ($request->file('gambar_bukti_pelaporan')) {
             $validateData['gambar_bukti_pelaporan'] = $request->file('gambar_bukti_pelaporan')->store('gambar_pelaporans');
         }
-
+        
         if (laporan::create($validateData)) {
             return json_encode(['message' => "berhasil melakukan pelaporan"]);
         } else {
@@ -36,6 +37,7 @@ class LaporanController extends Controller
         }
     }
 
+    //mendapatkan data pelaporan
     public function getDataPelaporan(Request $request)
     {
         $data = laporan::where('user_listdata_id', $request->userId)->get();
@@ -47,13 +49,15 @@ class LaporanController extends Controller
         return pelaporanResources::collection($data);
     }
 
-    public function searchLapKategori(Request $request){
+    public function searchLapKategori(Request $request)
+    {
         $data = laporan::where(
-            'user_listdata_id', $request->userId)
-            ->where(function($query) use ($request){
-                $query->where('status_riwayat_id','like',"%".$request->text. "%");
-                $query->orWhere('alamat_kejadian','like',"%".$request->text. "%");
-
+            'user_listdata_id',
+            $request->userId
+        )
+            ->where(function ($query) use ($request) {
+                $query->where('status_riwayat_id', 'like', "%" . $request->text . "%");
+                $query->orWhere('alamat_kejadian', 'like', "%" . $request->text . "%");
             })->get();
         return pelaporanResources::collection($data);
     }
@@ -61,25 +65,25 @@ class LaporanController extends Controller
     public function filterLapMenunggu(Request $request)
     {
         $data = laporan::where('user_listdata_id', $request->userId)
-        ->where('status_riwayat_id','1')->get();
+            ->where('status_riwayat_id', '1')->get();
         return pelaporanResources::collection($data);
     }
     public function filterLapProses(Request $request)
     {
         $data = laporan::where('user_listdata_id', $request->userId)
-        ->where('status_riwayat_id','2')->get();
+            ->where('status_riwayat_id', '2')->get();
         return pelaporanResources::collection($data);
     }
     public function filterLapSelesai(Request $request)
     {
         $data = laporan::where('user_listdata_id', $request->userId)
-        ->where('status_riwayat_id','3')->get();
+            ->where('status_riwayat_id', '3')->get();
         return pelaporanResources::collection($data);
     }
     public function filterLapDitolak(Request $request)
     {
         $data = laporan::where('user_listdata_id', $request->userId)
-        ->where('status_riwayat_id','4')->get();
+            ->where('status_riwayat_id', '4')->get();
         return pelaporanResources::collection($data);
     }
 }

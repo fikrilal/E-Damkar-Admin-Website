@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ManagementUserController;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Middleware\CheckKedudukanMiddleware;
 use App\Http\Controllers\WelcomeController;
 
@@ -55,6 +56,8 @@ Route::group(['namespace' => 'App\Http\Controllers\LandingInformasi'], function 
     Route::resource('detailedukasi', 'detailedukasiController');
     Route::resource('landingtentang', 'landingtentangController');
     Route::get('detailberita/{id_berita}', [LandingInformasiController::class, 'show'])->name('detailberita.show');
+    Route::get('detailedukasi/{id_edukasi}', [LandingInformasiController::class, 'show'])->name('detailedukasi.show');
+    Route::get('detailagenda/{id_agenda}', [LandingInformasiController::class, 'show'])->name('detailagenda.show');
 });
 
 

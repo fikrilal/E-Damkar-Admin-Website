@@ -17,51 +17,28 @@
                 <div class="box">
                     <div class="container-1">
                         <span class="icon"><i class="bi bi-search"></i></span>
-                        <form action="{{ route('search') }}" method="GET">
-                            <span class="icon"><i class="bi bi-search"></i></span>
-                            <input type="search" name="query" class="rounded-pill" placeholder="Cari artikel berita"/>
-                            <button type="submit">Cari</button>
-                        </form>
+                        <input type="search" id="search" class="rounded-pill" placeholder="Cari artikel berita"/>
                     </div>
                 </div>
-
-
-                <!-- <div class="box">
-                    <div class="container-1">
-                        <form action="{{ route('search') }}" method="GET">
-                            <span class="icon"><i class="bi bi-search"></i></span>
-                            <input type="search" name="query" class="rounded-pill" placeholder="Cari artikel berita"/>
-                            <button type="submit">Cari</button>
-                        </form>
-                    </div>
-                </div> -->
-
 
               
 
 
                 <div class="row">
-                    @if (count($artikel) > 0)
-                        @foreach($artikel as $item)
-                            <div class="col-lg-4">
-                                <div class="post-box">
-                                    <div class="post-img"><img src="{{ asset('img-berita/' . $item->foto_artikel_berita) }}" class="img-fluid" alt="{{ $item->judul_berita }}" style="width: 1000px; height: 400px;"></div>
-                                    <span class="post-date">{{ \Carbon\Carbon::parse($item->tgl_berita)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</span>
-                                    <h3 class="post-title">{{ $item->judul_berita }}</h3>
-                                    <p>{{ $item->deskripsi_berita }}</p>
-                                    <a href="{{ route('detailberita.show', ['id_berita' => $item->id_berita]) }}" class="readmore stretched-link mt-auto"><span>Baca Selengkapnya</span><i
-                                            class="bi bi-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        @endforeach
-                    @else
-                        <div class="col">
-                            <p>Tidak ada hasil yang ditemukan.</p>
+                @foreach($artikel as $item)
+                    <div class="col-lg-4">
+                        <div class="post-box">
+                            <div class="post-img"><img src="{{ asset('img-berita/' . $item->foto_artikel_berita) }}" class="img-fluid" alt="{{ $item->judul_berita }}" style="width: 1000px; height: 400px;"></div>
+                            <span class="post-date">{{ \Carbon\Carbon::parse($item->tgl_berita)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</span>
+                            <h3 class="post-title">{{ $item->judul_berita }}</h3>
+                            <p>{{ $item->deskripsi_berita }}</p>
+                            <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Baca Selengkapnya</span><i
+                                    class="bi bi-arrow-right"></i></a>
                         </div>
-                    @endif
+                    </div>
+                @endforeach
                 </div>
-                </div>
-
+            </div>
 
         </section><!-- End Recent Blog Posts Section -->
 

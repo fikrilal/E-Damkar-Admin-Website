@@ -26,7 +26,7 @@
         
             <!-- this is list news section -->
             <div class="container mt-5">
-              <h3>Berita Lainnya</h3>
+              <h3>Artikel Lainnya</h3>
               <div class="row">
                 <div class="col-3">
                   <img

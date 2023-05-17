@@ -236,7 +236,7 @@
 
             <div class="row">
     @foreach($artikel as $item)
-        <div class="col-lg-4">
+        <div class="col-lg-4 p-3">
             <div class="post-box">
                 <div class="post-img">
                     <img src="{{ asset('img-berita/' . $item->foto_artikel_berita) }}" class="img-fluid" alt="{{ $item->judul_berita }}" style="width: 1000px; height: 400px;">

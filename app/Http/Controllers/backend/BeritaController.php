@@ -32,7 +32,9 @@ class BeritaController extends Controller
     
     
     public function index() {
-        $berita = DB::table('artikel_beritas')->get();
+        $berita = DB::table('artikel_beritas')
+        ->orderBy('tgl_berita', 'desc')
+        ->get();
         $title = 'Berita | E-Damkar Nganjuk';
         return view('backend.berita', compact('berita','title'));
 

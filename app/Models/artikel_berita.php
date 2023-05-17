@@ -11,6 +11,7 @@ class artikel_berita extends Model
 
     public $timestamps = false;
     protected $guarded = ['id_berita'];
+    protected $primaryKey = 'id_berita';
     protected $fillablle = ["admin_damkar_id", "foto_artikel_berita", "judul_berita", "deskripsi_berita", "tgl_berita"];
 
     public function adminDamkar()

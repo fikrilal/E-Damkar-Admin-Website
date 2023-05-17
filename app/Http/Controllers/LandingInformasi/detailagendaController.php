@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 class detailagendaController extends Controller
 {
     public function index(){
-        return view('landinginformasi.detailagenda' );
+        return redirect('/landingagenda');
     }
 
     public function show($id_agenda)

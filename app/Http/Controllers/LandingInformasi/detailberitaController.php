@@ -12,9 +12,7 @@ use App\Http\Controllers\Controller;
 class detailberitaController extends Controller
 {
     public function index(){
- 
-        return view('landinginformasi.landingberita');
-        
+        return redirect('landingberita');
     }
 
     public function show($id_berita)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\RestAPI;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserListResource;
 use App\Http\Resources\verifikasiResource;
 use App\Models\user_listData;
 use Illuminate\Http\Request;
@@ -97,5 +98,13 @@ echo json_encode($validateData);
             return json_encode(['message' => 'berhasil']);
         }
         return json_encode(['message' => 'gagal']);
+    }
+
+    public function getHP(Request $request){
+
+        $data = user_listData::where('noHp',$request->text)->get();
+        return UserListResource::collection($data);
+
+
     }
 }

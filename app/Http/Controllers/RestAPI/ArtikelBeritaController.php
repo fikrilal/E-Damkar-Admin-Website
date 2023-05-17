@@ -22,7 +22,9 @@ class ArtikelBeritaController extends Controller
         $skip = 5;
         $limit = $count - $skip;
         $data = artikel_berita::orderBy('id_berita','DESC')->skip($skip)->take($limit)->get();
-        return ArtikelBeritaResource::collection($data);
+        $dataBeritaRes = ArtikelBeritaResource::collection($data);
+
+        return json_encode($dataBeritaRes);
     }
 
     public function getArtikelHighlight(){
@@ -31,7 +33,9 @@ class ArtikelBeritaController extends Controller
     }
     public function detailBerita(Request $request){
         $data = artikel_berita::where('id_berita', $request->idBerita)->get();
-        return ArtikelBeritaResource::collection($data);
+        $dataRes = ArtikelBeritaResource::collection($data);
+
+        return json_encode($dataRes);
     }
    
 }

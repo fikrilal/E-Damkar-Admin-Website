@@ -10,7 +10,8 @@ class artikel_edukasi extends Model
     use HasFactory;
 
     public $timestamps = false;
-
+    protected $guarded = ['id_edukasi'];
+    protected $fillablle = ["admin_damkar_id", "foto_artikel_edukasi", "judul_edukasi", "deskripsi", "tgl_edukasi"];
 
     public function adminDamkar()
     {

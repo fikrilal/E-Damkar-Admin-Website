@@ -4,7 +4,6 @@ use App\Http\Controllers\RestAPI\ArtikelBeritaController;
 use App\Http\Controllers\RestAPI\AuthenticationController;
 use App\Http\Controllers\RestAPI\LaporanController;
 use App\Http\Controllers\RestAPI\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
@@ -12,11 +11,7 @@ Route::post('/register', [AuthenticationController::class, 'register']);
 Route::post('/login', [AuthenticationController::class, 'login']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
-
     Route::get('/user', [UserController::class, 'checkLogin']);
-
-    
-    
     Route::post('/logout', [AuthenticationController::class, 'logout']);
 });
 
@@ -46,6 +41,8 @@ Route::get('/filterLapDitolak/{userId}', [LaporanController::class, 'filterLapDi
 
 
 Route::post('/user/password', [UserController::class, 'updatePassword']);
+
+Route::get('/semuaArtikel', [ArtikelBeritaController::class, 'semuaArtikel']);
 Route::post('/user', [UserController::class, 'updateProfil']);
 Route::post('/user/foto', [UserController::class, 'UpdateFile']);
 Route::get('/user/akun', [UserController::class, 'getDataProfile']);

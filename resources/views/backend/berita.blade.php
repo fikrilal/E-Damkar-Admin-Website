@@ -86,7 +86,7 @@
                 </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keluar</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
                       <button type="submit" class="btn btn-primary">Publikasikan</button>
                     </div>
                       </form><!-- End General Form Elements -->
@@ -134,7 +134,7 @@
                                 @method('DELETE')
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keluar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                             <button type="submit" class="btn btn-primary">Hapus</button>
                             </form>
                         </div>
@@ -171,7 +171,7 @@
                   <div class="col-sm-10">
                   <img src="{{ asset('img-berita/'.$berita->foto_artikel_berita	) }}" width="20%">
                   <p></p>
-                    <input class="form-control" name="foto" id="foto" type="file">
+                    <input class="form-control" name="foto" id="foto" type="file" accept="image/png, image/jpeg">
                   </div>
                 </div>
            
@@ -188,7 +188,7 @@
 </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keluar</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
                       <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                       </form><!-- End General Form Elements -->
@@ -202,10 +202,8 @@
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->
-
             </div>
           </div>
-
         </div>
       </div>
     </section>

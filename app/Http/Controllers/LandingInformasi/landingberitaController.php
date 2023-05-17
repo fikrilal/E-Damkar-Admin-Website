@@ -18,4 +18,5 @@ class landingberitaController extends Controller
         return view('landinginformasi.landingberita', compact('artikel'));
         
     }
+
 }

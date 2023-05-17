@@ -61,7 +61,7 @@
                 <div class="count-box">
                     <i class="bi bi-journal-richtext"></i>
                     <div>
-                        <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1"
+                        <span data-purecounter-start="0" data-purecounter-end="{{ $data1 }}" data-purecounter-duration="1"
                             class="purecounter"></span>
                         <p>Laporan Selesai</p>
                     </div>

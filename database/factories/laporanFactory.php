@@ -22,7 +22,7 @@ class laporanFactory extends Factory
             "deskripsi_laporan" => fake()->paragraph(),
             "gambar_bukti_pelaporan" => "gambar",
             "alamat_kejadian" => "nganjuk",
-            'bukti_penanganan' => 'gambar',
+            'bukti_penanganan' => '',
             "latitude" => "-7.2232139",
             "longitude" => "112.6226935"
         ];

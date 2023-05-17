@@ -47,3 +47,5 @@ Route::get('/filterLapDitolak/{userId}', [LaporanController::class, 'filterLapDi
 
 Route::post('/user/password', [UserController::class, 'updatePassword']);
 Route::post('/user', [UserController::class, 'updateProfil']);
+Route::post('/user/foto', [UserController::class, 'UpdateFile']);
+Route::get('/user/akun', [UserController::class, 'getDataProfile']);

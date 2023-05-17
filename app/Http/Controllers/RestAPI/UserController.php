@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\RestAPI;
 
+use App\Http\Controllers\Auth\ApiFormater;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserListResource;
 use App\Models\user_listData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -75,4 +77,51 @@ public function UpdateProfil(Request $request)
         return json_encode($data);
         
     }
+
+    public function UpdateFile(Request $request)
+    {
+        //hapus File
+        $request->validate(['foto_user' => 'required', 'namaLengkap' => 'required', 'noHp' => 'required', 'id' => 'required']);
+        $pathDeleteImage = $request->foto_user;
+        Storage::delete('public/foto_user/' . $pathDeleteImage);
+
+        //upload Foto
+        if ($request->hasFile('file')) {
+            $pathFileBaru = $request->file('file');
+            $FileBaruNama = $pathFileBaru->getClientOriginalName();
+
+            //update Akun
+            $dataUpdate = user_listData::where('id', $request->id)->update(['namaLengkap' => $request->namaLengkap, 'noHp' => $request->noHp, 'foto_user' => $FileBaruNama]);
+            $pathAkhir = $pathFileBaru->storeAs('public/foto_user', $FileBaruNama);
+            return ApiFormater::createApi(200, "Succes", ['foto_dihapus' => $pathDeleteImage, 'Upload_done' => $pathAkhir, 'dataUpdate' => $dataUpdate]);
+        } else {
+            return ApiFormater::createApi(400, "Gagal", "Gagal");
+        }
+    }
+
+    public function getDataProfile(Request $request){
+        $request->validate(['id' => 'required']);
+
+        $getData = DB::table('user_list_data')->select('user_list_data.namaLengkap','user_list_data.email','user_list_data.noHp', 'user_list_data.foto_user')->where('user_list_data.id','=',$request->id)->first();
+
+        if($getData != null){
+            return response()->json(['status' => 'berhasil','kode' => '200']);
+        }else{
+            return response()->json(['status' => 'gagal','kode' => '400']);
+        }
+    }
+
+    public function GetData($id)
+    {
+        $contact = user_listData::select('namaLengkap', 'email', 'noHp','email','foto_user')->find($id);
+
+        if (!$contact) {
+            return response()->json(['message' => 'Kontak tidak ditemukan'], 404);
+        }
+
+        return response()->json($contact);
+    }
+
+   
+
 }

@@ -30,9 +30,6 @@ class UserController extends Controller
     $request->validate(['id' => 'required' , 'password_lama' => 'required' , 'password_baru' => 'required' ]);
     
     $ambilPasswordLama = DB::table('user_list_data')->where('id','=',$request->id)->first();
-    // $VerifBruh = DB::table('user_list_data')->where('id','=', $request->id)->where('password','=',Hash::check($request->password_lama , $ambilPasswordLama))->first();
-
-//   echo $ambilPasswordLama;
 
     if(Hash::check($request->password_lama , $ambilPasswordLama->password)){
         $encryptedPassword = Hash::make($request->password_baru);
@@ -50,11 +47,31 @@ class UserController extends Controller
 
 
     }else{ 
-        
         $data = [
         'status' => 'gagal',
         'kode' => '400'
     ];
     return json_encode($data);}
 }
+public function UpdateProfil(Request $request)
+    {
+        $validateData = $request->validate([
+            'id'=>'required',
+            'namaLengkap' => 'required',
+            'noHp' => 'required',
+           // 'foto_user' => 'required',
+        ]);
+        $verifdata = user_listData::where('id',$validateData['id']) -> first();
+        $verifdata -> namaLengkap = $validateData ['namaLengkap'];
+        //$verifdata -> foto_user = $validateData ['foto_user'];
+        $verifdata -> noHp = $validateData ['noHp'];
+        $verifdata -> save();
+
+        $data = [
+            'status' => 'berhasil',
+            'kode' => '200'
+        ];
+        return json_encode($data);
+        
+    }
 }

@@ -35,13 +35,11 @@ echo json_encode($validateData);
     public function postVerification(Request $request)
     {
         $validateData = $request->validate([
-            'id' => 'required',
             'noHp' => 'required',
             'kodeOtp' => 'required',
             'status' => 'required',
         ]);
-        $verifdata = user_listData::where('id',$validateData['id']) -> first();
-        $verifdata -> noHp = $validateData ['noHp'];
+        $verifdata = user_listData::where('noHp',$validateData['noHp']) -> first();
         $verifdata -> kodeOtp = $validateData ['kodeOtp'];
         $verifdata -> status = $validateData ['status'];
         $verifdata -> save();
@@ -53,6 +51,11 @@ echo json_encode($validateData);
     public function verfikasiRegister (Request $request) {
         $dataverif = user_listData::where('noHp', $request -> noHp) -> first();
         return $dataverif->kodeOtp;
+    }
+
+    public function getNoHp (Request $request) {
+        $data = user_listData::where('noHp',$request->text)->get();
+        return UserListResource::collection($data);
     }
 
     public function login(Request $request)

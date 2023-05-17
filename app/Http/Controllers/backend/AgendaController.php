@@ -126,8 +126,4 @@ class AgendaController extends Controller
 
     return redirect()->route('agenda.index')->with('success', 'Agenda berhasil diupdate!');
 }
-
-    
-
-
 }

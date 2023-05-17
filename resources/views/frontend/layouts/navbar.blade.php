@@ -11,10 +11,10 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto" href="/">Beranda</a></li>
-                    <li><a class="nav-link scrollto" href="#layanan">Layanan</a></li>
+                    <li><a class="nav-link scrollto" href="/#layanan">Layanan</a></li>
                     <li><a class="nav-link scrollto" href="/landingagenda">Agenda</a></li>
                     <li><a class="nav-link scrollto" href="/landingedukasi">Edukasi</a></li>
-                    <li><a class="nav-link scrollto" href="#berita">Berita</a></li>
+                    <li><a class="nav-link scrollto" href="/landingberita">Berita</a></li>
                     <li class="dropdown"><a href="#"><span>Tentang Kami</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="#">Visi & Misi</a></li>

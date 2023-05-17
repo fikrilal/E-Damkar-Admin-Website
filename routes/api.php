@@ -24,6 +24,7 @@ Route::get('/userData', [UserController::class, 'index']);
 Route::get('/getBerita/{value}', [ArtikelBeritaController::class, 'newArtikelBerita']);
 Route::get('/verification/{noHp}', [AuthenticationController::class, 'verfikasiRegister']);
 Route::post('/verification/{noHp}', [AuthenticationController::class, 'postVerification']);
+Route::post('/changepass/{noHp}', [AuthenticationController::class, 'changePassword']);
 Route::get('/getNoHp/{text}', [AuthenticationController::class, 'getNoHp']);
 Route::get('/getBerita', [ArtikelBeritaController::class, 'newArtikelBerita']);
 

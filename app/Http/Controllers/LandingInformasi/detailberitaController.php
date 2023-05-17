@@ -13,7 +13,19 @@ class detailberitaController extends Controller
 {
     public function index(){
  
-        return view('landinginformasi.detailberita');
+        return view('landinginformasi.landingberita');
         
     }
+
+    public function show($id_berita)
+{
+    $berita = artikel_berita::find($id_berita);
+
+    if ($berita) {
+        return view('landinginformasi.detailberita', compact('berita'));
+    } else {
+        return redirect()->back()->with('error', 'Berita tidak ditemukan.');
+    }
+}
+
 }

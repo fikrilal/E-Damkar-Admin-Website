@@ -23,13 +23,13 @@
 
                 <div class="row">
                 @foreach($artikel as $item)
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 p-3">
                         <div class="post-box">
                             <div class="post-img"><img src="{{ asset('img-berita/' . $item->foto_artikel_berita) }}" class="img-fluid" alt="{{ $item->judul_berita }}" style="width: 1000px; height: 400px;"></div>
                             <span class="post-date">{{ \Carbon\Carbon::parse($item->tgl_berita)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</span>
                             <h3 class="post-title">{{ $item->judul_berita }}</h3>
                             <p>{{ $item->deskripsi_berita }}</p>
-                            <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Baca Selengkapnya</span><i
+                            <a href="{{ route('detailberita.show', ['id_berita' => $item->id_berita]) }}" class="readmore stretched-link mt-auto"><span>Baca Selengkapnya</span><i
                                     class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>

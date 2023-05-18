@@ -25,7 +25,9 @@ class detailberitaController extends Controller
             ->take(4)
             ->get();
 
-            return view('landinginformasi.detailberita', compact('berita', 'artikel1'));
+            $title = $berita->judul_berita; // Mengambil judul_agenda sebagai nilai $title
+
+            return view('landinginformasi.detailberita', compact('berita', 'artikel1', 'title'));
         } else {
             return redirect()->back()->with('error', 'Berita tidak ditemukan.');
         }

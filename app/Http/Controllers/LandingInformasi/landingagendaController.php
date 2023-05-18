@@ -26,7 +26,8 @@ class landingagendaController extends Controller
         }
 
         $artikel = $query->get();
+        $title = 'Agenda';
 
-        return view('landinginformasi.landingagenda', compact('artikel', 'search'));
+        return view('landinginformasi.landingagenda', compact('artikel', 'search', 'title'));
     }
 }

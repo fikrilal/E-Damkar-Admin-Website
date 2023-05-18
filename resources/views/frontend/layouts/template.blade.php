@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>{{ $title ?? config('app.name') }} | E-Damkar Nganjuk</title>
+    <title>{{ $title ?? config('app.name') }}</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -67,9 +67,9 @@
                     <div class="col-lg-2 col-6 footer-links">
                         <h4>Sumber Daya</h4>
                         <ul>
-                            <li><i class="bi bi-chevron-right"></i> <a href="#">Agenda</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="#">Berita</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="#">Edukasi</a></li>
+                            <li> <a href="/landingagenda">Agenda</a> <i class="bi bi-chevron-right"></i></li>
+                            <li> <a href="/landingberita">Berita</a> <i class="bi bi-chevron-right"></i></li>
+                            <li> <a href="/landingedukasi">Edukasi</a> <i class="bi bi-chevron-right"></i></li>
                         </ul>
                     </div>
 
@@ -78,14 +78,14 @@
                         <ul>
                             <li><a href="https://wa.me/628516023639">Whatsapp</a> <i class="bi bi-reply"></i></li>
                             <li><a href="https://www.instagram.com/humas_damkarnganjuk/">Instagram</a> <i class="bi bi-chevron-right"></i> </li>
-                            <li><a href="#">Facebook</a> <i class="bi bi-chevron-right"></i></li>
+                            <li><a href="https://www.facebook.com/profile.php?id=100069411210575">Facebook</a> <i class="bi bi-chevron-right"></i></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-2 col-6 footer-links">
                         <h4>Hubungi Kami</h4>
                         <ul>
-                            <li><i class="bi bi-telephone"></i> <a href="#">085156023639</a></li>
+                            <li><i class="bi bi-telephone"></i> <a href="tel:085156023639">085156023639</a></li>
                             <li><i class="bi bi-envelope"></i> <a href="#">thedamkar@gmail.com</a></li>
                         </ul>
                     </div>

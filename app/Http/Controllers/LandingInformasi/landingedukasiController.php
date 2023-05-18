@@ -25,7 +25,8 @@ class landingedukasiController extends Controller
         }
 
         $artikel = $query->get();
+        $title = 'Edukasi';
 
-        return view('landinginformasi.landingedukasi', compact('artikel', 'search'));
+        return view('landinginformasi.landingedukasi', compact('artikel', 'search', 'title'));
     }
 }

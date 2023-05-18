@@ -85,7 +85,7 @@
 </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keluar</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembaligi</button>
                       <button type="submit" class="btn btn-primary">Publikasikan</button>
                     </div>
                       </form><!-- End General Form Elements -->
@@ -133,7 +133,7 @@
                                 @method('DELETE')
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keluar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                             <button type="submit" class="btn btn-primary">Hapus</button>
                             </form>
                         </div>
@@ -187,7 +187,7 @@
 </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keluar</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
                       <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                       </form><!-- End General Form Elements -->

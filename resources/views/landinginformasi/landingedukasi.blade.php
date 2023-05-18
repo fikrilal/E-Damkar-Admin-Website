@@ -30,7 +30,14 @@
                             <div class="post-img"><img src="{{ asset('img-edukasi/' . $item->foto_artikel_edukasi) }}" class="img-fluid" alt="{{ $item->judul_edukasi }}" style="width: 1000px; height: 400px;"></div>
                             <span class="post-date">{{ \Carbon\Carbon::parse($item->tgl_edukasi)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</span>
                             <h3 class="cc">{{ $item->judul_edukasi }}</h3>
-                            <p>{{ Str::limit($item->deskripsi, 100, '...') }}</p>
+                            <p>@php
+                        $deskripsi = explode(' ', $item->deskripsi);
+                        $deskripsi = array_slice($deskripsi, 0, 10);
+                        $deskripsi = implode(' ', $deskripsi);
+                        $deskripsi = rtrim($deskripsi, ',.!?:;'); // Menghapus tanda baca di akhir kalimat
+                        $deskripsi .= ' ...'; // Menambahkan tanda elipsis sebagai penanda akhir kalimat
+                    @endphp
+                    {{ $deskripsi }}</p>
                             <a href="{{ route('detailedukasi.show', ['id_edukasi' => $item->id_edukasi]) }}" class="readmore stretched-link mt-auto"><span>Baca Selengkapnya</span><i
                                     class="bi bi-arrow-right"></i></a>
                         </div>

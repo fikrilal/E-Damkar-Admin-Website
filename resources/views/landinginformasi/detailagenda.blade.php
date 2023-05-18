@@ -45,7 +45,7 @@
                     />
                     <p class="mt-3">
                       <b>{{ $artikel->judul_agenda }}</b> <br />
-                      {{ Str::limit($artikel->deskripsi, 100, '...') }}
+                      {{ Str::limit($artikel->deskripsi, 50, ' ...') }}
                     </p>
                   </a>
                 </div>

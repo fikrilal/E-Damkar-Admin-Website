@@ -243,7 +243,16 @@
                 </div>
                 <span class="post-date">{{ \Carbon\Carbon::parse($item->tgl_berita)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</span>
                 <h3 class="post-title">{{ $item->judul_berita }}</h3>
-                <p>{{ $item->deskripsi_berita }}</p>
+                <p>
+                    @php
+                        $deskripsi = explode(' ', $item->deskripsi_berita);
+                        $deskripsi = array_slice($deskripsi, 0, 10);
+                        $deskripsi = implode(' ', $deskripsi);
+                        $deskripsi = rtrim($deskripsi, ',.!?:;'); // Menghapus tanda baca di akhir kalimat
+                        $deskripsi .= ' ...'; // Menambahkan tanda elipsis sebagai penanda akhir kalimat
+                    @endphp
+                    {{ $deskripsi }}
+                </p>
                 <a href="{{ route('detailberita.show', ['id_berita' => $item->id_berita]) }}" class="readmore stretched-link mt-auto">
                     <span>Baca selengkapnya</span><i class="bi bi-arrow-right"></i>
                 </a>
@@ -251,6 +260,8 @@
         </div>
     @endforeach
 </div>
+
+
             <div class="row">
                 <button class="center">   Lihat Selengkapnya  <i class="bi bi-arrow-right"></i></button>
             </div>

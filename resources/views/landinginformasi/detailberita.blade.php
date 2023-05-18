@@ -45,7 +45,7 @@
                     />
                     <p class="mt-3">
                       <b>{{ $artikel->judul_berita }}</b> <br />
-                      {{ Str::limit($artikel->deskripsi_berita, 100, '...') }}
+                      {{ Str::limit($artikel->deskripsi_berita, 50, ' ...') }}
                     </p>
                   </a>
                 </div>

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
@@ -23,7 +27,16 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $data1 = DB::table('laporans')
+            ->whereIn('status_riwayat_id', [3, 4])
+            ->count();
         
-        return view('dashboard');
+            $data2 = DB::table('laporans')
+            ->whereIn('status_riwayat_id', [1, 2])
+            ->count();
+
+            $berita = DB::table('artikel_beritas')
+            ->count();
+            return view('dashboard', compact('data1', 'data2','berita'));
     }
 }

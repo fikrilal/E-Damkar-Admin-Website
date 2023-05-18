@@ -56,7 +56,8 @@
                     </div>
                     <div class="modal-body">
                       <!-- General Form Elements -->
-              <form class="form-validate" id="artikelberita_form" method="POST" action="{{ route('berita.store') }}" enctype="multipart/form-data">
+              <form class="form-validate" id="artikelberita_form" method="POST" action="{{ route('berita.store') }}" 
+              enctype="multipart/form-data">
                {!! csrf_field() !!}
                <input type="hidden" name="id" value="{{ Auth::user()->id }}"></br>
                 <div class="row mb-3">
@@ -77,10 +78,11 @@
                 <div class="row mb-3">
                   <label for="inputEmail" class="col-sm-2 col-form-label">Isi Artikel*</label>
                   <div class="col-sm-10">
-                    <textarea type="text" name="isi_artikel" id="isi_artikel" class="form-control quill-editor-full"  value="{{ old('isi_artikel') }}"></textarea>
+                    <textarea type="text" name="isi_artikel" id="isi_artikel" class="form-control quill-editor-full"  
+                    value="{{ old('isi_artikel') }}"></textarea>
                   </div>
                 </div>
-                
+          
            
                 <div class="row mb-3">
                 </div>
@@ -113,8 +115,10 @@
                     <th scope="row">{{ $no++ }}</th>
                     <td>{{$berita->judul_berita}}</td>
                     <td>{{$berita->tgl_berita}}</td>
-                    <td><a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModalEdit{{ $berita->id_berita }}"><i class="bi bi-pen"></i> Edit</a>
-                    <a href="#" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#largeModalHapus{{ $berita->id_berita }}"><i class="bi bi-trash"></i> Hapus</a>
+                    <td><a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" 
+                    data-bs-target="#largeModalEdit{{ $berita->id_berita }}"><i class="bi bi-pen"></i> Edit</a>
+                    <a href="#" type="button" class="btn btn-danger" data-bs-toggle="modal" 
+                    data-bs-target="#largeModalHapus{{ $berita->id_berita }}"><i class="bi bi-trash"></i> Hapus</a>
 
                     </td>
 
@@ -153,7 +157,8 @@
                     </div>
                     <div class="modal-body">
                       <!-- General Form Elements -->
-              <form class="form-validate" id="artikelberita_form" method="POST" action="{{ isset($berita) ? route('berita.update',$berita->id_berita) :
+              <form class="form-validate" id="artikelberita_form" method="POST" 
+              action="{{ isset($berita) ? route('berita.update',$berita->id_berita) :
               route('berita.store') }}" enctype="multipart/form-data">
                {!! csrf_field() !!}
                {!! isset($berita) ? method_field('PUT') : '' !!}
@@ -162,7 +167,8 @@
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Judul*</label>
                   <div class="col-sm-10">
-                    <input type="text" name="judul" id="judul" value="{{ isset($berita) ? $berita->judul_berita : '' }}" class="form-control" required>
+                    <input type="text" name="judul" id="judul" value="{{ isset($berita) ? $berita->judul_berita : '' }}" 
+                    class="form-control" required>
                   </div>
                 </div>
 
@@ -179,7 +185,8 @@
                 <div class="row mb-3">
                   <label for="inputEmail" class="col-sm-2 col-form-label">Isi Artikel*</label>
                   <div class="col-sm-10">
-                  <textarea name="isi_artikel" id="isi_artikel" class="form-control quill-editor-full" required>{{ isset($berita) ? $berita->deskripsi_berita : '' }}</textarea>
+                  <textarea name="isi_artikel" id="isi_artikel" class="form-control quill-editor-full" required>
+                    {{ isset($berita) ? $berita->deskripsi_berita : '' }}</textarea>
                   </div>
                 </div>
                 
@@ -207,8 +214,5 @@
         </div>
       </div>
     </section>
-
-
   </main><!-- End #main -->
-
   @endsection

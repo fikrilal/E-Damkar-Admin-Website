@@ -44,8 +44,9 @@
                     <i class="bi bi-journal-text"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>20</h6>
-                      <span class="text-muted small pt-2 ps-1"><a href="/laporanmasuk">Cek Selengkapnya</span> <i class="bi bi-arrow-right-circle"></i></a>
+                      <h6>{{ $data2 }}</h6>
+                      <span class="text-muted small pt-2 ps-1"><a href="/laporanmasuk">Cek Selengkapnya</span> <i class="bi 
+                      bi-arrow-right-circle"></i></a>
                     </div>
                   </div>
                 </div>
@@ -69,8 +70,9 @@
                     <i class="bi bi-journal-text"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>20</h6>
-                      <span class="text-muted small pt-2 ps-1"><a href="/laporan">Cek Selengkapnya</span> <i class="bi bi-arrow-right-circle"></i></a>
+                      <h6>{{ $data1 }}</h6>
+                      <span class="text-muted small pt-2 ps-1"><a href="/laporan">Cek Selengkapnya</span> <i class="bi 
+                      bi-arrow-right-circle"></i></a>
 
                     </div>
                   </div>
@@ -96,7 +98,7 @@
                     <i class="bi bi-layout-text-window-reverse"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>20</h6>
+                      <h6>{{ $berita }}</h6>
                       <span class="text-muted small pt-2 ps-1"><a href="/berita">Cek Selengkapnya</span> <i class="bi bi-arrow-right-circle"></i></a>
 
                     </div>

@@ -165,7 +165,7 @@
                   </div>
                 </div>
 
-                <div class="row mb-3">
+                  <div class="row mb-3">
                   <label for="inputNumber" class="col-sm-2 col-form-label">Foto Agenda</label>
                   <div class="col-sm-10">
                   <img src="{{ asset('img-agenda/'.$a->foto_artikel_agenda) }}" width="30%">

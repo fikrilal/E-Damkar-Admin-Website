@@ -44,3 +44,5 @@ Route::post('/user/password', [UserController::class, 'updatePassword']);
 
 Route::get('/semuaArtikel', [ArtikelBeritaController::class, 'semuaArtikel']);
 Route::post('/user', [UserController::class, 'updateProfil']);
+Route::post('/sendToWa', [LaporanController::class, 'sendInfoToWhatsapp']);
+Route::post('/addImage', [LaporanController::class, 'addImage']);

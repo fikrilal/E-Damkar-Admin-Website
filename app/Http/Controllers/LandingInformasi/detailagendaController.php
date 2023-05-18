@@ -18,17 +18,20 @@ class detailagendaController extends Controller
     public function show($id_agenda)
     {
         $agenda = DB::table('artikel_agendas')->where('id_agenda', $id_agenda)->first();
-        
+    
         if ($agenda) {
             $artikel1 = DB::table('artikel_agendas')
                 ->orderByDesc('id_agenda')
                 ->take(4)
                 ->get();
-                
-            return view('landinginformasi.detailagenda', compact('agenda', 'artikel1'));
+    
+            $title = $agenda->judul_agenda; // Mengambil judul_agenda sebagai nilai $title
+    
+            return view('landinginformasi.detailagenda', compact('agenda', 'artikel1', 'title'));
         } else {
             return redirect()->back()->with('error', 'Agenda tidak ditemukan.');
         }
     }
+    
 
 }

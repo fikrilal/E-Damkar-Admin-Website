@@ -52,7 +52,6 @@ class PengaturanController extends Controller
         'email' => ['required', 'email', Rule::unique('admin_damkars')->ignore($user->id)],
         'no_hp' => 'required|min:12|max:12'
     ];
-
     $messages = [
         'nama_lengkap.required' => 'Kolom nama lengkap harus diisi.',
         'email.required' => 'Kolom email harus diisi.',
@@ -62,7 +61,6 @@ class PengaturanController extends Controller
         'no_hp.min' => 'Nomor HP harus terdiri dari 12 karakter.',
         'no_hp.max' => 'Nomor HP tidak boleh lebih dari 12 karakter.'
     ];
-
     if (!empty($request->input('password'))) {
         $rules['password'] = 'required|min:8';
         $messages['password.required'] = 'Kolom password harus diisi.';

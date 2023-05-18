@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Middleware\CheckKedudukanMiddleware;
 use App\Http\Controllers\WelcomeController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,9 +32,13 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
     Route::resource('edukasi', 'EdukasiController');
     Route::resource('agenda', 'AgendaController');
     Route::middleware([CheckKedudukanMiddleware::class])->group(function () {
-        Route::resource('kelolaadmin', 'AdminController');
+    Route::resource('kelolaadmin', 'AdminController');
     });
 });
+
+Route::post('/pengaturan/updateprofil', 'App\Http\Controllers\Backend\PengaturanController@updateProfil')->name('pengaturan.updateprofil');
+
+Route::get('/search', 'App\Http\Controllers\SearchBeritaController@search')->name('search');
 
 Route::get('/laporan/update-status/{id}/', 'App\Http\Controllers\Backend\LaporanMasukController@updateStatus')->name('laporan.update-status');
 
@@ -55,6 +58,8 @@ Route::group(['namespace' => 'App\Http\Controllers\LandingInformasi'], function 
     Route::resource('detailedukasi', 'detailedukasiController');
     Route::resource('landingtentang', 'landingtentangController');
     Route::get('detailberita/{id_berita}', [LandingInformasiController::class, 'show'])->name('detailberita.show');
+    Route::get('detailedukasi/{id_edukasi}', [LandingInformasiController::class, 'show'])->name('detailedukasi.show');
+    Route::get('detailagenda/{id_agenda}', [LandingInformasiController::class, 'show'])->name('detailagenda.show');
 });
 
 

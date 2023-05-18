@@ -30,6 +30,19 @@ class AuthenticationController extends Controller
         ]);
     }
 
+    public function changePassword(Request $request) {
+        $validateData =  $request->validate([
+            'noHp' => 'required',
+            'password' => 'required',
+        ]);
+        $changePass = user_listData::where('noHp', $validateData['noHp']) -> first();
+        $changePass -> password = Hash::make($validateData['password']);
+        $changePass -> save();
+        return json_encode([
+            "kondisi" => true,
+        ]);
+    }
+
     public function postVerification(Request $request)
     {
         $validateData = $request->validate([

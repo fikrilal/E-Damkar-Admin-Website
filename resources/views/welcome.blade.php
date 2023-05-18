@@ -61,7 +61,7 @@
                 <div class="count-box">
                     <i class="bi bi-journal-richtext"></i>
                     <div>
-                        <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1"
+                        <span data-purecounter-start="0" data-purecounter-end="{{ $data1 }}" data-purecounter-duration="1"
                             class="purecounter"></span>
                         <p>Laporan Selesai</p>
                     </div>
@@ -236,14 +236,23 @@
 
             <div class="row">
     @foreach($artikel as $item)
-        <div class="col-lg-4">
+        <div class="col-lg-4 p-3">
             <div class="post-box">
                 <div class="post-img">
                     <img src="{{ asset('img-berita/' . $item->foto_artikel_berita) }}" class="img-fluid" alt="{{ $item->judul_berita }}" style="width: 1000px; height: 400px;">
                 </div>
                 <span class="post-date">{{ \Carbon\Carbon::parse($item->tgl_berita)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</span>
                 <h3 class="post-title">{{ $item->judul_berita }}</h3>
-                <p>{{ $item->deskripsi_berita }}</p>
+                <p>
+                    @php
+                        $deskripsi = explode(' ', $item->deskripsi_berita);
+                        $deskripsi = array_slice($deskripsi, 0, 10);
+                        $deskripsi = implode(' ', $deskripsi);
+                        $deskripsi = rtrim($deskripsi, ',.!?:;'); // Menghapus tanda baca di akhir kalimat
+                        $deskripsi .= ' ...'; // Menambahkan tanda elipsis sebagai penanda akhir kalimat
+                    @endphp
+                    {{ $deskripsi }}
+                </p>
                 <a href="{{ route('detailberita.show', ['id_berita' => $item->id_berita]) }}" class="readmore stretched-link mt-auto">
                     <span>Baca selengkapnya</span><i class="bi bi-arrow-right"></i>
                 </a>
@@ -251,6 +260,8 @@
         </div>
     @endforeach
 </div>
+
+
             <div class="row">
                 <button class="center">   Lihat Selengkapnya  <i class="bi bi-arrow-right"></i></button>
             </div>

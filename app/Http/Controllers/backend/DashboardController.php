@@ -8,7 +8,8 @@ use App\Http\Controllers\Controller;
 class DashboardController extends Controller
 {
     public function index() {
-        return view('backend.dashboard');
+        $title = 'Dashboard | E-Damkar Nganjuk';
+        return view('backend.dashboard', ['title' => $title]);        
     }
 
 }

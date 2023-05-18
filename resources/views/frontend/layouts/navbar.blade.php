@@ -15,13 +15,7 @@
                     <li><a class="nav-link scrollto" href="/landingagenda">Agenda</a></li>
                     <li><a class="nav-link scrollto" href="/landingedukasi">Edukasi</a></li>
                     <li><a class="nav-link scrollto" href="/landingberita">Berita</a></li>
-                    <li class="dropdown"><a href="#"><span>Tentang Kami</span> <i class="bi bi-chevron-down"></i></a>
-                        <ul>
-                            <li><a href="#">Visi & Misi</a></li>
-                            <li><a href="#">Struktur Organisasi</a></li>
-                            <li><a href="#">Tentang Aplikasi</a></li>
-                        </ul>
-                    </li>
+                    <li><a class="nav-link scrollto" href="/landingtentang">Tentang Kami</a></li>
                     <li><a class="getstarted scrollto" href="/login">Masuk <i class="bi bi-box-arrow-in-right"></i></a></li>
                     
                 </ul>

@@ -25,8 +25,9 @@ class landingberitaController extends Controller
         }
 
         $artikel = $query->get();
+        $title = 'Berita';
 
-        return view('landinginformasi.landingberita', compact('artikel', 'search'));
+        return view('landinginformasi.landingberita', compact('artikel', 'search', 'title'));
         
     }
 

@@ -21,8 +21,10 @@ class WelcomeController extends Controller
             ->orderByDesc('id_berita')
             ->take(6)
             ->get();
+
+        $title = 'E-Damkar Nganjuk';
     
-        return view('welcome', compact('data', 'artikel', 'data1'));
+        return view('welcome', compact('data', 'artikel', 'data1', 'title'));
     }
     
 }

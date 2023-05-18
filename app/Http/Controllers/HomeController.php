@@ -37,6 +37,8 @@ class HomeController extends Controller
 
         $berita = DB::table('artikel_beritas')
         ->count();
-        return view('dashboard', compact('data1', 'data2','berita'));
+
+        $title = 'Dashboard | E-Damkar Nganjuk';
+        return view('dashboard', compact('data1', 'data2','berita', 'title'));
     }
 }

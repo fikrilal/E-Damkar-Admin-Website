@@ -31,12 +31,16 @@ class DashboardController extends Controller
             ->whereIn('status_riwayat_id', [3, 4])
             ->count();
         
-            $data2 = DB::table('laporans')
+        $data2 = DB::table('laporans')
             ->whereIn('status_riwayat_id', [1, 2])
             ->count();
-
-            $berita = DB::table('artikel_beritas')
+    
+        $berita = DB::table('artikel_beritas')
             ->count();
-            return view('dashboard', compact('data1', 'data2','berita'));
+    
+        $title = 'Dashboard | E-Damkar Nganjuk';
+        
+        return view('dashboard', compact('data1', 'data2', 'berita', 'title'));
     }
+    
 }

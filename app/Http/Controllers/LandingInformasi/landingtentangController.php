@@ -8,7 +8,9 @@ use App\Http\Controllers\Controller;
 class landingtentangController extends Controller
 {
     public function index(){
-        return view('TentangKami.hometentang');
+        $title = 'Tentang Kami';
+
+        return view('landinginformasi.landingtentang', compact('title'));
         
     }
 }

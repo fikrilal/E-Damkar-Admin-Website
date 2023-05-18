@@ -91,10 +91,11 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>Pengaturan Profil</span>
-              </a>
+            <a class="dropdown-item d-flex align-items-center" href="#"  data-bs-toggle="modal" data-bs-target="#myModalinfo">
+              <i class="bi bi-person"></i>
+              <span>Pengaturan Profil</span>
+            </a>
+
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -141,6 +142,109 @@
   <!-- Template Main JS File -->
   <script src="{{ asset('backend/assets/js/main.js') }}"></script>
 
+
+<!-- Tampilan Modal -->
+<div class="modal fade" id="myModalinfo" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Pengaturan Profil</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                          <!-- Bagian body modal -->
+                  <div class="modal-body">
+                    <form>
+                    <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label"><strong>Nama:</strong></label>
+                    <div class="col-sm-10">
+                      <p>{{ Auth::user()->nama_lengkap }}</p>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label"><strong>Email:</strong></label>
+                    <div class="col-sm-10">
+                      <p>{{ Auth::user()->email }}</p>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label"><strong>No HP:</strong></label>
+                    <div class="col-sm-10">
+                      <p>{{ Auth::user()->noHp }}</p>
+                    </div>
+                  </div>
+                    </form>
+                  </div>
+      <!-- Bagian footer modal -->
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModalinfoupdate">Update</button>
+      </div>
+                    </div>
+                </div>
+            </div>
+
+
+<!-- Tampilan Modal -->
+<div class="modal fade" id="myModalinfoupdate" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Profil</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <!-- Bagian body modal -->
+      <div class="modal-body">
+        <form method="POST" action="{{ route('pengaturan.updateprofil') }}" enctype="multipart/form-data">
+          @csrf
+
+                <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+      <div class="row mb-3">
+        <label for="inputText" class="col-sm-2 col-form-label"><strong>Nama:</strong></label>
+        <div class="col-sm-10">
+          <input type="text" name="nama_lengkap" id="nama_lengkap" value="{{ Auth::user()->nama_lengkap }}"
+            class="form-control" required>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label for="inputText" class="col-sm-2 col-form-label"><strong>Email:</strong></label>
+        <div class="col-sm-10">
+          <input type="email" name="email" id="email" value="{{ Auth::user()->email }}"
+            class="form-control" required>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label for="inputText" class="col-sm-2 col-form-label"><strong>No HP:</strong></label>
+        <div class="col-sm-10">
+          <input type="text" name="no_hp" id="no_hp" value="{{ Auth::user()->noHp }}"
+            class="form-control" required>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label for="inputText" class="col-sm-2 col-form-label"><strong>Password:</strong></label>
+        <div class="col-sm-10">
+          <input type="password" name="password" id="password" class="form-control" >
+        </div>
+      </div>
+
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
    <!-- Tampilan Modal -->
    <div class="modal fade" id="largeModalLog" tabindex="-1">
                 <div class="modal-dialog">
@@ -164,6 +268,9 @@
                 </div>
             </div>
 
+
+
+          
 
 </body>
 

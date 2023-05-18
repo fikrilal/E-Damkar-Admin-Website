@@ -12,9 +12,7 @@ use App\Http\Controllers\Controller;
 class detailberitaController extends Controller
 {
     public function index(){
- 
-        return view('landinginformasi.landingberita');
-        
+        return redirect('landingberita');
     }
 
     public function show($id_berita)
@@ -22,7 +20,14 @@ class detailberitaController extends Controller
         $berita = DB::table('artikel_beritas')->where('id_berita', $id_berita)->first();
 
         if ($berita) {
-            return view('landinginformasi.detailberita', compact('berita'));
+            $artikel1 = DB::table('artikel_beritas')
+            ->orderByDesc('id_berita')
+            ->take(4)
+            ->get();
+
+            $title = $berita->judul_berita; // Mengambil judul_agenda sebagai nilai $title
+
+            return view('landinginformasi.detailberita', compact('berita', 'artikel1', 'title'));
         } else {
             return redirect()->back()->with('error', 'Berita tidak ditemukan.');
         }

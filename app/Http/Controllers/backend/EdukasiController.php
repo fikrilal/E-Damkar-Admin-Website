@@ -23,7 +23,9 @@ class EdukasiController extends Controller
     
     public function index() {
         $title = 'Edukasi | E-Damkar Nganjuk';
-        $edukasi = DB::table('artikel_edukasis')->get();
+        $edukasi = DB::table('artikel_edukasis')
+        ->orderBy('tgl_edukasi', 'desc')
+        ->get();
         return view('backend.edukasi', compact('edukasi','title'));
 
     }

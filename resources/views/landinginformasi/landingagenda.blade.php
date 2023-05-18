@@ -1,45 +1,58 @@
-
 @extends('frontend/layouts.template')
-    @section('content')
 
-    <main id="main">
+@section('content')
 
-        <!-- ======= Recent Blog Posts Section ======= -->
-        <section id="recent-blog-posts" class="recent-blog-posts">
+<main id="main">
 
-            <div class="container" data-aos="fade-up">
+    <!-- ======= Recent Blog Posts Section ======= -->
+    <section id="recent-blog-posts" class="recent-blog-posts">
 
-                <header class="section-header">
-                    <h2></h2>
-                    <p>Artikel Agenda</p>
-                </header>
+        <div class="container" data-aos="fade-up">
 
-                <div class="box">
-                    <div class="container-1">
-                        <span class="icon"><i class="bi bi-search"></i></span>
-                        <input type="search" id="search" class="rounded-pill" placeholder="Cari artikel agenda"/>
+            <header class="section-header">
+                <h2></h2>
+                <p>Artikel Agenda</p>
+            </header>
+
+            <div class="search-box p-4">
+                    <div class="icon">
+                        <i class="bi bi-search"></i>
                     </div>
+                    <form action="{{ route('landingagenda.index') }}" method="GET">
+                        <input type="search" name="search" id="search" class="rounded-pill" placeholder="Cari artikel edukasi" value="{{ $search ?? '' }}">
+                    </form>
                 </div>
 
                 <div class="row">
-                @foreach($artikel as $item)
-                    <div class="col-lg-4 p-3">
-                        <div class="post-box">
-                            <div class="post-img"><img src="{{ asset('img-agenda/' . $item->foto_artikel_agenda) }}" class="img-fluid" alt="{{ $item->judul_agenda }}" style="width: 1000px; height: 400px;"></div>
-                            <span class="post-date">{{ \Carbon\Carbon::parse($item->tgl_agenda)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</span>
-                            <h3 class="cc">{{ $item->judul_agenda }}</h3>
-                            <p>{{ $item->deskripsi }}</p>
-                            <a href="{{ route('detailagenda.show', ['id_agenda' => $item->id_agenda]) }}" class="readmore stretched-link mt-auto"><span>Baca Selengkapnya</span><i
-                                    class="bi bi-arrow-right"></i></a>
-                        </div>
+                @forelse($artikel as $item)
+                <div class="col-lg-4 p-3">
+                    <div class="post-box">
+                        <div class="post-img"><img src="{{ asset('img-agenda/' . $item->foto_artikel_agenda) }}" class="img-fluid" alt="{{ $item->judul_agenda }}" style="width: 1000px; height: 400px;"></div>
+                        <span class="post-date">{{ \Carbon\Carbon::parse($item->tgl_agenda)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</span>
+                        <h3 class="cc">{{ $item->judul_agenda }}</h3>
+                        <p>@php
+                        $deskripsi = explode(' ', $item->deskripsi);
+                        $deskripsi = array_slice($deskripsi, 0, 10);
+                        $deskripsi = implode(' ', $deskripsi);
+                        $deskripsi = rtrim($deskripsi, ',.!?:;'); // Menghapus tanda baca di akhir kalimat
+                        $deskripsi .= ' ...'; // Menambahkan tanda elipsis sebagai penanda akhir kalimat
+                    @endphp
+                    {{ $deskripsi }}</p>
+                        <a href="{{ route('detailagenda.show', ['id_agenda' => $item->id_agenda]) }}" class="readmore stretched-link mt-auto"><span>Baca Selengkapnya</span><i
+                                class="bi bi-arrow-right"></i></a>
                     </div>
-                    @endforeach
                 </div>
-
+                @empty
+                <div class="col-lg-12 text-center">
+                    <p>Tidak ada artikel yang ditemukan.</p>
+                </div>
+                @endforelse
             </div>
 
-        </section><!-- End Recent Blog Posts Section -->
 
+        </div>
 
-    </main><!-- End #main -->
+    </section><!-- End Recent Blog Posts Section -->
+
+</main><!-- End #main -->
 @endsection

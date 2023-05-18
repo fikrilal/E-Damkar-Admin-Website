@@ -36,6 +36,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
     });
 });
 
+Route::post('/pengaturan/updateprofil', 'App\Http\Controllers\Backend\PengaturanController@updateProfil')->name('pengaturan.updateprofil');
+
 Route::get('/search', 'App\Http\Controllers\SearchBeritaController@search')->name('search');
 
 Route::get('/laporan/update-status/{id}/', 'App\Http\Controllers\Backend\LaporanMasukController@updateStatus')->name('laporan.update-status');

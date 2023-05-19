@@ -99,13 +99,12 @@ class LaporanController extends Controller
         return pelaporanResources::collection($data);
     }
 
-<<<<<<< HEAD
     public function filterLapEmergency(Request $request)
     {
         $data = laporan::where('user_listdata_id', $request->userId)
             ->where('status_riwayat_id', '5')->get();
         return pelaporanResources::collection($data);
-=======
+    }
 
     public function sendInfoToWhatsapp(Request $request)
     {
@@ -154,6 +153,5 @@ class LaporanController extends Controller
 
         curl_close($curl);
         echo $response;
->>>>>>> ccad475306d412d645be7db720a4246044cca9db
     }
 }

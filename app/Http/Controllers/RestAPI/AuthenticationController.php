@@ -15,21 +15,19 @@ class AuthenticationController extends Controller
     public function register(Request $request)
     {
         $validateData = $request->validate([
-            'email' => 'required|email|unique:user_list_data',
+            'username' => 'required|unique:user_list_data',
             'password' => 'required',
             'namaLengkap' => 'required',
             'noHp' => 'required',
             'kodeOtp' => 'required',
             'status' => 'required',
         ]);
-echo json_encode($validateData);
         $validateData['password'] = Hash::make($validateData['password']);
 
         user_listData::create($validateData);
         return json_encode([
             "kondisi" => true,
         ]);
-        
     }
 
     public function changePassword(Request $request) {
@@ -52,41 +50,41 @@ echo json_encode($validateData);
             'kodeOtp' => 'required',
             'status' => 'required',
         ]);
-        $verifdata = user_listData::where('noHp',$validateData['noHp']) -> first();
-        $verifdata -> kodeOtp = $validateData ['kodeOtp'];
-        $verifdata -> status = $validateData ['status'];
-        $verifdata -> save();
+        $verifdata = user_listData::where('noHp', $validateData['noHp'])->first();
+        $verifdata->kodeOtp = $validateData['kodeOtp'];
+        $verifdata->status = $validateData['status'];
+        $verifdata->save();
         return json_encode([
             "kondisi" => true,
         ]);
     }
 
-    public function verfikasiRegister (Request $request) {
-        $dataverif = user_listData::where('noHp', $request -> noHp) -> first();
+    public function verfikasiRegister(Request $request)
+    {
+        $dataverif = user_listData::where('noHp', $request->noHp)->first();
         return $dataverif->kodeOtp;
     }
 
-    public function getNoHp (Request $request) {
-        $data = user_listData::where('noHp',$request->text)->get();
+    public function getNoHp(Request $request)
+    {
+        $data = user_listData::where('noHp', $request->text)->get();
         return UserListResource::collection($data);
     }
 
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required',
         ]);
 
-        $user = user_listData::where('email', $request->email)->first();
+        $user = user_listData::where('username', $request->username)->orWhere('noHp', $request->username)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
-            ]);
+            throw ValidationException::withMessages([]);
         }
         $data = [
-            'token' => $user->createToken($request->email)->plainTextToken,
+            'token' => $user->createToken($request->username)->plainTextToken,
             'data' => $user
         ];
 
@@ -114,5 +112,13 @@ echo json_encode($validateData);
             return json_encode(['message' => 'berhasil']);
         }
         return json_encode(['message' => 'gagal']);
+    }
+
+    public function getHP(Request $request){
+
+        $data = user_listData::where('noHp',$request->text)->get();
+        return UserListResource::collection($data);
+
+
     }
 }

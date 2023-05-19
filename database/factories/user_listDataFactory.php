@@ -21,7 +21,7 @@ class user_listDataFactory extends Factory
     public function definition(): array
     {
         return [
-            'email' => fake()->unique()->safeEmail(),
+            'username' => fake()->unique()->userName(),
             'password' => Hash::make('superone'),
             'namaLengkap' => fake()->name(),
             'noHp' => fake()->randomNumber(5, true),

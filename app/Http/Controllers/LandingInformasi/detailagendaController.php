@@ -25,7 +25,7 @@ class detailagendaController extends Controller
                 ->take(4)
                 ->get();
     
-            $title = $agenda->judul_agenda; // Mengambil judul_agenda sebagai nilai $title
+            $title = $agenda->judul_agenda . ' | E-Damkar Nganjuk';      // Mengambil judul_agenda sebagai nilai $title
     
             return view('landinginformasi.detailagenda', compact('agenda', 'artikel1', 'title'));
         } else {

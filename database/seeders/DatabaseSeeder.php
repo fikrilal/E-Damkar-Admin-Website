@@ -31,12 +31,12 @@ class DatabaseSeeder extends Seeder
             'email' => "superadmin@gmail.com",
             'password' => Hash::make('superone'),
             'nama_lengkap' => "SuperAdmin",
-            'noHp' => "085756436576", 
+            'noHp' => "085756436576",
             'kedudukans_id' => "1"
         ]);
 
         user_listData::create([
-            'email' => "danakhdan12@gmail",
+            'username' => "danakhdan12@gmail.com",
             'password' => Hash::make('superone'),
             'namaLengkap' => "Akhdan",
             'noHp' => "085756436576",
@@ -77,7 +77,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         KategoriLaporan::create([
-            'nama_kategori' => 'Banjir'
+            'nama_kategori' => 'penyelamatan'
+        ]);
+        KategoriLaporan::create([
+            'nama_kategori' => 'hewan buas'
         ]);
 
         Kedudukan::create([

@@ -23,58 +23,59 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
     
-    public function index() {
-        $admin = DB::table('admin_damkars')->get();
-        $title = "Kelola Admin";
-        $data = User::orderBy('nama_lengkap', 'asc')->get(); // Mengurutkan berdasarkan nama_lengkap secara ascending
-        return view('backend.kelolaadmin', compact('data', 'title'));
+    
+    public function index()
+    {
+        $admin = Admin::all();
+        return view('backend.kelolaadmin', compact('admin'));
     }
 
     public function store(Request $request)
-        {
-
-        $request->validate([
+    {
+        $validator = Validator::make($request->all(), [
             'nama_admin' => 'required',
-            'password' => ['required', 'string', 'min:8'],
-            'noHp' => ['required', 'string', 'max:12'],
-        ], [
-            'nama_admin.required' => 'Nama admin wajib diisi',
-            'email.required' => 'Email admin wajib diisi',
-            'password.min' => 'Kata sandi minimal memiliki 8 karakter',
-            'noHp.max' => 'Nomor telepon maksimal memiliki 12 angka',
+            'email' => 'required|email',
+            'password' => 'required',
+            'noHp' => 'required',
         ]);
-    
-        DB::table('admin_damkars')->insert([
-            'id' => $request->id,
-            'nama_lengkap' => $request->input('nama_lengkap'),
-            'email' => $request->input('email'),
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Create a new admin record in the database
+        $admin = new Admin;
+        $admin->nama_admin = $request->input('nama_admin');
+        $admin->email = $request->input('email');
+        $admin->password = $request->input('password');
+        $admin->noHp = $request->input('noHp');
+        // Add any additional fields you have
+
+        // Save the admin record
+        $admin->save();
+
+        return redirect()->back()->with('success', 'Admin successfully added.');
+    }
+
+    public function update(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'nama_admin' => 'required',
+            'email' => 'required|email',
         ]);
-    
-        return redirect()->route('admin.index')->with('success', 'Data admin berhasil ditambahkan!');
-}
-    
-    public function update(Request $request, $id)
-{
-    $request->validate([
-        'nama_admin' => 'required',
-        'password' => ['required', 'string', 'min:8'],
-        'noHp' => ['required', 'string', 'max:12'],
-    ], [
-        'nama_admin.required' => 'Nama admin wajib diisi',
-        'email.required' => 'Email admin wajib diisi',
-        'password.min' => 'Kata sandi minimal memiliki 8 karakter',
-        'noHp.max' => 'Nomor telepon maksimal memiliki 12 angka',
-    ]);
 
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
-    $admin = DB::table('admin_damkars')->where('id', $id)->first();
+        $admin = Admin::findOrFail($request->input('id'));
+        $admin->nama_admin = $request->input('nama_admin');
+        $admin->email = $request->input('email');
+        // Add any additional fields you have
 
-    DB::table('admin_damkars')->where('id', $id)->update([
-        'id' => $request->id,
-            'nama_lengkap' => $request->input('nama_lengkap'),
-            'email' => $request->input('email'),
-    ]);
+        // Save the updated admin record
+        $admin->save();
 
-    return redirect()->route('admin.index')->with('success', 'Data admin berhasil diperbarui!');
-}
+        return redirect()->back()->with('success', 'Admin successfully updated.');
+    }
 }

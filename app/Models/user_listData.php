@@ -14,7 +14,7 @@ class user_listData extends Model
 
     protected $guarded = ['id'];
 
-    protected $fillable = ['email', 'password', 'namaLengkap', 'noHp', 'kodeOtp', 'status', 'foto_user'];
+    protected $fillable = ['username', 'password', 'namaLengkap', 'noHp', 'kodeOtp', 'status', 'foto_user'];
 
 
     public function laporan()

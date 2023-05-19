@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $userdata = user_listData::all();
-        
+
         return UserListResource::collection($userdata);
     }
 
@@ -26,60 +26,57 @@ class UserController extends Controller
 
         return new UserListResource($userdata);
     }
-    
+
     public function updatePassword(Request $request)
-{
-    $request->validate(['id' => 'required' , 'password_lama' => 'required' , 'password_baru' => 'required' ]);
-    
-    $ambilPasswordLama = DB::table('user_list_data')->where('id','=',$request->id)->first();
+    {
+        $request->validate(['id' => 'required', 'password_lama' => 'required', 'password_baru' => 'required']);
 
-    if(Hash::check($request->password_lama , $ambilPasswordLama->password)){
-        $encryptedPassword = Hash::make($request->password_baru);
+        $ambilPasswordLama = DB::table('user_list_data')->where('id', '=', $request->id)->first();
 
-        
-        DB::table('user_list_data')->where('id','=',$request->id)->update([
-            'password' => $encryptedPassword
-           
-        ]);
-        $data = [
-            'status' => 'berhasil',
-            'kode' => '200'
-        ];
-        return json_encode($data);
+        if (Hash::check($request->password_lama, $ambilPasswordLama->password)) {
+            $encryptedPassword = Hash::make($request->password_baru);
 
 
-    }else{ 
-        $data = [
-        'status' => 'gagal',
-        'kode' => '400'
-    ];
-    return json_encode($data);}
-}
-public function UpdateProfil(Request $request)
+            DB::table('user_list_data')->where('id', '=', $request->id)->update([
+                'password' => $encryptedPassword
+
+            ]);
+            $data = [
+                'status' => 'berhasil',
+                'kode' => '200'
+            ];
+            return json_encode($data);
+        } else {
+            $data = [
+                'status' => 'gagal',
+                'kode' => '400'
+            ];
+            return json_encode($data);
+        }
+    }
+    public function UpdateProfil(Request $request)
     {
         $validateData = $request->validate([
-            'id'=>'required',
+            'id' => 'required',
             'namaLengkap' => 'required',
             'noHp' => 'required',
-           // 'foto_user' => 'required',
+            // 'foto_user' => 'required',
         ]);
-        $verifdata = user_listData::where('id',$validateData['id']) -> first();
-        $verifdata -> namaLengkap = $validateData ['namaLengkap'];
+        $verifdata = user_listData::where('id', $validateData['id'])->first();
+        $verifdata->namaLengkap = $validateData['namaLengkap'];
         //$verifdata -> foto_user = $validateData ['foto_user'];
-        $verifdata -> noHp = $validateData ['noHp'];
-        $verifdata -> save();
+        $verifdata->noHp = $validateData['noHp'];
+        $verifdata->save();
 
         $data = [
             'status' => 'berhasil',
             'kode' => '200'
         ];
         return json_encode($data);
-        
     }
 
     public function UpdateFile(Request $request)
     {
-        //hapus File
         $request->validate(['foto_user' => 'required', 'namaLengkap' => 'required', 'noHp' => 'required', 'id' => 'required']);
         $pathDeleteImage = $request->foto_user;
         Storage::delete('public/foto_user/' . $pathDeleteImage);
@@ -98,21 +95,22 @@ public function UpdateProfil(Request $request)
         }
     }
 
-    public function getDataProfile(Request $request){
+    public function getDataProfile(Request $request)
+    {
         $request->validate(['id' => 'required']);
 
-        $getData = DB::table('user_list_data')->select('user_list_data.namaLengkap','user_list_data.email','user_list_data.noHp', 'user_list_data.foto_user')->where('user_list_data.id','=',$request->id)->first();
+        $getData = DB::table('user_list_data')->select('user_list_data.namaLengkap', 'user_list_data.email', 'user_list_data.noHp', 'user_list_data.foto_user')->where('user_list_data.id', '=', $request->id)->first();
 
-        if($getData != null){
-            return response()->json(['status' => 'berhasil','kode' => '200']);
-        }else{
-            return response()->json(['status' => 'gagal','kode' => '400']);
+        if ($getData != null) {
+            return response()->json(['status' => 'berhasil', 'kode' => '200']);
+        } else {
+            return response()->json(['status' => 'gagal', 'kode' => '400']);
         }
     }
 
     public function GetData($id)
     {
-        $contact = user_listData::select('namaLengkap', 'email', 'noHp','email','foto_user')->find($id);
+        $contact = user_listData::select('namaLengkap', 'email', 'noHp', 'email', 'foto_user')->find($id);
 
         if (!$contact) {
             return response()->json(['message' => 'Kontak tidak ditemukan'], 404);
@@ -120,7 +118,4 @@ public function UpdateProfil(Request $request)
 
         return response()->json($contact);
     }
-
-   
-
 }

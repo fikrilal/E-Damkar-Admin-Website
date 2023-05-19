@@ -45,10 +45,7 @@ Route::post('/user/password', [UserController::class, 'updatePassword']);
 
 Route::get('/semuaArtikel', [ArtikelBeritaController::class, 'semuaArtikel']);
 Route::post('/user', [UserController::class, 'updateProfil']);
-<<<<<<< HEAD
 Route::post('/sendToWa', [LaporanController::class, 'sendInfoToWhatsapp']);
 Route::post('/addImage', [LaporanController::class, 'addImage']);
-=======
 Route::post('/user/foto', [UserController::class, 'UpdateFile']);
 Route::get('/user/akun', [UserController::class, 'getDataProfile']);
->>>>>>> be2e88e90e0297ed7270ff1841c6859fa1229329

@@ -25,7 +25,7 @@ class landingedukasiController extends Controller
         }
 
         $artikel = $query->get();
-        $title = 'Edukasi';
+        $title = 'Edukasi | E-Damkar Nganjuk';
 
         return view('landinginformasi.landingedukasi', compact('artikel', 'search', 'title'));
     }

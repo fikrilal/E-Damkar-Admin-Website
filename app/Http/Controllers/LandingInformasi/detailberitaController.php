@@ -25,7 +25,7 @@ class detailberitaController extends Controller
             ->take(4)
             ->get();
 
-            $title = $berita->judul_berita; // Mengambil judul_agenda sebagai nilai $title
+            $title = $berita->judul_berita . ' | E-Damkar Nganjuk';      // Mengambil judul_agenda sebagai nilai $title
 
             return view('landinginformasi.detailberita', compact('berita', 'artikel1', 'title'));
         } else {

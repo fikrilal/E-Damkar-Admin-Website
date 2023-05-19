@@ -26,7 +26,7 @@ class detailedukasiController extends Controller
                 ->take(4)
                 ->get();
                 
-            $title = $edukasi->judul_edukasi; // Mengambil judul_agenda sebagai nilai $title
+                $title = $edukasi->judul_edukasi . ' | E-Damkar Nganjuk';                // Mengambil judul_agenda sebagai nilai $title
 
             return view('landinginformasi.detailedukasi', compact('edukasi', 'artikel1', 'title'));
         } else {

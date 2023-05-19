@@ -63,8 +63,8 @@
         <div class="tab-content" id="ex2-content">
             <div id="ex3-tabs-1" class="tab-pane" role="tabpanel" aria-labelledby="ex3-tab-1">
                 <!-- Konten untuk Profil -->
-                <!-- <h1>Profil</h1>
-                <p>Ini adalah halaman Profil.</p> -->
+                <!-- <h1>Profil</h1>-->
+                <p style="text-align: center;">Data belum diisi</p> 
             </div>
             <div id="ex3-tabs-2" class="tab-pane" role="tabpanel" aria-labelledby="ex3-tab-2">
                 <!-- Konten untuk Visi & Misi -->
@@ -95,8 +95,8 @@
             </div>
             <div id="ex3-tabs-3" class="tab-pane" role="tabpanel" aria-labelledby="ex3-tab-3">
                 <!-- Konten untuk Struktur Organisasi -->
-                <!-- <h1>Struktur Organisasi</h1>
-                <p>Ini adalah halaman Struktur Organisasi.</p> -->
+                <!-- <h1>Struktur Organisasi</h1>  -->
+                <p style="text-align: center;">Data belum diisi</p>
             </div>
         </div>
         <!-- Tabs content -->

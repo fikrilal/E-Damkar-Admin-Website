@@ -87,4 +87,11 @@ class LaporanController extends Controller
             ->where('status_riwayat_id', '4')->get();
         return pelaporanResources::collection($data);
     }
+
+    public function filterLapEmergency(Request $request)
+    {
+        $data = laporan::where('user_listdata_id', $request->userId)
+            ->where('status_riwayat_id', '5')->get();
+        return pelaporanResources::collection($data);
+    }
 }

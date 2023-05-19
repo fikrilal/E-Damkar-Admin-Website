@@ -40,6 +40,7 @@ Route::get('/filterLapMenunggu/{userId}', [LaporanController::class, 'filterLapM
 Route::get('/filterLapProses/{userId}', [LaporanController::class, 'filterLapProses']);
 Route::get('/filterLapSelesai/{userId}', [LaporanController::class, 'filterLapSelesai']);
 Route::get('/filterLapDitolak/{userId}', [LaporanController::class, 'filterLapDitolak']);
+Route::get('/filterLapEmergency/{userId}', [LaporanController::class, 'filterLapEmergency']);
 
 Route::get('/getEdukasi', [ArtikelController::class, 'newArtikelEdukasi']);
 Route::get('/getAgenda', [ArtikelController::class, 'newArtikelAgenda']);

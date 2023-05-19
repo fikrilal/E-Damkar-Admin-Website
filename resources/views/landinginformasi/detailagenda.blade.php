@@ -2,96 +2,59 @@
 @section('content')
 
     <main id="main">
- 
+   
         <!-- ======= Recent Blog Posts Section ======= -->
         <section id="recent-blog-posts" class="recent-blog-posts">
-
-        <div class="row">
-          <div class="col-3 mt-3">
-            <ul class="dropdown"><a href="#"><span>Artikel</span> <i class="bi bi-chevron-down"></ul>
-          </div>
-        </div>
-
             <div class="container" data-aos="fade-up">
             <header class="section-header">
                 <h3>
-                    <p>5 Hal Yang Wajib Dilakukan Seorang Programmer Ketika Terjadi Kebakaran</p>
+                    <p>{{ $agenda->judul_agenda }}</p>
                 </h3>
             </header>
 
-            <p>Senin, 20-08-2022</p>
+            <p>{{ \Carbon\Carbon::parse($agenda->tgl_agenda)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</p>
 
             <!-- this is headline section -->
             <div class="container mt-3">
                     <img class="rounded-4"
                     style="object-fit: cover; width: 100%; height: 400px"
-                    class="rounded-4" src="{{ asset('frontend/assets/img/beritaPict.png')}}" alt="">
-                <h6 class="mt-3">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum
-                    porro consequuntur enim optio recusandae, delectus, veritatis quam
-                    provident esse animi explicabo debitis iste neque, nulla architecto.
-                    Rerum rem impedit nulla!
-                </h6>
+                    class="rounded-4" src="{{ asset('img-agenda/' . $agenda->foto_artikel_agenda) }}" alt="">
+                    <style>
+                        .justify {
+                            text-align: justify;
+                            text-justify: inter-word;
+                        }
+                    </style>
+                    <p class="mt-3 justify">
+                    {!! nl2br(e($agenda->deskripsi)) !!}
+                    </p>
             </div>
         
             <!-- this is list news section -->
             <div class="container mt-5">
-              <h3>Berita Lainnya</h3>
+              <h3>Artikel Lainnya</h3>
               <div class="row">
+                @foreach($artikel1 as $artikel)
                 <div class="col-3">
-                  <img
-                    class="rounded-4"
-                    style="object-fit: cover; width: 100%; aspect-ratio: 1/1"
-                    src="https://cdn.pixabay.com/photo/2014/05/21/22/28/old-newspaper-350376__340.jpg"
-                    alt=""
-                  />
-                  <p class="mt-3">
-                    <b>Jhon Due | 20-08-2022</b> <br />
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit Soluta
-                    accusantium praesentium ducimus
-                  </p>
+                  <a href="{{ route('detailagenda.show', ['id_agenda' => $artikel->id_agenda]) }}" style="color: black;">
+                    <img
+                      class="rounded-4"
+                      style="object-fit: cover; width: 100%; aspect-ratio: 1/1"
+                      src="{{ asset('img-agenda/' . $artikel->foto_artikel_agenda) }}"
+                      alt=""
+                    />
+                    <p class="mt-3">
+                      <b>{{ $artikel->judul_agenda }}</b> <br />
+                      {{ Str::limit($artikel->deskripsi, 50, ' ...') }}
+                    </p>
+                  </a>
                 </div>
-                <div class="col-3">
-                  <img
-                    class="rounded-4"
-                    style="object-fit: cover; width: 100%; aspect-ratio: 1/1"
-                    src="https://cdn.pixabay.com/photo/2014/05/21/22/28/old-newspaper-350376__340.jpg"
-                    alt=""
-                  />
-                  <p class="mt-3">
-                    <b>Jhon Due | 20-08-2022</b> <br />
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit Soluta
-                    accusantium praesentium ducimus
-                  </p>
-                </div>
-                <div class="col-3">
-                  <img
-                    class="rounded-4"
-                    style="object-fit: cover; width: 100%; aspect-ratio: 1/1"
-                    src="https://cdn.pixabay.com/photo/2014/05/21/22/28/old-newspaper-350376__340.jpg"
-                    alt=""
-                  />
-                  <p class="mt-3">
-                    <b>Jhon Due | 20-08-2022</b> <br />
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit Soluta
-                    accusantium praesentium ducimus
-                  </p>
-                </div>
-                <div class="col-3">
-                  <img
-                    class="rounded-4"
-                    style="object-fit: cover; width: 100%; aspect-ratio: 1/1"
-                    src="https://cdn.pixabay.com/photo/2014/05/21/22/28/old-newspaper-350376__340.jpg"
-                    alt=""
-                  />
-                  <p class="mt-3">
-                    <b>Jhon Due | 20-08-2022</b> <br />
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit Soluta
-                    accusantium praesentium ducimus
-                  </p>
-                </div>
+                @endforeach
               </div>
             </div>
+
+
+
 
         </section><!-- End Recent Blog Posts Section -->
 

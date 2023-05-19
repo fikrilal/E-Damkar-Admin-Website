@@ -11,12 +11,23 @@ use App\Http\Controllers\Controller;
 
 class landingagendaController extends Controller
 {
-    public function index(){
-        $artikel = DB::table('artikel_agendas')
-        ->orderByDesc('id_agenda')
-        ->get();
+    public function index(Request $request)
+    {
+        $search = $request->input('search');
 
-        return view('landinginformasi.landingagenda', compact('artikel'));
-        
+        $query = DB::table('artikel_agendas')
+            ->orderByDesc('id_agenda');
+
+        if (!empty($search)) {
+            $query->where(function ($q) use ($search) {
+                $q->where('judul_agenda', 'like', '%' . $search . '%')
+                    ->orWhere('deskripsi', 'like', '%' . $search . '%');
+            });
+        }
+
+        $artikel = $query->get();
+        $title = 'Agenda';
+
+        return view('landinginformasi.landingagenda', compact('artikel', 'search', 'title'));
     }
 }

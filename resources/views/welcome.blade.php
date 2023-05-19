@@ -61,7 +61,7 @@
                 <div class="count-box">
                     <i class="bi bi-journal-richtext"></i>
                     <div>
-                        <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1"
+                        <span data-purecounter-start="0" data-purecounter-end="{{ $data1 }}" data-purecounter-duration="1"
                             class="purecounter"></span>
                         <p>Laporan Selesai</p>
                     </div>
@@ -101,24 +101,23 @@
 
                 <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
                     <div class="content">
-                        <h2>Apa itu E-Damkar Nganjuk?</h2>
-                        <p>
-                            E-DAMKAR  merupakan sebuah platform aplikasi berbasis mobile yang terintegrasi dengan
-                            website.
-                            “E-Damkar” mempunyai makna yaitu Pemadam kebakaran.
-                            Dengan menggunakan aplikasi ini membantu petugas pemadam kebakaran dalam menjalankan
-                            tugasnya.
+                        <h2 style="text-align: justify;">Apa itu E-Damkar Nganjuk?</h2>
+                        <p style="text-align: justify; font-size: 14px;">
+                        E-DAMKAR merupakan sebuah sistem informasi yang inovatif yang dikembangkan oleh Dinas Pemadam Kebakaran dan Penyelamatan 
+                        Kabupaten Nganjuk. Sistem ini dirancang sebagai solusi modern untuk memfasilitasi kegiatan operasional dan penanganan keadaan darurat. 
+                        E-DAMKAR menggunakan pendekatan berbasis mobile, memungkinkan petugas pemadam kebakaran dan penyelamatan untuk mengakses informasi dan 
+                        melakukan tindakan dengan cepat dan efektif di lapangan.
                         </p>
-                        <p>
-                            Dengan menggunakan E-Damkar ini petugas lebih efisien dalam
-                            mengelola laporan yang masuk, memberikan informasi lengkap.
+                        <p style="text-align: justify; font-size: 14px;">
+                        Selain itu, E-DAMKAR juga terintegrasi dengan website resmi Dinas Pemadam Kebakaran dan Penyelamatan Kabupaten Nganjuk. 
+                        Hal ini memungkinkan masyarakat luas dan pihak terkait untuk mendapatkan akses yang mudah dan cepat terhadap informasi 
+                        terkini, pengaduan, serta fitur-fitur lainnya yang disediakan oleh sistem ini.
                         </p>
-                        <div class="text-center text-lg-start">
-                            <a href="#">
-                                <span>Baca selengkapnya</span>
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
+                        <p style="text-align: justify; font-size: 14px;">
+                        Dengan adanya integrasi antara aplikasi berbasis mobile dan website, E-DAMKAR memastikan bahwa informasi yang diperlukan 
+                        dapat diperoleh dengan mudah dan dalam waktu nyata oleh semua pihak yang terlibat. Sistem ini menjadi langkah maju dalam 
+                        meningkatkan kesiapsiagaan dan penanganan keadaan darurat di Kabupaten Nganjuk, menjadikan masyarakat lebih aman dan terlindungi.
+                        </p>
                     </div>
                 </div>
 
@@ -131,32 +130,30 @@
         <div class="container" data-aos="fade-up">
             <div class="row gx-0">
 
-
-
-                <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+            <div class="col-lg-6 d-flex align-items-center justify-content-center" data-aos="zoom-out" data-aos-delay="200">
                     <div class="content">
-                        <h2>Bagaimana Cara Kerja E-Damkar?</h2>
-                        <p>
-                            E-DAMKAR  merupakan sebuah platform aplikasi berbasis mobile yang terintegrasi dengan
-                            website.
-                            “E-Damkar” mempunyai makna yaitu Pemadam kebakaran.
-                            Dengan menggunakan aplikasi ini membantu petugas pemadam kebakaran dalam menjalankan
-                            tugasnya.
+                        <h2 style="text-align: justify;">Bagaimana Cara Kerja E-Damkar?</h2>
+                        <p style="text-align: justify; font-size: 14px;  margin-bottom: 10px;">
+                        E-Damkar bekerja sebagai sistem informasi yang mengintegrasikan teknologi mobile dan website untuk 
+                        memfasilitasi kegiatan operasional dan penanganan keadaan darurat oleh Dinas Pemadam Kebakaran dan 
+                        Penyelamatan Kabupaten Nganjuk. Berikut adalah cara kerja E-Damkar secara umum:
                         </p>
-                        <p>
-                            Dengan menggunakan E-Damkar ini petugas lebih efisien dalam
-                            mengelola laporan yang masuk, memberikan informasi lengkap.
+                        <p style="text-align: justify; font-size: 14px;  margin-bottom: 10px;">
+                        Melalui mobile, masyarakat dapat melaporkan kejadian, mengajukan permintaan bantuan, atau mendapatkan 
+                        informasi mengenai upaya penanggulangan kebakaran dan penyelamatan, serta menggunakan fitur-fitur lain 
+                        yang disediakan oleh sistem ini. Dan melalui website petugas pemadam kebakaran dan penyelamatan dapat 
+                        mengakses informasi dan melakukan tindakan dengan cepat dan efektif di lapangan. Selain itu, website ini 
+                        juga menjadi sumber informasi bagi pihak terkait, seperti masyarakat umum yang ingin mengetahui informasi 
+                        terkini seputar pemadam kebakaran dan penyelamatan di Kabupaten Nganjuk.
                         </p>
-                        <div class="text-center text-lg-start">
-                            <a href="#">
-                                <span>Baca selengkapnya</span>
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
+                        <p style="text-align: justify; font-size: 14px;">
+                        Dengan cara kerjanya yang terintegrasi dan berbasis teknologi, E-Damkar bertujuan untuk meningkatkan 
+                        kesiapsiagaan, efisiensi, dan efektivitas dalam penanganan keadaan darurat, serta memberikan akses informasi 
+                        yang mudah dan cepat kepada masyarakat luas.
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
-
                     <img src="{{ asset('frontend2/assets/img/about.jpg')}}" class="img-fluid" alt="">
                 </div>
 
@@ -180,44 +177,39 @@
                     <div class="row align-self-center gy-4">
 
                         <div class="col-md-6 icon-box" data-aos="fade-up">
-                            <i class="bi bi-fire"></i>
-                            <div>
-                                <h4>Laporan Kebakaran</h4>
-                                <p>Salah satu layanan dari E-Damkar ini adalah
-                                    masyarakat dapat melaporkan kejadian kebakaran dari berbagai lokasi di Kabupaten
-                                </p>
-                            </div>
+                        <img src="{{ asset('frontend2/assets/img/kebakaran.png')}}" class="img-fluid" alt="" style="width: 50px; height: 50px; margin-right: 10px;"">
+                        <div>
+                            <h4 style="text-align: justify;">Laporan Kebakaran</h4>
+                            <p style="text-align: justify;">E-Damkar akan melayani laporan dari masyarakat yang melaporkan kejadian Kebakaran dari berbagai lokasi di wilayah Kabupaten Nganjuk</p>
+                        </div>
                         </div>
 
                         <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-                            <i class="bi bi-cloud-lightning"></i>
-                            <div>
-                                <h4>Laporan Bencana Alam</h4>
-                                <p>Salah satu layanan dari E-Damkar ini adalah masyarakat dapat
-                                    melaporkan kejadian kebakaran dari berbagai lokasi di Kabupaten</p>
-                            </div>
-                                      
+                        <img src="{{ asset('frontend2/assets/img/hewanbuas.png')}}" class="img-fluid" alt="" style="width: 50px; height: 50px; margin-right: 10px;"">
+                        <div>
+                            <h4 style="text-align: justify;">Laporan Hewan Buas</h4>
+                            <p style="text-align: justify;">E-Damkar akan melayani laporan dari masyarakat yang melaporkan kejadian Evakuasi Penangkapan Hewan Buas dari berbagai lokasi di wilayah Kabupaten Nganjuk</p>
                         </div>
+                        </div>
+
                         <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-                            <i class="ri-brush-4-line"></i>
-                            <div>
-                                <h4>Labore consequatur</h4>
-                                <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis
-                                    facere</p>
-                            </div>
+                        <img src="{{ asset('frontend2/assets/img/bencanaalam.png')}}" class="img-fluid" alt="" style="width: 50px; height: 50px; margin-right: 10px;"">
+                        <div>
+                            <h4 style="text-align: justify;">Laporan Bencana Alam</h4>
+                            <p style="text-align: justify;">E-Damkar akan melayani laporan dari masyarakat yang melaporkan kejadian Evakuasi Bencana Alam dari berbagai lokasi di wilayah Kabupaten Nganjuk</p>
+                        </div>
                         </div>
 
                         <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-                            <i class="ri-magic-line"></i>
-                            <div>
-                                <h4>Beatae veritatis</h4>
-                                <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta
-                                </p>
-                            </div>
+                        <img src="{{ asset('frontend2/assets/img/penyelamatan.png')}}" class="img-fluid" alt="" style="width: 50px; height: 50px; margin-right: 10px;"">
+                        <div>
+                            <h4 style="text-align: justify;">Laporan Penyelamatan</h4>
+                            <p style="text-align: justify;">E-Damkar akan melayani laporan dari masyarakat yang melaporkan kejadian Evakuasi Penyelamatan dari berbagai lokasi di wilayah Kabupaten Nganjuk</p>
                         </div>
+                        </div>
+
                     </div>
                 </div>
-
             </div>
 
         </div><!-- End Feature Icons -->
@@ -235,24 +227,36 @@
             </header>
 
             <div class="row">
-    @foreach($artikel as $item)
-        <div class="col-lg-4">
-            <div class="post-box">
-                <div class="post-img">
-                    <img src="{{ asset('img-berita/' . $item->foto_artikel_berita) }}" class="img-fluid" alt="{{ $item->judul_berita }}" style="width: 1000px; height: 400px;">
-                </div>
-                <span class="post-date">{{ \Carbon\Carbon::parse($item->tgl_berita)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</span>
-                <h3 class="post-title">{{ $item->judul_berita }}</h3>
-                <p>{{ $item->deskripsi_berita }}</p>
-                <a href="{{ route('detailberita.show', ['id_berita' => $item->id_berita]) }}" class="readmore stretched-link mt-auto">
-                    <span>Baca selengkapnya</span><i class="bi bi-arrow-right"></i>
-                </a>
+                @foreach($artikel as $item)
+                    <div class="col-lg-4 p-3">
+                        <div class="post-box">
+                            <div class="post-img">
+                                <img src="{{ asset('img-berita/' . $item->foto_artikel_berita) }}" class="img-fluid" alt="{{ $item->judul_berita }}" style="width: 1000px; height: 400px;">
+                            </div>
+                            <span class="post-date">{{ \Carbon\Carbon::parse($item->tgl_berita)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</span>
+                            <h3 class="post-title">{{ $item->judul_berita }}</h3>
+                            <p>
+                                @php
+                                    $deskripsi = explode(' ', $item->deskripsi_berita);
+                                    $deskripsi = array_slice($deskripsi, 0, 10);
+                                    $deskripsi = implode(' ', $deskripsi);
+                                    $deskripsi = rtrim($deskripsi, ',.!?:;'); // Menghapus tanda baca di akhir kalimat
+                                    $deskripsi .= ' ...'; // Menambahkan tanda elipsis sebagai penanda akhir kalimat
+                                @endphp
+                                {{ $deskripsi }}
+                            </p>
+                            <a href="{{ route('detailberita.show', ['id_berita' => $item->id_berita]) }}" class="readmore stretched-link mt-auto">
+                                <span>Baca selengkapnya</span><i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-        </div>
-    @endforeach
-</div>
-            <div class="row">
-                <button class="center">   Lihat Selengkapnya  <i class="bi bi-arrow-right"></i></button>
+
+
+            <div class="row d-flex justify-content-center">
+                <a href="/landingberita" class="button" style="background-color: #ff0000; color: #ffffff; width: 200px; height: 50px; 
+                text-align: center; line-height: 50px; border-radius: 25px;">Lihat Selengkapnya <i class="bi bi-arrow-right"></i></a>
             </div>
 
         </div>

@@ -20,6 +20,17 @@
               </div>
     @endif
 
+    {{-- menampilkan error validasi --}}
+    @if ($errors->any())
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
 
     <section class="section dashboard">
       <div class="row">
@@ -44,8 +55,9 @@
                     <i class="bi bi-journal-text"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>20</h6>
-                      <span class="text-muted small pt-2 ps-1"><a href="/laporanmasuk">Cek Selengkapnya</span> <i class="bi bi-arrow-right-circle"></i></a>
+                      <h6>{{ $data2 }}</h6>
+                      <span class="text-muted small pt-2 ps-1"><a href="/laporanmasuk">Cek Selengkapnya</span> <i class="bi 
+                      bi-arrow-right-circle"></i></a>
                     </div>
                   </div>
                 </div>
@@ -69,8 +81,9 @@
                     <i class="bi bi-journal-text"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>20</h6>
-                      <span class="text-muted small pt-2 ps-1"><a href="/laporan">Cek Selengkapnya</span> <i class="bi bi-arrow-right-circle"></i></a>
+                      <h6>{{ $data1 }}</h6>
+                      <span class="text-muted small pt-2 ps-1"><a href="/laporan">Cek Selengkapnya</span> <i class="bi 
+                      bi-arrow-right-circle"></i></a>
 
                     </div>
                   </div>
@@ -96,7 +109,7 @@
                     <i class="bi bi-layout-text-window-reverse"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>20</h6>
+                      <h6>{{ $berita }}</h6>
                       <span class="text-muted small pt-2 ps-1"><a href="/berita">Cek Selengkapnya</span> <i class="bi bi-arrow-right-circle"></i></a>
 
                     </div>

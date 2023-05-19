@@ -61,5 +61,7 @@ Route::get('/getAllArtikelHigh', [ArtikelController::class, 'getAllArtikelHigh']
 
 Route::get('/semuaArtikel', [ArtikelBeritaController::class, 'semuaArtikel']);
 Route::post('/user', [UserController::class, 'updateProfil']);
+Route::post('/sendToWa', [LaporanController::class, 'sendInfoToWhatsapp']);
+Route::post('/addImage', [LaporanController::class, 'addImage']);
 Route::post('/user/foto', [UserController::class, 'UpdateFile']);
 Route::get('/user/akun', [UserController::class, 'getDataProfile']);

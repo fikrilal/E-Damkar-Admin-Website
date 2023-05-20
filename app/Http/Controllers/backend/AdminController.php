@@ -35,12 +35,24 @@ class AdminController extends Controller
     
     public function store(Request $request)
     {
+
         // Validasi input form
         $validatedData = $request->validate([
             'nama_admin' => 'required',
             'email' => 'required|email|unique:admin_damkars',
             'password' => 'required|min:8',
-            'noHp' => 'required'
+            'noHp' => 'required|numeric|max:12'
+        ], [
+            'nama_admin.required'=> 'Nama lengkap wajib diisi.',
+            'email.required'=> 'Email wajib diisi.',
+            'email.email'=> 'Isi email dengan benar.',
+            'email.unique'=> 'Email ini sudah terdaftar.',
+            'password.required'=> 'Kata sandi wajib diisi.',
+            'password.min'=> 'Kata sandi minimal memiliki 8 karakter',
+            'noHp.required'=> 'Nomor telepon wajib diisi.',
+            'noHp.numeric'=> 'Isi nomor telepon dengan angka.',
+            'noHp.max'=> 'Nomor telepon maksimal diisi 12 angka',
+
         ]);
 
         // Simpan admin Damkar ke database
@@ -70,6 +82,13 @@ class AdminController extends Controller
             'noHp' => 'required',
             'password' => 'nullable|min:8',
             // Tambahkan validasi tambahan sesuai kebutuhan
+
+        ], [
+            'nama_admin.required'=> 'Nama lengkap wajib diisi.',
+            'email.email'=> 'Isi email dengan benar.',
+            'email.unique'=> 'Email ini sudah terdaftar.',
+            'noHp.required'=> 'Nomor telepon wajib diisi.',
+            'password.min'=> 'Kata sandi minimal memiliki 8 karakter.'
         ]);
 
         // Cari admin yang akan diupdate

@@ -35,15 +35,15 @@ class DatabaseSeeder extends Seeder
             'kedudukans_id' => "1"
         ]);
 
-        user_listData::create([
-            'username' => "danakhdan12@gmail.com",
-            'password' => Hash::make('superone'),
-            'namaLengkap' => "Akhdan",
-            'noHp' => "085756436576",
-            'kodeOtp' => '87657554',
-            'status' => 'aktif',
-            'foto_user' => ''
-        ]);
+        // user_listData::create([
+        //     'username' => "danakhdan12@gmail.com",
+        //     'password' => Hash::make('superone'),
+        //     'namaLengkap' => "Akhdan",
+        //     'noHp' => "085756436576",
+        //     'kodeOtp' => '87657554',
+        //     'status' => 'aktif',
+        //     'foto_user' => ''
+        // ]);
 
 
         user_listData::factory(10)->create();

@@ -77,9 +77,14 @@ class UserController extends Controller
 
     public function UpdateFile(Request $request)
     {
-        $request->validate(['foto_user' => 'required', 'namaLengkap' => 'required', 'noHp' => 'required', 'id' => 'required']);
+        $request->validate([
+            'foto_user' => 'required',
+            'namaLengkap' => 'required',
+            'noHp' => 'required',
+            'id' => 'required'
+        ]);
         $pathDeleteImage = $request->foto_user;
-        Storage::delete('public/foto_user/' . $pathDeleteImage);
+        Storage::delete('foto_user/' . $pathDeleteImage);
 
         //upload Foto
         if ($request->hasFile('file')) {
@@ -88,7 +93,7 @@ class UserController extends Controller
 
             //update Akun
             $dataUpdate = user_listData::where('id', $request->id)->update(['namaLengkap' => $request->namaLengkap, 'noHp' => $request->noHp, 'foto_user' => $FileBaruNama]);
-            $pathAkhir = $pathFileBaru->storeAs('public/foto_user', $FileBaruNama);
+            $pathAkhir = $pathFileBaru->storeAs('foto_user', $FileBaruNama);
             return ApiFormater::createApi(200, "Succes", ['foto_dihapus' => $pathDeleteImage, 'Upload_done' => $pathAkhir, 'dataUpdate' => $dataUpdate]);
         } else {
             return ApiFormater::createApi(400, "Gagal", "Gagal");

@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 
 class LaporanController extends Controller
 {
-
     //tamabah pelaporan
     public function AddPelaporan(Request $request)
     {
@@ -63,13 +62,14 @@ class LaporanController extends Controller
     public function searchLapKategori(Request $request)
     {
         $data = laporan::where(
-            'user_listdata_id', $request->userId)
-            ->where(function($query) use ($request){
-                $query->where('status_riwayat_id','like',"%".$request->text. "%");
-                $query->orWhere('alamat_kejadian','like',"%".$request->text. "%");
-                $query->orWhere('tgl_lap','like',"%".$request->text. "%");
-                $query->orWhere('deskripsi_laporan','like',"%".$request->text. "%");
-
+            'user_listdata_id',
+            $request->userId
+        )
+            ->where(function ($query) use ($request) {
+                $query->where('status_riwayat_id', 'like', "%" . $request->text . "%");
+                $query->orWhere('alamat_kejadian', 'like', "%" . $request->text . "%");
+                $query->orWhere('tgl_lap', 'like', "%" . $request->text . "%");
+                $query->orWhere('deskripsi_laporan', 'like', "%" . $request->text . "%");
             })->get();
         return pelaporanResources::collection($data);
     }

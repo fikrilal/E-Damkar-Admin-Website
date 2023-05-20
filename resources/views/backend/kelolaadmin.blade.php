@@ -4,141 +4,126 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Kelola Admin</h1>
+      <h1>Pengaturan</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="">Home</a></li>
-          <li class="breadcrumb-item active">Kelola Admin</li>
+          <li class="breadcrumb-item active">Pengaturan</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
     @if (session('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+    {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
     @endif
 
     {{-- menampilkan error validasi --}}
     @if ($errors->any())
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
 
     <section class="section">
-        <div class="row">
-            <div class="col-lg-12">
+      <div class="row">
+        <div class="col-lg-12">
 
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Kelola Admin</h5>
-                        <p>Berikut adalah daftar admin yang sudah ditambahkan.</p>
-                        <!-- Large Modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#largeModal">
-                            <i class="bi bi-plus"></i> Tambahkan Admin
-                        </button>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Kelola Admin</h5>
+              <p>Berikut adalah daftar admin yang sudah ditambahkan.</p>
 
-                        <div class="modal fade" id="largeModal" tabindex="-1">
-                            <div class="modal-dialog modal-xl">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Tambahkan Admin</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModal">
+             <i class="bi bi-plus"></i> Tambahkan Admin</button>
 
-                                        <!-- General Form Elements -->
-                                        <form class="form-validate" id="artikeledukasiform" method="POST"
-                                            action="{{ route('admin.store') }}" enctype="multipart/form-data">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ Auth::user()->id }}"></br>
-                                            <div class="row mb-3">
-                                                <label for="inputText" class="col-sm-2 col-form-label">Nama</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="nama_admin" id="nama_admin"
-                                                        class="form-control" value="{{ old('nama_admin') }}">
-                                                </div>
-                                            </div>
+             <div class="modal fade" id="largeModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tambahkan Admin</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- General Form Elements -->
+                <form class="form-validate" id="artikeledukasiform" method="POST" action="{{ route('kelolaadmin.store') }}" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                    <div class="row mb-3">
+                        <label for="nama_admin" class="col-sm-2 col-form-label">Nama</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="nama_admin" id="nama_admin" class="form-control" value="{{ old('nama_admin') }}">
+                        </div>
+                    </div>
 
-                                            <div class="row mb-3">
-                                                <label for="inputText" class="col-sm-2 col-form-label">Email</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="email" id="email" class="form-control"
-                                                        value="{{ old('email') }}">
-                                                </div>
-                                            </div>
+                    <div class="row mb-3">
+                        <label for="email" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}">
+                        </div>
+                    </div>
 
+                    <div class="row mb-3">
+                        <label for="password" class="col-sm-2 col-form-label">Kata Sandi</label>
+                        <div class="col-sm-10">
+                            <input type="password" name="password" id="password" class="form-control">
+                        </div>
+                    </div>
 
-                                            <div class="row mb-3">
-                                                <label for="inputText" class="col-sm-2 col-form-label">Kata
-                                                    Sandi</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="password" id="password"
-                                                        class="form-control" value="{{ old('password') }}">
-                                                </div>
-                                            </div>
+                    <div class="row mb-3">
+                        <label for="noHp" class="col-sm-2 col-form-label">Nomor HP</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="noHp" id="noHp" class="form-control" value="{{ old('noHp') }}">
+                        </div>
+                    </div>
 
-                                            <div class="row mb-3">
-                                                <label for="inputText" class="col-sm-2 col-form-label">Nomor
-                                                    Telepon</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="noHp" id="noHp" class="form-control"
-                                                        value="{{ old('noHp') }}">
-                                                </div>
-                                            </div>
+                    <div class="row mb-3">
+                        <!-- Any additional form fields you have -->
+                    </div>
 
-                                            <div class="row mb-3">
-                                                <!-- Any additional form fields you have -->
-                                            </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                        <button type="submit" class="btn btn-primary">Tambahkan</button>
+                    </div>
+                </form><!-- End General Form Elements -->
+            </div>
+        </div>
+    </div>
+</div>
 
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Keluar</button>
-                                                <button type="submit" class="btn btn-primary">Konfirmasi</button>
-                                            </div>
-                                        </form><!-- End General Form Elements -->
-                                    </div>
-                                </div>
-                            </div><!-- End Large Modal-->
-
-
-                            <!-- Table with stripped rows -->
-                            <table class="table datatable">
-
-                                <thead>
-                                    <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">Nama Lengkap</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @php $no = 1; @endphp
-                                    @foreach($admin as $kelolaadmin)
-                                    <tr>
-                                        <th scope="row">{{ $no++ }}</th>
-                                        <td>{{$kelolaadmin->nama_lengkap}}</td>
-                                        <td>{{$kelolaadmin->email}}</td>
-                                        <td><a href="#" type="button" class="btn btn-primary"
+          
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+             
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama Lengkap</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                @php $no = 1; @endphp
+                @foreach($data as $admin)
+                  <tr>
+                    <th scope="row">{{ $no++ }}</th>
+                    <td>{{$admin->nama_lengkap}}</td>
+                    <td>{{$admin->email}}</td>
+                    <td><a href="#" type="button" class="btn btn-primary"
                                                 data-bs-toggle="modal"
-                                                data-bs-target="#largeModalEdit{{ $kelolaadmin->id }}"><i
+                                                data-bs-target="#largeModalEdit{{ $admin->id }}"><i
                                                     class="bi bi-pen"></i> Edit</a>
+                    </td>
 
-                                        </td>
-
-                                    </tr>
-
-                                    <div class="modal fade" id="largeModalEdit{{ $kelolaadmin->id }}" tabindex="-1">
+                    <div class="modal fade" id="largeModalEdit{{ $admin->id }}" tabindex="-1">
                                         <div class="modal-dialog modal-xl">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -148,17 +133,17 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <!-- General Form Elements -->
-                                                    <form action="{{ route('admin.update') }}" method="POST">
-                                                      @method('POST')
-                                                      @csrf
+                                                    <form action="{{ route('kelolaadmin.update', ['kelolaadmin' => $admin->id]) }}" method="POST">
+                                                        @method('PUT')
+                                                        @csrf
                                                         <input type="hidden" name="id"
-                                                            value="{{ $kelolaadmin->id }}">
+                                                            value="{{ $admin->id }}">
                                                         <div class="row mb-3">
                                                             <label for="inputText"
                                                                 class="col-sm-2 col-form-label">Nama</label>
                                                             <div class="col-sm-10">
                                                                 <input type="text" name="nama_admin" id="nama_admin"
-                                                                    value="{{ $kelolaadmin->nama_admin }}"
+                                                                    value="{{ $admin->nama_lengkap }}"
                                                                     class="form-control">
                                                             </div>
                                                         </div>
@@ -168,10 +153,31 @@
                                                                 class="col-sm-2 col-form-label">Email</label>
                                                             <div class="col-sm-10">
                                                                 <input type="text" name="email" id="email"
-                                                                    value="{{ $kelolaadmin->email }}"
+                                                                    value="{{ $admin->email }}"
                                                                     class="form-control">
                                                             </div>
                                                         </div>
+
+                                                        <div class="row mb-3">
+                                                            <label for="inputText"
+                                                                class="col-sm-2 col-form-label">No HP</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" name="noHp" id="noHp"
+                                                                    value="{{ $admin->noHp }}"
+                                                                    class="form-control">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mb-3">
+                                                            <label for="inputText"
+                                                                class="col-sm-2 col-form-label">Password</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="password" name="password" id="password"
+                                                            
+                                                                    class="form-control">
+                                                            </div>
+                                                        </div>
+
 
                                                         <div class="row mb-3">
                                                             <!-- Any additional form fields you have -->
@@ -179,21 +185,30 @@
 
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Keluar</button>
-                                                                <button type="submit">Simpan</button>
+                                                                data-bs-dismiss="modal">Kembali</button>
+                                                                <button type="submit" class="btn btn-primary">Update</button>
                                                     </form>
                                                     <!-- End General Form Elements -->
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- End Large Modal-->
-                                        @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+
+                  </tr>
+
+                  @endforeach
+    
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
             </div>
-        </section>
-    </main>
-@endsection
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  @endsection

@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 Use \Carbon\Carbon;
 use App\Models\User;
+use App\Models\admin_damkar;
+use Illuminate\Support\Facades\Hash;
 
 
 class AdminController extends Controller
@@ -26,56 +28,65 @@ class AdminController extends Controller
     
     public function index()
     {
-        $admin = Admin::all();
-        return view('backend.kelolaadmin', compact('admin'));
+        $title = 'Kelola Admin | E-Damkar Nganjuk';
+        $data = User::orderBy('nama_lengkap', 'asc')->get(); // Mengurutkan berdasarkan nama_lengkap secara ascending
+        return view('backend.kelolaadmin', compact('data', 'title'));
     }
-
+    
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        // Validasi input form
+        $validatedData = $request->validate([
             'nama_admin' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-            'noHp' => 'required',
+            'email' => 'required|email|unique:admin_damkars',
+            'password' => 'required|min:8',
+            'noHp' => 'required'
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        // Create a new admin record in the database
-        $admin = new Admin;
-        $admin->nama_admin = $request->input('nama_admin');
-        $admin->email = $request->input('email');
-        $admin->password = $request->input('password');
-        $admin->noHp = $request->input('noHp');
-        // Add any additional fields you have
-
-        // Save the admin record
+        // Simpan admin Damkar ke database
+        $admin = new admin_damkar;
+        $admin->nama_lengkap = $request->nama_admin;
+        $admin->email = $request->email;
+        $admin->password =  Hash::make($request->input('password'));
+        $admin->noHp = $request->noHp;
+        $admin->kedudukans_id = 2 ;
         $admin->save();
 
-        return redirect()->back()->with('success', 'Admin successfully added.');
+        return redirect()->route('kelolaadmin.index')->with('success', 'Data admin berhasil ditambahkan.');
+    }
+
+    public function edit($id)
+    {
+        $admin = admin_damkar::findOrFail($id);
+        return view('kelolaadmin.edit', compact('admin'));
     }
 
     public function update(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        // Validasi input form
+        $validatedData = $request->validate([
             'nama_admin' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:admin_damkars,email,' . $request->id,
+            'noHp' => 'required',
+            'password' => 'nullable|min:8',
+            // Tambahkan validasi tambahan sesuai kebutuhan
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+        // Cari admin yang akan diupdate
+        $admin = admin_damkar::findOrFail($request->id);
+
+        // Update data admin
+        $admin->nama_lengkap = $request->nama_admin;
+        $admin->email = $request->email;
+        $admin->noHp = $request->noHp;
+        if ($request->password) {
+            $admin->password = Hash::make($request->input('password'));
         }
+        // Update kolom lainnya sesuai kebutuhan
 
-        $admin = Admin::findOrFail($request->input('id'));
-        $admin->nama_admin = $request->input('nama_admin');
-        $admin->email = $request->input('email');
-        // Add any additional fields you have
-
-        // Save the updated admin record
         $admin->save();
 
-        return redirect()->back()->with('success', 'Admin successfully updated.');
+        return redirect()->route('kelolaadmin.index')->with('success', 'Data admin berhasil diupdate.');
     }
+
 }

@@ -31,9 +31,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
     Route::resource('berita', 'BeritaController');
     Route::resource('edukasi', 'EdukasiController');
     Route::resource('agenda', 'AgendaController');
-    Route::resource('kelolaadmin', 'AdminController');
     Route::middleware([CheckKedudukanMiddleware::class])->group(function () {
-        Route::resource('kelolaadmin', 'AdminController');
+    Route::resource('kelolaadmin', 'AdminController');
     });
 });
 
@@ -69,10 +68,3 @@ Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'inde
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::post('/admin', 'AdminController@store')->name('admin.store');
-Route::put('/admin/{id}', 'Backend\AdminController@update')->name('admin.update');
-
-Route::get('/kelola-admin', [AdminController::class, 'index'])->name('kelola-admin');
-Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
-Route::put('/admin/update', [AdminController::class, 'update'])->name('admin.update');

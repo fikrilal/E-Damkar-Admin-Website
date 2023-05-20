@@ -15,6 +15,7 @@ class DashboardController extends Controller
          // Mengambil tanggal laporan dalam seminggu terakhir
         $startOfWeek = Carbon::now()->startOfWeek();
         $endOfWeek = Carbon::now()->endOfWeek();
+        
 
         $tanggalLaporan = DB::table('laporans')
             ->whereIn('status_riwayat_id', [1, 2, 3, 4])

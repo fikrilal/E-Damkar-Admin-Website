@@ -18,8 +18,8 @@
                     <div class="icon">
                         <i class="bi bi-search"></i>
                     </div>
-                    <form action="{{ route('landingedukasi.index') }}" method="GET">
-                        <input type="search" name="search" id="search" class="rounded-pill" placeholder="Cari artikel edukasi" value="{{ $search ?? '' }}">
+                    <form action="{{ route('landingberita.index') }}" method="GET">
+                        <input type="search" name="search" id="search" class="rounded-pill" placeholder="Cari artikel berita" value="{{ $search ?? '' }}">
                     </form>
                 </div>
                 

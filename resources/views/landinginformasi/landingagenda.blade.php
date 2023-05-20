@@ -19,7 +19,7 @@
                         <i class="bi bi-search"></i>
                     </div>
                     <form action="{{ route('landingagenda.index') }}" method="GET">
-                        <input type="search" name="search" id="search" class="rounded-pill" placeholder="Cari artikel edukasi" value="{{ $search ?? '' }}">
+                        <input type="search" name="search" id="search" class="rounded-pill" placeholder="Cari artikel agenda" value="{{ $search ?? '' }}">
                     </form>
                 </div>
 

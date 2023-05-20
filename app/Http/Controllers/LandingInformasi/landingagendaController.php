@@ -26,7 +26,7 @@ class landingagendaController extends Controller
         }
 
         $artikel = $query->get();
-        $title = 'Agenda';
+        $title = 'Agenda | E-Damkar Nganjuk';
 
         return view('landinginformasi.landingagenda', compact('artikel', 'search', 'title'));
     }

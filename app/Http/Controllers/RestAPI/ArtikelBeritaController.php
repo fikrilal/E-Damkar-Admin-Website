@@ -22,7 +22,7 @@ class ArtikelBeritaController extends Controller
     public function newArtikelBerita(Request $request)
     {
         $count = artikel_berita::count();
-        $skip = 5;
+        $skip = 0;
         $limit = $count - $skip;
         $data = artikel_berita::orderBy('id_berita','DESC')->skip($skip)->take($limit)->get();
         $dataBeritaRes = ArtikelBeritaResource::collection($data);

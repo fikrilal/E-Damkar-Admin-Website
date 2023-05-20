@@ -122,105 +122,112 @@
                     </div><!-- End Customers Card -->
 
                     <!-- Reports -->
-<div class="col-12">
-  <div class="card">
-      <div class="filter">
-          <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-      </div>
-      <div class="card-body">
-          <h5 class="card-title">Grafik Laporan Keseluruhan</span></h5>
-          <!-- Line Chart -->
-          <div id="reportsChart"></div>
-          <script>
-              document.addEventListener("DOMContentLoaded", () => {
-                  var data1 = {{ $data1 }};
-                  var data2 = {{ $data2 }};
-                  var berita = {{ $berita }};
-                  var tanggalLaporan = @json($tanggalLaporan);
-                  var tanggalBerita = @json($tanggalBerita);
+                      <div class="col-12">
+                        <div class="card">
+                            <div class="filter">
+                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Grafik Laporan Keseluruhan</span></h5>
+                                <!-- Line Chart -->
+                      <div id="reportsChart"></div>
+                      <script>
+                          document.addEventListener("DOMContentLoaded", () => {
+                              var data1 = {{ $data1 }};
+                              var data2 = {{ $data2 }};
+                              var berita = {{ $berita }};
+                              var tanggalLaporan = @json($tanggalLaporan);
+                              var tanggalBerita = @json($tanggalBerita);
 
-                  // Convert date strings to JavaScript Date objects
-                  tanggalLaporan = tanggalLaporan.map(date => new Date(date));
-                  tanggalBerita = tanggalBerita.map(date => new Date(date));
+                              // Convert date strings to JavaScript Date objects
+                              tanggalLaporan = tanggalLaporan.map(date => new Date(date));
+                              tanggalBerita = tanggalBerita.map(date => new Date(date));
 
-                  var daysOfWeek = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+                              // Get the last 7 days
+                              var currentDate = new Date();
+                              var daysOfWeek = [];
+                              for (var i = 6; i >= 0; i--) {
+                                  var date = new Date(currentDate);
+                                  date.setDate(date.getDate() - i);
+                                  daysOfWeek.push(date.toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: '2-digit' }));
+                              }
 
-                  // Group data by day of the week
-                  var dataByDay = daysOfWeek.map((day, index) => {
-                      return {
-                          x: day,
-                          y: [
-                              tanggalLaporan.filter(date => date.getDay() === index).length,
-                              tanggalBerita.filter(date => date.getDay() === index).length,
-                              0
-                          ]
-                      };
-                  });
+                              // Group data by day of the week
+                              var dataByDay = daysOfWeek.map((day, index) => {
+                                  return {
+                                      x: day,
+                                      y: [
+                                          tanggalLaporan.filter(date => date.toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: '2-digit' }) === day).length,
+                                          tanggalBerita.filter(date => date.toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: '2-digit' }) === day).length,
+                                          0
+                                      ]
+                                  };
+                              });
 
-                  new ApexCharts(document.querySelector("#reportsChart"), {
-                      series: [{
-                          name: 'Laporan Masuk',
-                          data: dataByDay.map(data => data.y[0]),
-                      },
-                      {
-                          name: 'Laporan Selesai',
-                          data: dataByDay.map(data => data.y[1]),
-                      },
-                      {
-                          name: 'Berita',
-                          data: dataByDay.map(data => data.y[2]),
-                      }],
-                      chart: {
-                          height: 350,
-                          type: 'area',
-                          toolbar: {
-                              show: false
-                          },
-                      },
-                      markers: {
-                          size: 4
-                      },
-                      colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                      fill: {
-                          type: "gradient",
-                          gradient: {
-                              shadeIntensity: 1,
-                              opacityFrom: 0.3,
-                              opacityTo: 0.4,
-                              stops: [0, 90, 100]
-                          }
-                      },
-                      dataLabels: {
-                          enabled: true
-                      },
-                      stroke: {
-                          curve: 'smooth',
-                          width: 2
-                      },
-                      xaxis: {
-                          type: 'category',
-                          categories: daysOfWeek,
-                          labels: {
-                              show: true
-                          }
-                      },
-                      tooltip: {
-                          x: {
-                              format: 'dd/MM/yy HH:mm'
-                          },
-                      }
-                  }).render();
-              });
-          </script>
-          <!-- End Line Chart -->
-      </div>
-  </div>
-</div><!-- End Reports -->
-
+                              new ApexCharts(document.querySelector("#reportsChart"), {
+                                  series: [
+                                      {
+                                          name: 'Laporan Masuk',
+                                          data: dataByDay.map(data => data.y[0]),
+                                      },
+                                      {
+                                          name: 'Laporan Selesai',
+                                          data: dataByDay.map(data => data.y[2]),
+                                      },
+                                      {
+                                          name: 'Berita',
+                                          data: dataByDay.map(data => data.y[1]),
+                                      }
+                                  ],
+                                  chart: {
+                                      height: 350,
+                                      type: 'area',
+                                      toolbar: {
+                                          show: false
+                                      }
+                                  },
+                                  markers: {
+                                      size: 4
+                                  },
+                                  colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                                  fill: {
+                                      type: "gradient",
+                                      gradient: {
+                                          shadeIntensity: 1,
+                                          opacityFrom: 0.3,
+                                          opacityTo: 0.4,
+                                          stops: [0, 90, 100]
+                                      }
+                                  },
+                                  dataLabels: {
+                                      enabled: true
+                                  },
+                                  stroke: {
+                                      curve: 'smooth',
+                                      width: 2
+                                  },
+                                  xaxis: {
+                                      type: 'category',
+                                      categories: daysOfWeek,
+                                      labels: {
+                                          show: true
+                                      }
+                                  },
+                                  tooltip: {
+                                      x: {
+                                          format: 'dd-MM-yy'
+                                      }
+                                  }
+                              }).render();
+                          });
+                      </script>
+                      <!-- End Line Chart -->
+                        </div>
+                    </div>
+                  </div><!-- End Reports -->
                 </div>
             </div>
         </section>
-
     </main><!-- End #main -->
 
 @endsection

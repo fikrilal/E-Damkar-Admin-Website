@@ -86,6 +86,14 @@
                 </div>
 
                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">No Hp</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="deskripsi_laporan" value="{{ isset($laporan) ? $laporan->user_listdata->noHp : '' }}"
+                     class="form-control" disabled>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Masalah</label>
                   <div class="col-sm-10">
                     <input type="text" name="deskripsi_laporan" value="{{ isset($laporan) ? $laporan->deskripsi_laporan : '' }}" class="form-control"
@@ -111,7 +119,7 @@
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Bukti Kejadian</label>
                   <div class="col-sm-10">
-                    <img src="{{ ('storage/gambar_pelaporan/'.$laporan->gambar_bukti_pelaporan) }}">
+                    <img src="{{ ('storage/gambar_pelaporan/'.$laporan->gambar_bukti_pelaporan) }}" width="60%">
                   </div>
                 </div>
 
@@ -122,7 +130,7 @@
                     <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Bukti Penanganan</label>
                   <div class="col-sm-10">
-                    <img src="{{ ('storage/bukti_penanganan/'.$laporan->bukti_penanganan) }}">
+                    <img src="{{ ('storage/bukti_penanganan/'.$laporan->bukti_penanganan) }}" width="60%">
                   </div>
                 </div>
                 @endif

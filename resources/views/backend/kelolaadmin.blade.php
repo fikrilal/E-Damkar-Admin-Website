@@ -153,7 +153,7 @@
                                                             <label for="inputText"
                                                                 class="col-sm-2 col-form-label">Email</label>
                                                             <div class="col-sm-10">
-                                                                <input type="text" name="email" id="email"
+                                                                <input type="email" name="email" id="email"
                                                                     value="{{ $admin->email }}"
                                                                     class="form-control">
                                                             </div>

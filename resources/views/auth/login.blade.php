@@ -24,30 +24,20 @@
                   <div class="alert alert-danger">{{ session('error') }}</div>
                   @endif
 
-                  <!-- menampilkan error jika berhasil logout -->
-                  @if(session('success'))
-                <div class="alert alert-success">
+                @if(session('success'))
+                <div id="auto-dismiss-alert" class="alert alert-success">
                     {{ session('success') }}
-                      </div>
-                  @endif
+                </div>
+            @endif
 
-
-
-                  <script>
-                    $.ajax({
-                    url: "/api/some-endpoint",
-                    type: "GET",
-                    dataType: "json",
-                    success: function(response) {
-                        // Handle success response
-                    },
-                    error: function(xhr, status, error) {
-                        var response = xhr.responseJSON;
-                        alert(response.error);
-                    }
-                });
-
-                    </script>
+            <script>
+              setTimeout(function(){
+                  var alertElement = document.getElementById('auto-dismiss-alert');
+                  if(alertElement){
+                      alertElement.remove();
+                  }
+              }, 5000); // Menghilangkan alert setelah 5 detik (5000 milidetik)
+          </script>
 
                   <form class="row g-3 needs-validation" method="POST" action="{{ route('login') }}" novalidate>
                     @csrf

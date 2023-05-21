@@ -42,6 +42,6 @@ class DashboardController extends Controller
 
         $title = 'Dashboard | E-Damkar Nganjuk';
 
-        return view('dashboard', compact('dataMasuk', 'dataSelesai', 'totalBerita', 'title', 'tanggalLaporan', 'tanggalBerita'));
+        return view('dashboard', compact('dataMasuk', 'dataSelesai', 'totalBerita', 'title', 'tanggalLaporan', 'tanggalBerita', 'dataMasuk'));
     }
 }

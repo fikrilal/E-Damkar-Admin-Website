@@ -133,7 +133,8 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <!-- General Form Elements -->
-                                                    <form action="{{ route('kelolaadmin.update', ['kelolaadmin' => $admin->id]) }}" method="POST">
+                                                    <form action="{{ route('kelolaadmin.update', ['kelolaadmin' => $admin->id]) }}" 
+                                                    method="POST">
                                                         @method('PUT')
                                                         @csrf
                                                         <input type="hidden" name="id"

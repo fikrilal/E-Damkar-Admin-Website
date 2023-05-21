@@ -12,10 +12,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-         // Mengambil tanggal laporan dalam seminggu terakhir
         $startOfWeek = Carbon::now()->startOfWeek();
         $endOfWeek = Carbon::now()->endOfWeek();
-        
 
         $tanggalLaporan = DB::table('laporans')
             ->whereIn('status_riwayat_id', [1, 2, 3, 4])
@@ -28,22 +26,22 @@ class DashboardController extends Controller
             ->pluck('tgl_berita')
             ->toArray();
 
-        $data1 = DB::table('laporans')
-            ->whereIn('status_riwayat_id', [3, 4])
-            ->whereBetween('tgl_lap', [$startOfWeek, $endOfWeek])
-            ->count();
-
-        $data2 = DB::table('laporans')
+        $dataMasuk = DB::table('laporans')
             ->whereIn('status_riwayat_id', [1, 2])
             ->whereBetween('tgl_lap', [$startOfWeek, $endOfWeek])
             ->count();
 
-        $berita = DB::table('artikel_beritas')
+        $dataSelesai = DB::table('laporans')
+            ->whereIn('status_riwayat_id', [3, 4])
+            ->whereBetween('tgl_lap', [$startOfWeek, $endOfWeek])
+            ->count();
+
+        $totalBerita = DB::table('artikel_beritas')
             ->whereBetween('tgl_berita', [$startOfWeek, $endOfWeek])
             ->count();
 
         $title = 'Dashboard | E-Damkar Nganjuk';
 
-    return view('dashboard', compact('data1', 'data2', 'berita', 'title', 'tanggalLaporan', 'tanggalBerita'));
+        return view('dashboard', compact('dataMasuk', 'dataSelesai', 'totalBerita', 'title', 'tanggalLaporan', 'tanggalBerita'));
     }
 }

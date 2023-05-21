@@ -22,7 +22,7 @@ class pelaporanResources extends JsonResource
             "deskripsi" => $this->deskripsi_laporan, 
             "image_url" => $this->gambar_bukti_pelaporan, 
             "alamat" => $this->alamat_kejadian,
-            // "urgensi" => $this->urgensi
+            "urgensi" => $this->urgensi
         ];
     }
 }

@@ -25,12 +25,12 @@ class DashboardController extends Controller
             ->whereBetween('tgl_berita', [$startOfWeek, $endOfWeek])
             ->pluck('tgl_berita')
             ->toArray();
-
-        $dataMasuk = DB::table('laporans')
+            
+            $dataMasuk = DB::table('laporans')
             ->whereIn('status_riwayat_id', [1, 2])
             ->whereBetween('tgl_lap', [$startOfWeek, $endOfWeek])
             ->count();
-
+        
         $dataSelesai = DB::table('laporans')
             ->whereIn('status_riwayat_id', [3, 4])
             ->whereBetween('tgl_lap', [$startOfWeek, $endOfWeek])
@@ -42,6 +42,6 @@ class DashboardController extends Controller
 
         $title = 'Dashboard | E-Damkar Nganjuk';
 
-        return view('dashboard', compact('dataMasuk', 'dataSelesai', 'totalBerita', 'title', 'tanggalLaporan', 'tanggalBerita', 'dataMasuk'));
+        return view('dashboard', compact('dataMasuk', 'dataSelesai', 'totalBerita', 'title', 'tanggalLaporan', 'tanggalBerita'));
     }
 }

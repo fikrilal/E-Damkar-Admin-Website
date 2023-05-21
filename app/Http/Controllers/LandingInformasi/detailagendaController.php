@@ -32,6 +32,4 @@ class detailagendaController extends Controller
             return redirect()->back()->with('error', 'Agenda tidak ditemukan.');
         }
     }
-    
-
 }

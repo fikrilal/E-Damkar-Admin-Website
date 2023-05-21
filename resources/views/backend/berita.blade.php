@@ -114,7 +114,7 @@
                   <tr>
                     <th scope="row">{{ $no++ }}</th>
                     <td>{{$berita->judul_berita}}</td>
-                    <td>{{$berita->tgl_berita}}</td>
+                    <td>{{ date('d-m-Y', strtotime($berita->tgl_berita)) }}</td>
                     <td><a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" 
                     data-bs-target="#largeModalEdit{{ $berita->id_berita }}"><i class="bi bi-pen"></i> Edit</a>
                     <a href="#" type="button" class="btn btn-danger" data-bs-toggle="modal" 

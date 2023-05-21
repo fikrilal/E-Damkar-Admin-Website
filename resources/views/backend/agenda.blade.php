@@ -111,7 +111,7 @@
                   <tr>
                     <th scope="row">{{ $no++ }}</th>
                     <td>{{$a->judul_agenda}}</td>
-                    <td>{{$a->tgl_agenda}}</td>
+                    <td>{{ date('d-m-Y', strtotime($a->tgl_agenda)) }}</td>
                     <td><a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModalEdit{{ $a->id_agenda }}"><i class="bi bi-pen"></i> Edit</a>
                     <a href="#" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#largeModalHapus{{ $a->id_agenda }}"><i class="bi bi-trash"></i> Hapus</a>
 

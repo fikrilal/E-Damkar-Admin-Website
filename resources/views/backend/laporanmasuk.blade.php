@@ -62,9 +62,9 @@
 
                   <tr>
                     <th scope="row">{{ $no++ }}</th>
-                    <td>{{$laporan->tgl_lap}}</td>
+                    <td>{{ date('d-m-Y', strtotime($laporan->tgl_lap)) }}</td>
                     <td>{{$laporan->user_listdata->namaLengkap}}</td> 
-                    <td>{{$laporan->tgl_lap}}</td>
+                    <td>{{$laporan->urgensi}}</td>
                     <td>{{$laporan->deskripsi_laporan}}</td>
                 
                     <td><a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" 
@@ -127,20 +127,6 @@
                   @endif
                 </div>
               </div>
-
-
-
-                @if($laporan->kategori_laporan_id == 4)
-              <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Nama Hewan</label>
-                  <div class="col-sm-10">
-                      <input type="text" name="nama_lengkap" value="Sapi" class="form-control" disabled>
-                  </div>
-              </div>
-                @else
-                    <!-- Tidak menampilkan input field jika kategori_laporan_id tidak sama dengan 4 -->
-                @endif
-
 
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Bukti Kejadian</label>

@@ -111,7 +111,7 @@
                   <tr>
                     <th scope="row">{{ $no++ }}</th>
                     <td>{{$berita->judul_edukasi}}</td>
-                    <td>{{$berita->tgl_edukasi}}</td>
+                    <td>{{ date('d-m-Y', strtotime($berita->tgl_edukasi)) }}</td>
                     <td><a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModalEdit{{ $berita->id_edukasi }}"><i class="bi bi-pen"></i> Edit</a>
                     <a href="#" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#largeModalHapus{{ $berita->id_edukasi }}"><i class="bi bi-trash"></i> Hapus</a>
 

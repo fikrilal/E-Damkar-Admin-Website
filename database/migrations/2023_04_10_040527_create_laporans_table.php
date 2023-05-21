@@ -23,6 +23,7 @@ return new class extends Migration
             $table->String('bukti_penanganan')->nullable();
             $table->string("latitude");
             $table->string("longitude");
+            $table->string("urgensi");
             $table->timestamps();
         });
     }

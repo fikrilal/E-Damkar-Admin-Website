@@ -21,7 +21,8 @@ class pelaporanResources extends JsonResource
             "tanggal" => $this->tgl_lap, 
             "deskripsi" => $this->deskripsi_laporan, 
             "image_url" => $this->gambar_bukti_pelaporan, 
-            "alamat" => $this->alamat_kejadian
+            "alamat" => $this->alamat_kejadian,
+            "urgensi" => $this->urgensi
         ];
     }
 }

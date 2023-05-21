@@ -29,17 +29,17 @@ class UserController extends Controller
 
     public function updatePassword(Request $request)
     {
-        $request->validate(['id' => 'required', 'password_lama' => 'required', 'password_baru' => 'required']);
+        $request->validate([
+            'id' => 'required', 
+            'password_lama' => 'required', 
+            'password_baru' => 'required']);
 
         $ambilPasswordLama = DB::table('user_list_data')->where('id', '=', $request->id)->first();
 
         if (Hash::check($request->password_lama, $ambilPasswordLama->password)) {
             $encryptedPassword = Hash::make($request->password_baru);
-
-
             DB::table('user_list_data')->where('id', '=', $request->id)->update([
                 'password' => $encryptedPassword
-
             ]);
             $data = [
                 'status' => 'berhasil',

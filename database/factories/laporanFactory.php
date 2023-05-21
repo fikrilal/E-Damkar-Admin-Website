@@ -24,7 +24,8 @@ class laporanFactory extends Factory
             "alamat_kejadian" => "nganjuk",
             'bukti_penanganan' => '',
             "latitude" => "-7.2232139",
-            "longitude" => "112.6226935"
+            "longitude" => "112.6226935",
+            "urgensi" => "ular masuk celana fikril"
         ];
     }
 }

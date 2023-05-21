@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
         artikel_edukasi::factory(30)->create();
 
         StatusRiwayat::create([
-            'nama_status' => 'Mengunggu'
+            'nama_status' => 'Menunggu'
         ]);
 
         StatusRiwayat::create([

@@ -41,7 +41,6 @@ Route::post('/pengaturan/updateprofil', 'App\Http\Controllers\Backend\Pengaturan
 Route::get('/search', 'App\Http\Controllers\SearchBeritaController@search')->name('search');
 
 Route::get('/laporan/update-status/{id}/', 'App\Http\Controllers\Backend\LaporanMasukController@updateStatus')->name('laporan.update-status');
-
 Route::get('/logout', function(){
     Auth::logout();
     // return Redirect::to('login');
@@ -62,7 +61,7 @@ Route::group(['namespace' => 'App\Http\Controllers\LandingInformasi'], function 
     Route::get('detailagenda/{id_agenda}', [LandingInformasiController::class, 'show'])->name('detailagenda.show');
 });
 
-
+// Route::get('/laporan', [App\Http\Controllers\Backend\LaporanController::class, 'index'])->name('dashboard');
 Auth::routes();
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 

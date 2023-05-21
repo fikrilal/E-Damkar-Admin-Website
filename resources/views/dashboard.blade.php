@@ -55,7 +55,7 @@
                                         <i class="bi bi-journal-text"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>{{ $data2 }}</h6>
+                                        <h6>{{ $dataMasuk }}</h6>
                                         <span class="text-muted small pt-2 ps-1"><a href="/laporanmasuk">Cek Selengkapnya</span>
                                             <i class="bi bi-arrow-right-circle"></i></a>
                                     </div>
@@ -81,7 +81,7 @@
                                         <i class="bi bi-journal-text"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>{{ $data1 }}</h6>
+                                        <h6>{{ $dataSelesai }}</h6>
                                         <span class="text-muted small pt-2 ps-1"><a href="/laporan">Cek Selengkapnya</span>
                                             <i class="bi bi-arrow-right-circle"></i></a>
 
@@ -109,7 +109,7 @@
                                         <i class="bi bi-layout-text-window-reverse"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>{{ $berita }}</h6>
+                                        <h6>{{ $totalBerita }}</h6>
                                         <span class="text-muted small pt-2 ps-1"><a href="/berita">Cek Selengkapnya</span>
                                             <i class="bi bi-arrow-right-circle"></i></a>
 
@@ -133,9 +133,9 @@
                       <div id="reportsChart"></div>
                       <script>
                           document.addEventListener("DOMContentLoaded", () => {
-                              var data1 = {{ $data1 }};
-                              var data2 = {{ $data2 }};
-                              var berita = {{ $berita }};
+                              var dataMasuk = {{ $dataMasuk }};
+                              var dataSelesai = {{ $dataSelesai }};
+                              var totalBerita = {{ $totalBerita }};
                               var tanggalLaporan = @json($tanggalLaporan);
                               var tanggalBerita = @json($tanggalBerita);
 
@@ -159,6 +159,7 @@
                                       y: [
                                           tanggalLaporan.filter(date => date.toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: '2-digit' }) === day).length,
                                           tanggalBerita.filter(date => date.toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: '2-digit' }) === day).length,
+                                          tanggalLaporan.filter(date => date.toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: '2-digit' }) === day).length,
                                           0
                                       ]
                                   };

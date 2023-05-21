@@ -26,5 +26,4 @@ class WelcomeController extends Controller
     
         return view('welcome', compact('data', 'artikel', 'data1', 'title'));
     }
-    
 }

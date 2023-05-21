@@ -77,14 +77,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         KategoriLaporan::create([
-            'nama_kategori' => 'penyelamatan'
+            'nama_kategori' => 'Penyelamatan'
         ]);
         KategoriLaporan::create([
-            'nama_kategori' => 'hewan buas'
+            'nama_kategori' => 'Hewan Buas'
         ]);
 
         Kedudukan::create([
-            'nama_kedudukan' => 'superone'
+            'nama_kedudukan' => 'superadmin'
         ]);
 
         Kedudukan::create([

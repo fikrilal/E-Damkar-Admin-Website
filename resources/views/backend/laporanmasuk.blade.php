@@ -48,8 +48,8 @@
                     <th scope="col">No</th>
                     <th scope="col">Tanggal</th>
                     <th scope="col">Nama Pelapor</th>
-                    <th scope="col">Masalah</th>
-                    
+                    <th scope="col">Urgensi</th>
+                    <th scope="col">Deskripsi Laporan</th>
                     <th scope="col">Bukti</th>
                     <th scope="col">Status</th>
                   </tr>
@@ -64,6 +64,7 @@
                     <th scope="row">{{ $no++ }}</th>
                     <td>{{$laporan->tgl_lap}}</td>
                     <td>{{$laporan->user_listdata->namaLengkap}}</td> 
+                    <td>{{$laporan->tgl_lap}}</td>
                     <td>{{$laporan->deskripsi_laporan}}</td>
                 
                     <td><a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" 
@@ -85,7 +86,7 @@
                 <div class="modal-dialog modal-xl">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title">Detail Laporan</h5>
+                      <h5 class="modal-title">Detail Laporan <small>({{$laporan->KategoriLaporan->nama_kategori}})</small></h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -114,14 +115,19 @@
                 </div>
               
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Alamat Kejadian</label>
-                  <div class="col-sm-8">
-                    <input type="text" name="alamat_kejadian" value="{{ isset($laporan) ? $laporan->alamat_kejadian : '' }}" class="form-control" disabled>
-                  </div>
-                  <div class="col-sm-2">
-                    <a href="https://www.google.com/maps/search/?api=1&query={{ $laporan->latitude}},{{ $laporan->longitude}}" target="blank" class="btn btn-primary btn-block">Cek Lokasi</a>
-                  </div>
+                <label for="inputText" class="col-sm-2 col-form-label">Alamat Kejadian</label>
+                <div class="col-sm-8">
+                  <input type="text" name="alamat_kejadian" value="{{ isset($laporan) ? $laporan->alamat_kejadian : '' }}" class="form-control" disabled>
                 </div>
+                <div class="col-sm-2">
+                  @if(!empty($laporan->latitude) && !empty($laporan->longitude))
+                    <a href="https://www.google.com/maps/search/?api=1&query={{ $laporan->latitude}},{{ $laporan->longitude}}" target="_blank" class="btn btn-primary btn-block">Cek Lokasi</a>
+                  @else
+                    <a href="javascript:void(0);" style="display: none;" class="btn btn-primary btn-block">Cek Lokasi</a>
+                  @endif
+                </div>
+              </div>
+
 
 
                 @if($laporan->kategori_laporan_id == 4)

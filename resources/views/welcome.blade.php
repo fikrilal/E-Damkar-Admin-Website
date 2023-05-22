@@ -96,7 +96,7 @@
 
                 <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
 
-                    <img src="{{ asset('frontend2/assets/img/about.jpg')}}" class="img-fluid" alt="">
+                    <img src="{{ asset('frontend2/assets/img/edamkar1.png')}}" class="img-fluid" alt="">
                 </div>
 
                 <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
@@ -154,7 +154,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
-                    <img src="{{ asset('frontend2/assets/img/about.jpg')}}" class="img-fluid" alt="">
+                    <img src="{{ asset('frontend2/assets/img/edamkar2.png')}}" class="img-fluid" alt="">
                 </div>
 
             </div>

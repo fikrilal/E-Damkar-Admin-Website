@@ -35,13 +35,25 @@ class AdminController extends Controller
     
     public function store(Request $request)
     {
-        // Validasi input form
-        $validatedData = $request->validate([
-            'nama_admin' => 'required',
-            'email' => 'required|email|unique:admin_damkars',
-            'password' => 'required|min:8',
-            'noHp' => 'required'
-        ]);
+
+      // Validasi input form
+$validatedData = $request->validate([
+    'nama_admin' => 'required',
+    'email' => 'required|email|unique:admin_damkars,email',
+    'password' => 'required|min:8',
+    'noHp' => 'required|min:12|max:12'
+], [
+    'nama_admin.required' => 'Nama lengkap wajib diisi.',
+    'email.required' => 'Email wajib diisi.',
+    'email.email' => 'Isi email dengan benar.',
+    'email.unique' => 'Email ini sudah terdaftar.',
+    'password.required' => 'Kata sandi wajib diisi.',
+    'password.min' => 'Kata sandi minimal memiliki 10 karakter.',
+    'noHp.required' => 'Nomor telepon wajib diisi.',
+    'noHp.min' => 'Nomor HP harus terdiri dari 12 karakter.',
+    'noHp.max' => 'Nomor HP tidak boleh lebih dari 12 karakter.'
+]);
+
 
         // Simpan admin Damkar ke database
         $admin = new admin_damkar;
@@ -64,13 +76,22 @@ class AdminController extends Controller
     public function update(Request $request)
     {
         // Validasi input form
-        $validatedData = $request->validate([
-            'nama_admin' => 'required',
-            'email' => 'required|email|unique:admin_damkars,email,' . $request->id,
-            'noHp' => 'required',
-            'password' => 'nullable|min:8',
-            // Tambahkan validasi tambahan sesuai kebutuhan
-        ]);
+    $validatedData = $request->validate([
+        'nama_admin' => 'required',
+        'email' => 'required|email|unique:admin_damkars,email,' . $request->id,
+        'noHp' => 'required|numeric|digits_between:10,13',
+        'password' => 'nullable|min:8',
+        // Tambahkan validasi tambahan sesuai kebutuhan
+    ], [
+        'nama_admin.required' => 'Nama lengkap wajib diisi.',
+        'email.required' => 'Email wajib diisi.',
+        'email.email' => 'Isi email dengan benar.',
+        'email.unique' => 'Email ini sudah terdaftar.',
+        'noHp.required' => 'Nomor telepon wajib diisi.',
+        'noHp.numeric' => 'Isi nomor telepon dengan angka.',
+        'noHp.digits_between' => 'Nomor telepon harus memiliki 10-12 digit.',
+        'password.min' => 'Kata sandi minimal memiliki 8 karakter.'
+    ]);
 
         // Cari admin yang akan diupdate
         $admin = admin_damkar::findOrFail($request->id);

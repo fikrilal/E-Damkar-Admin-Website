@@ -22,7 +22,8 @@ class LaporanController extends Controller
             'gambar_bukti_pelaporan' => 'required',
             'alamat_kejadian' => 'required',
             'latitude' => 'required',
-            'longitude' => 'required'
+            'longitude' => 'required',
+            'urgensi' => 'required'
         ]);
         $validateData['status_riwayat_id'] = 1;
 

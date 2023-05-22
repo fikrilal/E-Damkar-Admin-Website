@@ -65,8 +65,7 @@ class LoginController extends Controller
      {
          $this->middleware('guest')->except('logout');
      }
-     
-    
+      
     public function logout(Request $request)
     {
         $this->guard()->logout();
@@ -75,5 +74,4 @@ class LoginController extends Controller
     
         return redirect('/login')->with('success', 'Anda berhasil telah keluar!');
     }
-    
 }

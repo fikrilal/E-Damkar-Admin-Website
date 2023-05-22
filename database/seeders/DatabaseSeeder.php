@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
         // artikel_edukasi::factory(30)->create();
 
         StatusRiwayat::create([
-            'nama_status' => 'Mengunggu'
+            'nama_status' => 'Menunggu'
         ]);
 
         StatusRiwayat::create([
@@ -77,17 +77,17 @@ class DatabaseSeeder extends Seeder
         ]);
 
         KategoriLaporan::create([
-            'nama_kategori' => 'penyelamatan'
+            'nama_kategori' => 'Penyelamatan'
         ]);
         KategoriLaporan::create([
-            'nama_kategori' => 'hewan buas'
+            'nama_kategori' => 'Hewan Buas'
         ]);
         KategoriLaporan::create([
             'nama_kategori' => 'custom'
         ]);
 
         Kedudukan::create([
-            'nama_kedudukan' => 'Pegawai'
+            'nama_kedudukan' => 'superadmin'
         ]);
 
         Kedudukan::create([

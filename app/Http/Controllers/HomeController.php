@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+
 
 class HomeController extends Controller
 {
@@ -26,19 +28,34 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        $data1 = DB::table('laporans')
-        ->whereIn('status_riwayat_id', [3, 4])
-        ->count();
-    
-        $data2 = DB::table('laporans')
+{
+    $startOfWeek = Carbon::now()->startOfWeek();
+    $endOfWeek = Carbon::now()->endOfWeek();
+
+    $laporanMasuk = DB::table('laporans')
         ->whereIn('status_riwayat_id', [1, 2])
-        ->count();
+        ->whereBetween('tgl_lap', [$startOfWeek, $endOfWeek])
+        ->get();
 
-        $berita = DB::table('artikel_beritas')
-        ->count();
+    $laporanSelesai = DB::table('laporans')
+        ->whereIn('status_riwayat_id', [3, 4])
+        ->get();
 
-        $title = 'Dashboard | E-Damkar Nganjuk';
-        return view('dashboard', compact('data1', 'data2','berita', 'title'));
-    }
+    $artikelBerita = DB::table('artikel_beritas')
+        ->whereBetween('tgl_berita', [$startOfWeek, $endOfWeek])
+        ->get();
+
+    $dataMasuk = $laporanMasuk->count();
+    $dataSelesai = $laporanSelesai->count();
+    $totalBerita = $artikelBerita->count();
+
+    $tanggalLaporanMasuk = $laporanMasuk->pluck('tgl_lap')->toArray();
+    $tanggalLaporanSelesai = $laporanSelesai->pluck('tgl_lap')->toArray();
+    $tanggalBerita = $artikelBerita->pluck('tgl_berita')->toArray();
+
+    $title = 'Dashboard | E-Damkar Nganjuk';
+
+    return view('dashboard', compact('dataMasuk', 'dataSelesai', 'totalBerita', 'title', 'tanggalLaporanMasuk', 'tanggalLaporanSelesai', 'tanggalBerita'));
+}
+
 }

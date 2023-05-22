@@ -133,7 +133,8 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <!-- General Form Elements -->
-                                                    <form action="{{ route('kelolaadmin.update', ['kelolaadmin' => $admin->id]) }}" method="POST">
+                                                    <form action="{{ route('kelolaadmin.update', ['kelolaadmin' => $admin->id]) }}" 
+                                                    method="POST">
                                                         @method('PUT')
                                                         @csrf
                                                         <input type="hidden" name="id"
@@ -152,7 +153,7 @@
                                                             <label for="inputText"
                                                                 class="col-sm-2 col-form-label">Email</label>
                                                             <div class="col-sm-10">
-                                                                <input type="text" name="email" id="email"
+                                                                <input type="email" name="email" id="email"
                                                                     value="{{ $admin->email }}"
                                                                     class="form-control">
                                                             </div>

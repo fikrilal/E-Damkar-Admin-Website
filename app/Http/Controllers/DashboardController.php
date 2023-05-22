@@ -14,34 +14,31 @@ class DashboardController extends Controller
     {
         $startOfWeek = Carbon::now()->startOfWeek();
         $endOfWeek = Carbon::now()->endOfWeek();
-
-        $tanggalLaporan = DB::table('laporans')
-            ->whereIn('status_riwayat_id', [1, 2, 3, 4])
-            ->whereBetween('tgl_lap', [$startOfWeek, $endOfWeek])
-            ->pluck('tgl_lap')
-            ->toArray();
-
-        $tanggalBerita = DB::table('artikel_beritas')
-            ->whereBetween('tgl_berita', [$startOfWeek, $endOfWeek])
-            ->pluck('tgl_berita')
-            ->toArray();
-            
-            $dataMasuk = DB::table('laporans')
+    
+        $laporanMasuk = DB::table('laporans')
             ->whereIn('status_riwayat_id', [1, 2])
             ->whereBetween('tgl_lap', [$startOfWeek, $endOfWeek])
-            ->count();
-        
-        $dataSelesai = DB::table('laporans')
+            ->get();
+    
+        $laporanSelesai = DB::table('laporans')
             ->whereIn('status_riwayat_id', [3, 4])
-            ->whereBetween('tgl_lap', [$startOfWeek, $endOfWeek])
-            ->count();
-
-        $totalBerita = DB::table('artikel_beritas')
+            ->get();
+    
+        $artikelBerita = DB::table('artikel_beritas')
             ->whereBetween('tgl_berita', [$startOfWeek, $endOfWeek])
-            ->count();
-
+            ->get();
+    
+        $dataMasuk = $laporanMasuk->count();
+        $dataSelesai = $laporanSelesai->count();
+        $totalBerita = $artikelBerita->count();
+    
+        $tanggalLaporanMasuk = $laporanMasuk->pluck('tgl_lap')->toArray();
+        $tanggalLaporanSelesai = $laporanSelesai->pluck('tgl_lap')->toArray();
+        $tanggalBerita = $artikelBerita->pluck('tgl_berita')->toArray();
+    
         $title = 'Dashboard | E-Damkar Nganjuk';
-
-        return view('dashboard', compact('dataMasuk', 'dataSelesai', 'totalBerita', 'title', 'tanggalLaporan', 'tanggalBerita'));
+    
+        return view('dashboard', compact('dataMasuk', 'dataSelesai', 'totalBerita', 'title', 'tanggalLaporanMasuk', 'tanggalLaporanSelesai', 'tanggalBerita'));
     }
+    
 }

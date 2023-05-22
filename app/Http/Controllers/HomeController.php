@@ -28,37 +28,34 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        $startOfWeek = Carbon::now()->startOfWeek();
-        $endOfWeek = Carbon::now()->endOfWeek();
+{
+    $startOfWeek = Carbon::now()->startOfWeek();
+    $endOfWeek = Carbon::now()->endOfWeek();
 
-        $tanggalLaporan = DB::table('laporans')
-            ->whereIn('status_riwayat_id', [1, 2, 3, 4])
-            ->whereBetween('tgl_lap', [$startOfWeek, $endOfWeek])
-            ->pluck('tgl_lap')
-            ->toArray();
+    $laporanMasuk = DB::table('laporans')
+        ->whereIn('status_riwayat_id', [1, 2])
+        ->whereBetween('tgl_lap', [$startOfWeek, $endOfWeek])
+        ->get();
 
-        $tanggalBerita = DB::table('artikel_beritas')
-            ->whereBetween('tgl_berita', [$startOfWeek, $endOfWeek])
-            ->pluck('tgl_berita')
-            ->toArray();
+    $laporanSelesai = DB::table('laporans')
+        ->whereIn('status_riwayat_id', [3, 4])
+        ->get();
 
-            $dataMasuk = DB::table('laporans')
-            ->whereIn('status_riwayat_id', [1, 2])
-            ->whereBetween('tgl_lap', [$startOfWeek, $endOfWeek])
-            ->count();
-        
-        $dataSelesai = DB::table('laporans')
-            ->whereIn('status_riwayat_id', [3, 4])
-            ->whereBetween('tgl_lap', [$startOfWeek, $endOfWeek])
-            ->count();
+    $artikelBerita = DB::table('artikel_beritas')
+        ->whereBetween('tgl_berita', [$startOfWeek, $endOfWeek])
+        ->get();
 
-        $totalBerita = DB::table('artikel_beritas')
-            ->whereBetween('tgl_berita', [$startOfWeek, $endOfWeek])
-            ->count();
+    $dataMasuk = $laporanMasuk->count();
+    $dataSelesai = $laporanSelesai->count();
+    $totalBerita = $artikelBerita->count();
 
-        $title = 'Dashboard | E-Damkar Nganjuk';
+    $tanggalLaporanMasuk = $laporanMasuk->pluck('tgl_lap')->toArray();
+    $tanggalLaporanSelesai = $laporanSelesai->pluck('tgl_lap')->toArray();
+    $tanggalBerita = $artikelBerita->pluck('tgl_berita')->toArray();
 
-        return view('dashboard', compact('dataMasuk', 'dataSelesai', 'totalBerita', 'title', 'tanggalLaporan', 'tanggalBerita'));
-    }
+    $title = 'Dashboard | E-Damkar Nganjuk';
+
+    return view('dashboard', compact('dataMasuk', 'dataSelesai', 'totalBerita', 'title', 'tanggalLaporanMasuk', 'tanggalLaporanSelesai', 'tanggalBerita'));
+}
+
 }

@@ -110,7 +110,7 @@ class LaporanController extends Controller
     public function sendInfoToWhatsapp(Request $request)
     {
         $token = "B@!Q7v38HEvuvt5i6YSU";
-        $target = "085862952781";
+        $target = "085708574368";
 
         $dataInformasi = $request->validate([
             'desa' => 'required',

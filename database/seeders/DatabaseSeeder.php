@@ -27,30 +27,30 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        admin_damkar::create([
-            'email' => "superadmin@gmail.com",
-            'password' => Hash::make('superone'),
-            'nama_lengkap' => "SuperAdmin",
-            'noHp' => "085756436576",
-            'kedudukans_id' => "1"
-        ]);
-
-        // user_listData::create([
-        //     'username' => "danakhdan12@gmail.com",
+        // admin_damkar::create([
+        //     'email' => "superadmin@gmail.com",
         //     'password' => Hash::make('superone'),
-        //     'namaLengkap' => "Akhdan",
+        //     'nama_lengkap' => "SuperAdmin",
         //     'noHp' => "085756436576",
-        //     'kodeOtp' => '87657554',
-        //     'status' => 'aktif',
-        //     'foto_user' => ''
+        //     'kedudukans_id' => "1"
         // ]);
 
+        // // user_listData::create([
+        // //     'username' => "danakhdan12@gmail.com",
+        // //     'password' => Hash::make('superone'),
+        // //     'namaLengkap' => "Akhdan",
+        // //     'noHp' => "085756436576",
+        // //     'kodeOtp' => '87657554',
+        // //     'status' => 'aktif',
+        // //     'foto_user' => ''
+        // // ]);
 
-        user_listData::factory(10)->create();
-        laporan::factory(10)->create();
-        admin_damkar::factory(10)->create();
-        artikel_berita::factory(30)->create();
-        artikel_edukasi::factory(30)->create();
+
+        // user_listData::factory(10)->create();
+        // laporan::factory(10)->create();
+        // admin_damkar::factory(10)->create();
+        // artikel_berita::factory(30)->create();
+        // artikel_edukasi::factory(30)->create();
 
         StatusRiwayat::create([
             'nama_status' => 'Menunggu'
@@ -81,6 +81,9 @@ class DatabaseSeeder extends Seeder
         ]);
         KategoriLaporan::create([
             'nama_kategori' => 'Hewan Buas'
+        ]);
+        KategoriLaporan::create([
+            'nama_kategori' => 'custom'
         ]);
 
         Kedudukan::create([

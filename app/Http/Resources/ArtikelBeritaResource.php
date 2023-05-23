@@ -22,7 +22,6 @@ class ArtikelBeritaResource extends JsonResource
             "judul" => $this->judul_berita, 
             "deskripsi" => $this->deskripsi_berita, 
             "tanggal" => $this->tgl_berita
-
         ]; 
     }
 }

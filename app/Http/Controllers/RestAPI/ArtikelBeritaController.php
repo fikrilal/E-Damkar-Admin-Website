@@ -18,13 +18,18 @@ class ArtikelBeritaController extends Controller
         $data = artikel_berita::all();
         return ArtikelBeritaResource::collection($data);
     }
+    public function getArtikelBeritaHome()
+    {
+        $data = artikel_berita::take(3)->get();
+        return ArtikelBeritaResource::collection($data);
+    }
 
     public function newArtikelBerita(Request $request)
     {
         $count = artikel_berita::count();
         $skip = 0;
         $limit = $count - $skip;
-        $data = artikel_berita::orderBy('id_berita','DESC')->skip($skip)->take($limit)->get();
+        $data = artikel_berita::orderBy('id_berita', 'DESC')->skip($skip)->take($limit)->get();
         $dataBeritaRes = ArtikelBeritaResource::collection($data);
 
         return json_encode($dataBeritaRes);
@@ -45,7 +50,7 @@ class ArtikelBeritaController extends Controller
 
     public function semuaArtikel()
     {
-        
+
         $data = artikel_berita::orderBy('id_berita', 'DESC')->take(5)->get();
         $data2 = artikel_edukasi::orderBy('id_edukasi', 'DESC')->take(5)->get();
         $dataColt = ArtikelBerita_2Resource::collection($data);

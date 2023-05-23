@@ -66,3 +66,4 @@ Route::post('/addImage', [LaporanController::class, 'addImage']);
 Route::post('/user/foto', [UserController::class, 'UpdateFile']);
 Route::get('/user/akun', [UserController::class, 'getDataProfile']);
 Route::post('/verifyOtp/whatsapp', [AuthenticationController::class, 'verifOtpWhatsapp']);
+Route::get('/getBeritaHome', [ArtikelBeritaController::class, "getArtikelBeritaHome"]);

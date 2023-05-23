@@ -30,9 +30,10 @@ class UserController extends Controller
     public function updatePassword(Request $request)
     {
         $request->validate([
-            'id' => 'required', 
-            'password_lama' => 'required', 
-            'password_baru' => 'required']);
+            'id' => 'required',
+            'password_lama' => 'required',
+            'password_baru' => 'required'
+        ]);
 
         $ambilPasswordLama = DB::table('user_list_data')->where('id', '=', $request->id)->first();
 
@@ -84,7 +85,10 @@ class UserController extends Controller
             'id' => 'required'
         ]);
         $pathDeleteImage = $request->foto_user;
-        Storage::delete('foto_user/' . $pathDeleteImage);
+        if ($pathDeleteImage != null || $pathDeleteImage != "") {
+            Storage::delete('foto_user/' . $pathDeleteImage);
+        }
+
 
         //upload Foto
         if ($request->hasFile('file')) {

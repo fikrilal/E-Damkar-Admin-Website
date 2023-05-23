@@ -119,7 +119,7 @@
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Bukti Kejadian</label>
                   <div class="col-sm-10">
-                    <img src="{{ ('storage/gambar_pelaporan/'.$laporan->gambar_bukti_pelaporan) }}" width="60%">
+                    <img src="{{ ('storage/gambar_pelaporans/'.$laporan->gambar_bukti_pelaporan.'.jpg') }}" width="60%">
                   </div>
                 </div>
 

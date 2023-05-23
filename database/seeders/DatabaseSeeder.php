@@ -46,11 +46,11 @@ class DatabaseSeeder extends Seeder
         // ]);
 
 
-        user_listData::factory(10)->create();
-        laporan::factory(10)->create();
-        admin_damkar::factory(10)->create();
-        artikel_berita::factory(30)->create();
-        artikel_edukasi::factory(30)->create();
+        // user_listData::factory(10)->create();
+        // laporan::factory(10)->create();
+        // admin_damkar::factory(10)->create();
+        // artikel_berita::factory(30)->create();
+        // artikel_edukasi::factory(30)->create();
 
         StatusRiwayat::create([
             'nama_status' => 'Menunggu'
@@ -81,6 +81,9 @@ class DatabaseSeeder extends Seeder
         ]);
         KategoriLaporan::create([
             'nama_kategori' => 'Hewan Buas'
+        ]);
+        KategoriLaporan::create([
+            'nama_kategori' => 'custom'
         ]);
 
         Kedudukan::create([

@@ -15,9 +15,7 @@ return new class extends Migration
             $table->id('id_agenda');
             $table->foreignId('admin_damkar_id');
             $table->String('judul_agenda');
-            $table->text('deskripsi');
             $table->date('tgl_agenda');
-            $table->String('foto_artikel_agenda');
         });
     }
 

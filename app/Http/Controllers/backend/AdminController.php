@@ -41,7 +41,7 @@ $validatedData = $request->validate([
     'nama_admin' => 'required',
     'email' => 'required|email|unique:admin_damkars,email',
     'password' => 'required|min:8',
-    'noHp' => 'required|min:12|max:12'
+    'noHp' => 'required|min:10|max:12'
 ], [
     'nama_admin.required' => 'Nama lengkap wajib diisi.',
     'email.required' => 'Email wajib diisi.',
@@ -50,7 +50,7 @@ $validatedData = $request->validate([
     'password.required' => 'Kata sandi wajib diisi.',
     'password.min' => 'Kata sandi minimal memiliki 10 karakter.',
     'noHp.required' => 'Nomor telepon wajib diisi.',
-    'noHp.min' => 'Nomor HP harus terdiri dari 12 karakter.',
+    'noHp.min' => 'Nomor HP harus terdiri dari 10-12 karakter.',
     'noHp.max' => 'Nomor HP tidak boleh lebih dari 12 karakter.'
 ]);
 
@@ -79,7 +79,7 @@ $validatedData = $request->validate([
     $validatedData = $request->validate([
         'nama_admin' => 'required',
         'email' => 'required|email|unique:admin_damkars,email,' . $request->id,
-        'noHp' => 'required|numeric|digits_between:10,13',
+        'noHp' => 'required|numeric|digits_between:10,12',
         'password' => 'nullable|min:8',
         // Tambahkan validasi tambahan sesuai kebutuhan
     ], [

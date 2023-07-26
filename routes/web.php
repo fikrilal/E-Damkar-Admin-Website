@@ -31,6 +31,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
     Route::resource('berita', 'BeritaController');
     Route::resource('edukasi', 'EdukasiController');
     Route::resource('agenda', 'AgendaController');
+    Route::resource('cetak-laporan', 'CetakLaporanController');
+    Route::get('/cetak-laporan', 'CetakLaporanController@show')->name('cetak-laporan');
     Route::middleware([CheckKedudukanMiddleware::class])->group(function () {
     Route::resource('kelolaadmin', 'AdminController');
     });

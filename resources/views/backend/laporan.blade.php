@@ -31,7 +31,7 @@
                     <th scope="col">Nama Pelapor</th>
                     <th scope="col">Urgensi</th>
                     <th scope="col">Deskripsi Laporan</th>
-                    <th scope="col">Bukti Foto</th>
+                    <th scope="col">Detail</th>
                     <th scope="col">Status</th>
                   </tr>
                 </thead>
@@ -119,7 +119,7 @@
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Bukti Kejadian</label>
                   <div class="col-sm-10">
-                    <img src="{{ ('storage/gambar_pelaporans/'.$laporan->gambar_bukti_pelaporan.'.jpg') }}" width="60%">
+                    <img src="{{ ('storage/gambar_pelaporans/'.$laporan->gambar_bukti_pelaporan.'.jpg') }}" width="40%">
                   </div>
                 </div>
 
@@ -130,7 +130,7 @@
                     <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Bukti Penanganan</label>
                   <div class="col-sm-10">
-                    <img src="{{ ('storage/bukti_penanganan/'.$laporan->bukti_penanganan) }}" width="60%">
+                    <img src="{{ ('storage/bukti_penanganan/'.$laporan->bukti_penanganan) }}" width="40%">
                   </div>
                 </div>
                 @endif
@@ -149,6 +149,13 @@
 </div>
                     </div>
                     <div class="modal-footer">
+                    @if($laporan->status_riwayat_id == 3)
+                        <a href="{{ route('cetak-laporan', ['idLaporan' => $laporan->idLaporan]) }}" class="btn btn-warning">
+                            <i class="bi bi-download"></i> Cetak Laporan
+                        </a>
+                    @endif
+
+
                     </div>
                       </form><!-- End General Form Elements -->
                   </div>

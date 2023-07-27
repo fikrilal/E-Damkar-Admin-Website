@@ -168,11 +168,15 @@
                     <div class="modal-footer">
                     @if($laporan->status_riwayat_id == 3)
                         <a href="{{ route('cetak-laporan', ['idLaporan' => $laporan->idLaporan]) }}" target="blank" class="btn btn-warning">
-                            <i class="bi bi-download"></i> Cetak Laporan
+                        <i class="bi bi-printer"></i></i> Cetak Laporan
                         </a>
+
+                        <a href="{{ route('cetak-laporan', ['idLaporan' => $laporan->idLaporan]) }}" class="btn btn-warning">
+                            <i class="bi bi-download"></i> Unduh Laporan
+                        </a>
+
+                        
                     @endif
-
-
                     </div>
                       </form><!-- End General Form Elements -->
                   </div>

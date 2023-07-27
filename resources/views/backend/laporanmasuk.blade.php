@@ -114,12 +114,13 @@
                   </div>
                 </div>
 
+             
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Deskripsi Laporan</label>
                   <div class="col-sm-10">
-                    <input type="text" name="deskripsi_laporan" value="{{ isset($laporan) ? $laporan->deskripsi_laporan : '' }}" class="form-control"
-                     disabled>
+                      <textarea style="width: 100%;" disabled>{{ isset($laporan) ? $laporan->deskripsi_laporan : '' }}</textarea>
                   </div>
+
                 </div>
               
                 <div class="row mb-3">

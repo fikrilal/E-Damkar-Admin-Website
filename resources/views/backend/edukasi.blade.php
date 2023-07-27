@@ -59,14 +59,14 @@
                {!! csrf_field() !!}
                <input type="hidden" name="id" value="{{ Auth::user()->id }}"></br>
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
+                  <label for="inputText" class="col-sm-2 col-form-label">Judul*</label>
                   <div class="col-sm-10">
                     <input type="text" name="judul" id="judul" class="form-control" value="{{ old('judul') }}">
                   </div>
                 </div>
 
                 <div class="row mb-3">
-                  <label for="inputNumber" class="col-sm-2 col-form-label">Foto</label>
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Foto*</label>
                   <div class="col-sm-10">
                     <input class="form-control" name="foto" id="foto" type="file" id="formFile" required  accept="image/png, image/jpeg">
                   </div>
@@ -74,9 +74,9 @@
            
                 
                 <div class="row mb-3">
-                  <label for="inputEmail" class="col-sm-2 col-form-label">Isi Artikel</label>
+                  <label for="inputEmail" class="col-sm-2 col-form-label">Isi Artikel*</label>
                   <div class="col-sm-10">
-                    <textarea type="text" name="isi_artikel" id="isi_artikel" class="form-control quill-editor-full" value="{{ old('isi_artikel') }}"></textarea>
+                    <textarea type="text" name="isi_artikel" id="isi_artikel" style="height: 200px;" class="form-control" value="{{ old('isi_artikel') }}"></textarea>
                   </div>
                 </div>
                 
@@ -85,7 +85,7 @@
 </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keluar</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
                       <button type="submit" class="btn btn-primary">Publikasikan</button>
                     </div>
                       </form><!-- End General Form Elements -->
@@ -159,14 +159,14 @@
 
                 <input type="hidden" name="id" value="{{ $berita->id_edukasi }}"></br>
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
+                  <label for="inputText" class="col-sm-2 col-form-label">Judul*</label>
                   <div class="col-sm-10">
                     <input type="text" name="judul" id="judul" value="{{ isset($berita) ? $berita->judul_edukasi : '' }}" class="form-control" required>
                   </div>
                 </div>
 
                 <div class="row mb-3">
-                  <label for="inputNumber" class="col-sm-2 col-form-label">Foto</label>
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Foto8</label>
                   <div class="col-sm-10">
                   <img src="{{ asset('img-edukasi/'.$berita->foto_artikel_edukasi) }}"  width="30%">
                   <p></p>
@@ -176,9 +176,9 @@
            
                 
                 <div class="row mb-3">
-                  <label for="inputEmail" class="col-sm-2 col-form-label">Isi Artikel</label>
+                  <label for="inputEmail" class="col-sm-2 col-form-label">Isi Artikel*</label>
                   <div class="col-sm-10">
-                  <textarea name="isi_artikel" id="isi_artikel" class="form-control quill-editor-full" required>{{ isset($berita) ? $berita->deskripsi : '' }}</textarea>
+                  <textarea name="isi_artikel" id="isi_artikel" class="form-control" style="height: 200px;" required>{{ isset($berita) ? $berita->deskripsi : '' }}</textarea>
                   </div>
                 </div>
                 

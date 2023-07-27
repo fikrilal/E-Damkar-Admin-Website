@@ -50,7 +50,7 @@
                     <th scope="col">Nama Pelapor</th>
                     <th scope="col">Urgensi</th>
                     <th scope="col">Deskripsi Laporan</th>
-                    <th scope="col">Bukti</th>
+                    <th scope="col">Detail</th>
                     <th scope="col">Status</th>
                   </tr>
                 </thead>

@@ -32,7 +32,7 @@
                     <th scope="col">Urgensi</th>
                     <th scope="col">Deskripsi Laporan</th>
                     <th scope="col">Detail</th>
-                    <th scope="col">Dokumen</th>
+                    <!-- <th scope="col">Dokumen</th> -->
                     <th scope="col">Status</th>
                   
                   </tr>
@@ -53,9 +53,7 @@
                     <td><a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" 
                     data-bs-target="#largeModalTampil{{ $laporan->idLaporan}}">Cek Detail</td>
 
-                    <td> 
-
-
+                    <!-- <td> 
                     @if($laporan->status_riwayat_id == 3)
                     <a href="{{ route('cetak-laporan', ['idLaporan' => $laporan->idLaporan]) }}" target="blank" class="btn btn-warning">Unduh
                     </a>
@@ -65,7 +63,7 @@
                     @else
                       
                     @endif
-                  </td>
+                  </td> -->
 
 
                     <td>
@@ -168,11 +166,11 @@
 </div>
                     </div>
                     <div class="modal-footer">
-                    <!-- @if($laporan->status_riwayat_id == 3)
-                        <a href="{{ route('cetak-laporan', ['idLaporan' => $laporan->idLaporan]) }}" class="btn btn-warning">
+                    @if($laporan->status_riwayat_id == 3)
+                        <a href="{{ route('cetak-laporan', ['idLaporan' => $laporan->idLaporan]) }}" target="blank" class="btn btn-warning">
                             <i class="bi bi-download"></i> Cetak Laporan
                         </a>
-                    @endif -->
+                    @endif
 
 
                     </div>

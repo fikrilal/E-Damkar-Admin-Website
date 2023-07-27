@@ -59,14 +59,14 @@
                {!! csrf_field() !!}
                <input type="hidden" name="id" value="{{ Auth::user()->id }}"></br>
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Judul Agenda</label>
+                  <label for="inputText" class="col-sm-2 col-form-label">Judul Agenda*</label>
                   <div class="col-sm-10">
                     <input type="text" name="judul_agenda" id="judul_agenda" class="form-control" value="{{ old('judul') }}">
                   </div>
                 </div>
                 
                 <div class="row mb-3">
-                  <label for="inputEmail" class="col-sm-2 col-form-label">Tanggal Agenda</label>
+                  <label for="inputEmail" class="col-sm-2 col-form-label">Tanggal Agenda*</label>
                   <div class="col-sm-10">
                     <input type="date" name="tanggal" id="tanggal" class="form-control">
                   </div>
@@ -151,14 +151,14 @@
 
                 <input type="hidden" name="id" value="{{ $a->id_agenda }}"></br>
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Judul Agenda</label>
+                  <label for="inputText" class="col-sm-2 col-form-label">Judul Agenda*</label>
                   <div class="col-sm-10">
                     <input type="text" name="judul_agenda" id="judul_agenda" value="{{ isset($a) ? $a->judul_agenda : '' }}" class="form-control">
                   </div>
                 </div>
 
                 <div class="row mb-3">
-                  <label for="inputEmail" class="col-sm-2 col-form-label">Tanggal Agenda</label>
+                  <label for="inputEmail" class="col-sm-2 col-form-label">Tanggal Agenda*</label>
                   <div class="col-sm-10">
                     <input type="date" name="tanggal" id="tanggal" class="form-control">
                   </div>

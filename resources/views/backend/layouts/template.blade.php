@@ -202,7 +202,7 @@
 
                 <input type="hidden" name="id" value="{{ Auth::user()->id }}">
       <div class="row mb-3">
-        <label for="inputText" class="col-sm-2 col-form-label"><strong>Nama:</strong></label>
+        <label for="inputText" class="col-sm-2 col-form-label"><strong>Nama*</strong></label>
         <div class="col-sm-10">
           <input type="text" name="nama_lengkap" id="nama_lengkap" value="{{ Auth::user()->nama_lengkap }}"
             class="form-control" required>
@@ -210,7 +210,7 @@
       </div>
 
       <div class="row mb-3">
-        <label for="inputText" class="col-sm-2 col-form-label"><strong>Email:</strong></label>
+        <label for="inputText" class="col-sm-2 col-form-label"><strong>Email*</strong></label>
         <div class="col-sm-10">
           <input type="email" name="email" id="email" value="{{ Auth::user()->email }}"
             class="form-control" required>
@@ -218,7 +218,7 @@
       </div>
 
       <div class="row mb-3">
-        <label for="inputText" class="col-sm-2 col-form-label"><strong>No HP:</strong></label>
+        <label for="inputText" class="col-sm-2 col-form-label"><strong>No HP*</strong></label>
         <div class="col-sm-10">
           <input type="text" name="no_hp" id="no_hp" value="{{ Auth::user()->noHp }}"
             class="form-control" required>
@@ -226,7 +226,7 @@
       </div>
 
       <div class="row mb-3">
-        <label for="inputText" class="col-sm-2 col-form-label"><strong>Kata Sandi:</strong></label>
+        <label for="inputText" class="col-sm-2 col-form-label"><strong>Kata Sandi</strong></label>
         <div class="col-sm-10">
           <input type="password" name="password" id="password" class="form-control" >
         </div>

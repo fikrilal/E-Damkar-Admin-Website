@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Middleware\CheckKedudukanMiddleware;
 use App\Http\Controllers\WelcomeController;
+use App\Websocket\LaporanHandler\MessageLaporanHandler;
+use BeyondCode\LaravelWebSockets\Facades\WebSocketsRouter;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,11 +21,11 @@ use App\Http\Controllers\WelcomeController;
 |
 */
 
-Route::group(['namespace' => 'App\Http\Controllers\Frontend'], function() {
+Route::group(['namespace' => 'App\Http\Controllers\Frontend'], function () {
     Route::resource('home', 'HomeController');
 });
 
-Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
+Route::group(['namespace' => 'App\Http\Controllers\Backend'], function () {
     Route::resource('dashboard', 'DashboardController');
     Route::resource('laporan', 'LaporanController');
     Route::resource('laporanmasuk', 'LaporanMasukController');
@@ -32,7 +34,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
     Route::resource('edukasi', 'EdukasiController');
     Route::resource('agenda', 'AgendaController');
     Route::middleware([CheckKedudukanMiddleware::class])->group(function () {
-    Route::resource('kelolaadmin', 'AdminController');
+        Route::resource('kelolaadmin', 'AdminController');
     });
 });
 
@@ -41,10 +43,10 @@ Route::post('/pengaturan/updateprofil', 'App\Http\Controllers\Backend\Pengaturan
 Route::get('/search', 'App\Http\Controllers\SearchBeritaController@search')->name('search');
 
 Route::get('/laporan/update-status/{id}/', 'App\Http\Controllers\Backend\LaporanMasukController@updateStatus')->name('laporan.update-status');
-Route::get('/logout', function(){
+Route::get('/logout', function () {
     Auth::logout();
     // return Redirect::to('login');
- });
+});
 
 Route::get('/', [WelcomeController::class, 'index']);
 
@@ -67,3 +69,6 @@ Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'inde
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+WebSocketsRouter::WebSocket('/rlt/laporan', MessageLaporanHandler::class);

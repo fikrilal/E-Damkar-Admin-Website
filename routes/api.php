@@ -7,6 +7,8 @@ use App\Http\Controllers\RestAPI\AuthenticationController;
 use App\Http\Controllers\RestAPI\EdukasiController as RestAPIEdukasiController;
 use App\Http\Controllers\RestAPI\LaporanController;
 use App\Http\Controllers\RestAPI\UserController;
+use App\Websocket\LaporanHandler\MessageLaporanHandler;
+use BeyondCode\LaravelWebSockets\Facades\WebSocketsRouter;
 use Illuminate\Support\Facades\Route;
 
 
@@ -67,3 +69,5 @@ Route::post('/user/foto', [UserController::class, 'UpdateFile']);
 Route::get('/user/akun', [UserController::class, 'getDataProfile']);
 Route::post('/verifyOtp/whatsapp', [AuthenticationController::class, 'verifOtpWhatsapp']);
 Route::get('/getBeritaHome', [ArtikelBeritaController::class, "getArtikelBeritaHome"]);
+
+

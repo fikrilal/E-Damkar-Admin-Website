@@ -16,6 +16,7 @@ abstract class BaseLaporanHandler implements MessageComponentInterface
     protected $clients;
     protected $subscriptions;
     protected $users;
+    protected $dataLaporans = [];
 
     public function __construct()
     {
@@ -29,6 +30,7 @@ abstract class BaseLaporanHandler implements MessageComponentInterface
         $this->verifyAppKey($conn)->generateSocketId($conn);
         $this->clients->attach($conn);
         $this->users[$conn->resourceId] = $conn;
+        $conn->send("berhasil tersambung");
     }
 
     function onError(ConnectionInterface $conn, Exception $e)

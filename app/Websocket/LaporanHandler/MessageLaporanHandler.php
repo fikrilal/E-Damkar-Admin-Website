@@ -15,16 +15,21 @@ class MessageLaporanHandler extends BaseLaporanHandler implements MessageCompone
     function onMessage(ConnectionInterface $conn, MessageInterface $msg)
     {
         $data = json_decode($msg);
-        $payload = $data->payload ?? [];
         switch ($data->command) {
             case "Subscribe":
                 $this->subscriptions[$conn->resourceId] = $data->channel;
                 break;
             case "AddData":
-                $this->sendToAnotherUser($conn, $payload);
+                if ($data->user != 'controller') {
+                    break;
+                }
+                $this->sendToAnotherUser($conn);
                 break;
             case "Process":
                 $this->prosesPelaporan();
+                break;
+            case "getData":
+                $this->getDataLaporan($conn);
                 break;
         }
     }
@@ -33,7 +38,12 @@ class MessageLaporanHandler extends BaseLaporanHandler implements MessageCompone
     {
     }
 
-    
+    function getDataLaporan(ConnectionInterface $conn)
+    {
+        $data = laporan::Where('status_riwayat_id', 3)->get();
+        $dlp = json_encode($data);
+        $conn->send($dlp);
+    }
 
     // function getDataMessage(ConnectionInterface $conn, $data)
     // {
@@ -49,15 +59,14 @@ class MessageLaporanHandler extends BaseLaporanHandler implements MessageCompone
     // }
 
 
-    function sendToAnotherUser(ConnectionInterface $conn, $data)
+    function sendToAnotherUser(ConnectionInterface $conn)
     {
-        array_push($this->dataLaporans, $data);
         if (isset($this->subscriptions[$conn->resourceId])) {
             $target = $this->subscriptions[$conn->resourceId];
             foreach ($this->subscriptions as $id => $channel) {
                 if ($channel == $target && $id != $conn->resourceId) {
-                    $dlp = json_encode($this->dataLaporans);
-                    $this->users[$id]->send($dlp);
+                    $data = laporan::Where('status_riwayat_id', 3)->get();
+                    $this->users[$id]->send(json_encode($data));
                 }
             }
         }

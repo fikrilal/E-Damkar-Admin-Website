@@ -31,8 +31,8 @@ abstract class BaseLaporanHandler implements MessageComponentInterface
         $this->verifyAppKey($conn)->generateSocketId($conn);
         $this->clients->attach($conn);
         $this->users[$conn->resourceId] = $conn;
-        $conn->send("berhasil tersambung");
-        $this->getDataLaporan($conn);
+        $message = ["condition" => true, "message" => "connected successfully"];
+        $conn->send(json_encode($message));
     }
 
     function onError(ConnectionInterface $conn, Exception $e)
@@ -64,12 +64,5 @@ abstract class BaseLaporanHandler implements MessageComponentInterface
         $connection->socketId = $socketId;
 
         return $this;
-    }
-
-    function getDataLaporan(ConnectionInterface $conn)
-    {
-        $data = laporan::Where('status_riwayat_id', 3)->get();
-        $dlp = json_encode($data);
-        $conn->send($dlp);
     }
 }

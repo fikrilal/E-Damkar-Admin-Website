@@ -3,6 +3,7 @@
 
 namespace App\Websocket\LaporanHandler;
 
+use App\Models\laporan;
 use PhpParser\JsonDecoder;
 use Ratchet\ConnectionInterface;
 use Ratchet\RFC6455\Messaging\MessageInterface;
@@ -32,6 +33,20 @@ class MessageLaporanHandler extends BaseLaporanHandler implements MessageCompone
     {
     }
 
+    
+
+    // function getDataMessage(ConnectionInterface $conn, $data)
+    // {
+    //     if (isset($this->subscriptions[$conn->resourceId])) {
+    //         $target = $this->subscriptions[$conn->resourceId];
+    //         foreach ($this->subscriptions as $id => $channel) {
+    //             if ($channel == $target && $id != $conn->resourceId) {
+    //                 $dlp = json_encode($data);
+    //                 $this->users[$id]->send($dlp);
+    //             }
+    //         }
+    //     }
+    // }
 
 
     function sendToAnotherUser(ConnectionInterface $conn, $data)

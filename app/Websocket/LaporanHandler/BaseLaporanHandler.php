@@ -2,6 +2,7 @@
 
 namespace App\Websocket\LaporanHandler;
 
+use App\Models\laporan;
 use BeyondCode\LaravelWebSockets\Apps\App;
 use BeyondCode\LaravelWebSockets\QueryParameters;
 use BeyondCode\LaravelWebSockets\WebSockets\Exceptions\UnknownAppKey;
@@ -31,6 +32,7 @@ abstract class BaseLaporanHandler implements MessageComponentInterface
         $this->clients->attach($conn);
         $this->users[$conn->resourceId] = $conn;
         $conn->send("berhasil tersambung");
+        $this->getDataLaporan($conn);
     }
 
     function onError(ConnectionInterface $conn, Exception $e)
@@ -62,5 +64,12 @@ abstract class BaseLaporanHandler implements MessageComponentInterface
         $connection->socketId = $socketId;
 
         return $this;
+    }
+
+    function getDataLaporan(ConnectionInterface $conn)
+    {
+        $data = laporan::Where('status_riwayat_id', 3)->get();
+        $dlp = json_encode($data);
+        $conn->send($dlp);
     }
 }

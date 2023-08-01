@@ -31,8 +31,10 @@
                     <th scope="col">Nama Pelapor</th>
                     <th scope="col">Urgensi</th>
                     <th scope="col">Deskripsi Laporan</th>
-                    <th scope="col">Bukti Foto</th>
+                    <th scope="col">Detail</th>
+                    <!-- <th scope="col">Dokumen</th> -->
                     <th scope="col">Status</th>
+                  
                   </tr>
                 </thead>
 
@@ -50,6 +52,20 @@
 
                     <td><a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" 
                     data-bs-target="#largeModalTampil{{ $laporan->idLaporan}}">Cek Detail</td>
+
+                    <!-- <td> 
+                    @if($laporan->status_riwayat_id == 3)
+                    <a href="{{ route('cetak-laporan', ['idLaporan' => $laporan->idLaporan]) }}" target="blank" class="btn btn-warning">Unduh
+                    </a>
+                    @elseif($laporan->status_riwayat_id == 4)
+                    <a href="#" class="btn btn-light">Tidak Tersedia
+                    </a>
+                    @else
+                      
+                    @endif
+                  </td> -->
+
+
                     <td>
                       @if($laporan->status_riwayat_id == 3)
                           <button type="button" class="btn btn-success">{{$laporan->statusRiwayat->nama_status}}</button>
@@ -59,7 +75,8 @@
                           <button type="button" class="btn btn-default">{{$laporan->statusRiwayat->nama_status}}</button>
                       @endif
                   </td>
-                     
+
+              
               
                   <div class="modal fade" id="largeModalTampil{{  $laporan->idLaporan }}" tabindex="-1">
                 <div class="modal-dialog modal-xl">
@@ -96,9 +113,9 @@
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Deskripsi Laporan</label>
                   <div class="col-sm-10">
-                    <input type="text" name="deskripsi_laporan" value="{{ isset($laporan) ? $laporan->deskripsi_laporan : '' }}" class="form-control"
-                     disabled>
+                      <textarea style="width: 100%;" disabled>{{ isset($laporan) ? $laporan->deskripsi_laporan : '' }}</textarea>
                   </div>
+
                 </div>
               
                  
@@ -119,7 +136,7 @@
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Bukti Kejadian</label>
                   <div class="col-sm-10">
-                    <img src="{{ ('storage/gambar_pelaporans/'.$laporan->gambar_bukti_pelaporan.'.jpg') }}" width="60%">
+                    <img src="{{ ('storage/gambar_pelaporans/'.$laporan->gambar_bukti_pelaporan.'.jpg') }}" width="40%">
                   </div>
                 </div>
 
@@ -130,7 +147,7 @@
                     <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Bukti Penanganan</label>
                   <div class="col-sm-10">
-                    <img src="{{ ('storage/bukti_penanganan/'.$laporan->bukti_penanganan) }}" width="60%">
+                    <img src="{{ ('storage/bukti_penanganan/'.$laporan->bukti_penanganan) }}" width="40%">
                   </div>
                 </div>
                 @endif
@@ -149,6 +166,17 @@
 </div>
                     </div>
                     <div class="modal-footer">
+                    @if($laporan->status_riwayat_id == 3)
+                        <a href="{{ route('cetak-laporan', ['idLaporan' => $laporan->idLaporan]) }}" target="blank" class="btn btn-warning">
+                        <i class="bi bi-printer"></i></i> Cetak Laporan
+                        </a>
+
+                        <a href="{{ route('cetak-laporan', ['idLaporan' => $laporan->idLaporan]) }}" class="btn btn-warning">
+                            <i class="bi bi-download"></i> Unduh Laporan
+                        </a>
+
+                        
+                    @endif
                     </div>
                       </form><!-- End General Form Elements -->
                   </div>

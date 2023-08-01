@@ -33,6 +33,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend'], function () {
     Route::resource('berita', 'BeritaController');
     Route::resource('edukasi', 'EdukasiController');
     Route::resource('agenda', 'AgendaController');
+    Route::resource('cetak-laporan', 'CetakLaporanController');
+    Route::get('/cetak-laporan', 'CetakLaporanController@show')->name('cetak-laporan');
     Route::middleware([CheckKedudukanMiddleware::class])->group(function () {
         Route::resource('kelolaadmin', 'AdminController');
     });
@@ -55,12 +57,12 @@ Route::group(['namespace' => 'App\Http\Controllers\LandingInformasi'], function 
     Route::resource('landingedukasi', 'landingedukasiController');
     Route::resource('landingagenda', 'landingagendaController');
     Route::resource('detailberita', 'detailberitaController');
-    Route::resource('detailagenda', 'detailagendaController');
+    // Route::resource('detailagenda', 'detailagendaController');
     Route::resource('detailedukasi', 'detailedukasiController');
     Route::resource('landingtentang', 'landingtentangController');
     Route::get('detailberita/{id_berita}', [LandingInformasiController::class, 'show'])->name('detailberita.show');
     Route::get('detailedukasi/{id_edukasi}', [LandingInformasiController::class, 'show'])->name('detailedukasi.show');
-    Route::get('detailagenda/{id_agenda}', [LandingInformasiController::class, 'show'])->name('detailagenda.show');
+    // Route::get('detailagenda/{id_agenda}', [LandingInformasiController::class, 'show'])->name('detailagenda.show');
 });
 
 // Route::get('/laporan', [App\Http\Controllers\Backend\LaporanController::class, 'index'])->name('dashboard');

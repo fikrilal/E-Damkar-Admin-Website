@@ -14,7 +14,7 @@ class WelcomeController extends Controller
     {
         $data = DB::table('pengaturan')->get();
         $data1 = DB::table('laporans')
-            ->whereIn('status_riwayat_id', [3, 4])
+            ->whereIn('status_riwayat_id', [3,4])
             ->count();
     
         $artikel = DB::table('artikel_beritas')

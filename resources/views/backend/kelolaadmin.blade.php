@@ -57,30 +57,32 @@
                     @csrf
                     <input type="hidden" name="id" value="{{ Auth::user()->id }}">
                     <div class="row mb-3">
-                        <label for="nama_admin" class="col-sm-2 col-form-label">Nama</label>
+                        <label for="nama_admin" class="col-sm-2 col-form-label">Nama Lengkap*</label>
                         <div class="col-sm-10">
                             <input type="text" name="nama_admin" id="nama_admin" class="form-control" value="{{ old('nama_admin') }}">
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="email" class="col-sm-2 col-form-label">Email</label>
+                        <label for="email" class="col-sm-2 col-form-label">Email*</label>
                         <div class="col-sm-10">
                             <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}">
                         </div>
                     </div>
 
+
                     <div class="row mb-3">
-                        <label for="password" class="col-sm-2 col-form-label">Kata Sandi</label>
+                        <label for="noHp" class="col-sm-2 col-form-label">Nomor HP*</label>
                         <div class="col-sm-10">
-                            <input type="password" name="password" id="password" class="form-control">
+                            <input type="text" name="noHp" id="noHp" class="form-control" value="{{ old('noHp') }}">
                         </div>
                     </div>
 
+                    
                     <div class="row mb-3">
-                        <label for="noHp" class="col-sm-2 col-form-label">Nomor HP</label>
+                        <label for="password" class="col-sm-2 col-form-label">Kata Sandi*</label>
                         <div class="col-sm-10">
-                            <input type="text" name="noHp" id="noHp" class="form-control" value="{{ old('noHp') }}">
+                            <input type="password" name="password" id="password" class="form-control">
                         </div>
                     </div>
 
@@ -141,7 +143,7 @@
                                                             value="{{ $admin->id }}">
                                                         <div class="row mb-3">
                                                             <label for="inputText"
-                                                                class="col-sm-2 col-form-label">Nama</label>
+                                                                class="col-sm-2 col-form-label">Nama Lengkap*</label>
                                                             <div class="col-sm-10">
                                                                 <input type="text" name="nama_admin" id="nama_admin"
                                                                     value="{{ $admin->nama_lengkap }}"
@@ -151,7 +153,7 @@
 
                                                         <div class="row mb-3">
                                                             <label for="inputText"
-                                                                class="col-sm-2 col-form-label">Email</label>
+                                                                class="col-sm-2 col-form-label">Email*</label>
                                                             <div class="col-sm-10">
                                                                 <input type="email" name="email" id="email"
                                                                     value="{{ $admin->email }}"
@@ -161,7 +163,7 @@
 
                                                         <div class="row mb-3">
                                                             <label for="inputText"
-                                                                class="col-sm-2 col-form-label">No HP</label>
+                                                                class="col-sm-2 col-form-label">No HP*</label>
                                                             <div class="col-sm-10">
                                                                 <input type="text" name="noHp" id="noHp"
                                                                     value="{{ $admin->noHp }}"
@@ -171,7 +173,7 @@
 
                                                         <div class="row mb-3">
                                                             <label for="inputText"
-                                                                class="col-sm-2 col-form-label">Password</label>
+                                                                class="col-sm-2 col-form-label">Kata Sandi</label>
                                                             <div class="col-sm-10">
                                                                 <input type="password" name="password" id="password"
                                                             

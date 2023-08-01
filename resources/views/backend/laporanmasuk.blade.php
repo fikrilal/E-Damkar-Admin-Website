@@ -50,7 +50,7 @@
                     <th scope="col">Nama Pelapor</th>
                     <th scope="col">Urgensi</th>
                     <th scope="col">Deskripsi Laporan</th>
-                    <th scope="col">Bukti</th>
+                    <th scope="col">Detail</th>
                     <th scope="col">Status</th>
                   </tr>
                 </thead>
@@ -114,12 +114,13 @@
                   </div>
                 </div>
 
+             
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Deskripsi Laporan</label>
                   <div class="col-sm-10">
-                    <input type="text" name="deskripsi_laporan" value="{{ isset($laporan) ? $laporan->deskripsi_laporan : '' }}" class="form-control"
-                     disabled>
+                      <textarea style="width: 100%;" disabled>{{ isset($laporan) ? $laporan->deskripsi_laporan : '' }}</textarea>
                   </div>
+
                 </div>
               
                 <div class="row mb-3">
@@ -140,7 +141,7 @@
                   <label for="inputText" class="col-sm-2 col-form-label">Bukti Kejadian</label>
                   <div class="col-sm-10">
                     <!-- <img src="storage/gambar_pelaporan/kebakaran.jpeg" width="60%"> -->
-                    <img src="{{ ('storage/gambar_pelaporans/'.$laporan->gambar_bukti_pelaporan.".jpg") }}" width="60%">
+                    <img src="{{ ('storage/gambar_pelaporans/'.$laporan->gambar_bukti_pelaporan.".jpg") }}" width="40%">
                   </div>
                 </div>
 

@@ -49,7 +49,7 @@ $validatedData = $request->validate([
     'email.unique' => 'Email ini sudah terdaftar.',
     'password.required' => 'Kata sandi wajib diisi.',
     'password.min' => 'Kata sandi minimal memiliki 10 karakter.',
-    'noHp.required' => 'Nomor telepon wajib diisi.',
+    'noHp.required' => 'Nomor HP wajib diisi.',
     'noHp.min' => 'Nomor HP harus terdiri dari 10-12 karakter.',
     'noHp.max' => 'Nomor HP tidak boleh lebih dari 12 karakter.'
 ]);
@@ -87,9 +87,9 @@ $validatedData = $request->validate([
         'email.required' => 'Email wajib diisi.',
         'email.email' => 'Isi email dengan benar.',
         'email.unique' => 'Email ini sudah terdaftar.',
-        'noHp.required' => 'Nomor telepon wajib diisi.',
-        'noHp.numeric' => 'Isi nomor telepon dengan angka.',
-        'noHp.digits_between' => 'Nomor telepon harus memiliki 10-12 digit.',
+        'noHp.required' => 'Nomor HP wajib diisi.',
+        'noHp.numeric' => 'Isi nomor HP dengan angka.',
+        'noHp.digits_between' => 'Nomor HP harus memiliki 10-12 digit.',
         'password.min' => 'Kata sandi minimal memiliki 8 karakter.'
     ]);
 

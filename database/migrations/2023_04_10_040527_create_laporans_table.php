@@ -28,7 +28,7 @@ return new class extends Migration
             $table->integer('korban_jiwa');
             $table->integer('korban_luka');
             $table->string('kondisi_cuaca');
-            $table->string('pihak_lain');
+            $table->string('pihak_lain')->nullable();
             $table->integer('kerugian');
 
             $table->timestamps();

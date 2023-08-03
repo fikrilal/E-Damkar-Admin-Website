@@ -26,7 +26,11 @@ class laporanFactory extends Factory
             'bukti_penanganan' => '',
             "latitude" => "-7.2232139",
             "longitude" => "112.6226935",
-            "urgensi" => "ular masuk celana fikril"
+            "urgensi" => "ular masuk celana fikril",
+            "korban_jiwa" => 0,
+            "korban_luka" => 0,
+            "kondisi_cuaca" => "cerah",
+            "kerugian" => 0,
         ];
     }
 }

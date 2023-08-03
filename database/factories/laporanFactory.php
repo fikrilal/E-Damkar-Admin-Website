@@ -18,6 +18,7 @@ class laporanFactory extends Factory
             "user_listdata_id" => rand(1, 10),
             "status_riwayat_id" =>  1,
             "kategori_laporan_id" => 1,
+            "detail_korban_id" => 1,
             "tgl_lap" => "2023-05-16",
             "deskripsi_laporan" => fake()->paragraph(),
             "gambar_bukti_pelaporan" => "gambar",

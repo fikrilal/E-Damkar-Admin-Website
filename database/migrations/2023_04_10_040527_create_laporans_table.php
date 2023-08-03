@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_listdata_id');
             $table->foreignId('status_riwayat_id');
             $table->foreignId('kategori_laporan_id');
+            $table->foreignId('detail_korban_id');
             $table->date("tgl_lap");
             $table->text('deskripsi_laporan');
             $table->String('gambar_bukti_pelaporan');
@@ -24,6 +25,12 @@ return new class extends Migration
             $table->string("latitude");
             $table->string("longitude");
             $table->string("urgensi");
+            $table->integer('korban_jiwa');
+            $table->integer('korban_luka');
+            $table->string('kondisi_cuaca');
+            $table->string('pihak_lain');
+            $table->integer('kerugian');
+
             $table->timestamps();
         });
     }

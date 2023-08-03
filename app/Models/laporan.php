@@ -13,7 +13,7 @@ class laporan extends Model
 
     protected $guarded = ['idLaporan'];
 
-    protected $fillable = ['user_listdata_id', 'status_riwayat_id', 'kategori_laporan_id', 'tgl_lap', 'deskripsi_laporan', 'gambar_bukti_pelaporan', 'alamat_kejadian', 'latitude', 'longitude', 'urgensi' ];
+    protected $fillable = ['user_listdata_id', 'status_riwayat_id', 'kategori_laporan_id', 'tgl_lap', 'deskripsi_laporan', 'gambar_bukti_pelaporan', 'alamat_kejadian', 'latitude', 'longitude', 'urgensi'];
 
     public function user_listdata()
     {
@@ -33,5 +33,10 @@ class laporan extends Model
     public function detailLaporan()
     {
         return $this->hasOne(DetailLaporan::class);
+    }
+
+    public function detailKorban()
+    {
+        return $this->belongsTo(detail_korban::class);
     }
 }

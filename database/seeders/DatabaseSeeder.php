@@ -54,6 +54,9 @@ class DatabaseSeeder extends Seeder
         StatusRiwayat::create([
             'nama_status' => 'Menunggu'
         ]);
+        StatusRiwayat::create([
+            'nama_status' => 'Proses'
+        ]);
 
         StatusRiwayat::create([
             'nama_status' => 'Ditangani'

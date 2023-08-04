@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->text('deskripsi_laporan');
             $table->string('nama_hewan')->nullable();
-            $table->time('waktu_pelaporan');
+            $table->string('waktu_pelaporan');
             $table->string('tgl_pelaporan');
             $table->string('urgensi');
             $table->string('alamat');

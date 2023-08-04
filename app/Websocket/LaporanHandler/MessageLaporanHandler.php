@@ -40,7 +40,7 @@ class MessageLaporanHandler extends BaseLaporanHandler implements MessageCompone
 
     function getDataLaporan(ConnectionInterface $conn)
     {
-        $data = laporan::Where('status_riwayat_id', 3)->get();
+        $data = laporan::Where('status_riwayat_id', 1)->get();
         $dlp = json_encode($data);
         $conn->send($dlp);
     }

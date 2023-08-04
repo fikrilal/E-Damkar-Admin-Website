@@ -28,6 +28,11 @@ class admin_damkar extends Model
         return $this->hasMany(artikel_agenda::class);
     }
 
+    public function detailLaporanPetugas()
+    {
+        return $this->hasMany(detail_laporan_petugas::class);
+    }
+
     public function kedudukan()
     {
         return $this->belongsTo(kedudukan::class);

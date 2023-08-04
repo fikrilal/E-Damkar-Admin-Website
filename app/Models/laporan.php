@@ -32,10 +32,7 @@ class laporan extends Model
         'kerugian'
     ];
 
-    public function user_listdata()
-    {
-        return $this->belongsTo(user_listData::class);
-    }
+
 
     public function statusRiwayat()
     {
@@ -47,9 +44,14 @@ class laporan extends Model
         return $this->belongsTo(KategoriLaporan::class);
     }
 
-    public function detailLaporan()
+    public function detailLaporanPengguna()
     {
-        return $this->hasOne(DetailLaporan::class);
+        return $this->hasOne(detail_laporan_pengguna::class);
+    }
+
+    public function detailLaporanPetugas()
+    {
+        return $this->hasOne(detail_laporan_petugas::class);
     }
 
     public function detailKorban()

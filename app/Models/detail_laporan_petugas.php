@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class detail_laporan_petugas extends Model
 {
     use HasFactory;
+
+
+
+    
 }

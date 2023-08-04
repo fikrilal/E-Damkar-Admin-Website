@@ -17,8 +17,8 @@ class user_listData extends Model
     protected $fillable = ['username', 'password', 'namaLengkap', 'noHp', 'kodeOtp', 'status', 'foto_user'];
 
 
-    public function laporan()
+    public function detailLaporanPengguna()
     {
-        return $this->hasMany(laporan::class);
+        return $this->hasMany(detail_laporan_pengguna::class);
     }
 }

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->double('latitude');
             $table->double('longitude');
+            $table->string('bukti_foto_laporan_pengguna');
         });
     }
 

@@ -9,6 +9,8 @@ class detail_laporan_pengguna extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         "user_listdata_id",
         "deskripsi_laporan",
@@ -18,7 +20,8 @@ class detail_laporan_pengguna extends Model
         "urgensi",
         "alamat",
         "latitude",
-        "longitude"
+        "longitude",
+        "bukti_foto_laporan_pengguna"
     ];
 
     public function user_listdata()

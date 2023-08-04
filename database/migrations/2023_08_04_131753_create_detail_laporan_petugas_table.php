@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('korban_jiwa');
             $table->integer('korban_luka');
             $table->string('kerugian');
-            $table->string('bukti_foto_laporan');
+            $table->string('bukti_foto_laporan_petugas');
         });
     }
 

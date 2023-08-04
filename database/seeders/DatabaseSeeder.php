@@ -13,6 +13,7 @@ use App\Models\StatusRiwayat;
 use App\Models\KategoriLaporan;
 use App\Models\laporan;
 use App\Models\Kedudukan;
+use App\Models\kondisi_cuaca;
 use App\Models\Pengaturan;
 use Database\Factories\adminDamkarFactory;
 use Database\Factories\artikelBeritaFactory;
@@ -51,50 +52,63 @@ class DatabaseSeeder extends Seeder
         // artikel_berita::factory(30)->create();
         // artikel_edukasi::factory(30)->create();
 
-        // StatusRiwayat::create([
-        //     'nama_status' => 'Menunggu'
-        // ]);
-        // StatusRiwayat::create([
-        //     'nama_status' => 'Proses'
-        // ]);
+        kondisi_cuaca::create([
+            "nama_kondisi_cuaca" => 'Cerah'
+        ]);
+        kondisi_cuaca::create([
+            "nama_kondisi_cuaca" => 'Berkabut'
+        ]);
+        kondisi_cuaca::create([
+            "nama_kondisi_cuaca" => 'Mendung'
+        ]);
+        kondisi_cuaca::create([
+            "nama_kondisi_cuaca" => 'Hujan'
+        ]);
 
-        // StatusRiwayat::create([
-        //     'nama_status' => 'Ditangani'
-        // ]);
+        StatusRiwayat::create([
+            'nama_status' => 'Menunggu'
+        ]);
+        StatusRiwayat::create([
+            'nama_status' => 'Proses'
+        ]);
 
-        // StatusRiwayat::create([
-        //     'nama_status' => 'Selesai'
-        // ]);
+        StatusRiwayat::create([
+            'nama_status' => 'Ditangani'
+        ]);
 
-        // StatusRiwayat::create([
-        //     'nama_status' => 'Ditolak'
-        // ]);
+        StatusRiwayat::create([
+            'nama_status' => 'Selesai'
+        ]);
 
-        // KategoriLaporan::create([
-        //     'nama_kategori' => 'Kebakaran'
-        // ]);
+        StatusRiwayat::create([
+            'nama_status' => 'Ditolak'
+        ]);
 
-        // KategoriLaporan::create([
-        //     'nama_kategori' => 'Bencara Alam'
-        // ]);
+        KategoriLaporan::create([
+            'nama_kategori' => 'Kebakaran'
+        ]);
 
-        // KategoriLaporan::create([
-        //     'nama_kategori' => 'Penyelamatan'
-        // ]);
-        // KategoriLaporan::create([
-        //     'nama_kategori' => 'Hewan Buas'
-        // ]);
-        // KategoriLaporan::create([
-        //     'nama_kategori' => 'custom'
-        // ]);
+        KategoriLaporan::create([
+            'nama_kategori' => 'Bencara Alam'
+        ]);
 
-        // Kedudukan::create([
-        //     'nama_kedudukan' => 'superadmin'
-        // ]);
+        KategoriLaporan::create([
+            'nama_kategori' => 'Penyelamatan'
+        ]);
+        KategoriLaporan::create([
+            'nama_kategori' => 'Hewan Buas'
+        ]);
+        KategoriLaporan::create([
+            'nama_kategori' => 'custom'
+        ]);
 
-        // Kedudukan::create([
-        //     'nama_kedudukan' => 'admin'
-        // ]);
+        Kedudukan::create([
+            'nama_kedudukan' => 'superadmin'
+        ]);
+
+        Kedudukan::create([
+            'nama_kedudukan' => 'admin'
+        ]);
 
         // Pengaturan::create([
         //     'jumlah_mobil' => '0',

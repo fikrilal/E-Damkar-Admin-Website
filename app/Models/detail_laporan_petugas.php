@@ -9,6 +9,8 @@ class detail_laporan_petugas extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         "damkar_id",
         "waktu_penanganan",
@@ -17,7 +19,7 @@ class detail_laporan_petugas extends Model
         "korban_jiwa",
         "korban_luka",
         "kerugian",
-        "bukti_foto_laporan"
+        "bukti_foto_laporan_petugas"
     ];
 
     public function laporan()

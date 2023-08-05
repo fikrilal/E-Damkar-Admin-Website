@@ -166,25 +166,29 @@
                     @else
                     <button type="submit" class="btn btn-dark" name="status" value="proses" onclick="updatePost()">Proses</button>
 
-                        <script>
-                        function updatePost() {
-                            const socket = new WebSocket(`ws://188.10.10.254:6001/rlt/laporan?appKey=EDKNGKServer`);
-                            socket.onopen = function (event) {
-                                console.log('on open!!');
+                    <script>
+    function updatePost() {
+        const socket = new WebSocket('ws://188.10.10.254:6001/rlt/laporan?appKey=EDKNGKServer');
+        socket.onopen = function (event) {
+            console.log('on open!!');
+            console.info('berhasil');
 
-                                socket.send(JSON.stringify({
-                                    id: 1,
-                                    payload: {
-                                        title: 'abc123',
-                                    }
-                                }));
-                            }
+            socket.send(JSON.stringify({
+                id: 1,
+                payload: {
+                    title: 'abc123'
+                }
+            }));
 
-                            socket.onmessage = function (event) {
-                                console.log(event);
-                            }
-                        }
-                        </script>
+            console.log('Message sent successfully!');
+        };
+
+        socket.onmessage = function (event) {
+            console.log(event);
+        };
+    }
+</script>
+
 
                         <button type="submit" class="btn btn-danger" name="status" value="tolak">Tolak</button>
                     @endif

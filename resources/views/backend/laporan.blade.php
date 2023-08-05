@@ -94,6 +94,8 @@
 
                 <input type="hidden" name="id" value="{{ $laporan->idLaporan}}"/></br>
 
+               <b> Informasi Pelapor</b><hr>
+
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Nama Pelapor</label>
                   <div class="col-sm-10">
@@ -139,28 +141,48 @@
                   </div>
                 </div>
 
-                @if($laporan->status_riwayat_id == 4)
-                  <!-- Tidak menampilkan input field jika kategori_laporan_id tidak sama dengan 4 -->
+</br>
+                <b>Informasi Petugas</b><hr>
 
-                @else
-                    <!-- <div class="row mb-3">
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Deskripsi Petugas</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="deskripsi_laporan" value="{{ isset($laporan) ? $laporan->detailLaporanPetugas->deskripsi_petugas : '' }}"
+                     class="form-control" disabled>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Korban Jiwa</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="deskripsi_laporan" value="{{ isset($laporan) ? $laporan->detailLaporanPetugas->korban_jiwa : '' }}"
+                     class="form-control" disabled>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Korban Luka</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="deskripsi_laporan" value="{{ isset($laporan) ? $laporan->detailLaporanPetugas->korban_luka : '' }}"
+                     class="form-control" disabled>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Kerugian</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="deskripsi_laporan" value="{{ isset($laporan) ? $laporan->detailLaporanPetugas->kerugian : '' }}"
+                     class="form-control" disabled>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Bukti Penanganan</label>
                   <div class="col-sm-10">
-                    <img src="{{ ('storage/bukti_penanganan/'.$laporan->bukti_penanganan) }}" width="40%">
+                  <img src="{{ asset('storage/bukti_penanganan/'.$laporan->detailLaporanPetugas->bukti_foto_laporan_petugas) }}" width="40%">
                   </div>
-                </div> -->
-                @endif
+                </div>
 
-                @if($laporan->status_riwayat_id == 2)
-              <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Upload Bukti Penangganan</label>
-                  <div class="col-sm-10">
-                      <input type="file" name="bukti_penanganan" id="bukti_penanganan" class="form-control"  accept="image/png, image/jpeg">
-                  </div>
-              </div>
-                @else
-                    <!-- Tidak menampilkan input field jika kategori_laporan_id tidak sama dengan 4 -->
-                @endif
                 <div class="row mb-3">
 </div>
                     </div>

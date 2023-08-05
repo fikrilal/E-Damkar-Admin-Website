@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('deskripsi_laporan');
             $table->string('nama_hewan')->nullable();
             $table->string('waktu_pelaporan');
-            $table->string('tgl_pelaporan');
+            $table->date('tgl_pelaporan');
             $table->string('urgensi');
             $table->string('alamat');
             $table->double('latitude');

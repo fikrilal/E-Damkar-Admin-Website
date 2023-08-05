@@ -124,7 +124,7 @@ class DatabaseSeeder extends Seeder
             'user_listdata_id' => 1,
             'deskripsi_laporan' => 'lorme ipsum',
             'waktu_pelaporan' => '12:00',
-            'tgl_pelaporan' => '08-02-2023',
+            'tgl_pelaporan' => now(),
             'urgensi' => 'kebakaran',
             'alamat' => 'jl ksdjflkd',
             'latitude' => 12.7,
@@ -136,7 +136,7 @@ class DatabaseSeeder extends Seeder
         detail_laporan_petugas::create([
             'damkar_id' => 1,
             'waktu_penanganan' => '12:00',
-            'tgl_laporan_petugas' => '05-08-2023',
+            'tgl_laporan_petugas' => '08-05-2023',
             'deskripsi_petugas' => 'lorem ipsum petugas',
             'korban_jiwa' => 0,
             'korban_luka' => 0,

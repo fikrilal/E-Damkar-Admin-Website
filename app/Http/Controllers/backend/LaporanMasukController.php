@@ -22,8 +22,8 @@ class LaporanMasukController extends Controller
     
     public function index() {
         $title = 'Laporan Masuk | E-Damkar Nganjuk';
-        $data = laporan::whereIn('status_riwayat_id', [1, 2])
-                    ->orderBy('tgl_lap', 'desc') // Mengurutkan berdasarkan tanggal terbaru
+        $data = laporan::whereIn('status_riwayat_id', [1, 2, 3])
+                    ->orderBy('idLaporan', 'desc')
                     ->get();
         return view('backend.laporanmasuk', compact('data','title'));
     }
@@ -38,7 +38,7 @@ class LaporanMasukController extends Controller
                 return redirect()->back()->with('success', 'Status laporan berhasil diproses');
                 break;
             case 'tolak':
-                $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 4]);
+                $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 5]);
                 return redirect()->back()->with('success', 'Status laporan berhasil ditolak');
                 break;
             case 'selesai':
@@ -54,9 +54,9 @@ class LaporanMasukController extends Controller
                 if ($request->hasFile('bukti_penanganan')) {
                     $fileName = $request->file('bukti_penanganan')->getClientOriginalName();
                     $request->file('bukti_penanganan')->storeAs('bukti_penanganan', $fileName);
-                    $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 3, 'bukti_penanganan' => $fileName]);                
+                    $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 4, 'bukti_penanganan' => $fileName]);                
                 } else {
-                    $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 3]);
+                    $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 4]);
                 }
                 return redirect()->back()->with('success', 'Status laporan berhasil diselesaikan');
                 break;

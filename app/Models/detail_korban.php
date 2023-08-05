@@ -9,6 +9,14 @@ class detail_korban extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        "nama_lengkap",
+        "NIK",
+        "umur"
+    ];
+
     public function laporan()
     {
         return $this->hasOne(laporan::class);

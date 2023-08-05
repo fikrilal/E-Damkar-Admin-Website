@@ -14,22 +14,12 @@ class laporan extends Model
     protected $guarded = ['idLaporan'];
 
     protected $fillable = [
-        'user_listdata_id',
         'status_riwayat_id',
         'kategori_laporan_id',
         'detail_korban_id',
-        'tgl_lap',
-        'deskripsi_laporan',
-        'gambar_bukti_pelaporan',
-        'alamat_kejadian',
-        'latitude',
-        'longitude',
-        'urgensi',
-        'korban_jiwa',
-        'korban_luka',
-        'kondisi_cuaca',
-        'pihak_lain',
-        'kerugian'
+        'kondisi_cuaca_id',
+        'detail_laporan_pengguna_id',
+        'detail_laporan_petugas_id'
     ];
 
 
@@ -46,12 +36,12 @@ class laporan extends Model
 
     public function detailLaporanPengguna()
     {
-        return $this->hasOne(detail_laporan_pengguna::class);
+        return $this->belongsTo(detail_laporan_pengguna::class);
     }
 
     public function detailLaporanPetugas()
     {
-        return $this->hasOne(detail_laporan_petugas::class);
+        return $this->belongsTo(detail_laporan_petugas::class);
     }
 
     public function detailKorban()

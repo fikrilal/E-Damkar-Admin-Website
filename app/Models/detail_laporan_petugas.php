@@ -24,7 +24,7 @@ class detail_laporan_petugas extends Model
 
     public function laporan()
     {
-        return $this->belongsTo(laporan::class);
+        return $this->hasOne(laporan::class);
     }
 
     public function adminDamkar()

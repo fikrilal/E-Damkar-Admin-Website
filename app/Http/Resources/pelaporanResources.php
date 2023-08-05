@@ -15,13 +15,13 @@ class pelaporanResources extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            "idLaporan" => $this->idLaporan,
-            "Status_riwayat" => $this->statusRiwayat->nama_status, 
-            "kategori_laporan" => $this->kategoriLaporan->nama_kategori, 
-            "tanggal" => $this->tgl_lap, 
-            "deskripsi" => $this->deskripsi_laporan, 
-            "image_url" => $this->gambar_bukti_pelaporan, 
-            "alamat" => $this->alamat_kejadian,
+            "idLaporan" => $this->laporan->idLaporan,
+            "Status_riwayat" => $this->laporan->statusRiwayat->nama_status,
+            "kategori_laporan" => $this->laporan->kategoriLaporan->nama_kategori,
+            "tanggal" => $this->tgl_pelaporan,
+            "deskripsi" => $this->deskripsi_laporan,
+            "image_url" => $this->bukti_foto_laporan_pengguna,
+            "alamat" => $this->alamat,
             "urgensi" => $this->urgensi
         ];
     }

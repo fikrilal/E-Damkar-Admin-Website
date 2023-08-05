@@ -64,15 +64,16 @@ class LaporanController extends Controller
     //mendapatkan data pelaporan
     public function getDataPelaporan(Request $request)
     {
-        $data = laporan::where('user_listdata_id', $request->userId)->get();
+        // $data = laporan::where('user_listdata_id', $request->userId)->get();
 
-        // $data = laporan::where
+        $data = detail_laporan_pengguna::where('user_listdata_id', $request->userId)->get();
+        
         return pelaporanResources::collection($data);
     }
     public function getDetailPelaporan(Request $request)
     {
         $data = laporan::where('idLaporan', $request->idLaporan)->get();
-        return pelaporanResources::collection($data);
+        return pelaporanResources::collection($data->laporan);
     }
 
     public function searchLapKategori(Request $request)

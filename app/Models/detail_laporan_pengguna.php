@@ -31,6 +31,6 @@ class detail_laporan_pengguna extends Model
 
     public function laporan()
     {
-        return $this->belongsTo(laporan::class);
+        return $this->hasOne(laporan::class);
     }
 }

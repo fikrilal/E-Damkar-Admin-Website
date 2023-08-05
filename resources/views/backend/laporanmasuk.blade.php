@@ -164,7 +164,7 @@
                     @if($laporan->status_riwayat_id == 2)
                         <!-- <button type="submit" class="btn btn-success" name="status" value="selesai">Selesai</button> -->
                     @else
-                        <button type="submit" class="btn btn-dark" name="status" value="proses">Proses</button>
+                    <button type="submit" class="btn btn-dark" name="status" value="proses" id="prosesButton">Proses</button>
                         <button type="submit" class="btn btn-danger" name="status" value="tolak">Tolak</button>
                     @endif
                     </div>
@@ -187,3 +187,35 @@
     </section>
   </main><!-- End #main -->
   @endsection
+
+  <script>
+
+document.addEventListener('DOMContentLoaded', function () {
+    const button = document.getElementById('prosesButton');
+    button.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default form submission (if inside a form)
+
+        // Call the updatePost() function when the button is clicked
+        updatePost();
+    });
+});
+
+    function updatePost() {
+    const socket = new WebSocket(`ws://188.10.10.254:6001/rlt/laporan?appKey=EDKNGKServer`);
+    socket.onopen = function (event){
+        console.log('on open!!');
+
+        socket.send(JSON.stringify({
+            id: 1,
+            payload: {
+                title: 'abc123',
+            }
+        }))
+    }
+
+    socket.onmessage = function (event) {
+        console.log(event);
+
+    }
+}
+    </script>

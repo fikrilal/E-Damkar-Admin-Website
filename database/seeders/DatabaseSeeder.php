@@ -7,7 +7,9 @@ namespace Database\Seeders;
 use App\Models\admin_damkar;
 use App\Models\artikel_berita;
 use App\Models\artikel_edukasi;
+use App\Models\detail_korban;
 use App\Models\detail_laporan_pengguna;
+use App\Models\detail_laporan_petugas;
 use Illuminate\Database\Seeder;
 use App\Models\user_listData;
 use App\Models\StatusRiwayat;
@@ -117,17 +119,44 @@ class DatabaseSeeder extends Seeder
         //     'jumlah_kantor' => '0'
         // ]);
 
-       
+
+        detail_laporan_pengguna::create([
+            'user_listdata_id' => 1,
+            'deskripsi_laporan' => 'lorme ipsum',
+            'waktu_pelaporan' => '12:00',
+            'tgl_pelaporan' => '08-02-2023',
+            'urgensi' => 'kebakaran',
+            'alamat' => 'jl ksdjflkd',
+            'latitude' => 12.7,
+            'longitude' => 11.2,
+            'bukti_foto_laporan_pengguna' => 'image'
+        ]);
 
 
-        // laporan::create([
-        //     'user_listdata_id' => 1,
-        //     'status_riwayat_id' => 1,
-        //     'kategori_laporan_id' => 1,
-        //     'tgl_lap' => '2023-04-14',
-        //     'deskripsi_laporan' => 'required',
-        //     'gambar_bukti_pelaporan' => 'image',
-        //     'alamat_kejadian' => 'required'
-        // ]);
+        detail_laporan_petugas::create([
+            'damkar_id' => 1,
+            'waktu_penanganan' => '12:00',
+            'tgl_laporan_petugas' => '05-08-2023',
+            'deskripsi_petugas' => 'lorem ipsum petugas',
+            'korban_jiwa' => 0,
+            'korban_luka' => 0,
+            'kerugian' => '000000',
+            'bukti_foto_laporan_petugas' => 'gambar'
+        ]);
+
+        detail_korban::create([
+            'nama_lengkap' => 'super one',
+            'NIK' => '1293802083',
+            'umur' => '12'
+        ]);
+
+        laporan::create([
+            'status_riwayat_id' => 1,
+            'kategori_laporan_id' => 1,
+            'detail_korban_id' => 1,
+            'kondisi_cuaca_id' => 1,
+            'detail_laporan_pengguna_id' => 1,
+            'detail_laporan_petugas_id' => 1
+        ]);
     }
 }

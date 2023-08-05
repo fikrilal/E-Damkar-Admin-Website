@@ -150,6 +150,7 @@ class DatabaseSeeder extends Seeder
             'umur' => '12'
         ]);
 
+
         laporan::create([
             'status_riwayat_id' => 1,
             'kategori_laporan_id' => 1,

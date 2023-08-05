@@ -4,6 +4,7 @@ namespace App\Http\Controllers\RestAPI;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\pelaporanResources;
+use App\Models\detail_laporan_pengguna;
 use App\Models\laporan;
 use App\Models\user_listData;
 use Illuminate\Contracts\Support\ValidatedData;
@@ -14,23 +15,35 @@ class LaporanController extends Controller
     //tamabah pelaporan
     public function AddPelaporan(Request $request)
     {
-        $validateData = $request->validate([
-            'user_listdata_id' => 'required',
-            'kategori_laporan_id' => 'required',
-            'tgl_lap' => 'required',
-            'deskripsi_laporan' => 'required',
-            'gambar_bukti_pelaporan' => 'required',
-            'alamat_kejadian' => 'required',
+        $vData = $request->validate([
+            'kategori_laporan_id' => 'required|integer',
+            'user_listdata_id' => 'required|integer',
+            'deskripsi_laporan' => 'required|string',
+            'nama_hewan' => 'string',
+            'waktu_pelaporan' => 'required|string',
+            'tgl_pelaporan' => 'required|string',
+            'urgensi' => 'required|string',
+            'alamat' => 'required|string',
             'latitude' => 'required',
             'longitude' => 'required',
-            'urgensi' => 'required'
+            'bukti_foto_laporan_pengguna' => 'required|string'
         ]);
-        $validateData['status_riwayat_id'] = 1;
 
-        if (laporan::create($validateData)) {
-            return json_encode(['message' => "berhasil melakukan pelaporan"]);
+        $kategoriLap = $vData['kategori_laporan_id'];
+        unset($vData['kategori_laporan_id']);
+        $execDtl = detail_laporan_pengguna::create($vData)->id;
+
+        $crt_lap = [
+            'status_riwayat_id' => 1,
+            'kategori_laporan_id' => $kategoriLap,
+            'detail_laporan_pengguna_id' => $execDtl
+        ];
+
+
+        if (laporan::create($crt_lap)) {
+            return json_encode(["condition" => true, 'message' => "berhasil melakukan pelaporan"]);
         } else {
-            return json_encode(['message' => "gagal melakukan pelaporan"]);
+            return json_encode(["condition" => false, 'message' => "gagal melakukan pelaporan"]);
         }
     }
 
@@ -52,6 +65,8 @@ class LaporanController extends Controller
     public function getDataPelaporan(Request $request)
     {
         $data = laporan::where('user_listdata_id', $request->userId)->get();
+
+        // $data = laporan::where
         return pelaporanResources::collection($data);
     }
     public function getDetailPelaporan(Request $request)

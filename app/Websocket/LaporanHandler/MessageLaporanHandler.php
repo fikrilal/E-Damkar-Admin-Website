@@ -3,6 +3,7 @@
 
 namespace App\Websocket\LaporanHandler;
 
+use App\Http\Resources\LaporanPetugasResources;
 use App\Models\laporan;
 use PhpParser\JsonDecoder;
 use Ratchet\ConnectionInterface;
@@ -65,10 +66,12 @@ class MessageLaporanHandler extends BaseLaporanHandler implements MessageCompone
             $target = $this->subscriptions[$conn->resourceId];
             foreach ($this->subscriptions as $id => $channel) {
                 if ($channel == $target && $id != $conn->resourceId) {
-                    $data = laporan::Where('status_riwayat_id', 3)->get();
-                    $this->users[$id]->send(json_encode($data));
+                    $data = laporan::Where('status_riwayat_id', 2)->get();
+                    $this->users[$id]->send(json_encode(LaporanPetugasResources::collection($data)));
                 }
             }
         }
     }
+
+  
 }

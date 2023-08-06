@@ -212,4 +212,14 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    // 'providers' => [
+    //     // Other service providers...
+    //     Barryvdh\Snappy\ServiceProvider::class,
+    // ],
+    
+    // 'aliases' => [
+    //     // Other aliases...
+    //     'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+    // ],
+    
 ];

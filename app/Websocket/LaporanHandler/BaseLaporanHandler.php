@@ -41,6 +41,9 @@ abstract class BaseLaporanHandler implements MessageComponentInterface
 
     function onClose(ConnectionInterface $conn)
     {
+        $this->clients->detach($conn);
+        unset($this->users[$conn->resourceId]);
+        unset($this->subscriptions[$conn->resourceId]);
     }
 
     protected function verifyAppKey(ConnectionInterface $connection)

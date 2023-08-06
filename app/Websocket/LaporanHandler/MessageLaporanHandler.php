@@ -41,9 +41,13 @@ class MessageLaporanHandler extends BaseLaporanHandler implements MessageCompone
 
     function getDataLaporan(ConnectionInterface $conn)
     {
-        $data = laporan::Where('status_riwayat_id', 1)->get();
-        $dlp = json_encode($data);
-        $conn->send($dlp);
+        $data = laporan::Where('status_riwayat_id', 2)->get();
+        $json = [
+            "condition" => true,
+            "command" => "dataLaporan",
+            "payload" => LaporanPetugasResources::collection($data)
+        ];
+        $conn->send(json_encode($json));
     }
 
     // function getDataMessage(ConnectionInterface $conn, $data)
@@ -67,11 +71,14 @@ class MessageLaporanHandler extends BaseLaporanHandler implements MessageCompone
             foreach ($this->subscriptions as $id => $channel) {
                 if ($channel == $target && $id != $conn->resourceId) {
                     $data = laporan::Where('status_riwayat_id', 2)->get();
-                    $this->users[$id]->send(json_encode(LaporanPetugasResources::collection($data)));
+                    $json = [
+                        "condition" => true,
+                        "command" => "dataLaporan",
+                        "payload" => LaporanPetugasResources::collection($data)
+                    ];
+                    $this->users[$id]->send(json_encode($json));
                 }
             }
         }
     }
-
-  
 }

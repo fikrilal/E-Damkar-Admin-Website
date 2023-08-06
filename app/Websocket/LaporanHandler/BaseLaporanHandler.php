@@ -31,7 +31,13 @@ abstract class BaseLaporanHandler implements MessageComponentInterface
         $this->verifyAppKey($conn)->generateSocketId($conn);
         $this->clients->attach($conn);
         $this->users[$conn->resourceId] = $conn;
-        $message = ["condition" => true, "message" => "connected successfully"];
+        $message = [
+            "condition" => true,
+            "message" => "connect",
+            "payload" => [
+                "message" => "connected successfully"
+            ]
+        ];
         $conn->send(json_encode($message));
     }
 

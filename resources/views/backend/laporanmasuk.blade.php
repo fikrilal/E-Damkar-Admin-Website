@@ -91,7 +91,7 @@
                     </div>
                     <div class="modal-body">
                       <!-- General Form Elements -->
-              <form class="form-validate" id="artikeledukasi_form" method="POST" action="{{ route('laporan.update-status', $laporan->idLaporan) }}" " 
+              <form class="form-validate" id="artikeledukasi_form" method="POST" action="{{ route('laporan.update-status', $laporan->idLaporan) }}" 
               enctype="multipart/form-data">
                {!! csrf_field() !!}
                {!! isset($berita) ? method_field('PUT') : '' !!}
@@ -145,54 +145,31 @@
                   </div>
                 </div>
 
-                <!-- @if($laporan->status_riwayat_id == 2)
-              <div class="row mb-3">
+                @if($laporan->status_riwayat_id == 2)
+              <!-- <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Upload Bukti Penangganan</label>
                   <div class="col-sm-10">
                       <input type="file" name="bukti_penanganan" id="bukti_penanganan" class="form-control"  accept="image/png, image/jpeg">
                   </div>
-              </div>
-                @else -->
+              </div> -->
+                @else
                     <!-- Tidak menampilkan input field jika kategori_laporan_id tidak sama dengan 4 -->
                 @endif
                 <div class="row mb-3">
 </div>
                     </div>
+
                     <div class="modal-footer">
                     @csrf
                     @method('GET')
                     @if($laporan->status_riwayat_id == 2)
-                        <!-- <button type="submit" class="btn btn-success" name="status" value="selesai">Selesai</button> -->
+                        <button type="submit" class="btn btn-success" name="status" value="selesai">Kirim ke Petugas</button> //posisi button e
                     @else
-                    <button type="submit" class="btn btn-dark" name="status" value="proses" onclick="updatePost()">Proses</button>
-
-                    <script>
-    function updatePost() {
-        const socket = new WebSocket('ws://188.10.10.254:6001/rlt/laporan?appKey=EDKNGKServer');
-        socket.onopen = function (event) {
-            console.log('on open!!');
-            console.info('berhasil');
-
-            socket.send(JSON.stringify({
-                id: 1,
-                payload: {
-                    title: 'abc123'
-                }
-            }));
-
-            console.log('Message sent successfully!');
-        };
-
-        socket.onmessage = function (event) {
-            console.log(event);
-        };
-    }
-</script>
-
-
-                        <button type="submit" class="btn btn-danger" name="status" value="tolak">Tolak</button>
+                    <button type="submit" class="btn btn-dark" name="status" value="proses">Proses</button>
+                    <button type="submit" class="btn btn-danger" name="status" value="tolak">Tolak</button>
                     @endif
                     </div>
+                    
                       </form><!-- End General Form Elements -->
                   </div>
                 </div>

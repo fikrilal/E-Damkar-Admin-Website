@@ -36,20 +36,20 @@ class EdukasiController extends Controller
         return view('backend.edukasi.create', compact('edukasi'));
     }
 
-    private function uploadFile($fileName = '', $destinationPath = '')
-    {
-        $fileOriginalName = $fileName->getClientOriginalName();
-        $timeStringFile = md5(time() . mt_rand(1, 10)) . $fileOriginalName;
-        $fileName->move($destinationPath, $timeStringFile);
-        return $timeStringFile;
-    }
+    // private function uploadFile($fileName = '', $destinationPath = '')
+    // {
+    //     $fileOriginalName = $fileName->getClientOriginalName();
+    //     $timeStringFile = md5(time() . mt_rand(1, 10)) . $fileOriginalName;
+    //     $fileName->move($destinationPath, $timeStringFile);
+    //     return $timeStringFile;
+    // }
     
     
-    public function edit(BeritaController $berita)
-    {
-        $berita = DB::table('artikel_edukasis')->where('id_edukasi', $edukasi->edukasi)->first();
-        return view('backend.edukasi.create', compact('edukasi'));
-    }
+    // public function edit(BeritaController $berita)
+    // {
+    //     $berita = DB::table('artikel_edukasis')->where('id_edukasi', $edukasi->edukasi)->first();
+    //     return view('backend.edukasi.create', compact('edukasi'));
+    // }
     
     public function update(Request $request, $id)
     {

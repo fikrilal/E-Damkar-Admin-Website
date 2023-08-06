@@ -91,11 +91,8 @@
                     </div>
                     <div class="modal-body">
                       <!-- General Form Elements -->
-<<<<<<< HEAD
-              <form class="form-validate" id="form_proses" method="POST" action="{{ route('laporan.update-status', $laporan->idLaporan) }}" " 
-=======
+
               <form class="form-validate" id="artikeledukasi_form" method="POST" action="{{ route('laporan.update-status', $laporan->idLaporan) }}" 
->>>>>>> a9c536dae0b938e7fb4f6cea90e7fab4fc4585c8
               enctype="multipart/form-data">
                {!! csrf_field() !!}
                {!! isset($berita) ? method_field('PUT') : '' !!}
@@ -167,7 +164,7 @@
                     @csrf
                     @method('GET')
                     @if($laporan->status_riwayat_id == 2)
-                        <button type="submit" class="btn btn-success" name="status" value="selesai">Kirim ke Petugas</button> 
+                        <button type="submit" id="prosesButton" class="btn btn-success" name="status" value="selesai">Kirim ke Petugas</button> 
                     @else
                     <button type="submit" class="btn btn-dark" name="status" value="proses">Proses</button>
                     <button type="submit" class="btn btn-danger" name="status" value="tolak">Tolak</button>
@@ -215,8 +212,21 @@
           }
 
         ))
+        socket.send(JSON.stringify(
+          {	
+              "command" : "AddData",
+              "channel" : "RLPelaporan", 
+              "user" : "controller"
+          }
+
+        ))
+        
+        setTimeout(() => {
+          socket.close();
+        }, 2000);
+          
     }
-    socket.close();
+    // socket.close();
     // socket.onmessage = function (event) {
     //     console.log(event);
 

@@ -48,4 +48,9 @@ class laporan extends Model
     {
         return $this->belongsTo(detail_korban::class);
     }
+
+    public function kondisiCuaca()
+    {
+        return $this->belongsTo(kondisi_cuaca::class);
+    }
 }

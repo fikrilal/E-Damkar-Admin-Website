@@ -188,7 +188,7 @@
                     </div>
                     <div class="modal-footer">
                     @if($laporan->status_riwayat_id == 4)
-                        <a href="{{ route('cetak-laporan', ['idLaporan' => $laporan->idLaporan]) }}" target="blank" class="btn btn-warning">
+                        <a href="{{ route('cetak-laporan', ['idLaporan' => $laporan->idLaporan]) }}" target="_blank" class="btn btn-warning">
                         <i class="bi bi-printer"></i></i> Cetak Laporan
                         </a>
 

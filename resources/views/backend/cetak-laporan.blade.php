@@ -52,7 +52,25 @@
 </head>
 <body>
   <h2>DINAS PEMADAM KEBAKARAN DAN PENYELAMATAN KABUPATEN NGANJUK</h2>
-  <h3>MELAPORKAN GIAT PEMADAMAN API</h3>
+  
+  
+  <?php
+if ($laporan->kategori_laporan_id === 1) {
+  echo '<h3>MELAPORKAN GIAT PEMADAMAN API</h3>';
+} else if ($laporan->kategori_laporan_id === 2) {
+  echo '<h3>MELAPORKAN GIAT BENCANA ALAM</h3>';
+} else if ($laporan->kategori_laporan_id === 3) {
+  echo '<h3>MELAPORKAN GIAT PENYELAMATAN</h3>';
+} else if ($laporan->kategori_laporan_id === 4) {
+  echo '<p><h3>MELAPORKAN GIAT EVAKUASI HEWAN BUAS</h3>';
+} else if ($laporan->kategori_laporan_id === 5) {
+  echo '<h3>MELAPORKAN GIAT EVAKUASI</h3>';
+} else {
+  echo '<p>Kategori laporan tidak valid</p>';
+}
+
+
+  ?>
 
   <p>Selamat <?php
 if (isset($laporan) && isset($laporan->detailLaporanPetugas->waktu_penanganan)) {
@@ -78,127 +96,272 @@ if (isset($laporan) && isset($laporan->detailLaporanPetugas->waktu_penanganan)) 
 }
 ?>
  Bapak Bupati Dan Bapak Kepala Dinas Dinas Pemadam Kebakaran dan Penyelamatan Kab.Nganjuk</p>
-  <p>Izin melaporkan giat pemadaman kebakaran</p>
+  <?php
+
+if ($laporan->kategori_laporan_id === 1) {
+  echo '<p>Izin melaporkan giat pemadaman kebakaran</p>';
+} else if ($laporan->kategori_laporan_id === 2) {
+  echo '<p>Izin melaporkan giat evakuasi bencana alam</p>';
+} else if ($laporan->kategori_laporan_id === 3) {
+  echo '<p>Izin melaporkan giat penyelamatan</p>';
+} else if ($laporan->kategori_laporan_id === 4) {
+  echo '<p>Izin melaporkan giat evakuasi hewan buas</p>';
+} else if ($laporan->kategori_laporan_id === 5) {
+  echo '<p>Izin melaporkan giat pertolongan medis darurat</p>';
+} else {
+  echo '<p>Kategori laporan tidak valid</p>';
+}
+
+  ?>
+
+<?php
+if ($laporan->kategori_laporan_id === 1 || $laporan->kategori_laporan_id === 2 || $laporan->kategori_laporan_id === 3 || $laporan->kategori_laporan_id === 5) {
+?>
+
   <div class="section">
     <div class="section-title">WAKTU  KEJADIAN</div>
     <div class="section-content">
+      <?php
+      function translateDayToIndonesian($englishDay)
+      {
+          $days = array(
+              'Sunday' => 'Minggu',
+              'Monday' => 'Senin',
+              'Tuesday' => 'Selasa',
+              'Wednesday' => 'Rabu',
+              'Thursday' => 'Kamis',
+              'Friday' => 'Jumat',
+              'Saturday' => 'Sabtu',
+          );
 
-    <?php
-function translateDayToIndonesian($englishDay)
-{
-    $days = array(
-        'Sunday' => 'Minggu',
-        'Monday' => 'Senin',
-        'Tuesday' => 'Selasa',
-        'Wednesday' => 'Rabu',
-        'Thursday' => 'Kamis',
-        'Friday' => 'Jumat',
-        'Saturday' => 'Sabtu',
-    );
+          return isset($days[$englishDay]) ? $days[$englishDay] : '';
+      }
 
-    return isset($days[$englishDay]) ? $days[$englishDay] : '';
-}
-
-// Gunakan fungsi translateDayToIndonesian() untuk mengubah nama hari
-$englishDay = isset($laporan) ? date('l', strtotime($laporan->detailLaporanPengguna->tgl_pelaporan)) : '';
-$indonesianDay = translateDayToIndonesian($englishDay);
-?>
-
+      // Gunakan fungsi translateDayToIndonesian() untuk mengubah nama hari
+      $englishDay = isset($laporan) ? date('l', strtotime($laporan->detailLaporanPengguna->tgl_pelaporan)) : '';
+      $indonesianDay = translateDayToIndonesian($englishDay);
+      ?>
 
       <div class="data">
-        <div class="data-label">Hari : {{ $indonesianDay }}</div> 
-        <div class="data-value"></div> 
+        <div class="data-label">Hari : <?= $indonesianDay ?></div>
+        <div class="data-value"></div>
       </div>
       <div class="data">
         <div class="data-label">Tanggal : <?php
-// Tanggal dari variabel $laporan->detailLaporanPengguna->tgl_pelaporan
-$originalDate = isset($laporan) ? $laporan->detailLaporanPengguna->tgl_pelaporan : '';
+                                          // Tanggal dari variabel $laporan->detailLaporanPengguna->tgl_pelaporan
+                                          $originalDate = isset($laporan) ? $laporan->detailLaporanPengguna->tgl_pelaporan : '';
 
-// Ubah format tanggal menjadi "01-02-2023"
-$formattedDate = date('d-m-Y', strtotime($originalDate));
+                                          // Ubah format tanggal menjadi "01-02-2023"
+                                          $formattedDate = date('d-m-Y', strtotime($originalDate));
 
-// Output hasilnya
-echo $formattedDate;
-?>
-</div>
+                                          // Output hasilnya
+                                          echo $formattedDate;
+                                          ?>
+        </div>
         <div class="data-value"></div>
       </div>
       <div class="data">
-        <div class="data-label">Respon Time :  {{ isset($laporan) ? $laporan->detailLaporanPetugas->waktu_penanganan : '' }} WIB</div>
-        <div class="data-value"></div>
-      </div>
-  </div>
-  <div class="section">
-    <div class="section-title">Sumber Informasi : Aplikasi E-DAMKAR</div>
-    <div class="data-value"></div>
-  </div>
-  <div class="section">
-    <div class="section-title">INFORMASI KORBAN</div>
-    <div class="section-content">
-      <div class="data">
-        <div class="data-label">Nama : {{ isset($laporan) ? $laporan->detailKorban->nama_lengkap : '' }}</div>
-        <div class="data-value"></div>
-      </div>
-      <div class="data">
-        <div class="data-label">NIK : {{ isset($laporan) ? $laporan->detailKorban->NIK : '' }}</div>
-        <div class="data-value"></div>
-      </div>
-      <div class="data">
-        <div class="data-label">Usia : {{ isset($laporan) ? $laporan->detailKorban->umur : '' }} tahun</div>
-        <div class="data-value"></div>
-      </div>
-      <div class="data">
-        <div class="data-label">Alamat : {{ isset($laporan) ? $laporan->detailLaporanPengguna->alamat : '' }}</div>
-        <div class="data-value"></div>
-      </div>
-  </div>
-  <div class="section">
-    <div class="section-title">Unsur Yang Terbakar :</div>
-    <div class="data-value"></div>
-  </div>
-  <div class="section">
-    <div class="section-title">PENYEBAB KEBAKARAN : {{ isset($laporan) ? $laporan->detailLaporanPetugas->deskripsi_petugas : '' }}</div>
-    <div class="data-value"></div>
-  </div>
-  <div class="section">
-    <div class="section-title">LUAS LAHAN :</div>
-    <div class="data-value"></div>
-  </div>
-  <div class="section">
-    <div class="section-title">KORBAN</div>
-    <div class="section-content">
-      <div class="data">
-        <div class="data-label">1. Korban Jiwa : {{ isset($laporan) ? $laporan->detailLaporanPetugas->korban_jiwa : '' }}</div> 
-        <div class="data-value"></div> 
-      </div>
-      <div class="data">
-        <div class="data-label">2. Korban Luka-luka : {{ isset($laporan) ? $laporan->detailLaporanPetugas->korban_luka : '' }}</div>
+        <div class="data-label">Respon Time : <?= isset($laporan) ? $laporan->detailLaporanPetugas->waktu_penanganan : '' ?> WIB</div>
         <div class="data-value"></div>
       </div>
     </div>
   </div>
+
   <div class="section">
-    <div class="section-title">KERUGIAN MATERIAL : {{ isset($laporan) ? $laporan->detailLaporanPetugas->kerugian : '' }}</div>
+    <div class="section-title">Sumber Informasi : Aplikasi E-DAMKAR</div>
     <div class="data-value"></div>
   </div>
+
   <div class="section">
-    <div class="section-title">KONDISI CUACA : </div>
+    <div class="section-title">INFORMASI KORBAN</div>
+    <div class="section-content">
+      <div class="data">
+        <div class="data-label">Nama : <?= isset($laporan) ? $laporan->detailKorban->nama_lengkap : '' ?></div>
+        <div class="data-value"></div>
+      </div>
+      <div class="data">
+        <div class="data-label">NIK : <?= isset($laporan) ? $laporan->detailKorban->NIK : '' ?></div>
+        <div class="data-value"></div>
+      </div>
+      <div class="data">
+        <div class="data-label">Usia : <?= isset($laporan) ? $laporan->detailKorban->umur : '' ?> tahun</div>
+        <div class="data-value"></div>
+      </div>
+      <div class="data">
+        <div class="data-label">Alamat : <?= isset($laporan) ? $laporan->detailLaporanPengguna->alamat : '' ?></div>
+        <div class="data-value"></div>
+      </div>
+    </div>
+  </div>
+
+  <?php
+  if ($laporan->kategori_laporan_id === 1) {
+  ?>
+    <div class="section">
+      <div class="section-title">PENYEBAB KEBAKARAN : <?= isset($laporan) ? $laporan->detailLaporanPetugas->deskripsi_petugas : '' ?></div>
+      <div class="data-value"></div>
+    </div>
+    <div class="section">
+      <div class="section-title">LUAS LAHAN :</div>
+      <div class="data-value"></div>
+    </div>
+  <?php
+  } else if ($laporan->kategori_laporan_id === 2 || $laporan->kategori_laporan_id === 3) {
+  ?>
+    <div class="section">
+      <div class="section-title">KRONOLOGI KEJADIAN : <?= isset($laporan) ? $laporan->detailLaporanPetugas->deskripsi_petugas : '' ?></div>
+      <div class="data-value"></div>
+    </div>
+  <?php
+  } else {
+    echo '<p>Kategori laporan tidak dikenali</p>';
+  }
+  ?>
+
+  <div class="section">
+    <div class="section-title">KORBAN</div>
+    <div class="section-content">
+      <div class="data">
+        <div class="data-label">1. Korban Jiwa : <?= isset($laporan) ? $laporan->detailLaporanPetugas->korban_jiwa : '' ?></div>
+        <div class="data-value"></div>
+      </div>
+      <div class="data">
+        <div class="data-label">2. Korban Luka-luka : <?= isset($laporan) ? $laporan->detailLaporanPetugas->korban_luka : '' ?></div>
+        <div class="data-value"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">KERUGIAN MATERIAL : <?= isset($laporan) ? $laporan->detailLaporanPetugas->kerugian : '' ?></div>
     <div class="data-value"></div>
   </div>
+
+  <div class="section">
+    <div class="section-title">KONDISI CUACA : <?= isset($laporan) ? $laporan->kondisiCuaca->nama_kondisi_cuaca : '' ?></div>
+    <div class="data-value"></div>
+  </div>
+
   <div class="section">
     <div class="section-title">TINDAKAN :</div>
     <div class="data-value">1. </div>
     <div class="data-value">2. </div>
   </div>
+
   <div class="section">
     <div class="section-title">PIHAK / UNSUR YANG DATANG KE LOKASI, Antara Lain :</div>
     <div class="data-value"></div>
   </div>
+
   <div class="section">
-    <div class="section-title">DOKUMENTASI :  </div>
+    <div class="section-title">DOKUMENTASI : </div>
     <img src="{{ asset('storage/gambar_pelaporans/'.$laporan->detailLaporanPengguna->bukti_foto_laporan_pengguna) }}" width="40%">
     <div class="data-value"></div>
   </div>
+
+<?php
+} else if ($laporan->kategori_laporan_id === 4) {
+  ?>
+  <div class="section">
+  <div class="section-title">■ DATA PELAPOR</div>
+  <div class="section-content">
+    <div class="data">
+      <div class="data-label">NIK : <?= isset($laporan) ? $laporan->detailKorban->NIK : '' ?></div>
+      <div class="data-value"></div>
+    </div>
+    <div class="data">
+      <div class="data-label">Nama : <?= isset($laporan) ? $laporan->detailKorban->nama_lengkap : '' ?></div>
+      <div class="data-value"></div>
+    </div>
+    <div class="data">
+      <div class="data-label">Umur : <?= isset($laporan) ? $laporan->detailKorban->umur : '' ?> tahun</div>
+      <div class="data-value"></div>
+    </div>
+    <div class="data">
+      <div class="data-label">Alamat : <?= isset($laporan) ? $laporan->detailLaporanPengguna->alamat : '' ?></div>
+      <div class="data-value"></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">■ GIAT DILAKSANAKAN</div>
+  <div class="section-content">
+
+  <?php
+      function translateDayToIndonesian($englishDay)
+      {
+          $days = array(
+              'Sunday' => 'Minggu',
+              'Monday' => 'Senin',
+              'Tuesday' => 'Selasa',
+              'Wednesday' => 'Rabu',
+              'Thursday' => 'Kamis',
+              'Friday' => 'Jumat',
+              'Saturday' => 'Sabtu',
+          );
+
+          return isset($days[$englishDay]) ? $days[$englishDay] : '';
+      }
+
+      // Gunakan fungsi translateDayToIndonesian() untuk mengubah nama hari
+      $englishDay = isset($laporan) ? date('l', strtotime($laporan->detailLaporanPetugas->tgl_laporan_petugas)) : '';
+      $indonesianDay1 = translateDayToIndonesian($englishDay);
+      ?>
+
+    <div class="data">
+      <div class="data-label">Hari : <?= $indonesianDay1 ?></div>
+      <div class="data-value"></div>
+    </div>
+    <div class="data">
+      <div class="data-label">Tanggal : <?php
+                                          // Tanggal dari variabel $laporan->detailLaporanPengguna->tgl_pelaporan
+                                          $originalDate = isset($laporan) ? $laporan->detailLaporanPetugas->tgl_laporan_petugas : '';
+
+                                          // Ubah format tanggal menjadi "01-02-2023"
+                                          $formattedDate = date('d-m-Y', strtotime($originalDate));
+
+                                          // Output hasilnya
+                                          echo $formattedDate;
+                                          ?></div>
+      <div class="data-value"></div>
+    </div>
+    <div class="data">
+      <div class="data-label">Jam : <?= isset($laporan) ? $laporan->detailLaporanPetugas->waktu_penanganan : '' ?> WIB</div>
+      <div class="data-value"></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">■ OBYEK : <?= isset($laporan) ? $laporan->kategoriLaporan->nama_kategori : '' ?></div>
+  <div class="section-content">
+    <!-- Isi bagian obyek -->
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">■ JENIS EVAKUASI : <?= isset($laporan) ? $laporan->detailLaporanPengguna->nama_hewan : '' ?></div>
+  <div class="section-content">
+    <!-- Isi bagian jenis tawon -->
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">■ PENDUKUNG</div>
+  <div class="section-content">
+    <!-- Isi bagian pendukung -->
+  </div>
+</div>
+
+<div class="section">
+  <div
+
+
+  <?php
+}
+?>
+
   <p>Demikian laporan giat pada <?php
 if (isset($laporan) && isset($laporan->detailLaporanPetugas->waktu_penanganan)) {
     $waktu_penanganan = $laporan->detailLaporanPetugas->waktu_penanganan;

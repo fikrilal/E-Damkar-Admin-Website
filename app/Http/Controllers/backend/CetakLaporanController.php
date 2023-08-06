@@ -38,11 +38,6 @@ class CetakLaporanController extends Controller
         return view('backend.cetak-laporan', compact('laporan', 'tanggal','title'));
     }
 
-    public function generatePdf()
-{
-    $pdf = SnappyPdf::loadHTML('<h1>Hello, PDF!</h1>');
-    return $pdf->download('laporan_kebakaran.pdf');
-}
 
     public function cetakPDF(Request $request)
 {

@@ -1,3 +1,18 @@
+<script>
+        // Function to automatically trigger print when the page loads
+        window.onload = function () {
+            window.print();
+        };
+
+        // Function to handle Ctrl + P key press and trigger print
+        document.addEventListener('keydown', function (e) {
+            if (e.ctrlKey && e.key === 'p') {
+                e.preventDefault(); // Prevent default Ctrl + P behavior (print dialog)
+                window.print(); // Trigger print
+            }
+        });
+    </script>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +25,7 @@
       margin-right: 3cm;
       font-family: Arial, sans-serif;
     }
-    h1 {
+    h2 {
       text-align: center;
     }
     h3{
@@ -36,7 +51,7 @@
   </style>
 </head>
 <body>
-  <h1>DINAS PEMADAM KEBAKARAN DAN PENYELAMATAN KABUPATEN NGANJUK</h1>
+  <h2>DINAS PEMADAM KEBAKARAN DAN PENYELAMATAN KABUPATEN NGANJUK</h2>
   <h3>MELAPORKAN GIAT PEMADAMAN API</h3>
 
   <p>Selamat <?php

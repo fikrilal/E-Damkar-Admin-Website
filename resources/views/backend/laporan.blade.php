@@ -192,9 +192,9 @@
                         <i class="bi bi-printer"></i></i> Cetak Laporan
                         </a>
 
-                        <a href="{{ route('cetak-laporan', ['idLaporan' => $laporan->idLaporan]) }}" class="btn btn-warning">
+                        <!-- <a href="{{ route('cetak-pdf', ['idLaporan' => $laporan->idLaporan]) }}" class="btn btn-warning">
                             <i class="bi bi-download"></i> Unduh Laporan
-                        </a>
+                        </a> -->
 
                         
                     @endif

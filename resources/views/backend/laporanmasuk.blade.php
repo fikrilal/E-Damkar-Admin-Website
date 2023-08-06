@@ -91,7 +91,7 @@
                     </div>
                     <div class="modal-body">
                       <!-- General Form Elements -->
-              <form class="form-validate" id="artikeledukasi_form" method="POST" action="{{ route('laporan.update-status', $laporan->idLaporan) }}" " 
+              <form class="form-validate" id="form_proses" method="POST" action="{{ route('laporan.update-status', $laporan->idLaporan) }}" " 
               enctype="multipart/form-data">
                {!! csrf_field() !!}
                {!! isset($berita) ? method_field('PUT') : '' !!}
@@ -185,12 +185,9 @@
         </div>
       </div>
     </section>
-  </main><!-- End #main -->
-  @endsection
-
+  </main>
   <script>
-
-document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
     const button = document.getElementById('prosesButton');
     button.addEventListener('click', function (event) {
         event.preventDefault(); // Prevent the default form submission (if inside a form)
@@ -205,17 +202,20 @@ document.addEventListener('DOMContentLoaded', function () {
     socket.onopen = function (event){
         console.log('on open!!');
 
-        socket.send(JSON.stringify({
-            id: 1,
-            payload: {
-                title: 'abc123',
-            }
-        }))
-    }
+        socket.send(JSON.stringify(
+          {
+            "command" : "Subscribe",
+            "channel" : "RLPelaporan"
+          }
 
-    socket.onmessage = function (event) {
-        console.log(event);
-
+        ))
     }
+    socket.close();
+    // socket.onmessage = function (event) {
+    //     console.log(event);
+
+    // }
 }
-    </script>
+  </script>
+  @endsection
+

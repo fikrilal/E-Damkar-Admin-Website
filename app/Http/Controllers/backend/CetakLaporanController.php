@@ -56,7 +56,7 @@ class CetakLaporanController extends Controller
     //     $title = 'Download Laporan Kebakaran | E-Damkar Nganjuk';
 
     //     // Generate PDF using the view "backend.cetak-laporan"
-    //     // $pdf = PDF::loadView('backend.cetak-laporan', compact('laporan', 'tanggal', 'title'));
+    //     $pdf = PDF::loadView('backend.cetak-laporan', compact('laporan', 'tanggal', 'title'));
 
     //     // Optional: You can set PDF options here if needed
     //     // For example: $pdf->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);

@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
         // Function to automatically trigger print when the page loads
         window.onload = function () {
             window.print();
@@ -11,7 +11,7 @@
                 window.print(); // Trigger print
             }
         });
-    </script>
+    </script> -->
 
 <!DOCTYPE html>
 <html>

@@ -196,6 +196,10 @@
                             <i class="bi bi-download"></i> Unduh Laporan
                         </a> -->
 
+                        <a href="" class="btn btn-warning">
+                            <i class="bi bi-download"></i> Unduh Laporan
+                        </a>
+
                         
                     @endif
                     </div>

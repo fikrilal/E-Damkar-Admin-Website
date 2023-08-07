@@ -141,6 +141,11 @@ class DatabaseSeeder extends Seeder
             'korban_jiwa' => 0,
             'korban_luka' => 0,
             'kerugian' => '000000',
+            'luas_lahan' => '234',
+            'tindakan' => 'Melakukan Pemadaman',
+            'pihak_yang_datang' => 'Babinsa',
+            'jenis_evakuasi' => 'Evakuasi Sarang Tawon',
+            'team_evakuasi' => 'Fajar Nughroho, Thio Agustin',
             'bukti_foto_laporan_petugas' => 'gambar'
         ]);
 

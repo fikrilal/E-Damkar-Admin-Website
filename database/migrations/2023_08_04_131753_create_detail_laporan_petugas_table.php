@@ -20,6 +20,11 @@ return new class extends Migration
             $table->integer('korban_jiwa');
             $table->integer('korban_luka');
             $table->string('kerugian');
+            $table->string('luas_lahan');
+            $table->string('tindakan');
+            $table->string('pihak_yang_datang');
+            $table->string('jenis_evakuasi');
+            $table->string('team_evakuasi');
             $table->string('bukti_foto_laporan_petugas');
         });
     }

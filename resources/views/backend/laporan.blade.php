@@ -144,6 +144,8 @@
 </br>
                 <b>Informasi Petugas</b><hr>
 
+                @if($laporan->kategori_laporan_id == 1 || $laporan->kategori_laporan_id == 2 || $laporan->kategori_laporan_id == 3 || $laporan->kategori_laporan_id == 5)
+
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Deskripsi Petugas</label>
                   <div class="col-sm-10">
@@ -175,6 +177,7 @@
                      class="form-control" disabled>
                   </div>
                 </div>
+                
 
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Bukti Penanganan</label>
@@ -182,6 +185,33 @@
                   <img src="{{ asset('storage/bukti_penanganan/'.$laporan->detailLaporanPetugas->bukti_foto_laporan_petugas) }}" width="40%">
                   </div>
                 </div>
+
+                @else
+
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Obyek</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="deskripsi_laporan" value="{{ isset($laporan) ? $laporan->detailLaporanPengguna->nama_hewan : '' }}"
+                     class="form-control" disabled>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Team Evakuasi</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="deskripsi_laporan" value="{{ isset($laporan) ?$laporan->detailLaporanPetugas->team_evakuasi : '' }}"
+                     class="form-control" disabled>
+                  </div>
+                </div>
+
+
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Bukti Penanganan</label>
+                  <div class="col-sm-10">
+                  <img src="{{ asset('storage/bukti_penanganan/'.$laporan->detailLaporanPetugas->bukti_foto_laporan_petugas) }}" width="40%">
+                  </div>
+                </div>
+                @endif
 
                 <div class="row mb-3">
 </div>

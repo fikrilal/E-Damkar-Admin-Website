@@ -21,7 +21,7 @@ class CetakLaporanController extends Controller
 
     public function show(Request $request)
     {
-        $title = 'Cetak Laporan Kebakaran | E-Damkar Nganjuk';
+        $title = 'Cetak Laporan | E-Damkar Nganjuk';
 
         $tanggal = Carbon::now()->locale('id')->isoFormat('DD MMMM YYYY'); // Format tanggal dalam bahasa Indonesia
 

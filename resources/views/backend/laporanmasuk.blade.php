@@ -115,6 +115,7 @@
                   </div>
                 </div>
 
+                
                 @if($laporan->kategori_laporan_id == 4)
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Nama Hewan</label>
@@ -126,6 +127,7 @@
                 @else
                     <!-- Tidak menampilkan input field jika kategori_laporan_id tidak sama dengan 4 -->
                 @endif
+
              
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Deskripsi Laporan</label>
@@ -175,9 +177,9 @@
                     @csrf
                     @method('GET')
                     @if($laporan->status_riwayat_id == 2)
-                       
+                        <button type="submit" id="prosesButton" class="btn btn-success" name="status" value="selesai">Kirim ke Petugas</button> 
                     @else
-                    <button type="submit" id="prosesButton" class="btn btn-success" name="status" value="selesai">Kirim ke Petugas</button> 
+                    <button type="submit" class="btn btn-dark" name="status" value="proses">Proses</button>
                     <button type="submit" class="btn btn-danger" name="status" value="tolak">Tolak</button>
                     @endif
                     </div>

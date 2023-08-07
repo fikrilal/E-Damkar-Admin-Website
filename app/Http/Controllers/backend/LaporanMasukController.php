@@ -58,7 +58,7 @@ class LaporanMasukController extends Controller
                 } else {
                     $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 2]);
                 }
-                return redirect()->back()->with('success', 'Status laporan berhasil diproses');
+                return redirect()->back()->with('success', 'Status laporan berhasil dikirim ke petugas');
                 break;
             default:
                 return redirect()->back()->with('error', 'Aksi tidak valid');

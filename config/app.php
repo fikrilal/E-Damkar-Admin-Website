@@ -213,13 +213,12 @@ return [
     ])->toArray(),
 
     // 'providers' => [
-    //     // Other service providers...
-    //     Barryvdh\Snappy\ServiceProvider::class,
+    //     Barryvdh\DomPDF\ServiceProvider::class,
     // ],
-    
+     
+      
     // 'aliases' => [
-    //     // Other aliases...
-    //     'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
-    // ],
+    //     'PDF' => Barryvdh\DomPDF\Facade::class,
+    // ]
     
 ];

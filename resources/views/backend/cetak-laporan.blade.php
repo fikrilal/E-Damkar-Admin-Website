@@ -1,4 +1,4 @@
-<!-- <script>
+<script>
         // Function to automatically trigger print when the page loads
         window.onload = function () {
             window.print();
@@ -11,7 +11,7 @@
                 window.print(); // Trigger print
             }
         });
-    </script> -->
+    </script>
 
 <!DOCTYPE html>
 <html>
@@ -202,7 +202,7 @@ if ($laporan->kategori_laporan_id === 1 || $laporan->kategori_laporan_id === 2 |
       <div class="data-value"></div>
     </div>
     <div class="section">
-      <div class="section-title">LUAS LAHAN :</div>
+      <div class="section-title">LUAS LAHAN : <?= isset($laporan) ? $laporan->detailLaporanPetugas->luas_lahan : '' ?></div>
       <div class="data-value"></div>
     </div>
   <?php
@@ -233,7 +233,7 @@ if ($laporan->kategori_laporan_id === 1 || $laporan->kategori_laporan_id === 2 |
   </div>
 
   <div class="section">
-    <div class="section-title">KERUGIAN MATERIAL : <?= isset($laporan) ? $laporan->detailLaporanPetugas->kerugian : '' ?></div>
+    <div class="section-title">KERUGIAN MATERIAL : Rp. <?= isset($laporan) ? $laporan->detailLaporanPetugas->kerugian : '' ?></div>
     <div class="data-value"></div>
   </div>
 
@@ -244,12 +244,11 @@ if ($laporan->kategori_laporan_id === 1 || $laporan->kategori_laporan_id === 2 |
 
   <div class="section">
     <div class="section-title">TINDAKAN :</div>
-    <div class="data-value">1. </div>
-    <div class="data-value">2. </div>
+    <div class="data-value">1. <?= isset($laporan) ? $laporan->detailLaporanPetugas->tindakan : '' ?></div>
   </div>
 
   <div class="section">
-    <div class="section-title">PIHAK / UNSUR YANG DATANG KE LOKASI, Antara Lain :</div>
+    <div class="section-title">PIHAK / UNSUR YANG DATANG KE LOKASI, Antara Lain : <?= isset($laporan) ? $laporan->detailLaporanPetugas->pihak_yang_datang : '' ?></div>
     <div class="data-value"></div>
   </div>
 
@@ -334,21 +333,28 @@ if ($laporan->kategori_laporan_id === 1 || $laporan->kategori_laporan_id === 2 |
 </div>
 
 <div class="section">
-  <div class="section-title">■ OBYEK : <?= isset($laporan) ? $laporan->kategoriLaporan->nama_kategori : '' ?></div>
+  <div class="section-title">■ OBYEK : <?= isset($laporan) ? $laporan->detailLaporanPengguna->nama_hewan : '' ?></div>
   <div class="section-content">
     <!-- Isi bagian obyek -->
   </div>
 </div>
 
 <div class="section">
-  <div class="section-title">■ JENIS EVAKUASI : <?= isset($laporan) ? $laporan->detailLaporanPengguna->nama_hewan : '' ?></div>
+  <div class="section-title">■ JENIS EVAKUASI : <?= isset($laporan) ? $laporan->detailLaporanPetugas->jenis_evakuasi : '' ?></div>
   <div class="section-content">
     <!-- Isi bagian jenis tawon -->
   </div>
 </div>
 
 <div class="section">
-  <div class="section-title">■ PENDUKUNG</div>
+  <div class="section-title">■ PENDUKUNG :  <?= isset($laporan) ? $laporan->detailLaporanPetugas->pihak_yang_datang : '' ?></div>
+  <div class="section-content">
+    <!-- Isi bagian pendukung -->
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">■ TEAM EVAKUASI : <?= isset($laporan) ? $laporan->detailLaporanPetugas->team_evakuasi : '' ?></div>
   <div class="section-content">
     <!-- Isi bagian pendukung -->
   </div>

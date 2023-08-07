@@ -19,6 +19,11 @@ class detail_laporan_petugas extends Model
         "korban_jiwa",
         "korban_luka",
         "kerugian",
+        "luas_lahan",
+        "tindakan",
+        "pihak_yang_datang",
+        "jenis_evakuasi",
+        "team_evakuasi",
         "bukti_foto_laporan_petugas"
     ];
 

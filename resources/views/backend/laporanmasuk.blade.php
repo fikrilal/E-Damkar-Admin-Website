@@ -32,9 +32,16 @@
             </div>
         @endif
 
+<<<<<<< HEAD
         <section class="section">
             <div class="row">
                 <div class="col-lg-12">
+=======
+    function updatePost() {
+    const socket = new WebSocket(`ws:/127.0.0.1:6001/rlt/laporan?appKey=EDKNGKServer`);
+    socket.onopen = function (event){
+        console.log('on open!!');
+>>>>>>> 3ba957104132b1458c14d4b2c5ad0e035a546690
 
                     <div class="card">
                         <div class="card-body">
@@ -55,6 +62,7 @@
                                     </tr>
                                 </thead>
 
+<<<<<<< HEAD
 
                                 <tbody>
                                     @php $no = 1; @endphp
@@ -283,3 +291,4 @@
         }
     </script>
 @endsection
+

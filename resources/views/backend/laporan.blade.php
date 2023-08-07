@@ -142,6 +142,10 @@
                 </div>
 
 </br>
+                @if($laporan->status_riwayat_id == 5)
+
+                @else
+
                 <b>Informasi Petugas</b><hr>
 
                 @if($laporan->kategori_laporan_id == 1 || $laporan->kategori_laporan_id == 2 || $laporan->kategori_laporan_id == 3 || $laporan->kategori_laporan_id == 5)
@@ -230,7 +234,7 @@
                             <i class="bi bi-download"></i> Unduh Laporan
                         </a> -->
 
-                        
+                        @endif   
                     @endif
                     </div>
                       </form><!-- End General Form Elements -->

@@ -115,6 +115,17 @@
                   </div>
                 </div>
 
+                @if($laporan->kategori_laporan_id == 4)
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Nama Hewan</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="nama_pelapor" value="{{ isset($laporan) ? $laporan->detailLaporanPengguna->nama_hewan : '' }}"
+                     class="form-control" disabled>
+                  </div>
+                </div>
+                @else
+                    <!-- Tidak menampilkan input field jika kategori_laporan_id tidak sama dengan 4 -->
+                @endif
              
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Deskripsi Laporan</label>

@@ -54,11 +54,11 @@ class LaporanMasukController extends Controller
                 if ($request->hasFile('bukti_penanganan')) {
                     $fileName = $request->file('bukti_penanganan')->getClientOriginalName();
                     $request->file('bukti_penanganan')->storeAs('bukti_penanganan', $fileName);
-                    $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 4, 'bukti_penanganan' => $fileName]);                
+                    $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 2, 'bukti_penanganan' => $fileName]);                
                 } else {
-                    $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 4]);
+                    $laporan->where('idLaporan', $request->id)->update(['status_riwayat_id' => 2]);
                 }
-                return redirect()->back()->with('success', 'Status laporan berhasil diselesaikan');
+                return redirect()->back()->with('success', 'Status laporan berhasil diproses');
                 break;
             default:
                 return redirect()->back()->with('error', 'Aksi tidak valid');

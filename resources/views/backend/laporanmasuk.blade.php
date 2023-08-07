@@ -164,9 +164,9 @@
                     @csrf
                     @method('GET')
                     @if($laporan->status_riwayat_id == 2)
-                        <button type="submit" id="prosesButton" class="btn btn-success" name="status" value="selesai">Kirim ke Petugas</button> 
+                       
                     @else
-                    <button type="submit" class="btn btn-dark" name="status" value="proses">Proses</button>
+                    <button type="submit" id="prosesButton" class="btn btn-success" name="status" value="selesai">Kirim ke Petugas</button> 
                     <button type="submit" class="btn btn-danger" name="status" value="tolak">Tolak</button>
                     @endif
                     </div>

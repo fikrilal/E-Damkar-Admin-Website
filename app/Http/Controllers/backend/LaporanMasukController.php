@@ -43,7 +43,7 @@ class LaporanMasukController extends Controller
                 break;
             case 'selesai':
                 $request->validate([
-                    'bukti_penanganan' => 'required|image|max:2048|mimes:jpeg,png,jpg',
+                    'bukti_penanganan' => 'image|max:2048|mimes:jpeg,png,jpg',
                 ], [
                     'bukti_penanganan.required' => 'Gambar tidak boleh kosong / harus diisi.',
                     'bukti_penanganan.image' => 'File yang diunggah harus berupa gambar.',

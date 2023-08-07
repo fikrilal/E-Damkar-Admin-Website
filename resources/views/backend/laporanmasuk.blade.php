@@ -201,7 +201,7 @@
 });
 
     function updatePost() {
-    const socket = new WebSocket(`ws://188.10.10.254:6001/rlt/laporan?appKey=EDKNGKServer`);
+    const socket = new WebSocket(`ws://172.16.106.233:6001/rlt/laporan?appKey=EDKNGKServer`);
     socket.onopen = function (event){
         console.log('on open!!');
 

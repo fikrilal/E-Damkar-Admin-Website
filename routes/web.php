@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Middleware\CheckKedudukanMiddleware;
 use App\Http\Controllers\WelcomeController;
+use App\Websocket\LaporanHandler\LocHandler;
 use App\Websocket\LaporanHandler\MessageLaporanHandler;
 use BeyondCode\LaravelWebSockets\Facades\WebSocketsRouter;
 
@@ -75,3 +76,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 WebSocketsRouter::WebSocket('/rlt/laporan', MessageLaporanHandler::class);
+// WebSocketsRouter::WebSocket('/rlt/lokasi', LocHandler::class);

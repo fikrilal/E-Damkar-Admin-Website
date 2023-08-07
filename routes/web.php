@@ -76,4 +76,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 WebSocketsRouter::WebSocket('/rlt/laporan', MessageLaporanHandler::class);
-// WebSocketsRouter::WebSocket('/rlt/lokasi', LocHandler::class);
+WebSocketsRouter::WebSocket('/rlt/lokasi', LocHandler::class);

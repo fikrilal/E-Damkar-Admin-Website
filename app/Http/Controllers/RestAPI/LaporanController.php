@@ -67,13 +67,25 @@ class LaporanController extends Controller
         // $data = laporan::where('user_listdata_id', $request->userId)->get();
 
         $data = detail_laporan_pengguna::where('user_listdata_id', $request->userId)->get();
-        
+
         return pelaporanResources::collection($data);
+        // return json_encode($data);
     }
     public function getDetailPelaporan(Request $request)
     {
-        $data = laporan::where('idLaporan', $request->idLaporan)->get();
-        return pelaporanResources::collection($data->laporan);
+        // $data = laporan::where('idLaporan', $request->idLaporan)->get();
+        // // return new pelaporanResources($data);
+        // $data1 = [
+        //     "idLaporan" => $data->idLaporan,
+        //     "Status_riwayat" => $data->statusRiwayat->nama_status,
+        //     "kategori_laporan" => $data->kategoriLaporan->nama_kategori,
+        //     "tanggal" => $this->$data->detailLaporanPengguna->tgl_pelaporan,
+        //     // "deskripsi" => $this->deskripsi_laporan,
+        //     // "image_url" => $this->bukti_foto_laporan_pengguna,
+        //     // "alamat" => $this->alamat,
+        //     // "urgensi" => $this->urgensi
+        // ];
+        // return json_encode($data1);
     }
 
     public function searchLapKategori(Request $request)
@@ -93,6 +105,7 @@ class LaporanController extends Controller
 
     public function filterLapMenunggu(Request $request)
     {
+        $data = detail_laporan_pengguna::where('user_listdata_id', $request->userId);
         $data = laporan::where('user_listdata_id', $request->userId)
             ->where('status_riwayat_id', '1')->get();
         return pelaporanResources::collection($data);

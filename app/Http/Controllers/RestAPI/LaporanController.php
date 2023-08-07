@@ -47,7 +47,59 @@ class LaporanController extends Controller
         }
     }
 
+    public function AddPelaporanPetugas(Request $request)
+    {
+        $vData = $request->validate([
+            'damkar_id' => 'required|integer',
+            'waktu_penanganan' => 'required|string',
+            'tgl_laporan_petugas' => 'required|string',
+            'deskripsi_petugas' => 'required|string',
+            'korban_jiwa' => 'required|integer',
+            'korban_luka' => 'required|integer',
+            'kerugian' => 'required|integer',
+            'luas_lahan' => 'required|integer',
+            'tindakan' => 'required|string',
+            'pihak_yang_datang' => 'required|string',
+            'jenis_evakuasi' => 'required|string',
+            'team_evakuasi' => 'required|string',
+            'bukti_foto_laporan_petugas' => 'required|string',
+
+                
+        ]);
+
+        $kategoriLap = $vData['kategori_laporan_id'];
+        unset($vData['kategori_laporan_id']);
+        $execDtl = detail_laporan_pengguna::create($vData)->id;
+
+        $crt_lap = [
+            'status_riwayat_id' => 1,
+            'kategori_laporan_id' => $kategoriLap,
+            'detail_laporan_pengguna_id' => $execDtl
+        ];
+
+
+        if (laporan::create($crt_lap)) {
+            return json_encode(["condition" => true, 'message' => "berhasil melakukan pelaporan"]);
+        } else {
+            return json_encode(["condition" => false, 'message' => "gagal melakukan pelaporan"]);
+        }
+    }
+
+
     public function addImage(Request $request)
+    {
+        $validateData = $request->validate([
+            'title' => 'required',
+            'image' => 'image'
+        ]);
+
+        if ($request->file('image')) {
+            $validateData['image'] = $request->file('image')->storeAs('gambar_pelaporans', $validateData['title'] . '.jpg');
+        }
+
+        return json_encode(['kondisi' => 'real', 'path' => $validateData['image'], 'title' => $validateData['title']]);
+    }
+    public function addImagePetugas(Request $request)
     {
         $validateData = $request->validate([
             'title' => 'required',

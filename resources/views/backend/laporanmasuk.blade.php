@@ -92,7 +92,7 @@
                     <div class="modal-body">
                       <!-- General Form Elements -->
 
-              <form class="form-validate" id="myForm" method="POST" action="{{ route('laporan.update-status', $laporan->idLaporan) }}" 
+              <form class="form-validate" id="artikeledukasi_form" method="POST" action="{{ route('laporan.update-status', $laporan->idLaporan) }}" 
               enctype="multipart/form-data">
                {!! csrf_field() !!}
                {!! isset($berita) ? method_field('PUT') : '' !!}
@@ -177,9 +177,9 @@
                     @csrf
                     @method('GET')
                     @if($laporan->status_riwayat_id == 2)
-                        <!-- <button type="submit"  class="btn btn-success" name="status" value="selesai">Kirim ke Petugas</button>  -->
+                        <button type="submit" id="prosesButton" class="btn btn-success" name="status" value="selesai">Kirim ke Petugas</button> 
                     @else
-                    <button type="submit" id="prosesbtn" class="btn btn-dark" name="status" value="proses">Proses</button>
+                    <button type="submit" class="btn btn-dark" name="status" value="proses">Proses</button>
                     <button type="submit" class="btn btn-danger" name="status" value="tolak">Tolak</button>
                     @endif
                     </div>
@@ -202,48 +202,50 @@
       </div>
     </section>
   </main>
-
   <script>
-  window.onload = function() {
-    const form = document.getElementById('myForm');
-    form.addEventListener('prosesbtn', function (event) {
-      event.preventDefault(); // Prevent the default form submission
+    document.addEventListener('DOMContentLoaded', function () {
+    const button = document.getElementById('prosesButton');
+    button.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default form submission (if inside a form)
 
-      // Call the updatePost() function when the form is submitted
-      updatePost();
+        // Call the updatePost() function when the button is clicked
+        updatePost();
     });
-  };
+});
 
-  function updatePost() {
-    const socket = new WebSocket('ws://127.0.0.1:6001/rlt/laporan?appKey=EDKNGKServer');
-    socket.onopen = function (event) {
-      console.log('on open!!');
+    function updatePost() {
+    const socket = new WebSocket(`ws://172.16.106.233:6001/rlt/laporan?appKey=EDKNGKServer`);
+    socket.onopen = function (event){
+        console.log('on open!!');
 
-      socket.send(JSON.stringify({
-        "command": "Subscribe",
-        "channel": "RLPelaporan"
-      }));
+        socket.send(JSON.stringify(
+          {
+            "command" : "Subscribe",
+            "channel" : "RLPelaporan"
+          }
 
-      socket.send(JSON.stringify({
-        "command": "AddData",
-        "channel": "RLPelaporan",
-        "user": "controller"
-      }));
+        ))
+        socket.send(JSON.stringify(
+          {	
+              "command" : "AddData",
+              "channel" : "RLPelaporan", 
+              "user" : "controller"
+          }
 
-      setTimeout(() => {
-        socket.close();
-      }, 2000);
+        ))
+        
+        setTimeout(() => {
+          socket.close();
+        }, 2000);
+          
     }
-
-    // Uncomment the lines below if you need to handle incoming messages from the WebSocket
+    // socket.close();
     // socket.onmessage = function (event) {
     //     console.log(event);
+
     // }
-  }
-</script>
-
-
-
+}
+  </script>
   @endsection
 
 

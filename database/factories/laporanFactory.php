@@ -28,7 +28,8 @@ class laporanFactory extends Factory
             "longitude" => "112.6226935",
             "urgensi" => "ular masuk celana fikril",
             "korban_jiwa" => 0,
-            "korban_luka" => 0,
+            "korban_luka_ringan" => 0,
+            "korban_luka_berat" => 0,
             "kondisi_cuaca" => "cerah",
             "kerugian" => 0,
         ];

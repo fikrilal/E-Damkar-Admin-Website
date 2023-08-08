@@ -113,11 +113,11 @@ class DatabaseSeeder extends Seeder
             'nama_kedudukan' => 'admin'
         ]);
 
-        // Pengaturan::create([
-        //     'jumlah_mobil' => '0',
-        //     'jumlah_personil' => '0',
-        //     'jumlah_kantor' => '0'
-        // ]);
+        Pengaturan::create([
+            'jumlah_mobil' => '0',
+            'jumlah_personil' => '0',
+            'jumlah_kantor' => '0'
+        ]);
 
 
         detail_laporan_pengguna::create([

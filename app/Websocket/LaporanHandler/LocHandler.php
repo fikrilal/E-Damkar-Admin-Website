@@ -12,6 +12,7 @@ class LocHandler extends BaseLocHandler implements MessageComponentInterface
     function onMessage(ConnectionInterface $conn, MessageInterface $msg)
     {
         $data = json_decode($msg);
+        dump($data->command);
         switch ($data->command) {
             case "Subscribe":
                 echo 'onsubs';

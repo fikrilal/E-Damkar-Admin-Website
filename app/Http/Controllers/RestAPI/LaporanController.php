@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\RestAPI;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\pelaporanDetailResource;
 use App\Http\Resources\pelaporanResources;
 use App\Models\detail_laporan_pengguna;
 use App\Models\laporan;
 use App\Models\user_listData;
 use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
+use Spatie\LaravelIgnition\Recorders\DumpRecorder\Dump;
 
 class LaporanController extends Controller
 {
@@ -64,28 +66,13 @@ class LaporanController extends Controller
     //mendapatkan data pelaporan
     public function getDataPelaporan(Request $request)
     {
-        // $data = laporan::where('user_listdata_id', $request->userId)->get();
-
         $data = detail_laporan_pengguna::where('user_listdata_id', $request->userId)->get();
-
         return pelaporanResources::collection($data);
-        // return json_encode($data);
     }
     public function getDetailPelaporan(Request $request)
     {
-        // $data = laporan::where('idLaporan', $request->idLaporan)->get();
-        // // return new pelaporanResources($data);
-        // $data1 = [
-        //     "idLaporan" => $data->idLaporan,
-        //     "Status_riwayat" => $data->statusRiwayat->nama_status,
-        //     "kategori_laporan" => $data->kategoriLaporan->nama_kategori,
-        //     "tanggal" => $this->$data->detailLaporanPengguna->tgl_pelaporan,
-        //     // "deskripsi" => $this->deskripsi_laporan,
-        //     // "image_url" => $this->bukti_foto_laporan_pengguna,
-        //     // "alamat" => $this->alamat,
-        //     // "urgensi" => $this->urgensi
-        // ];
-        // return json_encode($data1);
+        $data = Laporan::where('idLaporan', $request->idLaporan)->first();
+        return new pelaporanDetailResource($data);
     }
 
     public function searchLapKategori(Request $request)

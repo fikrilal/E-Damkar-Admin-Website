@@ -228,11 +228,11 @@ if ($laporan->kategori_laporan_id === 1 || $laporan->kategori_laporan_id === 2 |
         <div class="data-value"></div>
       </div>
       <div class="data">
-        <div class="data-label">2. Korban Luka Ringan : <?= isset($laporan) ? $laporan->detailLaporanPetugas->korban_luka : '' ?></div>
+        <div class="data-label">2. Korban Luka Ringan : <?= isset($laporan) ? $laporan->detailLaporanPetugas->korban_luka_ringan : '' ?></div>
         <div class="data-value"></div>
       </div>
       <div class="data">
-        <div class="data-label">3. Korban Luka Berat : <?= isset($laporan) ? $laporan->detailLaporanPetugas->korban_luka : '' ?></div>
+        <div class="data-label">3. Korban Luka Berat : <?= isset($laporan) ? $laporan->detailLaporanPetugas->korban_luka_berat : '' ?></div>
         <div class="data-value"></div>
       </div>
     </div>

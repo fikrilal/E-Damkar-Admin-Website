@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\RestAPI;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\pelaporanDetailResource;
 use App\Http\Resources\pelaporanResources;
 use App\Models\detail_laporan_pengguna;
 use App\Models\detail_laporan_petugas;
@@ -12,6 +13,7 @@ use App\Models\user_listData;
 use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Spatie\LaravelIgnition\Recorders\DumpRecorder\Dump;
 
 class LaporanController extends Controller
 {
@@ -129,16 +131,13 @@ class LaporanController extends Controller
     //mendapatkan data pelaporan
     public function getDataPelaporan(Request $request)
     {
-        // $data = laporan::where('user_listdata_id', $request->userId)->get();
-
         $data = detail_laporan_pengguna::where('user_listdata_id', $request->userId)->get();
-        
         return pelaporanResources::collection($data);
     }
     public function getDetailPelaporan(Request $request)
     {
-        $data = laporan::where('idLaporan', $request->idLaporan)->get();
-        return pelaporanResources::collection($data->laporan);
+        $data = Laporan::where('idLaporan', $request->idLaporan)->first();
+        return new pelaporanDetailResource($data);
     }
 
     public function searchLapKategori(Request $request)
@@ -158,6 +157,7 @@ class LaporanController extends Controller
 
     public function filterLapMenunggu(Request $request)
     {
+        $data = detail_laporan_pengguna::where('user_listdata_id', $request->userId);
         $data = laporan::where('user_listdata_id', $request->userId)
             ->where('status_riwayat_id', '1')->get();
         return pelaporanResources::collection($data);

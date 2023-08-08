@@ -254,7 +254,7 @@ if ($laporan->kategori_laporan_id === 1 || $laporan->kategori_laporan_id === 2 |
 
   <div class="section">
     <div class="section-title">DOKUMENTASI : </div>
-    <img src="{{ asset('storage/gambar_pelaporans/'.$laporan->detailLaporanPengguna->bukti_foto_laporan_pengguna) }}" width="40%">
+    <img src="{{ asset('storage/bukti_penanganan/'.$laporan->detailLaporanPetugas->bukti_foto_laporan_petugas . '.jpg') }}" width="40%">
     <div class="data-value"></div>
   </div>
 
@@ -355,6 +355,14 @@ if ($laporan->kategori_laporan_id === 1 || $laporan->kategori_laporan_id === 2 |
 
 <div class="section">
   <div class="section-title">■ TEAM EVAKUASI : <?= isset($laporan) ? $laporan->detailLaporanPetugas->team_evakuasi : '' ?></div>
+  <div class="section-content">
+    <!-- Isi bagian pendukung -->
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">■ DOKUMENTASI:</div>
+  <img src="{{ asset('storage/bukti_penanganan/'.$laporan->detailLaporanPetugas->bukti_foto_laporan_petugas . '.jpg') }}" width="40%">
   <div class="section-content">
     <!-- Isi bagian pendukung -->
   </div>

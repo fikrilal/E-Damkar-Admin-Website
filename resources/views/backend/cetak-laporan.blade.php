@@ -225,15 +225,15 @@ if ($laporan->kategori_laporan_id == 1 || $laporan->kategori_laporan_id == 2 || 
     <div class="section-title"><b>&#9632; KORBAN</b></div>
     <div class="section-content">
       <div class="data">
-        <div class="data-label">1. Korban Jiwa : <?= isset($laporan) ? ($laporan->detailLaporanPetugas->korban_jiwa !== 0 ? $laporan->detailLaporanPetugas->korban_jiwa : '-') : '' ?></div>
+        <div class="data-label">1. Korban Jiwa : <?= isset($laporan) ? ($laporan->detailLaporanPetugas->korban_jiwa != 0 ? $laporan->detailLaporanPetugas->korban_jiwa : '-') : '' ?></div>
         <div class="data-value"></div>
       </div>
       <div class="data">
-        <div class="data-label">2. Korban Luka Ringan : <?= isset($laporan) ? ($laporan->detailLaporanPetugas->korban_luka_berat !== 0 ? $laporan->detailLaporanPetugas->korban_luka_berat : '-') : '' ?></div>
+        <div class="data-label">2. Korban Luka Ringan : <?= isset($laporan) ? ($laporan->detailLaporanPetugas->korban_luka_berat != 0 ? $laporan->detailLaporanPetugas->korban_luka_berat : '-') : '' ?></div>
         <div class="data-value"></div>
       </div>
       <div class="data">
-        <div class="data-label">3. Korban Luka Berat : <?= isset($laporan) ? ($laporan->detailLaporanPetugas->korban_luka_ringan !== 0 ? $laporan->detailLaporanPetugas->korban_luka_ringan : '-') : '' ?></div>
+        <div class="data-label">3. Korban Luka Berat : <?= isset($laporan) ? ($laporan->detailLaporanPetugas->korban_luka_ringan != 0 ? $laporan->detailLaporanPetugas->korban_luka_ringan : '-') : '' ?></div>
         <div class="data-value"></div>
       </div>
     </div>

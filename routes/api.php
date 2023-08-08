@@ -22,6 +22,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 Route::get('/getPelaporan/{userId}', [LaporanController::class, 'getDataPelaporan']);
 Route::get('/getDetailLap/{idLaporan}', [LaporanController::class, 'getDetailPelaporan']);
+Route::get('/updateStatusRwt/{idLaporan}', [LaporanController::class, 'updateStatusRwt']);
 
 Route::post('/addPelaporan', [LaporanController::class, 'AddPelaporan']);
 Route::post('/addPelaporanPetugas', [LaporanController::class, 'AddPelaporanPetugas']);
@@ -75,5 +76,3 @@ Route::post('/user/foto', [UserController::class, 'UpdateFile']);
 Route::get('/user/akun', [UserController::class, 'getDataProfile']);
 Route::post('/verifyOtp/whatsapp', [AuthenticationController::class, 'verifOtpWhatsapp']);
 Route::get('/getBeritaHome', [ArtikelBeritaController::class, "getArtikelBeritaHome"]);
-
-

@@ -74,7 +74,7 @@ class LaporanController extends Controller
 
 
         ]);
-       
+
         $idCuaca = $vData['kondisi_cuaca_id'];
         $execDtl = detail_laporan_petugas::create($vData)->id;
 
@@ -88,16 +88,20 @@ class LaporanController extends Controller
 
         if (DB::table('laporans')->where('idLaporan', '=', $request->idLaporan)->update($crt_lap)) {
             return json_encode(
-                ["condition" => true, 
-                'message' => "berhasil melakukan pelaporan",
-                'kode' => '200'
-            ]);
+                [
+                    "condition" => true,
+                    'message' => "berhasil melakukan pelaporan",
+                    'kode' => '200'
+                ]
+            );
         } else {
             return json_encode(
-                ["condition" => false, 
-                'message' => "gagal melakukan pelaporan",
-                
-            ]);
+                [
+                    "condition" => false,
+                    'message' => "gagal melakukan pelaporan",
+
+                ]
+            );
         }
     }
 
@@ -236,5 +240,10 @@ class LaporanController extends Controller
 
         curl_close($curl);
         echo $response;
+    }
+
+    function updateStatusRwt(Request $request)
+    {
+        $data = Laporan::where('idLaporan', $request->idLaporan)->update(["status_riwayat_id" => 3]);
     }
 }

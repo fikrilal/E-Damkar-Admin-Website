@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\pelaporanDetailResource;
 use App\Http\Resources\pelaporanResources;
 use App\Models\detail_laporan_pengguna;
+use App\Models\detail_laporan_petugas;
+use App\Models\kondisi_cuaca;
 use App\Models\laporan;
 use App\Models\user_listData;
 use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Spatie\LaravelIgnition\Recorders\DumpRecorder\Dump;
 
 class LaporanController extends Controller
@@ -49,7 +52,70 @@ class LaporanController extends Controller
         }
     }
 
+    public function AddPelaporanPetugas(Request $request)
+    {
+        $vData = $request->validate([
+            'idLaporan' => 'required',
+            'damkar_id' => 'required|integer',
+            'waktu_penanganan' => 'required|string',
+            'tgl_laporan_petugas' => 'required|string',
+            'deskripsi_petugas' => 'required|string',
+            'korban_jiwa' => 'required|integer',
+            'korban_luka_ringan' => 'required|integer',
+            'korban_luka_berat' => 'required|integer',
+            'kerugian' => 'required|integer',
+            'luas_lahan' => 'required|integer',
+            'tindakan' => 'required|string',
+            'pihak_yang_datang' => 'required|string',
+            'jenis_evakuasi' => 'required|string',
+            'team_evakuasi' => 'required|string',
+            'bukti_foto_laporan_petugas' => 'required|string',
+            'kondisi_cuaca_id' => 'required|integer'
+
+
+        ]);
+       
+        $idCuaca = $vData['kondisi_cuaca_id'];
+        $execDtl = detail_laporan_petugas::create($vData)->id;
+
+        $crt_lap = [
+            'status_riwayat_id' => 4,
+            'detail_korban_id' => 1,
+            'kondisi_cuaca_id' => $idCuaca,
+            'detail_laporan_petugas_id' => $execDtl
+        ];
+
+
+        if (DB::table('laporans')->where('idLaporan', '=', $request->idLaporan)->update($crt_lap)) {
+            return json_encode(
+                ["condition" => true, 
+                'message' => "berhasil melakukan pelaporan",
+                'kode' => '200'
+            ]);
+        } else {
+            return json_encode(
+                ["condition" => false, 
+                'message' => "gagal melakukan pelaporan",
+                
+            ]);
+        }
+    }
+
+
     public function addImage(Request $request)
+    {
+        $validateData = $request->validate([
+            'title' => 'required',
+            'image' => 'image'
+        ]);
+
+        if ($request->file('image')) {
+            $validateData['image'] = $request->file('image')->storeAs('gambar_pelaporans', $validateData['title'] . '.jpg');
+        }
+
+        return json_encode(['kondisi' => 'real', 'path' => $validateData['image'], 'title' => $validateData['title']]);
+    }
+    public function addImagePetugas(Request $request)
     {
         $validateData = $request->validate([
             'title' => 'required',

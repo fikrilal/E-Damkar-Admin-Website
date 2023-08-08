@@ -22,7 +22,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 Route::get('/getPelaporan/{userId}', [LaporanController::class, 'getDataPelaporan']);
 Route::get('/getDetailLap/{idLaporan}', [LaporanController::class, 'getDetailPelaporan']);
+
 Route::post('/addPelaporan', [LaporanController::class, 'AddPelaporan']);
+Route::post('/addPelaporanPetugas', [LaporanController::class, 'AddPelaporanPetugas']);
+
 Route::get('/beritaTerbaru', [ArtikelBeritaController::class, 'newArtikelBerita']);
 Route::get('/userData', [UserController::class, 'index']);
 
@@ -64,7 +67,10 @@ Route::get('/getAllArtikelHigh', [ArtikelController::class, 'getAllArtikelHigh']
 Route::get('/semuaArtikel', [ArtikelBeritaController::class, 'semuaArtikel']);
 Route::post('/user', [UserController::class, 'updateProfil']);
 Route::post('/sendToWa', [LaporanController::class, 'sendInfoToWhatsapp']);
+
 Route::post('/addImage', [LaporanController::class, 'addImage']);
+Route::post('/addImagePetugas', [LaporanController::class, 'addImagePetugas']);
+
 Route::post('/user/foto', [UserController::class, 'UpdateFile']);
 Route::get('/user/akun', [UserController::class, 'getDataProfile']);
 Route::post('/verifyOtp/whatsapp', [AuthenticationController::class, 'verifOtpWhatsapp']);

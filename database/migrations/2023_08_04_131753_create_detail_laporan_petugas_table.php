@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('tgl_laporan_petugas', 20);
             $table->text('deskripsi_petugas');
             $table->integer('korban_jiwa');
-            $table->integer('korban_luka');
+            $table->integer('korban_luka_ringan');
+            $table->integer('korban_luka_berat');
             $table->string('kerugian');
             $table->string('luas_lahan');
             $table->string('tindakan');

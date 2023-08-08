@@ -6,6 +6,7 @@ use App\Http\Controllers\RestAPI\ArtikelController;
 use App\Http\Controllers\RestAPI\AuthenticationController;
 use App\Http\Controllers\RestAPI\EdukasiController as RestAPIEdukasiController;
 use App\Http\Controllers\RestAPI\LaporanController;
+use App\Http\Controllers\RestAPI\petugasController;
 use App\Http\Controllers\RestAPI\UserController;
 use App\Websocket\LaporanHandler\MessageLaporanHandler;
 use BeyondCode\LaravelWebSockets\Facades\WebSocketsRouter;
@@ -14,10 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [AuthenticationController::class, 'register']);
 Route::post('/login', [AuthenticationController::class, 'login']);
+Route::post('/loginPetugas', [AuthenticationController::class, 'loginPetugas']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', [UserController::class, 'checkLogin']);
     Route::post('/logout', [AuthenticationController::class, 'logout']);
+    
+    Route::get('/petugas', [petugasController::class, 'checkLogin']);
+    Route::post('/logoutPetugas', [AuthenticationController::class, 'logoutPetugas']);
 });
 
 Route::get('/getPelaporan/{userId}', [LaporanController::class, 'getDataPelaporan']);
@@ -25,6 +30,7 @@ Route::get('/getDetailLap/{idLaporan}', [LaporanController::class, 'getDetailPel
 
 Route::post('/addPelaporan', [LaporanController::class, 'AddPelaporan']);
 Route::post('/addPelaporanPetugas', [LaporanController::class, 'AddPelaporanPetugas']);
+Route::post('/addTanganiPetugas', [LaporanController::class, 'AddTanganiPetugas']);
 
 Route::get('/beritaTerbaru', [ArtikelBeritaController::class, 'newArtikelBerita']);
 Route::get('/userData', [UserController::class, 'index']);

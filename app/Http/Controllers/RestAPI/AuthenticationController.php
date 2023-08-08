@@ -4,8 +4,10 @@ namespace App\Http\Controllers\RestAPI;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\LoginPostResource;
+use App\Http\Resources\LoginPetugasResource;
 use App\Http\Resources\UserListResource;
 use App\Http\Resources\verifikasiResource;
+use App\Models\admin_damkar;
 use App\Models\user_listData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -90,6 +92,24 @@ class AuthenticationController extends Controller
         } else {
             $token = $user->createToken($request->username)->plainTextToken;
             return new LoginPostResource(true, $token, 'Berhasil', $user);
+        }
+    }
+
+    //petugas
+    public function loginPetugas(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user = admin_damkar::where('email', $request->email)->first();
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return new LoginPetugasResource(false, null, 'Periksa Kembali Email dan password anda', null);
+        }  else {
+            $token = $user->createToken($request->email)->plainTextToken;
+            return new LoginPetugasResource(true, $token, 'Berhasil', $user);
         }
     }
 

@@ -24,6 +24,7 @@ Route::get('/getPelaporan/{userId}', [LaporanController::class, 'getDataPelapora
 Route::get('/getDetailLap/{idLaporan}', [LaporanController::class, 'getDetailPelaporan']);
 
 Route::post('/addPelaporan', [LaporanController::class, 'AddPelaporan']);
+Route::post('/addPelaporanPetugas', [LaporanController::class, 'AddPelaporanPetugas']);
 
 Route::get('/beritaTerbaru', [ArtikelBeritaController::class, 'newArtikelBerita']);
 Route::get('/userData', [UserController::class, 'index']);

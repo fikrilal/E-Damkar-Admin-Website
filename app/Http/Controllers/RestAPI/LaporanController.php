@@ -5,10 +5,13 @@ namespace App\Http\Controllers\RestAPI;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\pelaporanResources;
 use App\Models\detail_laporan_pengguna;
+use App\Models\detail_laporan_petugas;
+use App\Models\kondisi_cuaca;
 use App\Models\laporan;
 use App\Models\user_listData;
 use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LaporanController extends Controller
 {
@@ -50,6 +53,7 @@ class LaporanController extends Controller
     public function AddPelaporanPetugas(Request $request)
     {
         $vData = $request->validate([
+            'idLaporan' => 'required',
             'damkar_id' => 'required|integer',
             'waktu_penanganan' => 'required|string',
             'tgl_laporan_petugas' => 'required|string',
@@ -63,25 +67,34 @@ class LaporanController extends Controller
             'jenis_evakuasi' => 'required|string',
             'team_evakuasi' => 'required|string',
             'bukti_foto_laporan_petugas' => 'required|string',
+            'kondisi_cuaca_id' => 'required|integer'
 
-                
+
         ]);
-
-        $kategoriLap = $vData['kategori_laporan_id'];
-        unset($vData['kategori_laporan_id']);
-        $execDtl = detail_laporan_pengguna::create($vData)->id;
+       
+        $idCuaca = $vData['kondisi_cuaca_id'];
+        $execDtl = detail_laporan_petugas::create($vData)->id;
 
         $crt_lap = [
-            'status_riwayat_id' => 1,
-            'kategori_laporan_id' => $kategoriLap,
-            'detail_laporan_pengguna_id' => $execDtl
+            'status_riwayat_id' => 4,
+            'detail_korban_id' => 1,
+            'kondisi_cuaca_id' => $idCuaca,
+            'detail_laporan_petugas_id' => $execDtl
         ];
 
 
-        if (laporan::create($crt_lap)) {
-            return json_encode(["condition" => true, 'message' => "berhasil melakukan pelaporan"]);
+        if (DB::table('laporans')->where('idLaporan', '=', $request->idLaporan)->update($crt_lap)) {
+            return json_encode(
+                ["condition" => true, 
+                'message' => "berhasil melakukan pelaporan",
+                'kode' => '200'
+            ]);
         } else {
-            return json_encode(["condition" => false, 'message' => "gagal melakukan pelaporan"]);
+            return json_encode(
+                ["condition" => false, 
+                'message' => "gagal melakukan pelaporan",
+                
+            ]);
         }
     }
 

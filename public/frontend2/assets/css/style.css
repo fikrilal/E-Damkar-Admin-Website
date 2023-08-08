@@ -168,7 +168,7 @@ section {
     transition-delay: 0 !important;
   }
 }
-
+ 
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -2401,23 +2401,22 @@ font-style: bold;
 .search-box {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 0px;
-  position: relative;
+  margin-bottom: 10px;
 }
 
 .search-box .icon {
-  padding: 10px;
+  padding: 12px;
   background-color: #fff;
   border-radius: 50%;
-  margin-left: 5px;
+  margin-left: 0px;
 }
+
 
 .search-box input[type="search"] {
   padding: 10px;
   border: 1px solid #D1D5DB;
   outline: none;
-  width: 500px;
+  width: 200px;
   height: 50px;
 }
 
@@ -2437,6 +2436,3 @@ button{
   margin-top: 10px;
   text-align: center;
 }
-
-
-

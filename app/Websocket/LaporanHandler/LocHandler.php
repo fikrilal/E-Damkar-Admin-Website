@@ -17,18 +17,42 @@ class LocHandler extends BaseLocHandler implements MessageComponentInterface
                 echo 'onsubs';
                 $this->subscriptions[$conn->resourceId] = $data->channel;
                 break;
-            case "location":
-                echo 'onLocation';
-                if (isset($this->subscriptions[$conn->resourceId])) {
-                    $target = $this->subscriptions[$conn->resourceId];
-                    foreach ($this->subscriptions as $id => $channel) {
-                        if ($channel == $target && $id != $conn->resourceId) {
-                            $jsonData = json_encode($data->message);
-                            $this->users[$id]->send($jsonData);
-                        }
-                    }
-                }
+            case "Request":
+                $this->onRequest($conn, $data);
                 break;
+            case "Response":
+                $this->onResponse($conn, $data);
+                break;
+        }
+    }
+
+
+    function onRequest(ConnectionInterface $conn, $data)
+    {
+        if (isset($this->subscriptions[$conn->resourceId])) {
+            $target = $this->subscriptions[$conn->resourceId];
+            foreach ($this->subscriptions as $id => $channel) {
+                if ($channel == $target && $id != $conn->resourceId) {
+                    $jsonData = json_encode($data);
+                    $this->users[$id]->send($jsonData);
+                }
+            }
+        }
+    }
+    function onResponse(ConnectionInterface $conn, $data)
+    {
+        if (isset($this->subscriptions[$conn->resourceId])) {
+            $target = $this->subscriptions[$conn->resourceId];
+            foreach ($this->subscriptions as $id => $channel) {
+                if ($channel == $target && $id != $conn->resourceId) {
+                    $sendMessage = [
+                        "type" => $data->type,
+                        "message" => $data->message
+                    ];
+                    $jsonData = json_encode($sendMessage);
+                    $this->users[$id]->send($jsonData);
+                }
+            }
         }
     }
 }

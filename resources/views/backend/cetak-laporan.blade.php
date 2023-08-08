@@ -119,7 +119,7 @@ if ($laporan->kategori_laporan_id === 1 || $laporan->kategori_laporan_id === 2 |
 ?>
 
   <div class="section">
-    <div class="section-title">■ WAKTU  KEJADIAN</div>
+    <div class="section-title"><b>■ WAKTU  KEJADIAN</b></div>
     <div class="section-content">
       <?php
       function translateDayToIndonesian($englishDay)
@@ -168,13 +168,13 @@ if ($laporan->kategori_laporan_id === 1 || $laporan->kategori_laporan_id === 2 |
   </div>
 
   <div class="section">
-    <div class="section-title">■ SUMBER INFORMASI : Aplikasi E-DAMKAR</div>
+    <div class="section-title"><b>■ SUMBER INFORMASI : Aplikasi E-DAMKAR</b></div>
     <div class="data-value"></div>
   </div>
 
 
     <div class="section">
-  <div class="section-title">■ DATA PELAPOR</div>
+  <div class="section-title"><b>■ DATA PELAPOR</b></div>
   <div class="section-content">
     <div class="data">
       <div class="data-label">Nama : <?= isset($laporan) ? $laporan->detailLaporanPengguna->user_listdata->namaLengkap : '' ?></div>
@@ -197,11 +197,11 @@ if ($laporan->kategori_laporan_id === 1 || $laporan->kategori_laporan_id === 2 |
   ?>
   <div class="section">
 <div class="data">
-      <div class="data-label">■ PENYEBAB KEBAKARAN : <?= isset($laporan) ? $laporan->detailLaporanPetugas->deskripsi_petugas : '' ?></div>
+      <div class="data-label"><b>■ PENYEBAB KEBAKARAN</b> : <?= isset($laporan) ? $laporan->detailLaporanPetugas->deskripsi_petugas : '' ?></div>
       <div class="data-value"></div>
     </div>
     <div class="data">
-      <div class="data-label">■ LUAS LAHAN : <?= isset($laporan) ? $laporan->detailLaporanPetugas->luas_lahan : '' ?></div>
+      <div class="data-label"><b>■ LUAS LAHAN</b> : <?= isset($laporan) ? $laporan->detailLaporanPetugas->luas_lahan : '' ?></div>
       <div class="data-value"></div>
     </div>
   </div>
@@ -211,7 +211,7 @@ if ($laporan->kategori_laporan_id === 1 || $laporan->kategori_laporan_id === 2 |
   } else if ($laporan->kategori_laporan_id === 2 || $laporan->kategori_laporan_id === 3) {
   ?>
     <div class="section">
-      <div class="section-title">■ KRONOLOGI KEJADIAN : <?= isset($laporan) ? $laporan->detailLaporanPetugas->deskripsi_petugas : '' ?></div>
+      <div class="section-title"><b>■ KRONOLOGI KEJADIAN</b> : <?= isset($laporan) ? $laporan->detailLaporanPetugas->deskripsi_petugas : '' ?></div>
       <div class="data-value"></div>
     </div>
   <?php
@@ -221,7 +221,7 @@ if ($laporan->kategori_laporan_id === 1 || $laporan->kategori_laporan_id === 2 |
   ?>
 
   <div class="section">
-    <div class="section-title">■ KORBAN</div>
+    <div class="section-title"><b>■ KORBAN</b></div>
     <div class="section-content">
       <div class="data">
         <div class="data-label">1. Korban Jiwa : <?= isset($laporan) ? $laporan->detailLaporanPetugas->korban_jiwa : '' ?></div>
@@ -240,26 +240,26 @@ if ($laporan->kategori_laporan_id === 1 || $laporan->kategori_laporan_id === 2 |
 
   <div class="section-content">
 <div class="data">
-      <div class="data-label">■ KERUGIAN MATERIAL : ± Rp. <?= isset($laporan) ? number_format($laporan->detailLaporanPetugas->kerugian, 0, ',', '.') : '' ?></div>
+      <div class="data-label"><b>■ KERUGIAN MATERIAL</b> : ± Rp. <?= isset($laporan) ? number_format($laporan->detailLaporanPetugas->kerugian, 0, ',', '.') : '' ?></div>
       <div class="data-value"></div>
     </div>
     <div class="data">
-      <div class="data-label">■ KONDISI CUACA : <?= isset($laporan) ? $laporan->kondisiCuaca->nama_kondisi_cuaca : '' ?></div>
+      <div class="data-label"><b>■ KONDISI CUACA</b> : <?= isset($laporan) ? $laporan->kondisiCuaca->nama_kondisi_cuaca : '' ?></div>
       <div class="data-value"></div>
     </div>
     <div class="data">
-      <div class="data-label">■ TINDAKAN : <?= isset($laporan) ? $laporan->detailLaporanPetugas->tindakan : '' ?></div>
+      <div class="data-label"><b>■ TINDAKAN</b> : <?= isset($laporan) ? $laporan->detailLaporanPetugas->tindakan : '' ?></div>
       <div class="data-value"></div>
     </div>
     <div class="data">
-      <div class="data-label">■  PIHAK / UNSUR YANG DATANG KE LOKASI, Antara Lain :  <?= isset($laporan) ? $laporan->detailLaporanPetugas->pihak_yang_datang : '' ?></div>
+      <div class="data-label"><b>■  PIHAK / UNSUR YANG DATANG KE LOKASI, Antara Lain</b> :  <?= isset($laporan) ? $laporan->detailLaporanPetugas->pihak_yang_datang : '' ?></div>
       <div class="data-value"></div>
     </div>
   </div>
 </div>
 
   <div class="section">
-    <div class="section-title">■  DOKUMENTASI : </div>
+    <div class="section-title"><b>■  DOKUMENTASI</b> : </div>
     <img src="{{ asset('storage/bukti_penanganan/'.$laporan->detailLaporanPetugas->bukti_foto_laporan_petugas . '.jpg') }}" width="40%">
     <div class="data-value"></div>
   </div>
@@ -268,7 +268,7 @@ if ($laporan->kategori_laporan_id === 1 || $laporan->kategori_laporan_id === 2 |
 } else if ($laporan->kategori_laporan_id === 4) {
   ?>
   <div class="section">
-  <div class="section-title">■ DATA PELAPOR</div>
+  <div class="section-title"><b>■ DATA PELAPOR</b></div>
   <div class="section-content">
     <div class="data">
       <div class="data-label">Nama : <?= isset($laporan) ? $laporan->detailLaporanPengguna->user_listdata->namaLengkap : '' ?></div>
@@ -287,7 +287,7 @@ if ($laporan->kategori_laporan_id === 1 || $laporan->kategori_laporan_id === 2 |
 </div>
 
 <div class="section">
-  <div class="section-title">■ GIAT DILAKSANAKAN</div>
+  <div class="section-title"><b>■ GIAT DILAKSANAKAN</b></div>
   <div class="section-content">
 
   <?php
@@ -338,23 +338,23 @@ if ($laporan->kategori_laporan_id === 1 || $laporan->kategori_laporan_id === 2 |
 
 <div class="section-content">
 <div class="data">
-      <div class="data-label">■ OBYEK : <?= isset($laporan) ? $laporan->detailLaporanPengguna->nama_hewan : '' ?></div>
+      <div class="data-label"><b>■ OBYEK</b> : <?= isset($laporan) ? $laporan->detailLaporanPengguna->nama_hewan : '' ?></div>
       <div class="data-value"></div>
     </div>
     <div class="data">
-      <div class="data-label">■ JENIS EVAKUASI : <?= isset($laporan) ? $laporan->detailLaporanPetugas->jenis_evakuasi : '' ?></div>
+      <div class="data-label"><b>■ JENIS EVAKUASI</b> : <?= isset($laporan) ? $laporan->detailLaporanPetugas->jenis_evakuasi : '' ?></div>
       <div class="data-value"></div>
     </div>
     <div class="data">
-      <div class="data-label">■ PENDUKUNG :  <?= isset($laporan) ? $laporan->detailLaporanPetugas->pihak_yang_datang : '' ?></div>
+      <div class="data-label"><b>■ PENDUKUNG</b> :  <?= isset($laporan) ? $laporan->detailLaporanPetugas->pihak_yang_datang : '' ?></div>
       <div class="data-value"></div>
     </div>
     <div class="data">
-      <div class="data-label">■ TEAM EVAKUASI : <?= isset($laporan) ? $laporan->detailLaporanPetugas->team_evakuasi : '' ?></div>
+      <div class="data-label"><b>■ TEAM EVAKUASI</b> : <?= isset($laporan) ? $laporan->detailLaporanPetugas->team_evakuasi : '' ?></div>
       <div class="data-value"></div>
     </div>
     <div class="data">
-      <div class="data-label">■ DOKUMENTASI:</div>
+      <div class="data-label"><b>■ DOKUMENTASI</b>:</div>
   <img src="{{ asset('storage/bukti_penanganan/'.$laporan->detailLaporanPetugas->bukti_foto_laporan_petugas . '.jpg') }}" width="40%">
   <div class="data-value"></div>
     </div>

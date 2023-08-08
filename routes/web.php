@@ -22,11 +22,11 @@ use BeyondCode\LaravelWebSockets\Facades\WebSocketsRouter;
 |
 */
 
-Route::group(['namespace' => 'App\Http\Controllers\Frontend'], function () {
+Route::group(['namespace' => 'App\Http\Controllers\frontend'], function () {
     Route::resource('home', 'HomeController');
 });
 
-Route::group(['namespace' => 'App\Http\Controllers\Backend'], function () {
+Route::group(['namespace' => 'App\Http\Controllers\backend'], function () {
     Route::resource('dashboard', 'DashboardController');
     Route::resource('laporan', 'LaporanController');
     Route::resource('laporanmasuk', 'LaporanMasukController');
@@ -42,11 +42,11 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend'], function () {
     });
 });
 
-Route::post('/pengaturan/updateprofil', 'App\Http\Controllers\Backend\PengaturanController@updateProfil')->name('pengaturan.updateprofil');
+Route::post('/pengaturan/updateprofil', 'App\Http\Controllers\backend\PengaturanController@updateProfil')->name('pengaturan.updateprofil');
 
 Route::get('/search', 'App\Http\Controllers\SearchBeritaController@search')->name('search');
 
-Route::get('/laporan/update-status/{id}/', 'App\Http\Controllers\Backend\LaporanMasukController@updateStatus')->name('laporan.update-status');
+Route::get('/laporan/update-status/{id}/', 'App\Http\Controllers\backend\LaporanMasukController@updateStatus')->name('laporan.update-status');
 Route::get('/logout', function () {
     Auth::logout();
     // return Redirect::to('login');

@@ -54,7 +54,8 @@ class LaporanController extends Controller
 
 
     //mengubah laporan menjadi tangani
-    public function AddTanganiPetugas(Request $request){
+    public function AddTanganiPetugas(Request $request)
+    {
         $aData = $request->validate([
             'damkar_id' => 'required|integer',
             'idLaporan' => 'required',
@@ -70,27 +71,30 @@ class LaporanController extends Controller
 
         if (DB::table('laporans')->where('idLaporan', '=', $request->idLaporan)->update($crt_lap)) {
             return json_encode(
-                ["condition" => true, 
-                'message' => "berhasil menangani laporan",
-                'kode' => '200'
-            ]);
+                [
+                    "condition" => true,
+                    'message' => "berhasil menangani laporan",
+                    'kode' => '200'
+                ]
+            );
         } else {
             return json_encode(
-                ["condition" => false, 
-                'message' => "gagal melakukan pelaporan",
-                
-            ]);
-        }
+                [
+                    "condition" => false,
+                    'message' => "gagal melakukan pelaporan",
 
+                ]
+            );
+        }
     }
 
     //get data detail lap petugas
     public function getDetailLapPetugas(Request $request)
     {
-        $dataLap = detail_laporan_petugas::where('id',$request->id)->get();
-        return 
+        $dataLap = detail_laporan_petugas::where('id', $request->id)->get();
+        return
 
-        $data = detail_laporan_pengguna::where('user_listdata_id', $request->userId)->get();
+            $data = detail_laporan_pengguna::where('user_listdata_id', $request->userId)->get();
         return pelaporanResources::collection($data);
     }
 
@@ -124,7 +128,7 @@ class LaporanController extends Controller
 
         $idCuaca = $vData['kondisi_cuaca_id'];
         // $execDtl = detail_laporan_petugas::create($vData)->id;
-       
+
 
         $crt_lap = [
             'status_riwayat_id' => 4,
@@ -135,22 +139,26 @@ class LaporanController extends Controller
 
         $UpdateLaporan = DB::table('laporans')->where('idLaporan', '=', $request->idLaporan)->update($crt_lap);
         // $UpdateDetailPetugas = DB::table('detail_laporan_petugas')->where('id', '=', $request->idLaporan)->update($vData);
-        $UpdateDetailPetugas = DB::table('detail_laporan_petugas')->join('laporans', 'laporans.detail_laporan_petugas_id', '=','detail_laporan_petugas.id')->where('laporans.detail_laporan_petugas_id', '=', $request->detail_laporan_petugas_id)->update($vData);
+        $UpdateDetailPetugas = DB::table('detail_laporan_petugas')->join('laporans', 'laporans.detail_laporan_petugas_id', '=', 'detail_laporan_petugas.id')->where('laporans.detail_laporan_petugas_id', '=', $request->detail_laporan_petugas_id)->update($vData);
 
 
 
         if ($UpdateLaporan & $UpdateDetailPetugas) {
             return json_encode(
-                ["condition" => true, 
-                'message' => "berhasil melakukan pelaporan",
-                'kode' => '200'
-            ]);
+                [
+                    "condition" => true,
+                    'message' => "berhasil melakukan pelaporan",
+                    'kode' => '200'
+                ]
+            );
         } else {
             return json_encode(
-                ["condition" => false, 
-                'message' => "gagal melakukan pelaporan",
-                
-            ]);
+                [
+                    "condition" => false,
+                    'message' => "gagal melakukan pelaporan",
+
+                ]
+            );
         }
     }
 
@@ -159,9 +167,9 @@ class LaporanController extends Controller
     public function AddPelaporanPetugas(Request $request)
     {
         $vData = $request->validate([
-           
+
             'idLaporan' => 'required',
-            
+
             'damkar_id' => 'required|integer',
             'waktu_penanganan' => 'required|string',
 
@@ -181,10 +189,10 @@ class LaporanController extends Controller
 
 
         ]);
-       
+
         $idCuaca = $vData['kondisi_cuaca_id'];
         $execDtl = detail_laporan_petugas::create($vData)->id;
-       
+
 
         $crt_lap = [
             'status_riwayat_id' => 4,
@@ -199,7 +207,7 @@ class LaporanController extends Controller
 
 
 
-        if ($UpdateLaporan ) {
+        if ($UpdateLaporan) {
             return json_encode(
                 [
                     "condition" => true,
@@ -273,38 +281,61 @@ class LaporanController extends Controller
         return pelaporanResources::collection($data);
     }
 
+
+    public function getLaporanByIdUser($idUser, $statusId)
+    {
+        $toJson = [
+            'kondisi' => true,
+            'message' => 'data has been found',
+            'data' => []
+        ];
+        $data = detail_laporan_pengguna::where('user_listdata_id', $idUser)->get();
+        if ($data != null) {
+            foreach ($data as $data) {
+                if ($data->laporan->status_riwayat_id == $statusId) {
+                    $detail["idLaporan"] = $data->laporan->idLaporan;
+                    $detail["status_riwayat"] = $data->laporan->statusRiwayat->nama_status;
+                    $detail['kategori_laporan'] = $data->laporan->kategoriLaporan->nama_kategori;
+                    $detail['tanggal'] = $data->tgl_pelaporan;
+                    $detail['deskripsi'] = $data->deskripsi_laporan;
+                    $detail['image_url'] = $data->bukti_foto_laporan_pengguna;
+                    $detail['alamat'] = $data->alamat;
+                    $detail['urgensi'] = $data->urgensi;
+                    array_push($toJson['data'], $detail);
+                }
+            }
+            return $toJson;
+        }
+        $toJson['kondisi'] = false;
+        $toJson['message'] = 'data not found';
+        return $toJson;
+    }
     public function filterLapMenunggu(Request $request)
     {
-        $data = detail_laporan_pengguna::where('user_listdata_id', $request->userId);
-        $data = laporan::where('user_listdata_id', $request->userId)
-            ->where('status_riwayat_id', '1')->get();
-        return pelaporanResources::collection($data);
+        return json_encode($this->getLaporanByIdUser($request->userId, 1));
     }
     public function filterLapProses(Request $request)
     {
-        $data = laporan::where('user_listdata_id', $request->userId)
-            ->where('status_riwayat_id', '2')->get();
-        return pelaporanResources::collection($data);
+        return json_encode($this->getLaporanByIdUser($request->userId, 2));
+    }
+    public function filterLapDitangani(Request $request)
+    {
+        return json_encode($this->getLaporanByIdUser($request->userId, 3));
     }
     public function filterLapSelesai(Request $request)
     {
-        $data = laporan::where('user_listdata_id', $request->userId)
-            ->where('status_riwayat_id', '3')->get();
-        return pelaporanResources::collection($data);
-    }
-    public function filterLapDitolak(Request $request)
-    {
-        $data = laporan::where('user_listdata_id', $request->userId)
-            ->where('status_riwayat_id', '4')->get();
-        return pelaporanResources::collection($data);
+        return json_encode($this->getLaporanByIdUser($request->userId, 4));
     }
 
-    public function filterLapEmergency(Request $request)
+    public function filterLapDitolak(Request $request)
     {
-        $data = laporan::where('user_listdata_id', $request->userId)
-            ->where('status_riwayat_id', '5')->get();
-        return pelaporanResources::collection($data);
+        return json_encode($this->getLaporanByIdUser($request->userId, 5));
     }
+    
+    // public function filterLapEmergency(Request $request)
+    // {
+    //     return json_encode($this->getLaporanByIdUser($request->userId, 5));
+    // }
 
     public function sendInfoToWhatsapp(Request $request)
     {

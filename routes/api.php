@@ -32,6 +32,7 @@ Route::get('/updateStatusRwt/{idLaporan}', [LaporanController::class, 'updateSta
 Route::post('/addPelaporan', [LaporanController::class, 'AddPelaporan']);
 Route::post('/addPelaporanPetugas', [LaporanController::class, 'AddPelaporanPetugas']);
 Route::post('/addTanganiPetugas', [LaporanController::class, 'AddTanganiPetugas']);
+// Route::post('/tanganiPelaporan', [LaporanController::class, 'updateTanganiPetugas']);
 
 Route::get('/beritaTerbaru', [ArtikelBeritaController::class, 'newArtikelBerita']);
 Route::get('/userData', [UserController::class, 'index']);

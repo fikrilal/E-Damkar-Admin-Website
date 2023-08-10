@@ -120,191 +120,191 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        detail_laporan_pengguna::create([
-            'user_listdata_id' => 1,
-            'deskripsi_laporan' => 'lorme ipsum',
-            'waktu_pelaporan' => '12:00',
-            'tgl_pelaporan' => now(),
-            'urgensi' => 'kebakaran',
-            'alamat' => 'jl ksdjflkd',
-            'latitude' => 12.7,
-            'longitude' => 11.2,
-            'bukti_foto_laporan_pengguna' => 'image'
-        ]);
+        // detail_laporan_pengguna::create([
+        //     'user_listdata_id' => 1,
+        //     'deskripsi_laporan' => 'lorme ipsum',
+        //     'waktu_pelaporan' => '12:00',
+        //     'tgl_pelaporan' => now(),
+        //     'urgensi' => 'kebakaran',
+        //     'alamat' => 'jl ksdjflkd',
+        //     'latitude' => 12.7,
+        //     'longitude' => 11.2,
+        //     'bukti_foto_laporan_pengguna' => 'image'
+        // ]);
 
 
-        detail_laporan_petugas::create([
-            'damkar_id' => 1,
-            'waktu_penanganan' => '12:00',
-            'tgl_laporan_petugas' => '08-05-2023',
-            'deskripsi_petugas' => 'lorem ipsum petugas',
-            'korban_jiwa' => 0,
-            'korban_luka_ringan' => 0,
-            'korban_luka_berat' => 0,
-            'kerugian' => '000000',
-            'luas_lahan' => '234',
-            'tindakan' => 'Melakukan Pemadaman',
-            'pihak_yang_datang' => 'Babinsa',
-            'jenis_evakuasi' => 'Evakuasi Sarang Tawon',
-            'team_evakuasi' => 'Fajar Nughroho, Thio Agustin',
-            'bukti_foto_laporan_petugas' => 'gambar'
-        ]);
+        // detail_laporan_petugas::create([
+        //     'damkar_id' => 1,
+        //     'waktu_penanganan' => '12:00',
+        //     'tgl_laporan_petugas' => '08-05-2023',
+        //     'deskripsi_petugas' => 'lorem ipsum petugas',
+        //     'korban_jiwa' => 0,
+        //     'korban_luka_ringan' => 0,
+        //     'korban_luka_berat' => 0,
+        //     'kerugian' => '000000',
+        //     'luas_lahan' => '234',
+        //     'tindakan' => 'Melakukan Pemadaman',
+        //     'pihak_yang_datang' => 'Babinsa',
+        //     'jenis_evakuasi' => 'Evakuasi Sarang Tawon',
+        //     'team_evakuasi' => 'Fajar Nughroho, Thio Agustin',
+        //     'bukti_foto_laporan_petugas' => 'gambar'
+        // ]);
 
-        detail_korban::create([
-            'nama_lengkap' => 'super one',
-            'NIK' => '1293802083',
-            'umur' => '12'
-        ]);
-
-
-        laporan::create([
-            'status_riwayat_id' => 1,
-            'kategori_laporan_id' => 1,
-            'detail_korban_id' => 1,
-            'kondisi_cuaca_id' => 1,
-            'detail_laporan_pengguna_id' => 1,
-            'detail_laporan_petugas_id' => 1
-        ]);
-
-        //laporan menunggu
-        detail_laporan_pengguna::create([
-            'user_listdata_id' => 1,
-            'deskripsi_laporan' => 'lorme ipsum',
-            'waktu_pelaporan' => '12:00',
-            'tgl_pelaporan' => now(),
-            'urgensi' => 'kebakaran',
-            'alamat' => 'jl ksdjflkd',
-            'latitude' => 12.7,
-            'longitude' => 11.2,
-            'bukti_foto_laporan_pengguna' => 'image'
-        ]);
+        // detail_korban::create([
+        //     'nama_lengkap' => 'super one',
+        //     'NIK' => '1293802083',
+        //     'umur' => '12'
+        // ]);
 
 
-        detail_laporan_petugas::create([
-            'damkar_id' => 1,
-            'waktu_penanganan' => '12:00',
-            'tgl_laporan_petugas' => '08-05-2023',
-            'deskripsi_petugas' => 'lorem ipsum petugas',
-            'korban_jiwa' => 0,
-            'korban_luka_ringan' => 0,
-            'korban_luka_berat' => 0,
-            'kerugian' => '000000',
-            'luas_lahan' => '234',
-            'tindakan' => 'Melakukan Pemadaman',
-            'pihak_yang_datang' => 'Babinsa',
-            'jenis_evakuasi' => 'Evakuasi Sarang Tawon',
-            'team_evakuasi' => 'Fajar Nughroho, Thio Agustin',
-            'bukti_foto_laporan_petugas' => 'gambar'
-        ]);
+        // laporan::create([
+        //     'status_riwayat_id' => 1,
+        //     'kategori_laporan_id' => 1,
+        //     'detail_korban_id' => 1,
+        //     'kondisi_cuaca_id' => 1,
+        //     'detail_laporan_pengguna_id' => 1,
+        //     'detail_laporan_petugas_id' => 1
+        // ]);
 
-        detail_korban::create([
-            'nama_lengkap' => 'super one',
-            'NIK' => '1293802083',
-            'umur' => '12'
-        ]);
-
-
-        laporan::create([
-            'status_riwayat_id' => 2,
-            'kategori_laporan_id' => 1,
-            'detail_korban_id' => 1,
-            'kondisi_cuaca_id' => 1,
-            'detail_laporan_pengguna_id' => 2,
-            'detail_laporan_petugas_id' => 2
-        ]);
-
-        //laporan proses
-        detail_laporan_pengguna::create([
-            'user_listdata_id' => 1,
-            'deskripsi_laporan' => 'lorme ipsum',
-            'waktu_pelaporan' => '12:00',
-            'tgl_pelaporan' => now(),
-            'urgensi' => 'kebakaran',
-            'alamat' => 'jl ksdjflkd',
-            'latitude' => 12.7,
-            'longitude' => 11.2,
-            'bukti_foto_laporan_pengguna' => 'image'
-        ]);
+        // //laporan menunggu
+        // detail_laporan_pengguna::create([
+        //     'user_listdata_id' => 1,
+        //     'deskripsi_laporan' => 'lorme ipsum',
+        //     'waktu_pelaporan' => '12:00',
+        //     'tgl_pelaporan' => now(),
+        //     'urgensi' => 'kebakaran',
+        //     'alamat' => 'jl ksdjflkd',
+        //     'latitude' => 12.7,
+        //     'longitude' => 11.2,
+        //     'bukti_foto_laporan_pengguna' => 'image'
+        // ]);
 
 
-        detail_laporan_petugas::create([
-            'damkar_id' => 1,
-            'waktu_penanganan' => '12:00',
-            'tgl_laporan_petugas' => '08-05-2023',
-            'deskripsi_petugas' => 'lorem ipsum petugas',
-            'korban_jiwa' => 0,
-            'korban_luka_ringan' => 0,
-            'korban_luka_berat' => 0,
-            'kerugian' => '000000',
-            'luas_lahan' => '234',
-            'tindakan' => 'Melakukan Pemadaman',
-            'pihak_yang_datang' => 'Babinsa',
-            'jenis_evakuasi' => 'Evakuasi Sarang Tawon',
-            'team_evakuasi' => 'Fajar Nughroho, Thio Agustin',
-            'bukti_foto_laporan_petugas' => 'gambar'
-        ]);
+        // detail_laporan_petugas::create([
+        //     'damkar_id' => 1,
+        //     'waktu_penanganan' => '12:00',
+        //     'tgl_laporan_petugas' => '08-05-2023',
+        //     'deskripsi_petugas' => 'lorem ipsum petugas',
+        //     'korban_jiwa' => 0,
+        //     'korban_luka_ringan' => 0,
+        //     'korban_luka_berat' => 0,
+        //     'kerugian' => '000000',
+        //     'luas_lahan' => '234',
+        //     'tindakan' => 'Melakukan Pemadaman',
+        //     'pihak_yang_datang' => 'Babinsa',
+        //     'jenis_evakuasi' => 'Evakuasi Sarang Tawon',
+        //     'team_evakuasi' => 'Fajar Nughroho, Thio Agustin',
+        //     'bukti_foto_laporan_petugas' => 'gambar'
+        // ]);
 
-        detail_korban::create([
-            'nama_lengkap' => 'super one',
-            'NIK' => '1293802083',
-            'umur' => '12'
-        ]);
-
-
-        laporan::create([
-            'status_riwayat_id' => 3,
-            'kategori_laporan_id' => 1,
-            'detail_korban_id' => 1,
-            'kondisi_cuaca_id' => 1,
-            'detail_laporan_pengguna_id' => 3,
-            'detail_laporan_petugas_id' => 3
-        ]);
-
-        //laporan selesai
-        detail_laporan_pengguna::create([
-            'user_listdata_id' => 1,
-            'deskripsi_laporan' => 'lorme ipsum',
-            'waktu_pelaporan' => '12:00',
-            'tgl_pelaporan' => now(),
-            'urgensi' => 'kebakaran',
-            'alamat' => 'jl ksdjflkd',
-            'latitude' => 12.7,
-            'longitude' => 11.2,
-            'bukti_foto_laporan_pengguna' => 'image'
-        ]);
+        // detail_korban::create([
+        //     'nama_lengkap' => 'super one',
+        //     'NIK' => '1293802083',
+        //     'umur' => '12'
+        // ]);
 
 
-        detail_laporan_petugas::create([
-            'damkar_id' => 1,
-            'waktu_penanganan' => '12:00',
-            'tgl_laporan_petugas' => '08-05-2023',
-            'deskripsi_petugas' => 'lorem ipsum petugas',
-            'korban_jiwa' => 0,
-            'korban_luka_ringan' => 0,
-            'korban_luka_berat' => 0,
-            'kerugian' => '000000',
-            'luas_lahan' => '234',
-            'tindakan' => 'Melakukan Pemadaman',
-            'pihak_yang_datang' => 'Babinsa',
-            'jenis_evakuasi' => 'Evakuasi Sarang Tawon',
-            'team_evakuasi' => 'Fajar Nughroho, Thio Agustin',
-            'bukti_foto_laporan_petugas' => 'gambar'
-        ]);
+        // laporan::create([
+        //     'status_riwayat_id' => 2,
+        //     'kategori_laporan_id' => 1,
+        //     'detail_korban_id' => 1,
+        //     'kondisi_cuaca_id' => 1,
+        //     'detail_laporan_pengguna_id' => 2,
+        //     'detail_laporan_petugas_id' => 2
+        // ]);
 
-        detail_korban::create([
-            'nama_lengkap' => 'super one',
-            'NIK' => '1293802083',
-            'umur' => '12'
-        ]);
+        // //laporan proses
+        // detail_laporan_pengguna::create([
+        //     'user_listdata_id' => 1,
+        //     'deskripsi_laporan' => 'lorme ipsum',
+        //     'waktu_pelaporan' => '12:00',
+        //     'tgl_pelaporan' => now(),
+        //     'urgensi' => 'kebakaran',
+        //     'alamat' => 'jl ksdjflkd',
+        //     'latitude' => 12.7,
+        //     'longitude' => 11.2,
+        //     'bukti_foto_laporan_pengguna' => 'image'
+        // ]);
 
 
-        laporan::create([
-            'status_riwayat_id' => 4,
-            'kategori_laporan_id' => 1,
-            'detail_korban_id' => 1,
-            'kondisi_cuaca_id' => 1,
-            'detail_laporan_pengguna_id' => 4,
-            'detail_laporan_petugas_id' => 4
-        ]);
+        // detail_laporan_petugas::create([
+        //     'damkar_id' => 1,
+        //     'waktu_penanganan' => '12:00',
+        //     'tgl_laporan_petugas' => '08-05-2023',
+        //     'deskripsi_petugas' => 'lorem ipsum petugas',
+        //     'korban_jiwa' => 0,
+        //     'korban_luka_ringan' => 0,
+        //     'korban_luka_berat' => 0,
+        //     'kerugian' => '000000',
+        //     'luas_lahan' => '234',
+        //     'tindakan' => 'Melakukan Pemadaman',
+        //     'pihak_yang_datang' => 'Babinsa',
+        //     'jenis_evakuasi' => 'Evakuasi Sarang Tawon',
+        //     'team_evakuasi' => 'Fajar Nughroho, Thio Agustin',
+        //     'bukti_foto_laporan_petugas' => 'gambar'
+        // ]);
+
+        // detail_korban::create([
+        //     'nama_lengkap' => 'super one',
+        //     'NIK' => '1293802083',
+        //     'umur' => '12'
+        // ]);
+
+
+        // laporan::create([
+        //     'status_riwayat_id' => 3,
+        //     'kategori_laporan_id' => 1,
+        //     'detail_korban_id' => 1,
+        //     'kondisi_cuaca_id' => 1,
+        //     'detail_laporan_pengguna_id' => 3,
+        //     'detail_laporan_petugas_id' => 3
+        // ]);
+
+        // //laporan selesai
+        // detail_laporan_pengguna::create([
+        //     'user_listdata_id' => 1,
+        //     'deskripsi_laporan' => 'lorme ipsum',
+        //     'waktu_pelaporan' => '12:00',
+        //     'tgl_pelaporan' => now(),
+        //     'urgensi' => 'kebakaran',
+        //     'alamat' => 'jl ksdjflkd',
+        //     'latitude' => 12.7,
+        //     'longitude' => 11.2,
+        //     'bukti_foto_laporan_pengguna' => 'image'
+        // ]);
+
+
+        // detail_laporan_petugas::create([
+        //     'damkar_id' => 1,
+        //     'waktu_penanganan' => '12:00',
+        //     'tgl_laporan_petugas' => '08-05-2023',
+        //     'deskripsi_petugas' => 'lorem ipsum petugas',
+        //     'korban_jiwa' => 0,
+        //     'korban_luka_ringan' => 0,
+        //     'korban_luka_berat' => 0,
+        //     'kerugian' => '000000',
+        //     'luas_lahan' => '234',
+        //     'tindakan' => 'Melakukan Pemadaman',
+        //     'pihak_yang_datang' => 'Babinsa',
+        //     'jenis_evakuasi' => 'Evakuasi Sarang Tawon',
+        //     'team_evakuasi' => 'Fajar Nughroho, Thio Agustin',
+        //     'bukti_foto_laporan_petugas' => 'gambar'
+        // ]);
+
+        // detail_korban::create([
+        //     'nama_lengkap' => 'super one',
+        //     'NIK' => '1293802083',
+        //     'umur' => '12'
+        // ]);
+
+
+        // laporan::create([
+        //     'status_riwayat_id' => 4,
+        //     'kategori_laporan_id' => 1,
+        //     'detail_korban_id' => 1,
+        //     'kondisi_cuaca_id' => 1,
+        //     'detail_laporan_pengguna_id' => 4,
+        //     'detail_laporan_petugas_id' => 4
+        // ]);
     }
 }

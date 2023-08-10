@@ -62,6 +62,20 @@ class LaporanController extends Controller
             'waktu_penanganan' => 'required|string',
             'tgl_laporan_petugas' => 'required|string'
         ]);
+        $aData['deskripsi_petugas'] = '';
+        $aData['waktu_berangkat'] = '';
+        $aData['waktu_sampai'] = '';
+        $aData['waktu_selesai'] = '';
+        $aData['korban_jiwa'] = 0;
+        $aData['korban_luka_ringan'] = 0;
+        $aData['korban_luka_berat'] = 0;
+        $aData['kerugian'] = '';
+        $aData['luas_lahan'] = '';
+        $aData['tindakan'] = '';
+        $aData['pihak_yang_datang'] = '';
+        $aData['jenis_evakuasi'] = '';
+        $aData['team_evakuasi'] = '';
+        $aData['bukti_foto_laporan_petugas'] = '';
 
         $execDtl = detail_laporan_petugas::create($aData)->id;
         $crt_lap = [
@@ -331,7 +345,7 @@ class LaporanController extends Controller
     {
         return json_encode($this->getLaporanByIdUser($request->userId, 5));
     }
-    
+
     // public function filterLapEmergency(Request $request)
     // {
     //     return json_encode($this->getLaporanByIdUser($request->userId, 5));

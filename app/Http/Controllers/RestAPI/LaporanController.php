@@ -88,7 +88,7 @@ class LaporanController extends Controller
     public function getDetailLapPetugas(Request $request)
     {
         $dataLap = detail_laporan_petugas::where('id',$request->id)->get();
-        return 
+        
 
         $data = detail_laporan_pengguna::where('user_listdata_id', $request->userId)->get();
         return pelaporanResources::collection($data);

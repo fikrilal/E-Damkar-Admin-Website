@@ -20,7 +20,7 @@ Route::post('/loginPetugas', [AuthenticationController::class, 'loginPetugas']);
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', [UserController::class, 'checkLogin']);
     Route::post('/logout', [AuthenticationController::class, 'logout']);
-    
+
     Route::get('/petugas', [petugasController::class, 'checkLogin']);
     Route::post('/logoutPetugas', [AuthenticationController::class, 'logoutPetugas']);
 });
@@ -37,7 +37,6 @@ Route::post('/addPelaporanPetugas', [LaporanController::class, 'AddPelaporanPetu
 //update status pelaporan petugas
 Route::post('/addPelaporanPetugas2', [LaporanController::class, 'AddPelaporanPetugas2']);
 Route::post('/addTanganiPetugas', [LaporanController::class, 'AddTanganiPetugas']);
-// Route::post('/tanganiPelaporan', [LaporanController::class, 'updateTanganiPetugas']);
 
 Route::get('/beritaTerbaru', [ArtikelBeritaController::class, 'newArtikelBerita']);
 Route::get('/userData', [UserController::class, 'index']);
@@ -57,9 +56,10 @@ Route::get('/searchLapp', [ArtikelBeritaController::class, 'getArtikelHighlight'
 Route::get('/searchLapp/{userId}/{text}', [LaporanController::class, 'searchLapKategori']);
 Route::get('/filterLapMenunggu/{userId}', [LaporanController::class, 'filterLapMenunggu']);
 Route::get('/filterLapProses/{userId}', [LaporanController::class, 'filterLapProses']);
+Route::get('/filterLapDitangani/{userId}', [LaporanController::class, 'filterLapDitangani']);
 Route::get('/filterLapSelesai/{userId}', [LaporanController::class, 'filterLapSelesai']);
 Route::get('/filterLapDitolak/{userId}', [LaporanController::class, 'filterLapDitolak']);
-Route::get('/filterLapEmergency/{userId}', [LaporanController::class, 'filterLapEmergency']);
+// Route::get('/filterLapEmergency/{userId}', [LaporanController::class, 'filterLapEmergency']);
 
 //Artikel Api
 Route::get('/getEdukasi', [ArtikelController::class, 'newArtikelEdukasi']);

@@ -30,7 +30,12 @@ Route::get('/getDetailLap/{idLaporan}', [LaporanController::class, 'getDetailPel
 Route::get('/updateStatusRwt/{idLaporan}', [LaporanController::class, 'updateStatusRwt']);
 
 Route::post('/addPelaporan', [LaporanController::class, 'AddPelaporan']);
+
 Route::post('/addPelaporanPetugas', [LaporanController::class, 'AddPelaporanPetugas']);
+
+
+//update status pelaporan petugas
+Route::post('/addPelaporanPetugas2', [LaporanController::class, 'AddPelaporanPetugas2']);
 Route::post('/addTanganiPetugas', [LaporanController::class, 'AddTanganiPetugas']);
 // Route::post('/tanganiPelaporan', [LaporanController::class, 'updateTanganiPetugas']);
 

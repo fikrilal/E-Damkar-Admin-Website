@@ -52,31 +52,29 @@ Route::get('/getBeritaHigh', [ArtikelBeritaController::class, 'getArtikelHighlig
 
 Route::get('/searchLapp', [ArtikelBeritaController::class, 'getArtikelHighlight']);
 
+//Riwayat Pelaporan Api
 Route::get('/searchLapp/{userId}/{text}', [LaporanController::class, 'searchLapKategori']);
-
 Route::get('/filterLapMenunggu/{userId}', [LaporanController::class, 'filterLapMenunggu']);
 Route::get('/filterLapProses/{userId}', [LaporanController::class, 'filterLapProses']);
 Route::get('/filterLapSelesai/{userId}', [LaporanController::class, 'filterLapSelesai']);
 Route::get('/filterLapDitolak/{userId}', [LaporanController::class, 'filterLapDitolak']);
 Route::get('/filterLapEmergency/{userId}', [LaporanController::class, 'filterLapEmergency']);
 
+//Artikel Api
 Route::get('/getEdukasi', [ArtikelController::class, 'newArtikelEdukasi']);
 Route::get('/getAgenda', [ArtikelController::class, 'newArtikelAgenda']);
 Route::get('/getBerita', [ArtikelBeritaController::class, 'newArtikelBerita']);
-
 Route::get('/getDetailBerita/{idBerita}', [ArtikelBeritaController::class, 'detailBerita']);
 Route::get('/getDetailAgenda/{idAgenda}', [ArtikelController::class, 'detailAgenda']);
 Route::get('/getDetailEdukasi/{idEdukasi}', [ArtikelController::class, 'detailEdukasi']);
+Route::get('/getAllArtikel', [ArtikelController::class, 'getArtikelAll']);
+Route::get('/getAllArtikelHigh', [ArtikelController::class, 'getAllArtikelHigh']);
+Route::get('/semuaArtikel', [ArtikelBeritaController::class, 'semuaArtikel']);
 
 Route::post('/user/password', [UserController::class, 'updatePassword']);
 Route::get('/getHp/{text}', [AuthenticationController::class, 'getHp']);
 
-//Get Artikel//
-Route::get('/getAllArtikel', [ArtikelController::class, 'getArtikelAll']);
-Route::get('/getAllArtikelHigh', [ArtikelController::class, 'getAllArtikelHigh']);
 
-
-Route::get('/semuaArtikel', [ArtikelBeritaController::class, 'semuaArtikel']);
 Route::post('/user', [UserController::class, 'updateProfil']);
 Route::post('/sendToWa', [LaporanController::class, 'sendInfoToWhatsapp']);
 

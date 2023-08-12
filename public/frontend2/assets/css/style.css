@@ -1530,11 +1530,6 @@ font-style: bold;
 /*--------------------------------------------------------------
 # Recent Blog Posts
 --------------------------------------------------------------*/
-@media (max-width: 768px) {
-  .artikelhide {
-    display: none !important;
-  }
-}
 
 
 .recent-blog-posts .post-box {

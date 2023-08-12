@@ -31,7 +31,7 @@
             </div>
         
              <!-- this is list news section -->
-             <div class="container mt-5">
+             <div class="container mt-5 artikelhide">
               <h3>Artikel Lainnya</h3>
               <div class="row">
                 @foreach($artikel1 as $artikel)
@@ -44,8 +44,8 @@
                       alt=""
                     />
                     <p class="mt-3">
-                      <b>{{ $artikel->judul_edukasi }}</b> <br />
-                      {{ Str::limit($artikel->deskripsi, 50, ' ...') }}
+                      <b> {{ Str::limit( $artikel->judul_edukasi, 30, ' ...') }}</b> <br />
+                      {{ Str::limit($artikel->deskripsi, 30, ' ...') }}
                     </p>
                   </a>
                 </div>

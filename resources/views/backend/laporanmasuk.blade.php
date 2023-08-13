@@ -189,7 +189,7 @@
                                                                         Kejadian</label>
                                                                     <div class="col-sm-10">
                                                                         <!-- <img src="storage/gambar_pelaporan/kebakaran.jpeg" width="60%"> -->
-                                                                        <img src="{{ asset('storage/gambar_pelaporans/' . $laporan->detailLaporanPengguna->bukti_foto_laporan_pengguna . '.jpg') }}"
+                                                                        <img src="{{ asset('img-pelaporan/' . $laporan->detailLaporanPengguna->bukti_foto_laporan_pengguna . '.jpg') }}"
                                                                             width="40%">
                                                                     </div>
                                                                 </div>

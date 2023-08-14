@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\RestAPI;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\LaporanPetugasResources;
 use App\Http\Resources\pelaporanDetailResource;
 use App\Http\Resources\pelaporanResources;
 use App\Models\detail_laporan_pengguna;
@@ -82,13 +83,16 @@ class LaporanController extends Controller
             'status_riwayat_id' => 3,
             'detail_laporan_petugas_id' => $execDtl
         ];
+        $data = laporan::where('idLaporan', $request->idLaporan)->get();
+        $dataRes = LaporanPetugasResources::collection($data);
 
         if (DB::table('laporans')->where('idLaporan', '=', $request->idLaporan)->update($crt_lap)) {
             return json_encode(
                 [
                     "condition" => true,
                     'message' => "berhasil menangani laporan",
-                    'kode' => '200'
+                    'kode' => '200',
+                    'data' => $dataRes
                 ]
             );
         } else {
@@ -122,6 +126,9 @@ class LaporanController extends Controller
             'detail_laporan_petugas_id' => 'required',
             // 'damkar_id' => 'required|integer',
             // 'waktu_penanganan' => 'required|string',
+            'waktu_berangkat' => 'required|string',
+            'waktu_sampai' => 'required|string',
+            'waktu_selesai' => 'required|string',
 
             // 'tgl_laporan_petugas' => 'required|string',
             'deskripsi_petugas' => 'required|string',

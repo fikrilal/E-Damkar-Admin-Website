@@ -77,3 +77,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 WebSocketsRouter::WebSocket('/rlt/laporan', MessageLaporanHandler::class);
 WebSocketsRouter::WebSocket('/rlt/lokasi', LocHandler::class);
+
+
+Route::get('/generate', function () {
+    $targetFolder = $_SERVER['DOCUMENT_ROOT'] . '/storage/app/public';
+    $linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/public/storage';
+    symlink($targetFolder, $linkFolder);
+    echo 'Symlink completed';
+});

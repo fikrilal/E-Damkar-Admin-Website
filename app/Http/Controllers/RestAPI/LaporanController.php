@@ -13,6 +13,7 @@ use App\Models\user_listData;
 use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Spatie\LaravelIgnition\Recorders\DumpRecorder\Dump;
 
 class LaporanController extends Controller
@@ -115,6 +116,8 @@ class LaporanController extends Controller
 
         if ($request->file('image')) {
             $validateData['image'] = $request->file('image')->storeAs('gambar_pelaporans', $validateData['title'] . '.jpg');
+            Storage::disk('public/gambar_pelaporans')->put($validateData['title'] . '.jpg', $request->file('image'));
+
         }
 
         return json_encode(['kondisi' => 'real', 'path' => $validateData['image'], 'title' => $validateData['title']]);

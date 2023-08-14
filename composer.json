@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.2",
         "mckenziearts/laravel-notify": "^2.4",
+        "mpdf/mpdf": "^8.1",
         "nesbot/carbon": "^2.68"
     },
     "require-dev": {

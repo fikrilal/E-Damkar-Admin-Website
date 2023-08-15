@@ -43,6 +43,7 @@
                             <p>Berikut adalah data laporan yang baru masuk.</p>
 
                             <!-- Table with stripped rows -->
+                            <div class="table-responsive">
                             <table class="table datatable">
                                 <thead>
                                     <tr>
@@ -234,6 +235,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            </div>
                             <!-- End Table with stripped rows -->
                         </div>
                     </div>

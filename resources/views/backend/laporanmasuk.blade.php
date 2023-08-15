@@ -80,6 +80,9 @@
                                                 @elseif($laporan->status_riwayat_id == 2)
                                                     <button type="button"
                                                         class="btn btn-secondary">{{ $laporan->statusRiwayat->nama_status }}</button>
+                                                @elseif($laporan->status_riwayat_id == 3)
+                                                    <button type="button"
+                                                        class="btn btn-primary">{{ $laporan->statusRiwayat->nama_status }}</button>
                                                 @else
                                                     <button type="button"
                                                         class="btn btn-default">{{ $laporan->statusRiwayat->nama_status }}</button>
@@ -216,7 +219,7 @@
                                                                 <button type="submit" id="prosesButton"
                                                                     class="btn btn-success" name="status"
                                                                     value="selesai">Kirim ke Petugas</button>
-                                                            @else
+                                                            @elseif  ($laporan->status_riwayat_id == 1)
                                                                 <button type="submit" class="btn btn-dark"
                                                                     name="status" value="proses">Proses</button>
                                                                 <button type="submit" class="btn btn-danger"

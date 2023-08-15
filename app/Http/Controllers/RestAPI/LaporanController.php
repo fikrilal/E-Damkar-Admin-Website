@@ -282,14 +282,14 @@ class LaporanController extends Controller
 
     public function searchLapKategori(Request $request)
     {
-        $data = laporan::where(
+        $data = detail_laporan_pengguna::where(
             'user_listdata_id',
             $request->userId
         )
             ->where(function ($query) use ($request) {
-                $query->where('status_riwayat_id', 'like', "%" . $request->text . "%");
-                $query->orWhere('alamat_kejadian', 'like', "%" . $request->text . "%");
-                $query->orWhere('tgl_lap', 'like', "%" . $request->text . "%");
+                $query->orWhere('urgensi', 'like', "%" . $request->text . "%");
+                $query->orWhere('alamat', 'like', "%" . $request->text . "%");
+                $query->orWhere('tgl_pelaporan', 'like', "%" . $request->text . "%");
                 $query->orWhere('deskripsi_laporan', 'like', "%" . $request->text . "%");
             })->get();
         return pelaporanResources::collection($data);

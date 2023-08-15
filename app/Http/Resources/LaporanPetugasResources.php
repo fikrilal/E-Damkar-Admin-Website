@@ -16,6 +16,7 @@ class LaporanPetugasResources extends JsonResource
     {
         return [
             "idLaporan" => $this->idLaporan,
+            "detail_laporan_petugas_id" => $this->detail_laporan_petugas_id,
             "nama_pelapor" => $this->detailLaporanPengguna->user_listdata->namaLengkap,
             "kategori_laporan" => $this->kategoriLaporan->nama_kategori,
             "urgensi" => $this->detailLaporanPengguna->urgensi,

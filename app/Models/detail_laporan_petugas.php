@@ -14,6 +14,9 @@ class detail_laporan_petugas extends Model
     protected $fillable = [
         "damkar_id",
         "waktu_penanganan",
+        "waktu_berangkat",
+        "waktu_sampai",
+        "waktu_selesai",
         "tgl_laporan_petugas",
         "deskripsi_petugas",
         "korban_jiwa",

@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('detail_laporan_petugas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('damkar_id');
-            $table->string('waktu_penanganan', 10);
+            $table->string('waktu_berangkat', 10);
+            $table->string('waktu_sampai', 10);
+            $table->string('waktu_selesai', 10);
+            $table->string('waktu_penanganan', 10)->nullable();
             $table->string('tgl_laporan_petugas', 20);
             $table->text('deskripsi_petugas');
             $table->integer('korban_jiwa');

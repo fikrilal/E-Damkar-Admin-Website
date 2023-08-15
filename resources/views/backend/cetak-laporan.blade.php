@@ -160,11 +160,33 @@ if ($laporan->kategori_laporan_id == 1 || $laporan->kategori_laporan_id == 2 || 
         </div>
         <div class="data-value"></div>
       </div>
-      <div class="data">
-        <div class="data-label">Respon Time : <?= isset($laporan) ? $laporan->detailLaporanPetugas->waktu_penanganan : '' ?> WIB</div>
-        <div class="data-value"></div>
-      </div>
+    
     </div>
+  </div>
+
+
+  <div class="section">
+  <div class="section-title"><b>&#9632; WAKTU PENANGGANAN</b></div>
+  <div class="section-content">
+    <div class="data">
+      <div class="data-label">Respon Time : <?= isset($laporan) ? $laporan->detailLaporanPetugas->waktu_penanganan : '' ?> WIB</div>
+      <div class="data-value"></div>
+    </div>
+    <div class="data">
+      <div class="data-label">Waktu Berangkat : <?= isset($laporan) ? $laporan->detailLaporanPetugas->waktu_berangkat : '' ?> WIB</div>
+      <div class="data-value"></div>
+    </div>
+
+    <div class="data">
+      <div class="data-label">Waktu Sampai : <?= isset($laporan) ? $laporan->detailLaporanPetugas->waktu_sampai: '' ?> WIB</div>
+      <div class="data-value"></div>
+    </div>
+
+    <div class="data">
+      <div class="data-label">Waktu Selesai : <?= isset($laporan) ? $laporan->detailLaporanPetugas->waktu_selesai : '' ?> WIB</div>
+      <div class="data-value"></div>
+    </div>
+
   </div>
 
   <div class="section">

@@ -21,11 +21,13 @@ class CetakLaporanController extends Controller
 
     public function show(Request $request)
     {
-        $title = 'Cetak Laporan | E-Damkar Nganjuk';
 
         $tanggal = Carbon::now()->locale('id')->isoFormat('DD MMMM YYYY'); // Format tanggal dalam bahasa Indonesia
 
         $idLaporan = $request->query('idLaporan');
+
+        $title = "Cetak Laporan ID#{$idLaporan} | E-Damkar Nganjuk";
+
 
         // Use Eloquent to retrieve the laporan object with related user_listdata
         $laporan = Laporan::where('idLaporan', $idLaporan)->first();

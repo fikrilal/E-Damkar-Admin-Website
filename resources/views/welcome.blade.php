@@ -231,7 +231,7 @@
                     <div class="col-lg-4 p-3">
                         <div class="post-box">
                             <div class="post-img">
-                                <img src="{{ asset('img-berita/' . $item->foto_artikel_berita) }}" class="img-fluid" alt="{{ $item->judul_berita }}" style="width: 1000px; height: 400px;">
+                                <img src="{{ asset('img-berita/' . $item->foto_artikel_berita) }}" class="img-fluid" alt="{{ $item->judul_berita }}" style="width: 100%; height: 250px;">
                             </div>
                             <span class="post-date">{{ \Carbon\Carbon::parse($item->tgl_berita)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</span>
                             <h3 class="post-title">{{ $item->judul_berita }}</h3>

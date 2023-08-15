@@ -10,10 +10,11 @@
             <h3>{{ $edukasi->judul_edukasi }}</h3>
         </header>
 
-        <p><i class="bi bi-clock"></i> {{ \Carbon\Carbon::parse($edukasi->tgl_edukasi)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</p>
-
         <!-- this is headline section -->
         <div class="container mt-3">
+            
+        <p><i class="bi bi-clock"></i> {{ \Carbon\Carbon::parse($edukasi->tgl_edukasi)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</p>
+
             <img class="rounded-4 img-fluid"
                 style="object-fit: cover; width: 100%; height: auto"
                 src="{{ asset('img-edukasi/' . $edukasi->foto_artikel_edukasi) }}" alt="">

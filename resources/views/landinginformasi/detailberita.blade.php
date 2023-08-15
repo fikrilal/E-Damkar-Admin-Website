@@ -8,11 +8,12 @@
         <header class="section-header">
             <h3>{{ $berita->judul_berita }}</h3>
         </header>
-        <p><i class="bi bi-clock"></i>{{ \Carbon\Carbon::parse($berita->tgl_berita)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</p>
-
+      
 
             <!-- Headline section -->
             <div class="container mt-3">
+            <p><i class="bi bi-clock"></i>{{ \Carbon\Carbon::parse($berita->tgl_berita)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</p>
+
                 <img class="rounded-4"
                     style="object-fit: cover; width: 100%; max-height: 400px"
                     src="{{ asset('img-berita/' . $berita->foto_artikel_berita) }}"

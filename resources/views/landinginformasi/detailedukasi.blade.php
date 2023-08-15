@@ -10,7 +10,7 @@
             <h3>{{ $edukasi->judul_edukasi }}</h3>
         </header>
 
-        <p>{{ \Carbon\Carbon::parse($edukasi->tgl_edukasi)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</p>
+        <p><i class="bi bi-clock"></i> {{ \Carbon\Carbon::parse($edukasi->tgl_edukasi)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</p>
 
         <!-- this is headline section -->
         <div class="container mt-3">

@@ -5,10 +5,11 @@
     <!-- ======= Recent Blog Posts Section ======= -->
     <section id="recent-blog-posts" class="recent-blog-posts">
         <div class="container" data-aos="fade-up">
-            <header class="section-header">
-                <h3>{{ $berita->judul_berita }}</h3>
-            </header>
-            <p>{{ \Carbon\Carbon::parse($berita->tgl_berita)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</p>
+        <header class="section-header">
+            <h3>{{ $berita->judul_berita }}</h3>
+        </header>
+        <p><i class="bi bi-clock"></i>{{ \Carbon\Carbon::parse($berita->tgl_berita)->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</p>
+
 
             <!-- Headline section -->
             <div class="container mt-3">
@@ -34,7 +35,7 @@
                     <div class="col-md-3 col-sm-6"><!-- Adjusted column classes -->
                         <a href="{{ route('detailberita.show', ['id_berita' => $artikel->id_berita]) }}" style="color: black;">
                             <img class="rounded-4"
-                                style="object-fit: cover; width: 100%; max-height: 200px" src="{{ asset('img-berita/' . $artikel->foto_artikel_berita) }}"
+                            style="object-fit: cover; width: 100%; aspect-ratio: 1/1" src="{{ asset('img-berita/' . $artikel->foto_artikel_berita) }}"
                                 alt="">
                             <p class="mt-3">
                                 <b>{{ $artikel->judul_berita }}</b> <br />

@@ -83,6 +83,7 @@ Route::post('/addImage', [LaporanController::class, 'addImage']);
 Route::post('/addImagePetugas', [LaporanController::class, 'addImagePetugas']);
 
 // Route::post('/userUpdate', [UserController::class, 'updateUserData']);
+Route::post('/user/Profile/update',  [UserController::class, 'updatePhotoProfile']);
 Route::get('/user/akun', [UserController::class, 'getDataProfile']);
 Route::post('/verifyOtp/whatsapp', [AuthenticationController::class, 'verifOtpWhatsapp']);
 Route::get('/getBeritaHome', [ArtikelBeritaController::class, "getArtikelBeritaHome"]);

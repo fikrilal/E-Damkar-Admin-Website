@@ -43,6 +43,7 @@
                             <p>Berikut adalah data laporan yang baru masuk.</p>
 
                             <!-- Table with stripped rows -->
+                            <div class="table-responsive">
                             <table class="table datatable">
                                 <thead>
                                     <tr>
@@ -79,6 +80,9 @@
                                                 @elseif($laporan->status_riwayat_id == 2)
                                                     <button type="button"
                                                         class="btn btn-secondary">{{ $laporan->statusRiwayat->nama_status }}</button>
+                                                @elseif($laporan->status_riwayat_id == 3)
+                                                    <button type="button"
+                                                        class="btn btn-primary">{{ $laporan->statusRiwayat->nama_status }}</button>
                                                 @else
                                                     <button type="button"
                                                         class="btn btn-default">{{ $laporan->statusRiwayat->nama_status }}</button>
@@ -189,7 +193,7 @@
                                                                         Kejadian</label>
                                                                     <div class="col-sm-10">
                                                                         <!-- <img src="storage/gambar_pelaporan/kebakaran.jpeg" width="60%"> -->
-                                                                        <img src="{{ asset('storage/gambar_pelaporans/' . $laporan->detailLaporanPengguna->bukti_foto_laporan_pengguna . '.jpg') }}"
+                                                                        <img src="{{ asset('img-pelaporan/' . $laporan->detailLaporanPengguna->bukti_foto_laporan_pengguna . '.jpg') }}"
                                                                             width="40%">
                                                                     </div>
                                                                 </div>
@@ -215,7 +219,7 @@
                                                                 <button type="submit" id="prosesButton"
                                                                     class="btn btn-success" name="status"
                                                                     value="selesai">Kirim ke Petugas</button>
-                                                            @else
+                                                            @elseif  ($laporan->status_riwayat_id == 1)
                                                                 <button type="submit" class="btn btn-dark"
                                                                     name="status" value="proses">Proses</button>
                                                                 <button type="submit" class="btn btn-danger"
@@ -234,6 +238,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            </div>
                             <!-- End Table with stripped rows -->
                         </div>
                     </div>

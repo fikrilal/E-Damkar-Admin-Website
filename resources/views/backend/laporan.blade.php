@@ -22,7 +22,8 @@
                             <p>Berikut adalah data laporan yang sudah selesai dilaksanakan.</p>
 
                             <!-- Table with stripped rows -->
-                            <table class="table datatable">
+                            <div class="table-responsive">
+                            <table class="table datatable responsive">
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
@@ -166,7 +167,7 @@
                                                                         class="col-sm-2 col-form-label">Bukti
                                                                         Kejadian</label>
                                                                     <div class="col-sm-10">
-                                                                        <img src="{{ asset('storage/gambar_pelaporans/' . $laporan->detailLaporanPengguna->bukti_foto_laporan_pengguna . '.jpg') }}"
+                                                                        <img src="{{ asset('img-pelaporan/' . $laporan->detailLaporanPengguna->bukti_foto_laporan_pengguna . '.jpg') }}"
                                                                             width="40%">
                                                                     </div>
                                                                 </div>
@@ -209,14 +210,27 @@
                                                                         <div class="row mb-3">
                                                                             <label for="inputText"
                                                                                 class="col-sm-2 col-form-label">Korban
-                                                                                Luka</label>
+                                                                                Luka Ringan</label>
                                                                             <div class="col-sm-10">
                                                                                 <input type="text"
                                                                                     name="deskripsi_laporan"
-                                                                                    value="{{ isset($laporan) ? $laporan->detailLaporanPetugas->korban_luka : '' }}"
+                                                                                    value="{{ isset($laporan) ? $laporan->detailLaporanPetugas->korban_luka_ringan : '' }}"
                                                                                     class="form-control" disabled>
                                                                             </div>
                                                                         </div>
+
+   <div class="row mb-3">
+                                                                            <label for="inputText"
+                                                                                class="col-sm-2 col-form-label">Korban
+                                                                                Luka Berat</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text"
+                                                                                    name="deskripsi_laporan"
+                                                                                    value="{{ isset($laporan) ? $laporan->detailLaporanPetugas->korban_luka_berat : '' }}"
+                                                                                    class="form-control" disabled>
+                                                                            </div>
+                                                                        </div>
+
 
                                                                         <div class="row mb-3">
                                                                             <label for="inputText"
@@ -235,7 +249,7 @@
                                                                                 class="col-sm-2 col-form-label">Bukti
                                                                                 Penanganan</label>
                                                                             <div class="col-sm-10">
-                                                                                <img src="{{ asset('storage/bukti_penanganan/' . $laporan->detailLaporanPetugas->bukti_foto_laporan_petugas . '.jpg') }}"
+                                                                                <img src="{{ asset('bukti-penangganan/' . $laporan->detailLaporanPetugas->bukti_foto_laporan_petugas . '.jpg') }}"
                                                                                     width="40%">
                                                                             </div>
                                                                         </div>
@@ -269,7 +283,7 @@
                                                                                 class="col-sm-2 col-form-label">Bukti
                                                                                 Penanganan</label>
                                                                             <div class="col-sm-10">
-                                                                                <img src="{{ asset('storage/bukti_penanganan/' . $laporan->detailLaporanPetugas->bukti_foto_laporan_petugas . '.jpg') }}"
+                                                                                <img src="{{ asset('bukti-penangganan/' . $laporan->detailLaporanPetugas->bukti_foto_laporan_petugas . '.jpg') }}"
                                                                                     width="40%">
                                                                             </div>
                                                                         </div>
@@ -285,10 +299,9 @@
                                                                     <i class="bi bi-printer"></i></i> Cetak Laporan
                                                                 </a>
 
-                                                                <!-- <a href="{{ route('cetak-pdf', ['idLaporan' => $laporan->idLaporan]) }}" class="btn btn-warning">
+   <!-- <a href="{{ route('cetak-pdf', ['idLaporan' => $laporan->idLaporan]) }}" class="btn btn-warning">
                                 <i class="bi bi-download"></i> Unduh Laporan
                             </a> -->
-
                                                                 <!-- <a href="" class="btn btn-warning">
                                 <i class="bi bi-download"></i> Unduh Laporan
                             </a> -->
@@ -305,6 +318,7 @@
             </tbody>
 
             </table>
+            </div>
             </div>
             </div>
         </section>

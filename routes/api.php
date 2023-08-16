@@ -37,6 +37,7 @@ Route::post('/addPelaporanPetugas', [LaporanController::class, 'AddPelaporanPetu
 //update status pelaporan petugas
 Route::post('/addPelaporanPetugas2', [LaporanController::class, 'AddPelaporanPetugas2']);
 Route::post('/addTanganiPetugas', [LaporanController::class, 'AddTanganiPetugas']);
+Route::get('/getDetailLapPetugas/{id}', [LaporanController::class, 'getDetailLapPetugas']);
 
 Route::get('/beritaTerbaru', [ArtikelBeritaController::class, 'newArtikelBerita']);
 Route::get('/userData', [UserController::class, 'index']);

@@ -42,30 +42,33 @@ class CetakLaporanController extends Controller
     }
 
 
-        public function cetakPDF(Request $request)
-    {
-        $idLaporan = $request->query('idLaporan');
+    public function cetakPDF(Request $request)
+{
+    $tanggal = Carbon::now()->locale('id')->isoFormat('DD MMMM YYYY'); // Format tanggal dalam bahasa Indonesia
 
-        // Use Eloquent to retrieve the laporan object with related user_listdata
-        $laporan = Laporan::where('idLaporan', $idLaporan)->first();
+    $idLaporan = $request->query('idLaporan');
 
-        if (!$laporan) {
-            // Jika laporan dengan $idLaporan tidak ditemukan, berikan respons sesuai kebutuhan
-            return redirect()->back()->with('error', 'Laporan tidak ditemukan.');
-        }
+    $title = "Cetak Laporan ID#{$idLaporan} | E-Damkar Nganjuk";
 
-        $tanggal = Carbon::now()->locale('id')->isoFormat('DD MMMM YYYY'); // Format tanggal dalam bahasa Indonesia
-        $title = 'Download Laporan Kebakaran | E-Damkar Nganjuk';
+    // Use Eloquent to retrieve the laporan object with related user_listdata
+    $laporan = Laporan::where('idLaporan', $idLaporan)->first();
 
-        // Generate PDF using the view "backend.cetak-laporan"
-        $pdf = PDF::loadView('backend.cetak-laporan', compact('laporan', 'tanggal', 'title'));
-
-        // Optional: You can set PDF options here if needed
-        // For example: $pdf->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
-
-        // Return the PDF as a downloadable response
-        // By default, the PDF will be displayed in the browser if you don't want to force download
-        return $pdf->download('laporan_kebakaran.pdf');
+    if (!$laporan) {
+        // Jika laporan dengan $idLaporan tidak ditemukan, berikan respons sesuai kebutuhan
+        return redirect()->back()->with('error', 'Laporan tidak ditemukan.');
     }
+
+    // Render the view to generate PDF content
+    $pdf = PDF::loadView('backend.cetak-laporan', compact('laporan', 'tanggal', 'title'));
+
+    // Generate a unique filename for the PDF
+    $filename = "laporan-{$idLaporan}-{$tanggal}.pdf";
+
+    $pdf->save(public_path($filename));
+
+
+    // Return the PDF as a download response
+    return $pdf->download($filename);
+}
 
 }

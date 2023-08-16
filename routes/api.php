@@ -82,7 +82,7 @@ Route::post('/sendToWa', [LaporanController::class, 'sendInfoToWhatsapp']);
 Route::post('/addImage', [LaporanController::class, 'addImage']);
 Route::post('/addImagePetugas', [LaporanController::class, 'addImagePetugas']);
 
-Route::post('/user/foto', [UserController::class, 'UpdateFile']);
+// Route::post('/userUpdate', [UserController::class, 'updateUserData']);
 Route::get('/user/akun', [UserController::class, 'getDataProfile']);
 Route::post('/verifyOtp/whatsapp', [AuthenticationController::class, 'verifOtpWhatsapp']);
 Route::get('/getBeritaHome', [ArtikelBeritaController::class, "getArtikelBeritaHome"]);

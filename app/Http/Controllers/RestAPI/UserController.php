@@ -63,6 +63,7 @@ class UserController extends Controller
             'noHp' => 'required',
             // 'foto_user' => 'required',
         ]);
+
         $verifdata = user_listData::where('id', $validateData['id'])->first();
         $verifdata->namaLengkap = $validateData['namaLengkap'];
         //$verifdata -> foto_user = $validateData ['foto_user'];
@@ -76,33 +77,7 @@ class UserController extends Controller
         return json_encode($data);
     }
 
-    public function UpdateFile(Request $request)
-    {
-        $request->validate([
-            'foto_user' => 'required',
-            'namaLengkap' => 'required',
-            'noHp' => 'required',
-            'id' => 'required'
-        ]);
-        $pathDeleteImage = $request->foto_user;
-        if ($pathDeleteImage != null || $pathDeleteImage != "") {
-            Storage::delete('foto_user/' . $pathDeleteImage);
-        }
-
-
-        //upload Foto
-        if ($request->hasFile('file')) {
-            $pathFileBaru = $request->file('file');
-            $FileBaruNama = $pathFileBaru->getClientOriginalName();
-
-            //update Akun
-            $dataUpdate = user_listData::where('id', $request->id)->update(['namaLengkap' => $request->namaLengkap, 'noHp' => $request->noHp, 'foto_user' => $FileBaruNama]);
-            $pathAkhir = $pathFileBaru->storeAs('foto_user', $FileBaruNama);
-            return ApiFormater::createApi(200, "Succes", ['foto_dihapus' => $pathDeleteImage, 'Upload_done' => $pathAkhir, 'dataUpdate' => $dataUpdate]);
-        } else {
-            return ApiFormater::createApi(400, "Gagal", "Gagal");
-        }
-    }
+   
 
     public function getDataProfile(Request $request)
     {

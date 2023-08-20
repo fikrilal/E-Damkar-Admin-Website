@@ -283,7 +283,7 @@ if ($laporan->kategori_laporan_id == 1 || $laporan->kategori_laporan_id == 2 || 
 
   <div class="section">
     <div class="section-title"><b>&#9632;  DOKUMENTASI</b> : </div>
-    <img src="{{ asset('storage/bukti_penanganan/'.$laporan->detailLaporanPetugas->bukti_foto_laporan_petugas . '.jpg') }}" width="60%">
+    <img src="{{ asset('bukti-penangganan/'.$laporan->detailLaporanPetugas->bukti_foto_laporan_petugas . '.jpg') }}" width="60%">
     <div class="data-value"></div>
   </div>
 
@@ -378,7 +378,7 @@ if ($laporan->kategori_laporan_id == 1 || $laporan->kategori_laporan_id == 2 || 
     </div>
     <div class="data">
       <div class="data-label"><b>&#9632; DOKUMENTASI</b>:</div>
-  <img src="{{ asset('storage/bukti_penanganan/'.$laporan->detailLaporanPetugas->bukti_foto_laporan_petugas . '.jpg') }}" width="60%">
+  <img src="{{ asset('bukti-penangganan/'.$laporan->detailLaporanPetugas->bukti_foto_laporan_petugas . '.jpg') }}" width="60%">
   <div class="data-value"></div>
     </div>
   </div>

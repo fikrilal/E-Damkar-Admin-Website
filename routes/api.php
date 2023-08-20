@@ -37,6 +37,7 @@ Route::post('/addPelaporanPetugas', [LaporanController::class, 'AddPelaporanPetu
 //update status pelaporan petugas
 Route::post('/addPelaporanPetugas2', [LaporanController::class, 'AddPelaporanPetugas2']);
 Route::post('/addTanganiPetugas', [LaporanController::class, 'AddTanganiPetugas']);
+Route::get('/getDetailLapPetugas/{id}', [LaporanController::class, 'getDetailLapPetugas']);
 
 Route::get('/beritaTerbaru', [ArtikelBeritaController::class, 'newArtikelBerita']);
 Route::get('/userData', [UserController::class, 'index']);
@@ -82,7 +83,8 @@ Route::post('/sendToWa', [LaporanController::class, 'sendInfoToWhatsapp']);
 Route::post('/addImage', [LaporanController::class, 'addImage']);
 Route::post('/addImagePetugas', [LaporanController::class, 'addImagePetugas']);
 
-Route::post('/user/foto', [UserController::class, 'UpdateFile']);
+// Route::post('/userUpdate', [UserController::class, 'updateUserData']);
+Route::post('/user/Profile/update',  [UserController::class, 'updatePhotoProfile']);
 Route::get('/user/akun', [UserController::class, 'getDataProfile']);
 Route::post('/verifyOtp/whatsapp', [AuthenticationController::class, 'verifOtpWhatsapp']);
 Route::get('/getBeritaHome', [ArtikelBeritaController::class, "getArtikelBeritaHome"]);

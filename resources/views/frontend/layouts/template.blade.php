@@ -12,6 +12,8 @@
     <!-- Favicons -->
     <link href="{{ asset('frontend2/assets/img/logobolo.png')}}" rel="icon">
     <link href="{{ asset('frontend2/assets/img/logobolo.png')}}" rel="apple-touch-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
     <!-- Google Fonts -->
     <link

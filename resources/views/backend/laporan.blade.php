@@ -22,7 +22,8 @@
                             <p>Berikut adalah data laporan yang sudah selesai dilaksanakan.</p>
 
                             <!-- Table with stripped rows -->
-                            <table class="table datatable">
+                            <div class="table-responsive">
+                            <table class="table datatable responsive">
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
@@ -248,7 +249,7 @@
                                                                                 class="col-sm-2 col-form-label">Bukti
                                                                                 Penanganan</label>
                                                                             <div class="col-sm-10">
-                                                                                <img src="{{ asset('storage/bukti_penanganan/' . $laporan->detailLaporanPetugas->bukti_foto_laporan_petugas . '.jpg') }}"
+                                                                                <img src="{{ asset('bukti-penangganan/' . $laporan->detailLaporanPetugas->bukti_foto_laporan_petugas . '.jpg') }}"
                                                                                     width="40%">
                                                                             </div>
                                                                         </div>
@@ -282,7 +283,7 @@
                                                                                 class="col-sm-2 col-form-label">Bukti
                                                                                 Penanganan</label>
                                                                             <div class="col-sm-10">
-                                                                                <img src="{{ asset('storage/bukti_penanganan/' . $laporan->detailLaporanPetugas->bukti_foto_laporan_petugas . '.jpg') }}"
+                                                                                <img src="{{ asset('bukti-penangganan/' . $laporan->detailLaporanPetugas->bukti_foto_laporan_petugas . '.jpg') }}"
                                                                                     width="40%">
                                                                             </div>
                                                                         </div>
@@ -317,6 +318,7 @@
             </tbody>
 
             </table>
+            </div>
             </div>
             </div>
         </section>

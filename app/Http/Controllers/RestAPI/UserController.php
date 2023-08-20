@@ -27,6 +27,26 @@ class UserController extends Controller
         return new UserListResource($userdata);
     }
 
+    public function updatePhotoProfile(Request $request)
+    {
+        $validateData = $request->validate([
+            'id_user' => 'required',
+            'title' => 'required',
+            'image' => 'image'
+        ]);
+
+        if ($request->file('image')) {
+            $destinationPath = public_path('img-user');
+            $foto = $request->file('image');
+            $foto->move($destinationPath, $validateData['title'] . '.jpg');
+            $resutl = user_listData::where('id', $validateData['id_user'])->update(['foto_user' => $validateData['title']]);
+            if ($resutl) {
+                return json_encode(['kondisi' => 'real', 'path' => $validateData['image'], 'title' => $validateData['title']]);
+            }
+        }
+        return json_encode(['kondisi' => 'fake']);
+    }
+
     public function updatePassword(Request $request)
     {
         $request->validate([
@@ -55,54 +75,9 @@ class UserController extends Controller
             return json_encode($data);
         }
     }
-    public function UpdateProfil(Request $request)
-    {
-        $validateData = $request->validate([
-            'id' => 'required',
-            'namaLengkap' => 'required',
-            'noHp' => 'required',
-            // 'foto_user' => 'required',
-        ]);
-        $verifdata = user_listData::where('id', $validateData['id'])->first();
-        $verifdata->namaLengkap = $validateData['namaLengkap'];
-        //$verifdata -> foto_user = $validateData ['foto_user'];
-        $verifdata->noHp = $validateData['noHp'];
-        $verifdata->save();
-
-        $data = [
-            'status' => 'berhasil',
-            'kode' => '200'
-        ];
-        return json_encode($data);
-    }
-
-    public function UpdateFile(Request $request)
-    {
-        $request->validate([
-            'foto_user' => 'required',
-            'namaLengkap' => 'required',
-            'noHp' => 'required',
-            'id' => 'required'
-        ]);
-        $pathDeleteImage = $request->foto_user;
-        if ($pathDeleteImage != null || $pathDeleteImage != "") {
-            Storage::delete('foto_user/' . $pathDeleteImage);
-        }
 
 
-        //upload Foto
-        if ($request->hasFile('file')) {
-            $pathFileBaru = $request->file('file');
-            $FileBaruNama = $pathFileBaru->getClientOriginalName();
 
-            //update Akun
-            $dataUpdate = user_listData::where('id', $request->id)->update(['namaLengkap' => $request->namaLengkap, 'noHp' => $request->noHp, 'foto_user' => $FileBaruNama]);
-            $pathAkhir = $pathFileBaru->storeAs('foto_user', $FileBaruNama);
-            return ApiFormater::createApi(200, "Succes", ['foto_dihapus' => $pathDeleteImage, 'Upload_done' => $pathAkhir, 'dataUpdate' => $dataUpdate]);
-        } else {
-            return ApiFormater::createApi(400, "Gagal", "Gagal");
-        }
-    }
 
     public function getDataProfile(Request $request)
     {

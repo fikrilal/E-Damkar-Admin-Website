@@ -251,8 +251,11 @@ class LaporanController extends Controller
         ]);
 
         if ($request->file('image')) {
-            $validateData['image'] = $request->file('image')->storeAs('gambar_pelaporans', $validateData['title'] . '.jpg');
-            Storage::disk('public/gambar_pelaporans')->put($validateData['title'] . '.jpg', $request->file('image'));
+            // $validateData['image'] = $request->file('image')->storeAs('gambar_pelaporans', $validateData['title'] . '.jpg');
+            $destinationPath = public_path('bukti-penanganan');
+            $foto = $request->file('image');
+
+            $foto->move($destinationPath, $validateData['title'] . '.jpg');
         }
 
         return json_encode(['kondisi' => 'real', 'path' => $validateData['image'], 'title' => $validateData['title']]);
@@ -265,7 +268,10 @@ class LaporanController extends Controller
         ]);
 
         if ($request->file('image')) {
-            $validateData['image'] = $request->file('image')->storeAs('gambar_pelaporans', $validateData['title'] . '.jpg');
+            // $validateData['image'] = $request->file('image')->storeAs('gambar_pelaporans', $validateData['title'] . '.jpg');
+            $destinationPath = public_path('bukti-pelaporan');
+            $foto = $request->file('image');
+            $foto->move($destinationPath, $validateData['title'] . '.jpg');
         }
 
         return json_encode(['kondisi' => 'real', 'path' => $validateData['image'], 'title' => $validateData['title']]);

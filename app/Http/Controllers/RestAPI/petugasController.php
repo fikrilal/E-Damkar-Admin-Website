@@ -18,9 +18,6 @@ class petugasController extends Controller
     public function index()
     {
         $userdata = admin_damkar::all();
-
-        
-
         return PetugasAdminResource::collection($userdata);
     }
 

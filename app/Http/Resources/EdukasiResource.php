@@ -18,7 +18,7 @@ class EdukasiResource extends JsonResource
             "jenis_artikel" => "Edukasi",
             "id" => $this->id_edukasi,
             "admin_damkar" => $this->adminDamkar->nama_lengkap, 
-            "foto" => "foto/gambar", 
+            "foto" => $this->foto_artikel_edukasi, 
             "judul" => $this->judul_edukasi, 
             "deskripsi" => $this->deskripsi, 
             "tanggal" => $this->tgl_edukasi

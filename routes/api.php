@@ -88,3 +88,7 @@ Route::post('/user/Profile/update',  [UserController::class, 'updatePhotoProfile
 Route::get('/user/akun', [UserController::class, 'getDataProfile']);
 Route::post('/verifyOtp/whatsapp', [AuthenticationController::class, 'verifOtpWhatsapp']);
 Route::get('/getBeritaHome', [ArtikelBeritaController::class, "getArtikelBeritaHome"]);
+
+
+//realtime ws data request
+Route::get('/RLTDataPelaporan', [LaporanController::class, 'getDataPelaporanRLT']);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\RestAPI;
 
 use App\Http\Controllers\Controller;
+
 use App\Http\Resources\DetailLapPetugasResource;
 use App\Http\Resources\LaporanPetugasResources;
 use App\Http\Resources\pelaporanDetailResource;
@@ -15,6 +16,7 @@ use App\Models\user_listData;
 use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Spatie\LaravelIgnition\Recorders\DumpRecorder\Dump;
 
 class LaporanController extends Controller
@@ -87,10 +89,10 @@ class LaporanController extends Controller
             'status_riwayat_id' => 3,
             'detail_laporan_petugas_id' => $execDtl
         ];
-       
+
         if (DB::table('laporans')->where('idLaporan', '=', $request->idLaporan)->update($crt_lap)) {
             $data = laporan::where('idLaporan', $request->idLaporan)->first();
-             return  new LaporanPetugasResources($data);
+            return  new LaporanPetugasResources($data);
         } else {
             return json_encode(
                 [
@@ -104,9 +106,9 @@ class LaporanController extends Controller
 
     //get data detail lap petugas
     public function getDetailLapPetugas(Request $request)
-    { 
-        
-        $data = laporan::where('idLaporan',$request->id)->get();
+    {
+
+        $data = laporan::where('idLaporan', $request->id)->get();
         return LaporanPetugasResources::collection($data);
     }
 
@@ -152,7 +154,7 @@ class LaporanController extends Controller
             // 'detail_laporan_petugas_id' => $execDtl
         ];
 
-        $UpdateLaporan = DB::table('laporans')->where('idLaporan',$request->idLaporan)->update($crt_lap);
+        $UpdateLaporan = DB::table('laporans')->where('idLaporan', $request->idLaporan)->update($crt_lap);
         // $UpdateDetailPetugas = DB::table('detail_laporan_petugas')->where('id', '=', $request->idLaporan)->update($vData);
         $UpdateDetailPetugas = DB::table('detail_laporan_petugas')->join('laporans', 'laporans.detail_laporan_petugas_id', '=', 'detail_laporan_petugas.id')->where('laporans.detail_laporan_petugas_id', $request->detail_laporan_petugas_id)->update($vData);
 
@@ -251,6 +253,7 @@ class LaporanController extends Controller
 
         if ($request->file('image')) {
             $validateData['image'] = $request->file('image')->storeAs('gambar_pelaporans', $validateData['title'] . '.jpg');
+            Storage::disk('public/gambar_pelaporans')->put($validateData['title'] . '.jpg', $request->file('image'));
         }
 
         return json_encode(['kondisi' => 'real', 'path' => $validateData['image'], 'title' => $validateData['title']]);
@@ -400,5 +403,18 @@ class LaporanController extends Controller
     function updateStatusRwt(Request $request)
     {
         $data = Laporan::where('idLaporan', $request->idLaporan)->update(["status_riwayat_id" => 3]);
+    }
+
+
+    function getDataPelaporanRLT()
+    {
+        $data = laporan::Where('status_riwayat_id', 2)->get();
+        $json = [
+            "condition" => true,
+            "command" => "dataLaporan",
+            "payload" => LaporanPetugasResources::collection($data)
+        ];
+
+        return response()->json($json, 200);
     }
 }

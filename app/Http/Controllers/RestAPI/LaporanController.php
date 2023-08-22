@@ -35,6 +35,7 @@ class LaporanController extends Controller
             'longitude' => 'required',
             'bukti_foto_laporan_pengguna' => 'required|string'
         ]);
+        // $vData['deskripsi_petugas'] = '';
 
         $kategoriLap = $vData['kategori_laporan_id'];
         unset($vData['kategori_laporan_id']);

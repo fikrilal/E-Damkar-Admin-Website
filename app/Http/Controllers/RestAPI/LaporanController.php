@@ -266,7 +266,8 @@ class LaporanController extends Controller
         ]);
 
         if ($request->file('image')) {
-            $validateData['image'] = $request->file('image')->storeAs('gambar_pelaporans', $validateData['title'] . '.jpg');
+            // $validateData['image'] = $request->file('image')->storeAs('gambar_pelaporans', $validateData['title'] . '.jpg');
+            $validateData['image'] = $request->file('image')->public_path('bukti-penanganan', $validateData['title']. '.jpg');
         }
 
         return json_encode(['kondisi' => 'real', 'path' => $validateData['image'], 'title' => $validateData['title']]);

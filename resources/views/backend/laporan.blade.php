@@ -45,7 +45,7 @@
                                         <tr>
                                             <th scope="row">{{ $no++ }}</th>
                                             <td>{{ date('d-m-Y', strtotime($laporan->detailLaporanPengguna->tgl_pelaporan)) }}
-                                                ({{ $laporan->detailLaporanPengguna->waktu_pelaporan }} WIB)</td>
+                                                ({{ $laporan->detailLaporanPengguna->waktu_pelaporan }})</td>
                                             <td>{{ $laporan->detailLaporanPengguna->user_listdata->namaLengkap }}</td>
                                             <td>{{ $laporan->detailLaporanPengguna->urgensi }}</td>
                                             <td>{{ $laporan->detailLaporanPengguna->deskripsi_laporan }}</td>

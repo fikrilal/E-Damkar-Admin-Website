@@ -239,7 +239,7 @@ if ($laporan->kategori_laporan_id == 1 || $laporan->kategori_laporan_id == 2 || 
     </div>
   <?php
   } else {
-    echo '<p>Kategori laporan tidak dikenali</p>';
+   
   }
   ?>
 

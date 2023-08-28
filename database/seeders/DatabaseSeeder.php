@@ -92,7 +92,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         KategoriLaporan::create([
-            'nama_kategori' => 'Bencara Alam'
+            'nama_kategori' => 'Bencana Alam'
         ]);
 
         KategoriLaporan::create([

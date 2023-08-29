@@ -20,7 +20,7 @@
   <style>
     body {
       margin-top: 4cm;
-      margin-left: 4cm;
+      margin-left: 2cm;
       margin-bottom: 3cm;
       margin-right: 3cm;
       font-family: Arial, sans-serif;

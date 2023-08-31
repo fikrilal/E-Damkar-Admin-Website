@@ -14,7 +14,7 @@ class DashboardController extends Controller
         $title = 'Dashboard | E-Damkar Nganjuk';
         return view('backend.dashboard', ['title' => $title]);        
     }
-
+    
     public function getLaporanMasuk()
     {
         $now = now();
@@ -22,10 +22,12 @@ class DashboardController extends Controller
             ->join('detail_laporan_penggunas', 'id', '=', 'laporans.detail_laporan_pengguna_id')
             ->whereIn('status_riwayat_id', [1])
             ->whereDate('detail_laporan_penggunas.tgl_pelaporan', $now->toDateString())
-            ->count();
-
-        return response()->json(['count' => $laporanMasukRealtime]);
+            ->latest() // Mengambil data terakhir berdasarkan created_at atau kolom lain yang sesuai
+            ->first();
+    
+        return response()->json(['count' => $laporanMasukRealtime ? 1 : 0]); // Mengembalikan 1 jika ada data, 0 jika tidak ada
     }
+    
 
     public function getLaporanKategori()
     { 

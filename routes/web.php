@@ -10,6 +10,8 @@ use App\Http\Controllers\WelcomeController;
 use App\Websocket\LaporanHandler\LocHandler;
 use App\Websocket\LaporanHandler\MessageLaporanHandler;
 use BeyondCode\LaravelWebSockets\Facades\WebSocketsRouter;
+use App\Http\Controllers\Backend\DashboardController;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,8 @@ Route::group(['namespace' => 'App\Http\Controllers\backend'], function () {
     Route::resource('dashboard', 'DashboardController');
     Route::resource('laporan', 'LaporanController');
     Route::resource('laporanmasuk', 'LaporanMasukController');
+    Route::get('/get-laporan-masuk', 'DashboardController@getLaporanMasuk')->name('get-laporan-masuk');
+    Route::get('/get-laporan-kategori', 'DashboardController@getLaporanKategori')->name('get-laporan-kategori');
     Route::resource('pengaturan', 'PengaturanController');
     Route::resource('berita', 'BeritaController');
     Route::resource('edukasi', 'EdukasiController');
@@ -85,3 +89,18 @@ Route::get('/generate', function () {
     symlink($targetFolder, $linkFolder);
     echo 'Symlink completed';
 });
+
+
+Route::get('/download/', function () {
+    $file_path = public_path('e-damkar.apk');
+    return response()->download($file_path, 'e-damkar.apk');
+});
+
+
+Route::get('/audio-kategori1', function () {
+    return response()->file(public_path('sound/kebakaran-sound.mp3'));
+})->name('audio-kategori1');
+
+Route::get('/audio-kategori2', function () {
+    return response()->file(public_path('sound/sound-lainnya.mp3'));
+})->name('audio-kategori2');

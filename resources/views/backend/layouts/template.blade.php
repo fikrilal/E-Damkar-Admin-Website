@@ -17,7 +17,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
+  
   <!-- Vendor CSS Files -->
   <link href="{{ asset('backend/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ asset('backend/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
@@ -29,6 +29,8 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('backend/assets/css/style.css') }}" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -65,6 +67,78 @@
         <li class="nav-item dropdown">
 
         <li class="nav-item dropdown pe-3">
+
+        <li class="nav-item dropdown">
+
+<a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+  <i class="bi bi-bell"></i>
+  <div id="data-container">
+  <span class="badge bg-primary badge-number"><span id="laporan-masuk"></span>
+
+  <script>
+    var audio1 = new Audio('{{ route("audio-kategori1") }}'); // Ganti dengan path audio untuk kategori 1
+    var audio2 = new Audio('{{ route("audio-kategori2") }}'); // Ganti dengan path audio untuk kategori 2
+
+    var lastNotificationCount = 0;
+
+    function playAudio(audio) {
+        audio.pause();
+        audio.currentTime = 0; // Mengatur posisi audio ke awal
+        audio.play();
+    }
+
+    function updateLaporanMasukCount() {
+        $.ajax({
+            url: '{{ route("get-laporan-masuk") }}',
+            method: 'GET',
+            success: function(data) {
+                $('#laporan-masuk').text(data.count);
+
+                if (data.count > lastNotificationCount) {
+                    // Notifikasi baru masuk, putar audio berdasarkan kategori
+                    lastNotificationCount = data.count;
+
+                    $.ajax({
+                        url: '{{ route("get-laporan-kategori") }}', // Endpoint untuk mengambil kategori laporan
+                        method: 'GET',
+                        success: function(kategori) {
+                            if (kategori == '1') {
+                                playAudio(audio1);
+                            } else {
+                                playAudio(audio2);
+                            }
+                        }
+                    });
+                }
+            },
+            complete: function() {
+                // Melanjutkan polling setelah permintaan selesai (rekursif)
+                setTimeout(updateLaporanMasukCount, 1000); // Contoh: update setiap 1 detik (1000 milidetik)
+            }
+        });
+    }
+
+    // Memanggil fungsi updateLaporanMasukCount() untuk memulai polling
+    updateLaporanMasukCount();
+</script>
+
+
+
+    </div>
+</a><!-- End Notification Icon -->
+
+<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+  <li class="dropdown-header">
+    Anda memiliki laporan masuk baru
+    <a href="/laporanmasuk"><span class="badge rounded-pill bg-primary p-2 ms-2">Cek Sekarang</span></a>
+  </li>
+  <li>
+    <hr class="dropdown-divider">
+  </li>
+
+</ul><!-- End Notification Dropdown Items -->
+
+</li>
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
           <i class="bi bi-person-circle"></i>
@@ -268,11 +342,7 @@
                       </form>
                     </div>
                 </div>
-            </div>
-
-
-
-          
+              </div>
 
 </body>
 

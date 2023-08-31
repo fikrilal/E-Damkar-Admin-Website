@@ -66,4 +66,5 @@ class LaporanMasukController extends Controller
         $laporan->save();
     }
 
+   
 }

@@ -8,8 +8,7 @@
   <title>{{ $title ?? config('app.name') }}</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+ <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Favicons -->
   <link href="{{ asset('frontend2/assets/img/logobolo.png')}}" rel="icon">
@@ -17,7 +16,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-  
+
   <!-- Vendor CSS Files -->
   <link href="{{ asset('backend/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ asset('backend/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
@@ -57,20 +56,13 @@
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
-        <!-- <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
-          </a>
-        </li> -->
-        <!-- End Search Icon-->
-
         <li class="nav-item dropdown">
 
         <li class="nav-item dropdown pe-3">
 
-        <li class="nav-item dropdown">
+    <li class="nav-item dropdown">
 
-<a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+<a class="nav-link nav-icon" href="/laporanmasuk">
   <i class="bi bi-bell"></i>
   <div id="data-container">
   <span class="badge bg-primary badge-number"><span id="laporan-masuk"></span>
@@ -110,8 +102,8 @@ console.log(data.kategori);
                                 playAudio(audio2);
                             }
                         }
-                    });       
-                }
+                    });                
+}
             },
             complete: function() {
                 // Melanjutkan polling setelah permintaan selesai (rekursif)
@@ -122,6 +114,7 @@ console.log(data.kategori);
 
     // Memanggil fungsi updateLaporanMasukCount() untuk memulai polling
     updateLaporanMasukCount();
+	
 </script>
 
 
@@ -129,22 +122,11 @@ console.log(data.kategori);
     </div>
 </a><!-- End Notification Icon -->
 
-<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-  <li class="dropdown-header">
-    Anda memiliki laporan masuk baru
-    <a href="/laporanmasuk"><span class="badge rounded-pill bg-primary p-2 ms-2">Cek Sekarang</span></a>
-  </li>
-  <li>
-    <hr class="dropdown-divider">
-  </li>
-
-</ul><!-- End Notification Dropdown Items -->
 
 </li>
-
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-          <i class="bi bi-person-circle"></i>
-            <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->nama_lengkap }}</span>
+		<i class="bi bi-person-circle"></i>
+                       <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->nama_lengkap }}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -344,7 +326,11 @@ console.log(data.kategori);
                       </form>
                     </div>
                 </div>
-              </div>
+            </div>
+
+
+
+          
 
 </body>
 

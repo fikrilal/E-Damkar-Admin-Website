@@ -32,8 +32,6 @@ Route::group(['namespace' => 'App\Http\Controllers\backend'], function () {
     Route::resource('dashboard', 'DashboardController');
     Route::resource('laporan', 'LaporanController');
     Route::resource('laporanmasuk', 'LaporanMasukController');
-    Route::get('/get-laporan-masuk', 'DashboardController@getLaporanMasuk')->name('get-laporan-masuk');
-    Route::get('/get-laporan-kategori', 'DashboardController@getLaporanKategori')->name('get-laporan-kategori');
     Route::resource('pengaturan', 'PengaturanController');
     Route::resource('berita', 'BeritaController');
     Route::resource('edukasi', 'EdukasiController');

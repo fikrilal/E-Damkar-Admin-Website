@@ -89,26 +89,28 @@
 
     function updateLaporanMasukCount() {
         $.ajax({
-            url: '{{ route("get-laporan-masuk") }}',
+            url: '/api/get-laporan-masuk',
             method: 'GET',
             success: function(data) {
                 $('#laporan-masuk').text(data.count);
-
-                if (data.count > lastNotificationCount) {
+		console.log(data.count);
+                if (data.count > 0 && data.count != lastNotificationCount ) {
                     // Notifikasi baru masuk, putar audio berdasarkan kategori
                     lastNotificationCount = data.count;
-
-                    $.ajax({
-                        url: '{{ route("get-laporan-kategori") }}', // Endpoint untuk mengambil kategori laporan
+  			$.ajax({
+                        url: '/api/get-laporan-kategori', // Endpoint untuk mengambil kategori laporan
                         method: 'GET',
-                        success: function(kategori) {
-                            if (kategori == '1') {
+                        success: function(data) {
+console.log(data.kategori);
+                             if (data.kategori == '1') {
+				console.log("ada audio kategori1");
                                 playAudio(audio1);
                             } else {
+				console.log("ada audio kategori 2");
                                 playAudio(audio2);
                             }
                         }
-                    });
+                    });       
                 }
             },
             complete: function() {

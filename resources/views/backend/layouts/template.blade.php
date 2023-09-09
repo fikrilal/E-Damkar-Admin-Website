@@ -8,8 +8,7 @@
   <title>{{ $title ?? config('app.name') }}</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+ <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Favicons -->
   <link href="{{ asset('frontend2/assets/img/logobolo.png')}}" rel="icon">
@@ -29,6 +28,8 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('backend/assets/css/style.css') }}" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -55,20 +56,77 @@
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
-        <!-- <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
-          </a>
-        </li> -->
-        <!-- End Search Icon-->
-
         <li class="nav-item dropdown">
 
         <li class="nav-item dropdown pe-3">
 
+    <li class="nav-item dropdown">
+
+<a class="nav-link nav-icon" href="/laporanmasuk">
+  <i class="bi bi-bell"></i>
+  <div id="data-container">
+  <span class="badge bg-primary badge-number"><span id="laporan-masuk"></span>
+
+  <script>
+    var audio1 = new Audio('{{ route("audio-kategori1") }}'); // Ganti dengan path audio untuk kategori 1
+    var audio2 = new Audio('{{ route("audio-kategori2") }}'); // Ganti dengan path audio untuk kategori 2
+
+    var lastNotificationCount = 0;
+
+    function playAudio(audio) {
+        audio.pause();
+        audio.currentTime = 0; // Mengatur posisi audio ke awal
+        audio.play();
+    }
+
+    function updateLaporanMasukCount() {
+        $.ajax({
+            url: '/api/get-laporan-masuk',
+            method: 'GET',
+            success: function(data) {
+                $('#laporan-masuk').text(data.count);
+		console.log(data.count);
+                if (data.count > 0 && data.count != lastNotificationCount ) {
+                    // Notifikasi baru masuk, putar audio berdasarkan kategori
+                    lastNotificationCount = data.count;
+  			$.ajax({
+                        url: '/api/get-laporan-kategori', // Endpoint untuk mengambil kategori laporan
+                        method: 'GET',
+                        success: function(data) {
+console.log(data.kategori);
+                             if (data.kategori == '1') {
+				console.log("ada audio kategori1");
+                                playAudio(audio1);
+                            } else {
+				console.log("ada audio kategori 2");
+                                playAudio(audio2);
+                            }
+                        }
+                    });                
+}
+            },
+            complete: function() {
+                // Melanjutkan polling setelah permintaan selesai (rekursif)
+                setTimeout(updateLaporanMasukCount, 1000); // Contoh: update setiap 1 detik (1000 milidetik)
+            }
+        });
+    }
+
+    // Memanggil fungsi updateLaporanMasukCount() untuk memulai polling
+    updateLaporanMasukCount();
+	
+</script>
+
+
+
+    </div>
+</a><!-- End Notification Icon -->
+
+
+</li>
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-          <i class="bi bi-person-circle"></i>
-            <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->nama_lengkap }}</span>
+		<i class="bi bi-person-circle"></i>
+                       <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->nama_lengkap }}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">

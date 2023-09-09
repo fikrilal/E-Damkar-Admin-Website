@@ -11,6 +11,7 @@ use App\Http\Controllers\RestAPI\UserController;
 use App\Websocket\LaporanHandler\MessageLaporanHandler;
 use BeyondCode\LaravelWebSockets\Facades\WebSocketsRouter;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\DashboardController;
 
 
 Route::post('/register', [AuthenticationController::class, 'register']);
@@ -92,3 +93,6 @@ Route::get('/getBeritaHome', [ArtikelBeritaController::class, "getArtikelBeritaH
 
 //realtime ws data request
 Route::get('/RLTDataPelaporan', [LaporanController::class, 'getDataPelaporanRLT']);
+
+Route::get('/get-laporan-masuk', [DashboardController::class, 'getLaporanMasuk']);
+Route::get('/get-laporan-kategori', [DashboardController::class, 'getLaporanKategori']);

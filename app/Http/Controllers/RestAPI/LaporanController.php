@@ -37,6 +37,7 @@ class LaporanController extends Controller
             'longitude' => 'required',
             'bukti_foto_laporan_pengguna' => 'required|string'
         ]);
+        // $vData['deskripsi_petugas'] = '';
 
         $kategoriLap = $vData['kategori_laporan_id'];
         unset($vData['kategori_laporan_id']);
@@ -272,6 +273,9 @@ class LaporanController extends Controller
             $destinationPath = public_path('bukti-pelaporan');
             $foto = $request->file('image');
             $foto->move($destinationPath, $validateData['title'] . '.jpg');
+
+            //$validateData['image'] = $request->file('image')->public_path('bukti-penanganan', $validateData['title']. '.jpg');
+
         }
 
         return json_encode(['kondisi' => 'real', 'path' => $validateData['image'], 'title' => $validateData['title']]);

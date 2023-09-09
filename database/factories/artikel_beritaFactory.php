@@ -20,11 +20,11 @@ class artikel_beritaFactory extends Factory
     public function definition(): array
     {
         return [
-            "admin_damkar_id" => rand(1, 10),
+            "admin_damkar_id" => 1,
             "judul_berita" => fake()->sentence(3),
             "deskripsi_berita" => fake()->sentence(5),
             "tgl_berita" => date('Y-m-d'),
-            "foto_artikel_berita" => "gambar",
+            "foto_artikel_berita" => "1684768940.jpg",
         ];
     }
 }

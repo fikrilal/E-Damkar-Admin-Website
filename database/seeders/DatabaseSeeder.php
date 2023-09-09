@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\admin_damkar;
+use App\Models\artikel_agenda;
 use App\Models\artikel_berita;
 use App\Models\artikel_edukasi;
 use App\Models\detail_korban;
@@ -31,6 +32,8 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
+
+
         admin_damkar::create([
             'email' => "superadmin@gmail.com",
             'password' => Hash::make('superone'),
@@ -52,8 +55,9 @@ class DatabaseSeeder extends Seeder
         // user_listData::factory(10)->create();
         // laporan::factory(10)->create();
         // admin_damkar::factory(10)->create();
-        // artikel_berita::factory(30)->create();
-        // artikel_edukasi::factory(30)->create();
+        artikel_berita::factory(10)->create();
+        artikel_edukasi::factory(10)->create();
+        artikel_agenda::factory(10)->create();
 
         kondisi_cuaca::create([
             "nama_kondisi_cuaca" => 'Cerah'
@@ -118,6 +122,5 @@ class DatabaseSeeder extends Seeder
             'jumlah_personil' => '0',
             'jumlah_kantor' => '0'
         ]);
-        
     }
 }

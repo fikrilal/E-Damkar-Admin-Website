@@ -64,8 +64,8 @@ Route::group(['namespace' => 'App\Http\Controllers\LandingInformasi'], function 
     // Route::resource('detailagenda', 'detailagendaController');
     Route::resource('detailedukasi', 'detailedukasiController');
     Route::resource('landingtentang', 'landingtentangController');
-    Route::get('detailberita/{id_berita}', [LandingInformasiController::class, 'show'])->name('detailberita.show');
-    Route::get('detailedukasi/{id_edukasi}', [LandingInformasiController::class, 'show'])->name('detailedukasi.show');
+    // Route::get('detailberita/{id_berita}', [LandingInformasiController::class, 'show'])->name('detailberita.show');
+    // Route::get('detailedukasi/{id_edukasi}', [LandingInformasiController::class, 'show'])->name('detailedukasi.show');
     // Route::get('detailagenda/{id_agenda}', [LandingInformasiController::class, 'show'])->name('detailagenda.show');
 });
 

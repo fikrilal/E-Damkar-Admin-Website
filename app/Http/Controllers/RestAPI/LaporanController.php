@@ -59,6 +59,43 @@ class LaporanController extends Controller
         }
     }
 
+    public function AddPelaporanEmergency(Request $request)
+    {
+        $vData = $request->validate([
+            'kategori_laporan_id' => 'required|integer',
+            'user_listdata_id' => 'required|integer',
+            'deskripsi_laporan' => 'required|strin  g',
+            'nama_hewan' => 'string',
+            'waktu_pelaporan' => 'required|string',
+            'tgl_pelaporan' => 'required|string',
+            'urgensi' => 'required|string',
+            'alamat' => 'required|string',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'bukti_foto_laporan_pengguna' => 'required|string'
+        ]);
+        // $vData['deskripsi_petugas'] = '';
+
+        $kategoriLap = $vData['kategori_laporan_id'];
+        unset($vData['kategori_laporan_id']);
+        $execDtl = detail_laporan_pengguna::create($vData)->id;
+
+        $crt_lap = [
+            'status_riwayat_id' => 2,
+            'kategori_laporan_id' => $kategoriLap,
+            'detail_laporan_pengguna_id' => $execDtl,
+
+            // 'detail_laporan_petugas_id' => 1
+        ];
+
+
+        if (laporan::create($crt_lap)) {
+            return json_encode(["condition" => true, 'message' => "berhasil melakukan pelaporan"]);
+        } else {
+            return json_encode(["condition" => false, 'message' => "gagal melakukan pelaporan"]);
+        }
+    }
+
 
     //mengubah laporan menjadi tangani
     public function AddTanganiPetugas(Request $request)
@@ -267,7 +304,7 @@ class LaporanController extends Controller
 
         if ($request->file('image')) {
             // $validateData['image'] = $request->file('image')->storeAs('gambar_pelaporans', $validateData['title'] . '.jpg');
-            $validateData['image'] = $request->file('image')->public_path('bukti-penanganan', $validateData['title']. '.jpg');
+            $validateData['image'] = $request->file('image')->public_path('bukti-penanganan', $validateData['title'] . '.jpg');
         }
 
         return json_encode(['kondisi' => 'real', 'path' => $validateData['image'], 'title' => $validateData['title']]);

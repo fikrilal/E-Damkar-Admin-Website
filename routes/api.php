@@ -31,6 +31,7 @@ Route::get('/getDetailLap/{idLaporan}', [LaporanController::class, 'getDetailPel
 Route::get('/updateStatusRwt/{idLaporan}', [LaporanController::class, 'updateStatusRwt']);
 
 Route::post('/addPelaporan', [LaporanController::class, 'AddPelaporan']);
+Route::post('/addPelaporanEmergency', [LaporanController::class, 'AddPelaporanEmergency']);
 
 Route::post('/addPelaporanPetugas', [LaporanController::class, 'AddPelaporanPetugas']);
 

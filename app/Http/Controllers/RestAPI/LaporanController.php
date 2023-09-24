@@ -84,13 +84,11 @@ class LaporanController extends Controller
             'status_riwayat_id' => 2,
             'kategori_laporan_id' => $kategoriLap,
             'detail_laporan_pengguna_id' => $execDtl,
-
-            // 'detail_laporan_petugas_id' => 1
         ];
 
 
-        if (laporan::create($crt_lap)) {
-            return json_encode(["condition" => true, 'message' => "berhasil melakukan pelaporan"]);
+        if ($lap = laporan::create($crt_lap)) {
+            return json_encode(["condition" => true, 'message' => "berhasil melakukan pelaporan", "idLap" => $lap->id]);
         } else {
             return json_encode(["condition" => false, 'message' => "gagal melakukan pelaporan"]);
         }

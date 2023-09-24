@@ -18,7 +18,7 @@ class ArtikelBerita_2Resource extends JsonResource
             "jenis_artikel" => "berita",
             "id" => $this->id_berita,
             "admin_damkar" => $this->adminDamkar->nama_lengkap,
-            "foto" => "foto/gambar",
+            "foto" => $this->foto_artikel_berita,
             "judul" => $this->judul_berita,
             "deskripsi" => $this->deskripsi_berita,
             "tanggal" => $this->tgl_berita

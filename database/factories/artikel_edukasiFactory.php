@@ -20,11 +20,11 @@ class artikel_edukasiFactory extends Factory
     public function definition(): array
     {
         return [
-            "admin_damkar_id" => rand(1, 10),
+            "admin_damkar_id" => 1,
             "judul_edukasi" => fake()->sentence(3),
             "deskripsi" => fake()->sentence(5),
             "tgl_edukasi" => date('Y-m-d'),
-            "foto_artikel_edukasi" => "gambar",
+            "foto_artikel_edukasi" => "1684768460.jpg",
         ];
     }
 }
